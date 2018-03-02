@@ -10,15 +10,8 @@
 \makeatother
 
 % Macro for auto-bolding author name in bibliography
-\def\FormatName#1{%
-  \def\myname{Barnowski, Ross}%
-  \edef\name{#1}%
-  \ifx\name\myname
-    \textbf{#1}%
-  \else
-    #1%
-  \fi
-}
+\usepackage{xstring}
+\def\FormatName#1{ \IfSubStr{#1}{Barnowski}{\textbf{#1}}{#1} }
 
 
 \oddsidemargin -.5in
