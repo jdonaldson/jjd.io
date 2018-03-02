@@ -9,6 +9,17 @@
 \renewcommand\@biblabel[1]{}
 \makeatother
 
+% Macro for auto-bolding author name in bibliography
+\def\FormatName#1{%
+  \def\myname{Barnowski, Ross}%
+  \edef\name{#1}%
+  \ifx\name\myname
+    \textbf{#1}%
+  \else
+    #1%
+  \fi
+}
+
 
 \oddsidemargin -.5in
 \evensidemargin -.5in
