@@ -6,6 +6,7 @@ $(manuscript).pdf: $(manuscript).tex *.bib
 	pdflatex $(latexopt) $(manuscript).tex
 	bibtex publications.aux
 	bibtex presentations.aux
+	bibtex posters.aux
 	pdflatex $(latexopt) $(manuscript).tex
 	pdflatex $(latexopt) $(manuscript).tex
 
