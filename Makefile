@@ -4,8 +4,8 @@ latexopt = -file-line-error -halt-on-error
 # Build the PDF of the lab report from the source files
 $(manuscript).pdf: $(manuscript).tex *.bib
 	pdflatex $(latexopt) $(manuscript).tex
-	bibtex $(manuscript).aux
-	bibtex $(manuscript).aux
+	bibtex publications.aux
+	bibtex presentations.aux
 	pdflatex $(latexopt) $(manuscript).tex
 	pdflatex $(latexopt) $(manuscript).tex
 

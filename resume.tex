@@ -16,6 +16,11 @@
 % For recovering section titles after suppressing them for bibtex
 \let\resumesection\section
 
+% Multiple bibliographies
+\usepackage{multibib}
+\newcites{publications}{Publications}
+\newcites{presentations}{Presentations}
+
 \oddsidemargin -.5in
 \evensidemargin -.5in
 \textwidth=6.0in
@@ -167,17 +172,27 @@ Sustainable Energy Fellowship Program Awardee, Cornell University \hfill 2010 \\
 NEUP Scholarship Recipient \hfill 2009 - 2010 \\
 American Nuclear Society National Scholarship Recipient \hfill 2007 - 2010 \\
 
-\section{\sc Publications \& Conference Presentations}
+\section{\sc Publications}
 
 % Force references to appear even though they are not cited in the document
-\nocite{*}
-\bibliographystyle{resume}
+\nocitepublications{*}
+\bibliographystylepublications{resume}
 % Remove 'References' Heading
 \renewcommand{\section}[2]{}
-\bibliography{publications}
-
+\bibliographypublications{publications}
 % Recover sectioning 
 \renewcommand{\section}{\resumesection}
+
+\section{\sc Conference Presentations}
+
+\nocitepresentations{*}
+\bibliographystylepresentations{resume}
+% Remove 'References' Heading
+\renewcommand{\section}[2]{}
+\bibliographypresentations{presentations}
+% Recover sectioning 
+\renewcommand{\section}{\resumesection}
+
 \section{\sc Posters}
 
 {\bf Barnowski, R.} ``Impact of Uncertainties on 3D Source Localization for
