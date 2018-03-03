@@ -8,8 +8,6 @@ $(manuscript).pdf: $(manuscript).tex
 
 clean :
 	rm -f *.aux *.log *.bbl *.lof *.lot *.blg *.out *.toc *.run.xml *.bcf
-	rm -f text/*.aux
 	rm $(manuscript).pdf
-	rm code/*.pyc
 
 .PHONY : clean
