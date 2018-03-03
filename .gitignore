@@ -1,10 +1,6 @@
 # LaTeX cruft
-*.log
+build/*
 *.pdf
-*.aux
-*.bbl
-*.blg
-*.out
 
 # Editor cruft
 *.swp
