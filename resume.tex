@@ -13,6 +13,8 @@
 \usepackage{xstring}
 \def\FormatName#1{ \IfSubStr{#1}{Barnowski}{\textbf{#1}}{#1} }
 
+% For recovering section titles after suppressing them for bibtex
+\let\resumesection\section
 
 \oddsidemargin -.5in
 \evensidemargin -.5in
@@ -174,6 +176,8 @@ American Nuclear Society National Scholarship Recipient \hfill 2007 - 2010 \\
 \renewcommand{\section}[2]{}
 \bibliography{resume}
 
+% Recover sectioning 
+\renewcommand{\section}{\resumesection}
 \section{\sc Posters}
 
 {\bf Barnowski, R.} ``Impact of Uncertainties on 3D Source Localization for
