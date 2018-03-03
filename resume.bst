@@ -1,4 +1,5 @@
-% BibTeX standard bibliography style `unsrt'
+% BibTeX bibliography style `resume' based on standard bibliography style 
+% `unsrt'
    % Version 0.99b (8-Dec-10 release) for BibTeX versions 0.99a or later.
    % Copyright (C) 1984, 1985, 1988, 2010 Howard Trickey and Oren Patashnik.
    % Unlimited copying and redistribution of this file are permitted as long as
