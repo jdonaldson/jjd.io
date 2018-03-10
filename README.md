@@ -1,6 +1,6 @@
 # Curriculum Vitae
 
-LaTeX source for the resume of Ross Barnowski.
+LaTeX source for the resume of Ross Barnowski: [resume.pdf](/resume.pdf)
 
 ## Attribution
 
