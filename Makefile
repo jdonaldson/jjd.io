@@ -8,7 +8,7 @@ $(manuscript).pdf: $(manuscript).tex bibliographies/*
 	pdflatex $(latexopt) $(manuscript).tex
 	bibtex $(builddir)/publications.aux
 	bibtex $(builddir)/presentations.aux
-	bibtex $(builddir)/posters.aux
+#	bibtex $(builddir)/posters.aux
 	pdflatex $(latexopt) $(manuscript).tex
 	pdflatex $(latexopt) $(manuscript).tex
 	mv $(builddir)/$(manuscript).pdf .
