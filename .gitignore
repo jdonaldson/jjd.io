@@ -1,6 +1,5 @@
 # LaTeX cruft
 build/*
-*.pdf
 
 # Editor cruft
 *.swp
