@@ -6,9 +6,12 @@ latexopt = -file-line-error -halt-on-error -output-directory build
 $(manuscript).pdf: $(manuscript).tex bibliographies/*
 	mkdir -p $(builddir)
 	pdflatex $(latexopt) $(manuscript).tex
-	bibtex $(builddir)/publications.aux
+	bibtex $(builddir)/dissertation.aux
 	bibtex $(builddir)/presentations.aux
-#	bibtex $(builddir)/posters.aux
+	bibtex $(builddir)/misc.aux
+	bibtex $(builddir)/posters.aux
+	bibtex $(builddir)/competitions.aux
+	bibtex $(builddir)/chapters.aux
 	pdflatex $(latexopt) $(manuscript).tex
 	pdflatex $(latexopt) $(manuscript).tex
 	mv $(builddir)/$(manuscript).pdf .

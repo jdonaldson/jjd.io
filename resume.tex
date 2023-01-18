@@ -11,16 +11,19 @@
 
 % Macro for auto-bolding author name in bibliography
 \usepackage{xstring}
-\def\FormatName#1{ \IfSubStr{#1}{Barnowski}{\textbf{#1}}{#1} }
+\def\FormatName#1{ \IfSubStr{#1}{Donaldson}{\textbf{#1}}{#1} }
 
 % For recovering section titles after suppressing them for bibtex
 \let\resumesection\section
 
 % Multiple bibliographies
 \usepackage{multibib}
-\newcites{publications}{Publications}
+\newcites{dissertation}{Dissertation}
 \newcites{presentations}{Presentations}
+\newcites{misc}{Misc}
 \newcites{posters}{Posters}
+\newcites{competitions}{Competitions}
+\newcites{chapters}{Chapters}
 
 \oddsidemargin -.5in
 \evensidemargin -.5in
@@ -44,352 +47,208 @@
 
 \begin{document}
 
-\name{Ross W. Barnowski, Ph.D \vspace*{.1in}}
+\name{J Justin Donaldson, Ph.D \vspace*{.1in}}
 % HACK: res.cls has listing for addresses - use instead to show current 
 % position
-\address{\large Scientific software developer}
+\address{\large ML/DS/Engineering Entrepeneur}
 %\address{\large Department of Nuclear Engineering}
-\address{\large Berkeley Institute for Data Science, UC Berkeley}
+\address{\large Above Ventures, LLC}
 
 \begin{resume}
 \section{\sc Contact Information}
 \vspace{.05in}
 \begin{tabular}{@{}p{3in}p{4in}}
-UC Berkeley              & {\bf Phone:}   (847)224-5917 \\
-190 Doe Library          & {\bf E-mail:}  {\tt rossbar@berkeley.edu} \\
-Berkeley, CA 94720       & {\bf GitHub:} \url{https://github.com/rossbar} \\
+9321 SE 57th St          & {\bf Phone:}   (317) 966-7747 \\
+Mercer Island, WA 98040  & {\bf E-mail:}  {\tt jdonaldson@gmail.com} \\
+                         & {\bf GitHub:} \url{https://github.com/jdonaldson} \\
 \end{tabular}
 
 
-\section{\sc Research Interests}
-open-source software, scientific computing, scientific Python, image reconstruction,
-nuclear instrumentation, gamma-ray spectroscopy and imaging, nuclear medicine
-(diagnostic imaging, radiotherapy), robotics, sensor fusion, SLAM
-
-\section{\sc Education}
-{\bf University of California, Berkeley} - Berkeley, California \hfill 09/2010 - 06/2016\\
-Ph.D, Nuclear Engineering - August 2016 | GPA: 3.98/4.0
+\section{\sc Skills}
 \begin{list2}
-\item {\bf \small Dissertation:} {\em``Development and Evaluation of Real-Time
-                                        Volumetric Compton Gamma-Ray Imaging''} 
-\item {\bf \small Advisor:}  Kai M. Vetter
-\item {\bf \small Coursework:} Advanced Radiation Instrumentation Laboratory,
-                               Radiation Transport Simulation and Modelling,
-                               Medical Imaging Signals and Systems, Computer
-                               Vision, Applications in Parallel Computing,
-                               Python for Scientific Computation
+\item Large Language Model Research and Applications
+\item Machine Learning
+\item Data Analysis
+\item Advanced Visualization (Embedding/ML Related)
+\item Modeling
+\item Model Optimization
+\item UI/UX
+\item Application Engineering
+\item Docker Containers
+\item Anomaly Detection
+\item Customer Service Analysis
+\item Programming Language Design
+\item Python, R,  + most core web technologies and languages.
 \end{list2}
 
-{\bf University of Michigan} - Ann Arbor, Michigan \hfill 09/2006 - 04/2010\\
-B.S.E. Nuclear Engineering and Radiological Science - April 2010 | GPA 3.98/4.0
-\begin{list1}
-\item[] {\bf \small Coursework:} Nuclear Reactor Design, Radiation Detection 
-                                 and Measurement, Nuclear Reactor Kinetics,
-                                 General Radiation Laboratory, Nuclear Physics,
-                                 Quantum Mechanics, C++ for Sci/Eng
-\end{list1}
-
 \section{\sc Experience}
-{\bf University of California, Berkeley} \\ 
-{\em Scientific Software Developer | Berkeley Institute for Data Science} \hfill 11/2019 - Present
 
-\begin{list1}
-  \item[] {\bf \small Scientific Python Ecosystem} Scientific Python Ecosystem
-          coordination and development: \url{https://scientific-python.org}
+{\bf Salesforce} \\
+{\em Principal Data Scientist/Engineer | Service Cloud} \hfill 2014-2023
+
+Data Science and Engineering Highlights:
+\begin{list2}
+  \item Wrote the entire Search UI component ecosystem for Salesforce Lightning.
+  \item First senior Search Datascientist.
+  \item Migrated the core search infrastructure to model-trained ranking coefficients from their previous ad hoc system of boosts and filters.
+  \item Developed and patented deep learning models for predicting integration test failures based on code changes.
+  \item Developed and patented deep learning models for predicting error assignments based on code changes.
+  \item Co-founding member of Service Cloud Datascience team.
+  \item Produced the initial Docker Container configuration and serving code that is used as the basis for all production AWS Sagemaker deployments.
+  \item Co-founding member of Foundational AI Components team that produced re-usable libraries and components for advanced ML services.
+  \item Member of joint Engineering/Research Leadership Team responsible for investigating and developing related GPT-3 technologies.
+\end{list2}
+
+Critical Customer Solution Initiatives:
   \begin{list2}
-    \item Support development and sceintific computing applications of the
-          scientific Python ecosystem, comprising NumPy, SciPy, Matplotlib,
-          scikit-learn, scikit-image, NetworkX, etc.
-    \item Improve ecosystem coordination and robustness via community
-          development, implementing cross-project decision-making processes,
-          and general support of ecosystem projects.
-  \end{list2}
-  \item[] {\bf \small NumPy and NetworkX core maintainer}
-  \begin{list2}
-    \item Active maintainer of NumPy (array computation) and NetworkX
-          (graph theory and network analysis) libraries.
-    \item Code development, documentation \& testing, code review, community 
-          organization, and project infrastructure.
-  \end{list2}
-  \item[] {\bf \small Mentorship \& Outreach} 
-  \begin{list2}
-    \item Mentor for outreach/onboarding programs such as Google season of code
-          (NetworkX 3x), Google season of docs (NumPy 2x), and Outreachy
-          (NetworkX 1x).
-    \item Open source development outreach program for the African Masters in
-          Machine Intelligence (AMMI) program from the African Institute for
-          Mathematical Sciences (AIMS): 
-          \url{https://bids-numpy.github.io/workshop\_site\_AIMS\_2021/}
-  \end{list2}
-\end{list1}
+  \item Wrote a custom job candidate scoring function for CPL, Ireland’s largest recruitment firm
+  \item Wrote an advanced candidate profiler for Allegis, The fourth largest recruitment firm in the world.
+  \item Wrote an anomaly detection model for Hulu to detect when an event was affecting customer call volume.
+  \item Worked with Citibank data center team to combine customer financial activity with service interactions in order to drive predictive customer issue resolution.
+\end{list2}
 
 
-{\em Assistant Research Scientist\footnotemark | Department of Nuclear Engineering} \hfill 08/2018 - 03/2019
-\footnotetext{The period from 08/2018-12/2018 consisted of a joint role 
-              comprising a 60\% appointment as assistant research scientist, 
-              and a 40\% appointment as lecturer.}
+{\bf BigML} \\
+{\em Co-founder/President} \hfill 2011-2013\\
+Leadership and Engineering Highlights
+\begin{list2}
+  \item Developed and patented interactive visualizations used to represent and explore trained models and distributions.
+  \item Managed various administrative tasks as President (Insurance, Expenses, Office management, etc.)
+  \item Led development of website, and integration with internal/external APIs.
+\end{list2}
 
-\begin{list1}
-  \item[] {\bf \small Project:} Basic Research - Plastic Scintillator for Unmanned Aerial Systems
-  \begin{list2}
-    \item Preliminary investigation of the incorporation of plastic 
-          scintillation material as structural material in unmanned aerial
-          systems.
-    \item Led acquisition and initial characterization of plastic scintillator
-          material, including development of data acquisition and analysis
-          pipeline for plastic scintillators capable of pulse-shape
-          discrimination for particle identification.
-  \end{list2}
-  \item[] {\bf \small Student Mentorship}
-  \begin{list2}
-    \item Graduate student mentorship for the development and maintenance of
-          radiation instrumentation systems, including gamma-ray imaging
-          devices based on high-purity germanium and inorganic scintillators.
-    \item Training for graduate students on cryogenics, vacuum systems,
-          and front-end electronics.
-  \end{list2}
-  \item[] {\bf \small Data Analysis and Technical Support}
-  \begin{list2}
-    \item Image reconstruction and data analysis in support of projects 
-          related to the mapping of nuclear contamination in Fukushima and
-          Chernobyl.
-    \item Simulation studies in support of gamma-ray imaging for
-          material studies related to uranium enrichment and storage.
-    \item Continued firmware/software development and integration support for
-          the PRISM instrument (see LBNL postdoc description).
-  \end{list2}
-\end{list1}
 
-{\em Lecturer | Department of Nuclear Engineering} \hfill 08/2018 - 12/2018
+\section{\sc Education}
+{\bf Indiana University} - Bloomington, Indiana \hfill 2006 - 2011\\
+Ph.D, Informatics - January 2011
+\begin{list2}
+\item {\bf \small Dissertation:} {\em``Visualization of music relational information sources for analysis, navigation, and discovery''}
+\item {\bf \small Advising Committee :} Erik A. Stolterman
+\end{list2}
 
-\begin{list1}
-  \item[] {\bf \small Course:} \href{https://ne204-fall2018.github.io}{NE 204: Advanced Concepts in Radiation
-Detection and Measurement}
-  \begin{list2}
-    \item Graduate-level, 3 credit-hour laboratory course on radiation
-          instrumentation and measurement.
-    \item Lecture component emphasizing digital signal processing, physics and
-          operation of semiconductor and scintillation-based detectors, and
-          spectroscopic and imaging applications of radiation instrumentation.
-    \item Laboratory component emphasizing digital signal processing for
-          radiation spectroscopy and timing applications, and multi-channel
-          radiation detectors for neutron and gamma-ray detection, spectroscopy,
-          and imaging.
-    \item Computational component emphasizing reproducibile and collaborative
-          workflows with git, \LaTeX, and the scientific python ecosystem. 
-  \end{list2}
-\end{list1}
+{\bf Indiana University} - Bloomington, Indiana \hfill 2004 - 2006\\
+M.S., Human Computer Interaction Design
 
-{\bf Lawrence Berkeley National Laboratory}, Berkeley, CA \\
-{\em Postdoctoral Researcher | Applied Nuclear Physics} \hfill 09/2016 - 07/2018
+{\bf Depauw University} - Greencastle, Indiana \hfill 1997 - 2001\\
+B.S., Computer Science (Minor in Mathematics)
 
-\begin{list1}
-  \item[] {\bf \small Project:} Portable Radiation Imaging Spectroscopy and Mapping (PRISM)
-  \begin{list2}
-    \item Development of software for multichannel data acquisition system.
-          Firmware integration and testing; network communication for control
-          and data I/O.
-          Full system integration including front-end design for HW/FW
-          developers (engineering interface) and users.
-          Device applications in source search and gamma-ray mapping | 
-          enhanced imaging and localization capabilities.
-    \item Development and implementation of gamma-ray imaging modalities
-          including Compton and proximity-based localization algorithms.
-          Direct application to nuclear contamination remediation in 
-          Fukushima, Japan.
-  \end{list2}
-  \item[] {\bf \small Project:} Small-Animal Molecular Imaging
-  \begin{list2}
-    \item Near-field, high-resolution Compton tomography for molecular imaging
-          with small-animal models.
-          Development and assembly of tomographic system as well as data 
-          analysis and image reconstruction algoritms.
-          Proposed applications for radionuclide uptake studies and theranostics
-          for radiophamaceutical development.
-  \end{list2}
-\end{list1}
-
-{\em Graduate Student Researcher | Applied Nuclear Physics} \hfill 06/2011 - 05/2016
-
-\begin{list1}
-  \item[] {\bf \small Project:} Volumetric Gamma-Ray Imaging
-  \begin{list2}
-    \item Develop and evaluate real-time 3D gamma-ray imaging techniques based
-          on sensor fusion and real-time SLAM algorithms.
-    \item Approach successfully demonstrated with portable high-purity 
-          germanium imager as well as hand-portable imager based on 
-          room-temperature semiconductor gamma-ray detectors.
-    \item Software contributions include multithreaded application framework
-          written in Python/C for interfacing with commercial DAQ hardware and
-          implementing real-time gamma-ray imaging analysis.
-  \end{list2}
-\end{list1}
-
-{\bf Lawrence Livermore National Laboratory}, Livermore, CA \\ 
-{\em Undergraduate Researcher | Nuclear Data Group} \hfill 06/2009 - 08/2009 \& 06/2010 - 07/2010
-
-\begin{list1}
-  \item[] {\bf \small Project:} Benchmarking of Evaluated Nuclear Data Library
-                                (ENDL) with Monte Carlo \& deterministic
-                                particle transport codes
-  \begin{list2}
-    \item Generate simulations using Monte Carlo \& deterministic code packages
-          for benchmarking nuclear cross-section data in the (ENDL) libraries.
-    \item Scripting for automation of simulation input and data analysis.
-          Experience with SLURM for job submission on cluster systems.
-    \item Listed as co-author on release of ENDL2011.
-  \end{list2}
-\end{list1}
-
-{\bf Argonne National Laboratory}, Argonne, IL \\ 
-{\em SULI Summer Intern} \hfill 05/2008 - 08/2008
-
-\begin{list1}
-  \item[] {\bf \small Project:} Millimeter-wave radar for remote detection of
-                                plumes of ionizing radiation from illicit
-                                nuclear reprocessing activities.
-  \begin{list2}
-    \item Technical report selected for publication in Journal of Undergraduate
-            Science (1 of 18 winners out of 600 applicants).
-    \item Winner of national SULI poster competition at AAAS conference.
-  \end{list2}
-\end{list1}
 
 \vspace{20px}
 \section{\sc Publications}
+\subsection{\sc Dissertation}
 
-% Force references to appear even though they are not cited in the document
-\nocitepublications{*}
-\bibliographystylepublications{resume}
+\nocitedissertation{*}
+\bibliographystyledissertation{resume}
 % Remove 'References' Heading
 \renewcommand{\section}[2]{}
-\bibliographypublications{bibliographies/publications}
-% Recover sectioning 
+\bibliographydissertation{bibliographies/dissertation}
+% Recover sectioning
 \renewcommand{\section}{\resumesection}
 
-\section{\sc Conference Presentations}
+
+\subsection{\sc Conference Presentations}
 
 \nocitepresentations{*}
 \bibliographystylepresentations{resume}
 % Remove 'References' Heading
 \renewcommand{\section}[2]{}
 \bibliographypresentations{bibliographies/presentations}
-% Recover sectioning 
+% Recover sectioning
 \renewcommand{\section}{\resumesection}
 
-%\section{\sc Posters}
-%
-%\nociteposters{*}
-%\bibliographystyleposters{resume}
-%% Remove 'References' Heading
-%\renewcommand{\section}[2]{}
-%\bibliographyposters{bibliographies/posters}
-%% Recover sectioning 
-%\renewcommand{\section}{\resumesection}
 
-\section{\sc Teaching\footnotemark}
-\footnotetext{All graduate student instructor (GSI) positions were full 20 
-hr/week appointments}
+\subsection{\sc Articles and Workshops}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Lecturer | UC Berkeley NE 204} \hfill Fall 2018
+% Force references to appear even though they are not cited in the document
+\nocitemisc{*}
+\bibliographystylemisc{resume}
+% Remove 'References' Heading
+\renewcommand{\section}[2]{}
+\bibliographymisc{bibliographies/misc}
+% Recover sectioning
+\renewcommand{\section}{\resumesection}
 
-\begin{list1}
-\item[] Graduate: 
-        \href{http://ne204-fall2018.github.io}
-             {Advanced Concepts in Radiation Detection and Measurement}
-\end{list1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Graduate Student Instructor | UC Berkeley STAT 159/259} \hfill Fall 2015 
+\subsection{\sc Posters}
 
-\begin{list1}
-\item[] Upper Division\footnotemark/Graduate: 
-        \href{http://www.jarrodmillman.com/stat159-fall2015/}
-             {Reproducible and Collaborative Statistical Data Science}
-\end{list1}
-\footnotetext{Upper Division = Juniors/Senior-level, Lower Division = 
-Freshman/Sophomore-level}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Graduate Student Instructor | UC Berkeley NE 92} \hfill Fall 2014
+% Force references to appear even though they are not cited in the document
+\nociteposters{*}
+\bibliographystyleposters{resume}
+% Remove 'References' Heading
+\renewcommand{\section}[2]{}
+\bibliographyposters{bibliographies/posters}
+% Recover sectioning
+\renewcommand{\section}{\resumesection}
 
-\begin{list1}
-  \item[] Lower Division: Introduction to Nuclear Engineering
-\end{list1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Graduate Student Instructor | UC Berkeley NE 120} \hfill Fall 2012
+\subsection{\sc Invited Student Design Competitions}
 
-\begin{list1}
-  \item[] Upper Division: Nuclear Materials
-\end{list1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Graduate Student Instructor | UC Berkeley NE 120} \hfill Fall 2011
+% Force references to appear even though they are not cited in the document
+\nocitecompetitions{*}
+\bibliographystylecompetitions{resume}
+% Remove 'References' Heading
+\renewcommand{\section}[2]{}
+\bibliographycompetitions{bibliographies/competitions}
+% Recover sectioning
+\renewcommand{\section}{\resumesection}
 
-\begin{list1}
-  \item[] Upper Division: Nuclear Materials
-\end{list1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Graduate Student Instructor | UC Berkeley NE 104} \hfill Spring 2011
 
-\begin{list1}
-  \item[] Upper Division: Nuclear Instrumentation Laboratory
-\end{list1}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-{\bf Graduate Student Instructor | UC Berkeley NE 101} \hfill Fall 2010
+\section{\sc Book Chapters}
+% Force references to appear even though they are not cited in the document
+\nocitechapters{*}
+\bibliographystylechapters{resume}
+% Remove 'References' Heading
+\renewcommand{\section}[2]{}
+\bibliographychapters{bibliographies/chapters}
+% Recover sectioning
+\renewcommand{\section}{\resumesection}
 
-\begin{list1}
-  \item[] Upper Division: Introduction to Nuclear Physics
-\end{list1}
+\subsection{\bf Patents}
 
-\section{\sc Honors and Awards} 
+Justin Donaldson. Real-time visualization of user consumption of media items. US8332406B2
 
-Best Oral Presentation Award - University Industry Technology Interchange \hfill 2016 \\
-Nuclear Science and Security Consortium Fellow \hfill 2014 - 2016 \\
-American Nuclear Society Graduate Scholarship \hfill 2014 \\
-UC Berkeley Outstanding GSI Award \hfill 2012 \\
-University of Michigan Joseph M. Geisinger Scholar \hfill 2006 - 2010 \\
-University of Michigan Class of 1931E Honors Scholar \hfill 2007 - 2010 \\
-Sustainable Energy Fellowship Program Awardee, Cornell University \hfill 2010 \\
-NEUP Scholarship Recipient \hfill 2009 - 2010 \\
-American Nuclear Society National Scholarship Recipient \hfill 2007 - 2010 \\
+J. Justin Donaldson, Adam Ashenfelter, Francisco Martin, Jos Verwoerd, Jose Antonio Ortega, Charles Parker. Visualization and interaction with compact representations of decision trees. \\US20200379951A1
+
+Francisco J. Martin, Adam Ashenfelter, J. Justin Donaldson, Jos Verwoerd, Jose Antonio Ortega, Charles Parker.  Evolving parallel system to automatically improve the performance of multiple concurrent tasks on large datasets. US9558036B1
+
+Francisco J. Martin, Oscar Rovira,  Jos Verwoerd, Poul Petersen, Charles Parker, Jose Antonio Ortega, Beatriz Garcia, J. Justin Donaldson, Antonio Blasco, Adam Ashenfelter. Predictive modeling and data analysis in a secure shared system. US20170140302A1
+
+J. Justin Donaldson, Benjamin Busjaeger, Siddharth Rajaram, Berk Coker, Hormoz Tarevern. Machine learning based ranking of test cases for software development. US10474562B2
+
+Justin Donaldson. Personal music recommendation mapping WO2008051882A3
+
+J. Justin Donaldson, Hormoz Tarevern, Sadiya Hameed, Siddharth Srivastava, Feifei Jiang. Error assignment for computer programs. US10409667B2
+
+Zachary Alexander, Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson. Accounting for positional bias in a document retrieval system using machine learning. US10565265B2
+
+Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson. Adjusting feature weights for ranking entity based search results. US20180052853A1
+
 
 \section{\sc Activities}
 
-{\bf The Hacker Within, UC Berkeley Chapter} \hfill 2014-2016 \\ 
+{\bf University of Washington} \hfill 2014- \\
+{\em Instructor/Contributor}
+\begin{list2}
+  \item Co-Instructor for UW 410 Advanced Machine Learning.\\ (Slides Available: \url{https://jdonaldson.github.io/uw-mlearn410/})
+  \item Member of UW Advisory Board for their school of Professional and Continuing Education
+\end{list2}
+
+{\bf Haxe Foundation Member} \hfill 2014- \\
 {\em Participant/Contributor} 
 
 \begin{list2}
-  \item Contributed presentations/breakout sessions on scientific computing
-        with python, including machine learning (scikit-learn), data
-        visualization, distributed computing, and extending python 
-        (cython \& the Python C-API).
-  \item \url{www.thehackerwithin.org/berkeley/previous.html}
+  \item Developed the Lua target for the Haxe language \url{https://haxe.org/blog/hello-lua/}
+  \item Sponsored Summer-of-Code for Haxe programmers through mentorship and financial contributions.
 \end{list2}
 
-{\bf Nuclear Engineering Graduate Student Association | NEGSA} \hfill 2012-2015\\
-{\em Co-founder \& Officer} 
 
+{\bf UCLA Graduate School Data Science Advisor/Mentor}
 \begin{list2}
-  \item Officer position: Secretary/Treasurer \hfill 2012-2014
-  \item Organized graduate student visit weekends and intra-departmental 
-        educational and social events.
-  \item Initiated computing seminars for discussion of advanced computing 
-        topics relevant for nuclear engineers (merged with The Hacker Within,
-        2014).
+  \item Co-hosted a UCLA Data Science competition in collaboration with UCLA's Graduate School \\ (Slides Available : \url{https://is.gd/qnji8A})
 \end{list2}
 
-{\bf American Nuclear Society (ANS)} \hfill 2007-2015 \\
-{\em University of Michigan \& UC Berkeley Student Chapters} 
 
-\begin{list1}
-  \item[] Officer Positions
-  \begin{list2}
-    \item Social Chair (UCB) \hfill 2012-2013
-    \item Vice President (UM) \hfill 2009-2010
-    \item Student Conference Volunteer Coordinator (UM) \hfill 2010
-    \item Outreach Chair (UM) \hfill 2008-2009
-  \end{list2}
-\end{list1}
+
+
 
 %{\bf Tau Beta Pi} \hfill 2009-2010 \\
 %{\em Member, MI-$\gamma$} 
