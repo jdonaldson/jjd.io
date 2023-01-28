@@ -2,7 +2,7 @@ all:
 	pandoc \
 		--lua-filter=utils/multiple-bibliographies.lua \
 		--css=resume-css-stylesheet.css \
-		--output=resume.html \
+		--output=docs/index.html \
 		resume.qmd
 	wkhtmltopdf \
 		--enable-local-file-access \
