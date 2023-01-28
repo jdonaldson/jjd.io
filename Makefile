@@ -2,5 +2,5 @@ all:
 	quarto render
 	wkhtmltopdf \
 		--enable-local-file-access \
-		resume.html \
+		docs/index.html \
 		resume.pdf
