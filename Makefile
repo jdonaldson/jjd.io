@@ -3,7 +3,7 @@ all:
 		--lua-filter=utils/multiple-bibliographies.lua \
 		--css=resume-css-stylesheet.css \
 		--output=resume.html \
-		resume.md
+		resume.qmd
 	wkhtmltopdf \
 		--enable-local-file-access \
 		resume.html \
