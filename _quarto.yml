@@ -14,3 +14,4 @@ format:
   html:
     css: resume-css-stylesheet.css
     self-contained: true
+    output-file: index.html
