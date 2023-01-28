@@ -5,6 +5,5 @@ build/*
 *.swp
 
 /.quarto/
-_output
 _extensions
 
