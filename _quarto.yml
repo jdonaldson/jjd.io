@@ -1,0 +1,16 @@
+project:
+  type: default
+  output-dir: _output
+
+bibliography:
+  - bibliographies/all.bib
+nocite: |
+  @*
+
+toc: true
+
+number-sections: false
+format:
+  html:
+    css: resume-css-stylesheet.css
+    self-contained: true

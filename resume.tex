@@ -1,266 +1,370 @@
-\documentclass[margin,line]{res}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+]{report}
 
-% For links
-\usepackage{hyperref}
-\hypersetup{colorlinks=True, urlcolor=cyan}
-
-% Suppress bibliography numbering
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
 \makeatletter
-\renewcommand\@biblabel[1]{}
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[lmargin=30mm,rmargin=30mm]{geometry}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{5}
+% Make \paragraph and \subparagraph free-standing
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
 \makeatother
 
-% Macro for auto-bolding author name in bibliography
-\usepackage{xstring}
-\def\FormatName#1{ \IfSubStr{#1}{Donaldson}{\textbf{#1}}{#1} }
+\makeatletter
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[many]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{rgb}{.97, .97, .97}}
+\makeatother
+\makeatletter
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
 
-% For recovering section titles after suppressing them for bibtex
-\let\resumesection\section
-
-% Multiple bibliographies
-\usepackage{multibib}
-\newcites{dissertation}{Dissertation}
-\newcites{presentations}{Presentations}
-\newcites{misc}{Misc}
-\newcites{posters}{Posters}
-\newcites{competitions}{Competitions}
-\newcites{chapters}{Chapters}
-
-\oddsidemargin -.5in
-\evensidemargin -.5in
-\textwidth=6.0in
-\itemsep=0in
-\parsep=0in
-
-\newenvironment{list1}{
-  \begin{list}{\ding{113}}{%
-      \setlength{\itemsep}{0in}
-      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
-      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
-      \setlength{\leftmargin}{0.17in}}}{\end{list}}
-\newenvironment{list2}{
-  \begin{list}{$\bullet$}{%
-      \setlength{\itemsep}{0in}
-      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
-      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
-      \setlength{\leftmargin}{0.2in}}}{\end{list}}
-
+\author{}
+\date{}
 
 \begin{document}
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[enhanced, interior hidden, frame hidden, boxrule=0pt, sharp corners, breakable, borderline west={3pt}{0pt}{shadecolor}]}{\end{tcolorbox}}\fi
 
-\name{J Justin Donaldson, Ph.D. \vspace*{.1in}}
-% HACK: res.cls has listing for addresses - use instead to show current 
-% position
-\address{\large ML/DS/Engineering Entrepeneur}
-%\address{\large Department of Nuclear Engineering}
-\address{\large Above Ventures, LLC}
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{sonya-sawtelle}{%
+\chapter{Sonya Sawtelle}\label{sonya-sawtelle}}
 
-\begin{resume}
-\section{\sc Contact Information}
-\vspace{.05in}
-\begin{tabular}{@{}p{2in}p{4in}}
-9321 SE 57th St          & {\bf Phone:}   (317) 966-7747 \\
-Mercer Island, WA 98040  & {\bf E-mail:}  {\tt jdonaldson@gmail.com} \\
-                         & {\bf GitHub:} \url{https://github.com/jdonaldson} \\
-                         & {\bf Twitter:} \url{https://twitter.com/omgjjd} \\
-                         & {\bf Linkedin:} \url{https://www.linkedin.com/in/jjustindonaldson/} \\
-                         & {\bf 30minchat:} \url{https://calendly.com/justin_donaldson/30min} \\
+\hypertarget{data-scientist-with-a-strong-background-in-math-science-and-programming.}{%
+\subsubsection{Data scientist with a strong background in math, science
+and
+programming.}\label{data-scientist-with-a-strong-background-in-math-science-and-programming.}}
 
-\end{tabular}
+\hypertarget{website-.-linkedin-.-github-.-sonya.sawtelleaya.yale.edu-.-802-461-3429}{%
+\subparagraph{\texorpdfstring{{[}
+\href{http://sdsawtelle.github.io}{website} {]} . {[}
+\href{www.linkedin.com/in/sonya-sawtelle-data-scientist}{linkedin} {]} .
+{[} \href{https://github.com/sdsawtelle}{github} {]} . {[}
+\href{mailto:sonya.sawtelle@aya.yale.edu}{\nolinkurl{sonya.sawtelle@aya.yale.edu}}
+{]} . {[} 802 461 3429
+{]}}{{[} website {]} . {[} linkedin {]} . {[} github {]} . {[} sonya.sawtelle@aya.yale.edu {]} . {[} 802 461 3429 {]}}}\label{website-.-linkedin-.-github-.-sonya.sawtelleaya.yale.edu-.-802-461-3429}}
+
+\hypertarget{skills}{%
+\section{Skills}\label{skills}}
+
+data analysis databases machine learning data visualization statistics
+technical writing
+
+\textbf{Programming:} Python, SQL, C++, git/github, Matlab, R, command
+line
+
+\textbf{Python Packages:} Jupyter, Pandas, Numpy, Matplotlib,
+Scikit-learn, PyMC, Scipy, TensorFlow
+
+\textbf{Web Development:} HTML5/CSS3, d3.js, web2py, Pelican
+
+\hypertarget{experience}{%
+\section{Experience}\label{experience}}
+
+\textbf{Data Scientist, Upwork (part-time)} (2017-2018)
+
+\begin{itemize}
+\tightlist
+\item
+  Built machine learning models in Python to inform business decisions
+  like ``How long should we leave jobs open before expiring?'' and
+  ``Should this job be moved to the US-only marketplace?''
+\item
+  Identified two major data leaks in a pre-existing model that impacted
+  runtime accuracy.
+\item
+  Provided insights on how client and freelancer behavior evolves during
+  the lifetime of a job post by ingesting data from PostgreSQL and
+  performing cleaning/analysis in Python.
+\item
+  Created reports/presentations to communicate insights to both
+  technical and non-technical staff.
+\end{itemize}
+
+\textbf{Freelance Data Scientist} (2017-2019)
+
+\begin{itemize}
+\tightlist
+\item
+  Assisted a client with MCMC Bayesian parameter estimation using PyMC
+  and corresponding visualizations for experimental chemistry data;
+  results contributed to a
+  \href{https://pubs.acs.org/doi/abs/10.1021/acscatal.9b01234}{published
+  paper}.
+\item
+  Enabled a client to analyze patterns in financial transactions by
+  building a Python module to aggregate data, create summary statistics
+  and visualizations, and automatically email reports.
+\item
+  Provided a client with insights on user behavior for a
+  nutrition/workout tracking mobile app by performing data cleaning,
+  exploratory analysis and PCA with clustering.
+\end{itemize}
+
+\textbf{Graduate Researcher, Yale University} (2012-2018)
+
+\begin{itemize}
+\tightlist
+\item
+  Designed and executed experiments in 3 main projects, all resulting in
+  publications.
+\item
+  Performed simulation and data analysis with Python, MATLAB, and C++.
+\item
+  Improved documentation and training for lab protocols, and maintained
+  the internal lab wiki and Unix server.
+\item
+  Trained and managed 4 undergraduate assistants, resulting in
+  successful senior projects.
+\end{itemize}
+
+\textbf{Medical College Admission Test Instructor, Kaplan Test Prep}
+(2011-2012)
+
+\begin{itemize}
+\tightlist
+\item
+  Planned and delivered lectures on undergraduate Physics, Chemistry and
+  Biology.
+\end{itemize}
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\textbf{Ph.D.~in Applied Physics, Yale University} (2012-2018)
+
+\begin{itemize}
+\tightlist
+\item
+  Six publications (three first-author
+  {[}\href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.99.054304}{1}{]}{[}\href{https://aip.scitation.org/doi/abs/10.1063/1.5051638}{2}{]}{[}\href{https://iopscience.iop.org/article/10.1088/1361-6528/aae673/meta}{3}{]}),
+  coursework in physics, engineering, and statistics.
+\end{itemize}
+
+\textbf{B.S. in Physics, Indiana University} (2008-2011)
+
+\begin{itemize}
+\tightlist
+\item
+  Baccalaureate with Departmental Honors and Highest Distinction,
+  3.98/4.0 GPA
+\end{itemize}
+
+\textbf{MOOCs}
+
+\begin{itemize}
+\tightlist
+\item
+  Deep Learning 5-Course Specialization (deeplearning.ai),
+  \href{https://www.coursera.org/account/accomplishments/specialization/JKFBV29P5MPS}{Credential
+  ID JKFBV29P5MPS}
+\item
+  Machine Learning (Stanford University)
+\end{itemize}
+
+\hypertarget{awards}{%
+\section{Awards}\label{awards}}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Sterling Prize Fellowship}, Yale University (2013). Awarded to
+  30 out of 10,500 applicants.
+\item
+  \textbf{IU Founders Scholar}, Indiana University (2012)
+\item
+  \textbf{Baccalaureate with Highest Distinction}, Indiana University
+  (2012). Granted to 5 students.
+\end{itemize}
+
+\hypertarget{publications}{%
+\chapter{Publications}\label{publications}}
+
+\hypertarget{dissertation}{%
+\section{Dissertation}\label{dissertation}}
+
+\hypertarget{refs_dissertation}{}
+
+\hypertarget{conference-presentations}{%
+\section{Conference Presentations}\label{conference-presentations}}
+
+\hypertarget{refs_presentations}{}
+
+\hypertarget{articles-and-workshops}{%
+\section{Articles and Workshops}\label{articles-and-workshops}}
+
+\hypertarget{refs_misc}{}
+
+\hypertarget{posters}{%
+\section{Posters}\label{posters}}
+
+\hypertarget{refs_posters}{}
+
+\hypertarget{invited-student-design-competitions}{%
+\section{Invited Student Design
+Competitions}\label{invited-student-design-competitions}}
+
+\hypertarget{refs_competitions}{}
+
+\hypertarget{book-chapters}{%
+\section{Book Chapters}\label{book-chapters}}
+
+\hypertarget{refs_chapters}{}
+
+\hypertarget{projects}{%
+\section{Projects}\label{projects}}
+
+\textbf{Web App}
+\href{http://sdsawtelle.pythonanywhere.com}{\emph{GeekBuddy Social Graph
+and Buddy Finder}} (2017)
+
+\begin{itemize}
+\tightlist
+\item
+  Designed and built a web application using Web2Py framework and d3.js
+  that displays the social graph for a user on www.boardgamegeek.com and
+  colors nodes by correlation to the user as computed from boardgame
+  ratings. Data was collected by a combination of web scraping and API
+  querying and stored as a sqlite database.
+\end{itemize}
+
+\textbf{Website \& Technical Blog}
+\href{http://sdsawtelle.github.io/blog/output/index.html}{\emph{Exploring
+Data Science and Python}} (2015-present)
+
+\begin{itemize}
+\tightlist
+\item
+  Designed and built a personal website for hosting useful technical
+  articles using HTML/CSS and GitHub Pages. Authored a series of
+  educational posts on various programming and data science topics using
+  Jupyter Notebooks and Pelican page generator.
+\end{itemize}
 
 
-\section{\sc Skills}
-\begin{list2}
-\item Large Language Model Research and Applications
-\item Data Science and Advanced Machine Learning
-\item Advanced Visualization (Embedding/ML Related)
-\item Modeling, Model Optimization, Time Series, Anomaly Detection
-\item Customer Service Analysis
-\item Programming Language Design
-\item Docker, Python, R, + most core web technologies and languages.
-\end{list2}
 
-\section{\sc Experience}
-
-{\bf Salesforce} \\
-{\em Principal Data Scientist/Engineer | Service Cloud} \hfill 2014-2023
-
-Data Science and Engineering Highlights:
-\begin{list2}
-  \item Wrote the entire Search UI component ecosystem for Salesforce Lightning.
-  \item First senior Search Datascientist.
-  \item Migrated the core search infrastructure to model-trained ranking coefficients from their previous ad hoc system of boosts and filters.
-  \item Developed and patented deep learning models for predicting integration test failures, and error assignments based on code changes.
-  \item Co-founding member of Service Cloud Datascience team.
-  \item Part of a small team of data scientists tasked with creating a ML education program for all Salesforce engineers.
-  \item Produced the initial Docker Container configuration and serving code that is used as the basis for all production AWS Sagemaker deployments.
-  \item Co-founding member of Foundational AI Components team that produced re-usable libraries and components for advanced ML services.
-  \item Member of joint Engineering/Research Leadership Team responsible for investigating and developing related GPT-3 technologies.
-\end{list2}
-
-Critical Customer Solution Initiatives:
-  \begin{list2}
-  \item Wrote a custom job candidate scoring function for CPL, Ireland’s largest recruitment firm
-  \item Wrote an advanced candidate profiler for Allegis, The fourth largest recruitment firm in the world.
-  \item Wrote an anomaly detection model for Hulu to detect when an event was affecting customer call volume.
-  \item Worked with Citibank data center team to combine customer financial activity with service interactions in order to drive predictive customer issue resolution.
-\end{list2}
-
-{\bf BigML} \\
-{\em Co-founder/President} \hfill 2011-2013\\
-Leadership and Engineering Highlights
-\begin{list2}
-  \item Developed and patented interactive visualizations used to represent and explore trained models and distributions.
-  \item Managed various administrative tasks as President (Insurance, Expenses, Office management, etc.)
-  \item Led development of website, and integration with internal/external APIs.
-\end{list2}
-
-
-\section{\sc Education}
-{\bf Indiana University} - Bloomington, Indiana \hfill 2006 - 2011\\
-Ph.D, Informatics - January 2011
-\begin{list2}
-\item {\bf \small Dissertation:} {\em``Visualization of music relational information sources for analysis, navigation, and discovery''}
-\item {\bf \small Advising Committee :}
-  \href{https://luddy.indiana.edu/contact/profile/?Erik_Stolterman~Bergqvist}{Erik A. Stolterman} (Chair),
-  \href{https://en.wikipedia.org/wiki/Filippo_Menczer}{Filippo Menczer},
-  \href{https://luddy.indiana.edu/contact/profile/?profile_id=269}{Jon Paolillo},
-  \href{https://ist.psu.edu/directory/jsb6077a}{Jeff Bardzell},
-  \href{https://homes.luddy.indiana.edu/donbyrd/}{Donald Byrd},
-  \href{https://marctorrens.net/}{Marc Torrens}.
-\item {President of Graduate Student Body (School of Informatics)}
-\item {Best Paper Award \cite{zmds}}
-\end{list2}
-
-{\bf Indiana University} - Bloomington, Indiana \hfill 2004 - 2006\\
-M.S., Human Computer Interaction Design
-
-{\bf Depauw University} - Greencastle, Indiana \hfill 1997 - 2001\\
-B.S., Computer Science (Minor in Mathematics)
-
-
-\vspace{20px}
-\section{\sc Publications}
-\subsection{\sc Dissertation}
-
-\nocitedissertation{*}
-\bibliographystyledissertation{resume}
-% Remove 'References' Heading
-\renewcommand{\section}[2]{}
-\bibliographydissertation{bibliographies/dissertation}
-% Recover sectioning
-\renewcommand{\section}{\resumesection}
-
-
-\subsection{\sc Conference Presentations}
-
-\nocitepresentations{*}
-\bibliographystylepresentations{resume}
-% Remove 'References' Heading
-\renewcommand{\section}[2]{}
-\bibliographypresentations{bibliographies/presentations}
-% Recover sectioning
-\renewcommand{\section}{\resumesection}
-
-
-\subsection{\sc Articles and Workshops}
-
-% Force references to appear even though they are not cited in the document
-\nocitemisc{*}
-\bibliographystylemisc{resume}
-% Remove 'References' Heading
-\renewcommand{\section}[2]{}
-\bibliographymisc{bibliographies/misc}
-% Recover sectioning
-\renewcommand{\section}{\resumesection}
-
-
-\subsection{\sc Posters}
-
-% Force references to appear even though they are not cited in the document
-\nociteposters{*}
-\bibliographystyleposters{resume}
-% Remove 'References' Heading
-\renewcommand{\section}[2]{}
-\bibliographyposters{bibliographies/posters}
-% Recover sectioning
-\renewcommand{\section}{\resumesection}
-
-\subsection{\sc Invited Student Design Competitions}
-
-% Force references to appear even though they are not cited in the document
-\nocitecompetitions{*}
-\bibliographystylecompetitions{resume}
-% Remove 'References' Heading
-\renewcommand{\section}[2]{}
-\bibliographycompetitions{bibliographies/competitions}
-% Recover sectioning
-\renewcommand{\section}{\resumesection}
-
-
-\subsection{\sc Book Chapters}
-% Force references to appear even though they are not cited in the document
-\nocitechapters{*}
-\bibliographystylechapters{resume}
-% Remove 'References' Heading
-\renewcommand{\section}[2]{}
-\bibliographychapters{bibliographies/chapters}
-% Recover sectioning
-\renewcommand{\section}{\resumesection}
-
-\subsection{\sc Patents}
-
-Justin Donaldson. Real-time visualization of user consumption of media items. US8332406B2
-
-J. Justin Donaldson, Adam Ashenfelter, Francisco Martin, Jos Verwoerd, Jose Antonio Ortega, Charles Parker. Visualization and interaction with compact representations of decision trees. \\US20200379951A1
-
-Francisco J. Martin, Adam Ashenfelter, J. Justin Donaldson, Jos Verwoerd, Jose Antonio Ortega, Charles Parker.  Evolving parallel system to automatically improve the performance of multiple concurrent tasks on large datasets. US9558036B1
-
-Francisco J. Martin, Oscar Rovira,  Jos Verwoerd, Poul Petersen, Charles Parker, Jose Antonio Ortega, Beatriz Garcia, J. Justin Donaldson, Antonio Blasco, Adam Ashenfelter. Predictive modeling and data analysis in a secure shared system. US20170140302A1
-
-J. Justin Donaldson, Benjamin Busjaeger, Siddharth Rajaram, Berk Coker, Hormoz Tarevern. Machine learning based ranking of test cases for software development. US10474562B2
-
-Justin Donaldson. Personal music recommendation mapping WO2008051882A3
-
-J. Justin Donaldson, Hormoz Tarevern, Sadiya Hameed, Siddharth Srivastava, Feifei Jiang. Error assignment for computer programs. US10409667B2
-
-Zachary Alexander, Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson. Accounting for positional bias in a document retrieval system using machine learning. US10565265B2
-
-Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson. Adjusting feature weights for ranking entity based search results. US20180052853A1
-
-
-\section{\sc Pro Bono}
-
-{\bf University of Washington} \hfill 2014- \\
-{\em Instructor/Contributor}
-\begin{list2}
-  \item Co-Instructor for UW 410 Advanced Machine Learning.\\ (Slides Available: \url{https://jdonaldson.github.io/uw-mlearn410/})
-  \item Member of UW Advisory Board for their school of Professional and Continuing Education
-\end{list2}
-
-{\bf Haxe Foundation Member} \hfill 2014- \\
-{\em Participant/Contributor} 
-
-\begin{list2}
-  \item Developed the Lua target for the Haxe language \url{https://haxe.org/blog/hello-lua/}
-  \item Sponsored Summer-of-Code for Haxe programmers through mentorship and financial contributions.
-\end{list2}
-
-
-{\bf UCLA Graduate School Data Science Advisor/Mentor}
-\begin{list2}
-  \item Co-hosted a UCLA Data Science competition in collaboration with UCLA's Graduate School \\ (Slides Available : \url{https://is.gd/qnji8A})
-\end{list2}
-
-
-
-
-
-%{\bf Tau Beta Pi} \hfill 2009-2010 \\
-%{\em Member, MI-$\gamma$} 
-
-%\section{\sc Computer Skills}
-%
-%% Consider adding section here
-
-\end{resume}
 \end{document}

@@ -3,3 +3,5 @@ build/*
 
 # Editor cruft
 *.swp
+
+/.quarto/

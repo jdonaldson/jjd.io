@@ -1,0 +1,5 @@
+input-files: ['resume.tex']
+to: markdown
+standalone: true
+filters:
+  - multibib.lua

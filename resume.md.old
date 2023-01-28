@@ -1,0 +1,206 @@
+---
+nocite: |
+  @*
+bibliography_chapters: bibliographies/chapters.bib
+bibliography_posters: bibliographies/posters.bib
+bibliography_competitions : bibliographies/competitions.bib
+bibliography_dissertation : bibliographies/dissertation.bib
+bibliography_misc : bibliographies/misc.bib
+bibliography_presentations : bibliographies/presentations.bib
+---
+::: resume
+# Contact Information
+
+# Skills
+
+::: list
+
+Large Language Model Research and Applications
+
+Data Science and Advanced Machine Learning
+
+Advanced Visualization (Embedding/ML Related)
+
+Modeling, Model Optimization, Time Series, Anomaly Detection
+
+Customer Service Analysis
+
+Programming Language Design
+
+Docker, Python, R, + most core web technologies and languages.
+:::
+
+# Experience
+
+**Salesforce**\
+*Principal Data Scientist/Engineer \| Service Cloud* -2023
+
+Data Science and Engineering Highlights:
+
+::: list
+
+* Wrote the entire Search UI component ecosystem for Salesforce Lightning.
+* First senior Search Datascientist.
+* Migrated the core search infrastructure to model-trained ranking coefficients from their previous ad hoc system of boosts and filters.
+* Developed and patented deep learning models for predicting integration test failures, and error assignments based on code changes.
+* Co-founding member of Service Cloud Datascience team.
+* Part of a small team of data scientists tasked with creating a ML education program for all Salesforce engineers.
+* Produced the initial Docker Container configuration and serving code that is used as the basis for all production AWS Sagemaker deployments.
+* Co-founding member of Foundational AI Components team that produced re-usable libraries and components for advanced ML services.
+* Member of joint Engineering/Research Leadership Team responsible for investigating and developing related GPT-3 technologies.
+:::
+
+Critical Customer Solution Initiatives:
+
+::: list
+
+* Wrote a custom job candidate scoring function for CPL, Ireland's largest recruitment firm.
+* Wrote an advanced candidate profiler for Allegis, The fourth largest recruitment firm in the world.
+* Wrote an anomaly detection model for Hulu to detect when an event was affecting customer call volume.
+* Worked with Citibank data center team to combine customer financial activity with service interactions in order to drive predictive customer issue resolution.
+:::
+
+**BigML**\
+*Co-founder/President* -2013\
+Leadership and Engineering Highlights
+
+::: list
+
+* Developed and patented interactive visualizations used to represent and explore trained models and distributions.
+
+* Managed various administrative tasks as President (Insurance, Expenses, Office management, etc.)
+
+* Led development of website, and integration with internal/external APIs.
+:::
+
+# Education
+
+**Indiana University** - Bloomington, Indiana - 2011\
+Ph.D, Informatics - January 2011
+
+::: list
+
+**Dissertation:** *"Visualization of music relational information
+sources for analysis, navigation, and discovery"*
+
+***Advising Committee :*** [Erik A.
+Stolterman](https://luddy.indiana.edu/contact/profile/?Erik_Stolterman~Bergqvist)
+(Chair), [Filippo
+Menczer](https://en.wikipedia.org/wiki/Filippo_Menczer), [Jon
+Paolillo](https://luddy.indiana.edu/contact/profile/?profile_id=269),
+[Jeff Bardzell](https://ist.psu.edu/directory/jsb6077a), [Donald
+Byrd](https://homes.luddy.indiana.edu/donbyrd/), [Marc
+Torrens](https://marctorrens.net/).
+
+President of Graduate Student Body (School of Informatics)
+
+Best Paper Award [@zmds]
+
+**Indiana University** - Bloomington, Indiana - 2006\
+M.S., Human Computer Interaction Design
+
+**Depauw University** - Greencastle, Indiana - 2001\
+B.S., Computer Science (Minor in Mathematics)
+
+# Publications
+
+## Dissertation
+::: {#refs_dissertation}
+:::
+
+## Conference Presentations
+::: {#refs_presentations}
+:::
+
+## Articles and Workshops
+::: {#refs_misc}
+:::
+
+## Posters
+::: {#refs_posters}
+:::
+
+## Invited Student Design Competitions
+::: {#refs_competitions}
+:::
+
+## Book Chapters
+::: {#refs_chapters}
+:::
+
+## Patents
+
+Justin Donaldson. Real-time visualization of user consumption of media
+items. US8332406B2
+
+J. Justin Donaldson, Adam Ashenfelter, Francisco Martin, Jos Verwoerd,
+Jose Antonio Ortega, Charles Parker. Visualization and interaction with
+compact representations of decision trees.\
+US20200379951A1
+
+Francisco J. Martin, Adam Ashenfelter, J. Justin Donaldson, Jos
+Verwoerd, Jose Antonio Ortega, Charles Parker. Evolving parallel system
+to automatically improve the performance of multiple concurrent tasks on
+large datasets. US9558036B1
+
+Francisco J. Martin, Oscar Rovira, Jos Verwoerd, Poul Petersen, Charles
+Parker, Jose Antonio Ortega, Beatriz Garcia, J. Justin Donaldson,
+Antonio Blasco, Adam Ashenfelter. Predictive modeling and data analysis
+in a secure shared system. US20170140302A1
+
+J. Justin Donaldson, Benjamin Busjaeger, Siddharth Rajaram, Berk Coker,
+Hormoz Tarevern. Machine learning based ranking of test cases for
+software development. US10474562B2
+
+Justin Donaldson. Personal music recommendation mapping WO2008051882A3
+
+J. Justin Donaldson, Hormoz Tarevern, Sadiya Hameed, Siddharth
+Srivastava, Feifei Jiang. Error assignment for computer programs.
+US10409667B2
+
+Zachary Alexander, Scott Thurston Rickard, Jr., Clifford Z. Huang, J.
+Justin Donaldson. Accounting for positional bias in a document retrieval
+system using machine learning. US10565265B2
+
+Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson.
+Adjusting feature weights for ranking entity based search results.
+US20180052853A1
+
+# Pro Bono
+
+**University of Washington** -\
+*Instructor/Contributor*
+
+::: list
+$\bullet$
+
+Co-Instructor for UW 410 Advanced Machine Learning.\
+(Slides Available: <https://jdonaldson.github.io/uw-mlearn410/>)
+
+Member of UW Advisory Board for their school of Professional and
+Continuing Education
+:::
+
+**Haxe Foundation Member** -\
+*Participant/Contributor*
+
+::: list
+$\bullet$
+
+Developed the Lua target for the Haxe language
+<https://haxe.org/blog/hello-lua/>
+
+Sponsored Summer-of-Code for Haxe programmers through mentorship and
+financial contributions.
+:::
+
+**UCLA Graduate School Data Science Advisor/Mentor**
+
+::: list
+$\bullet$
+
+Co-hosted a UCLA Data Science competition in collaboration with UCLA's
+Graduate School\
+(Slides Available : <https://is.gd/qnji8A>)
+:::
+:::
