@@ -2,6 +2,9 @@ project:
   type: default
   output-dir: docs
 
+website:
+  google-analytics: "UA-G-J1DD0F3VY9"
+
 bibliography:
   - bibliographies/all.bib
 nocite: |
