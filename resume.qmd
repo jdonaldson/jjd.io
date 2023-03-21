@@ -54,6 +54,8 @@
 **Indiana University** - Bloomington, Indiana - 2011\
 Ph.D, Informatics - January 2011
 
+My [Erdös Number](https://en.wikipedia.org/wiki/Erd%C5%91s_number) is 4:  Justin Donaldson - Filippo Menczer — Alessandro Vespignani — Fan Chung — Paul Erdös
+
 **Dissertation:** *"Visualization of music relational information
 sources for analysis, navigation, and discovery"*
 
