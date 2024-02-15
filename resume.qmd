@@ -15,11 +15,16 @@
 
 ## Experience
 
+**Hushh.ai** *Cofounder*
+2024-
+*Leadership and Engineering Highlights:*
+* Developed strategies for on-device hybrid LLM search and modeling.
+* Coordinated and managed a large team of R&D interns.
+
 **Salesforce.com** *Principal Data Scientist/Engineer* Service Cloud
 2014-2023
 
 *Data Science and Engineering Highlights:*
-
 
 * First senior Search Datascientist.
 * Migrated the core search infrastructure to model-trained ranking coefficients from their previous ad hoc system of boosts and filters.
@@ -32,7 +37,6 @@
 
 *Critical Customer Solution Initiatives:*
 
-
 * Wrote a custom job candidate scoring function for CPL, Ireland's largest recruitment firm.
 * Wrote an advanced candidate profiler for Allegis, The fourth largest recruitment firm in the world.
 * Wrote an anomaly detection model for Hulu to detect when an event was affecting customer call volume.
@@ -43,11 +47,8 @@
 
 *Leadership and Engineering Highlights*
 
-
 * Developed and patented interactive visualizations used to represent and explore trained models and distributions.
-
 * Managed various administrative tasks as President (Insurance, Expenses, Office management, etc.)
-
 * Led development of website, and integration with internal/external APIs.
 
 ## Education
