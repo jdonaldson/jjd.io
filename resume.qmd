@@ -136,7 +136,8 @@ Continuing Education
 **Haxe Foundation** - *Contributor/Member*
 
 * Developed the Lua target for the Haxe language
-<https://haxe.org/blog/hello-lua/>
+  [blog announcement](https://haxe.org/blog/hello-lua/) |
+  [hacker news fp](https://news.ycombinator.com/front?day=2016-4-29)
 
 * Sponsored Summer-of-Code for Haxe programmers through mentorship and
 financial contributions.
