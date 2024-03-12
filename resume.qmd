@@ -9,6 +9,7 @@
 * Data Science and Advanced Machine Learning
 * Modeling, Model Optimization, Time Series, Anomaly Detection
 * Advanced ML/Web Visualization (Embedding/ML/SVG Related)
+* Interaction Design, Prototyping, and Design Theory
 * Customer Service Analysis
 * Programming Language Design
 * Docker, Python, R, + most core web technologies and languages.
