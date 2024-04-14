@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About Me",
+    "section": "",
+    "text": "Justin Donaldson"
+  },
+  {
+    "objectID": "about.html#salesforce",
+    "href": "about.html#salesforce",
+    "title": "About Me",
+    "section": "Salesforce",
+    "text": "Salesforce\n\n\n\nThe Grenoble Team and I\n\n\nPrior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore multiple hats as a Principal Data Scientist and Engineer. I had the privilege to lead early search infrastructure modernization projects like migrating the core search infrastructure to model-trained ranking coefficients, and also developed patented deep learning models for detecting error states in Salesforce’s enormous code base. Under Scott RickardI co-founded the Search/Service Cloud Datascience team and contributed significantly to the creation of an ML education program for engineers. My contributions also extended to investigating and developing GPT-3 technologies. I also enjoyed meeting with the team in Grenoble France!"
+  },
+  {
+    "objectID": "about.html#bigml",
+    "href": "about.html#bigml",
+    "title": "About Me",
+    "section": "BigML",
+    "text": "BigML\n\n\n\nBigML Visualization\n\n\nEarlier in my career, I co-founded BigML and served as its President from 2011 to 2013. There, I spearheaded the development of interactive model and distribution visualizations and took charge of various administrative tasks, setting the foundation for the company’s growth."
+  },
+  {
+    "objectID": "about.html#what-i-know",
+    "href": "about.html#what-i-know",
+    "title": "About Me",
+    "section": "What I know",
+    "text": "What I know\nMy expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and familiar with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced candidate profilers to anomaly detection models for global enterprises. Make sure to check out my C.V. for more details.\n\nLet’s Connect!\nI’m always eager to connect with like-minded professionals and enthusiasts. Feel free to reach out to me via: email, Twitter, LinkedIn, or explore my CV and GitHub\nLooking forward to connecting with you!"
+  },
+  {
     "objectID": "cv.html",
     "href": "cv.html",
     "title": "Curriculum Vitae",
@@ -47,40 +75,5 @@
     "title": "Curriculum Vitae",
     "section": "",
     "text": "University of Washington - Instructor/Contributor\n\nCo-Instructor for UW 410 Advanced Machine Learning.\n(Slides Available: https://jdonaldson.github.io/uw-mlearn410/)\nMember of UW Advisory Board for their school of Professional and Continuing Education\n\nHaxe Foundation - Contributor/Member\n\nDeveloped the Lua target for the Haxe language blog announcement | hacker news fp\nSponsored Summer-of-Code for Haxe programmers through mentorship and financial contributions.\n\nUCLA Graduate School - Data Science Advisor/Mentor\n\nCo-hosted a graduate student Data Science competition in collaboration with Boston Day Academy (Slides Available : https://is.gd/qnji8A)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About Me",
-    "section": "",
-    "text": "Justin Donaldson"
-  },
-  {
-    "objectID": "about.html#cto-hushh",
-    "href": "about.html#cto-hushh",
-    "title": "About Me",
-    "section": "CTO : Hushh",
-    "text": "CTO : Hushh\n\n\n\nHushh.ai Seattle Team\n\n\nI’m helping start Hushh.ai, a company I co-founded with Manish Sainani in 2024. At Hushh, we’re pioneering on-device hybrid LLM search capabilities and nurturing a vibrant R&D culture with a talented team of international interns."
-  },
-  {
-    "objectID": "about.html#dagworks",
-    "href": "about.html#dagworks",
-    "title": "About Me",
-    "section": "Dagworks",
-    "text": "Dagworks\n\n\n\nimage\n\n\nI met Stefan and Elijah when they were just getting started building Dagworks.io. They had some of the same notions I had on the importance of Directed Acyclic Graphs as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good.\n\n\n\nDagworks DAG Example"
-  },
-  {
-    "objectID": "about.html#pulsespace",
-    "href": "about.html#pulsespace",
-    "title": "About Me",
-    "section": "PulseSpace",
-    "text": "PulseSpace\n\n\n\nimage\n\n\nIf you want to give your company the best chance for success, you have to think outside the box in order to network. I met Karl Stedman when he was taking me to the airport as a Lyft driver. There’s an awful lot you can learn about someone in a 30 minute drive to the airport, and I got a chance to hear about Litepulse (soon to be PulseSpace), and their goal of providing remote power for satellites. With the growth of the private space industry thanks to SpaceX and Blue Origin, there’s a whole ecosystem of young startups looking to provide service level agreements for orbital infrastructure. PulseSpace is looking to be a sort of “gas station” for satellites that may have malfunctioning or damaged solar panels, or maybe they just need some extra juice. Even though I don’t have a background in astrophysics, I think they’re bound to run into all sorts of gnarly software problems. I’m happy to help however I can there.\n\n\n\nLitePulse Image"
-  },
-  {
-    "objectID": "about.html#what-i-know",
-    "href": "about.html#what-i-know",
-    "title": "About Me",
-    "section": "What I know",
-    "text": "What I know\nMy expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and familiar with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced candidate profilers to anomaly detection models for global enterprises. Make sure to check out my C.V. for more details.\n\nLet’s Connect!\nI’m always eager to connect with like-minded professionals and enthusiasts. Feel free to reach out to me via: email, Twitter, LinkedIn, or explore my CV and GitHub\nLooking forward to connecting with you!"
   }
 ]
