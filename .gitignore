@@ -7,3 +7,5 @@ build/*
 /.quarto/
 _extensions
 
+.DS_Store
+_site
