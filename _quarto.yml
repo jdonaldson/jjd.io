@@ -1,12 +1,5 @@
 project:
   type: website
-  output-dir: docs
-
-
-bibliography:
-  - bibliographies/all.bib
-nocite: |
-  @*
 
 toc: true
 
@@ -14,10 +7,15 @@ number-sections: false
 
 format:
   html:
-    css: resume-css-stylesheet.css
-    self-contained: true
+    theme: solar
+    css: jjd-css-stylesheet.css
     embed-resources: true
-    output-file: index.html
+    page-layout: full
 
 website:
+  title: "Justin Donaldson, Ph.D."
+  navbar:
+    left:
+      - about.qmd
+      - cv.qmd
   google-analytics: "UA-G-J1DD0F3VY9"

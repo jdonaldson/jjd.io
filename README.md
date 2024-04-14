@@ -1,5 +1,5 @@
-# Curriculum Vitae
+# All About Justin
 
-Markdown source for the resume of Justin Donaldson: [website](http://www.jjd.io)
+Markdown source for the website of Justin Donaldson: [website](http://www.jjd.io)
 
 
