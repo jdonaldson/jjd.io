@@ -11,9 +11,8 @@ academia to industry, and back again.  I'm always eager to learn something
 complex, and turn it into something beautiful.
 
 
-# Currently
 
-## CTO : Hushh
+# Hushh.ai (CTO)
 
 ![Hushh.ai Seattle Team](images/hushh_ai.jpeg)
 
@@ -23,10 +22,9 @@ we're pioneering on-device hybrid LLM search capabilities and nurturing a
 vibrant R&D culture with a talented team of international interns.
 
 
-# Investor/Advisor
 
-## Dagworks
-![image](images/stefan.jpeg)
+# Dagworks (Investor/Advisor)
+![Stefan and I](images/stefan.jpeg)
 
 I met [Stefan](https://www.linkedin.com/in/skrawczyk/) and
 [Elijah](https://www.linkedin.com/in/elijahbenizzy/) when they were just
@@ -41,8 +39,8 @@ it at some point if they are using Python to manage data.  It's just that good.
 ![Dagworks DAG Example](https://www.dagworks.io/lineage_view.png)
 
 
-## PulseSpace
-![image](images/karl.jpeg)
+# PulseSpace (Investor/Advisor)
+![Karl and I](images/karl.jpeg)
 
 If you want to give your company the best chance for success, you have to think
 outside the box in order to network.  I met [Karl
@@ -62,22 +60,37 @@ however I can there.
 
 ![LitePulse Image](https://static.wixstatic.com/media/581152_d1fa99b059f446ec819742500e0458e1~mv2.png/v1/fill/w_2123,h_729,al_c,q_90,enc_auto/581152_d1fa99b059f446ec819742500e0458e1~mv2.png)
 
-# Lately
-Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I
+# Previously
 
-wore multiple hats as a Principal Data Scientist and Engineer. I had the
-privilege to lead early search infrastructure modernization projects like
-migrating the core search infrastructure to model-trained ranking coefficients
-, and also developed patented deep learning models for detecting error states
-in Salesforce's enormous code base. I co-founded the Service Cloud Datascience
-team and contributed significantly to the creation of an ML education program
-for engineers. My contributions also extended to investigating and developing
-GPT-3 technologies.
+## Salesforce
 
-Earlier in my career, I co-founded BigML and served as its President from
-2011 to 2013. There, I spearheaded the development of interactive
-visualizations and took charge of various administrative tasks, setting the
-foundation for the company's growth.
+![The Grenoble Team and I](images/grenoble.jpeg)
+
+Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore
+multiple hats as a Principal Data Scientist and Engineer. I had the privilege
+to lead early search infrastructure modernization projects like migrating the
+core search infrastructure to model-trained ranking coefficients, and also
+developed patented deep learning models for detecting error states in
+Salesforce's enormous code base. Under [Scott
+Rickard](https://www.linkedin.com/in/scottrickard/)I co-founded the
+Search/Service Cloud Datascience team and contributed significantly to the
+creation of an ML education program for engineers. My contributions also
+extended to investigating and developing GPT-3 technologies.  I also enjoyed
+meeting with the team in Grenoble France!
+
+
+
+
+## BigML
+
+![BigML Visualization](images/bigml.jpeg)
+
+Earlier in my career, I co-founded BigML and served as its President from 2011
+to 2013. There, I spearheaded the development of interactive model and
+distribution visualizations and took charge of various administrative tasks,
+setting the foundation for the company's growth.
+
+
 
 ## What I know
 
