@@ -16,7 +16,8 @@ website:
   title: "Justin Donaldson, Ph.D."
   navbar:
     left:
-      - about.qmd
+      - text: About
+        href: index.qmd
       - cv.qmd
   google-analytics: "UA-G-J1DD0F3VY9"
 
