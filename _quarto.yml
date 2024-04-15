@@ -22,6 +22,17 @@ website:
       - text: About
         href: index.qmd
       - cv.qmd
+    right:
+      - icon: github
+        href: https://github.com/jdonaldson
+        aria-label: GitHub
+      - icon: twitter
+        href: https://twitter.com/omgjjd
+        aria-label: Twitter
+      - icon: linkedin
+        href: https://www.linkedin.com/in/jjustindonaldson/
+        aria-label: Linkedin
+
   google-analytics: "UA-G-J1DD0F3VY9"
 
 execute:
