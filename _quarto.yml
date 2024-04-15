@@ -14,8 +14,7 @@ format:
 website:
   favicon: "images/nav-logo.jpeg"
   site-url: "http://www.jjd.io"
-  twitter-card:
-    site: "@omgjjd"
+  twitter-card: true
   open-graph: true
   title: "Justin Donaldson, Ph.D."
   navbar:
