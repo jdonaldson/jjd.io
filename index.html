@@ -145,8 +145,10 @@ window.Quarto = {
 
 <link rel="stylesheet" href="style.css">
 <meta property="og:title" content="Justin Donaldson, Ph.D.&nbsp;- Ogni Parte ad Ogni Parte Splende">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
 <meta name="twitter:title" content="Justin Donaldson, Ph.D.&nbsp;- Ogni Parte ad Ogni Parte Splende">
+<meta name="twitter:description" content="">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary">
 </head>
@@ -236,13 +238,20 @@ window.Quarto = {
 </header>
 
 
+<p>This is my personal weblog. You can click my face to learn more <a href="./about.html">about me</a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./about.html"><img src="images/me.jpeg" class="img-fluid figure-img" alt="About Me"></a></p>
+<figcaption>About Me</figcaption>
+</figure>
+</div>
 
 
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="blog" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1713210547717" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="628">
+<div class="quarto-post image-right" data-index="0" data-categories="blog" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1713211973234" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="628">
 <div class="thumbnail">
 <p><a href="./posts/quarto.html" class="no-external"></a></p><a href="./posts/quarto.html" class="no-external">
 <p class="card-img-top"><img src="posts/images/quarto.jpeg"  class="thumbnail-image card-img"/></p>
@@ -361,7 +370,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/www\.jjd\.io");
+      var filterRegex = new RegExp("http:\/\/www\.jjd\.io");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
