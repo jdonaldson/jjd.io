@@ -1,8 +1,9 @@
 
+---
+title: "About Me"
+---
 
 ![Justin Donaldson](images/me.jpeg)
-
-# About Me
 
 Hello! I'm Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI
 Scientist and Engineer with a diverse skill set spanning large language model
@@ -10,7 +11,16 @@ research, data science, and machine learning. My journey has led me from
 academia to industry, and back again.  I'm always eager to learn something
 complex, and turn it into something beautiful.
 
+## What I know
 
+My expertise encompasses model optimization, time series analysis, anomaly
+detection, and advanced ML/web visualization. I'm well-versed in programming
+languages like Python, R, and fluent with Docker and core web technologies.
+Over the years, I've had the opportunity to work on diverse and impactful
+projects with trusted Salesforce partners, crafting custom solutions ranging
+from advanced customer behavior modeling for banks to anomaly detection models
+for global enterprises.  Make sure to check out my [C.V.](cv.qmd) for more
+details.
 
 # Hushh.ai (CTO)
 
@@ -42,12 +52,10 @@ it at some point if they are using Python to manage data.  It's just that good.
 # PulseSpace (Investor/Advisor)
 ![Karl and I](images/karl.jpeg)
 
-If you want to give your company the best chance for success, you have to think
-outside the box in order to network.  I met [Karl
-Stedman](https://www.linkedin.com/in/thekarlstedman/) when he was taking me to
-the airport as a Lyft driver.  There's an awful lot you can learn about someone
-in a 30 minute drive to the airport, and I got a chance to hear about
-[Litepulse](https://www.litepulse.com/) (soon to be
+I met [Karl Stedman](https://www.linkedin.com/in/thekarlstedman/) when he was
+taking me to the airport as a Lyft driver.  There's an awful lot you can learn
+about someone in a 30 minute drive to the airport, and I got a chance to hear
+about [Litepulse](https://www.litepulse.com/) (soon to be
 [PulseSpace](https://pulsespace.com/)), and their goal of providing remote
 power for satellites.  With the growth of the private space industry thanks to
 SpaceX and Blue Origin, there's a whole ecosystem of young startups looking to
@@ -56,7 +64,8 @@ looking to be a sort of "gas station" for satellites that may have
 malfunctioning or damaged solar panels, or maybe they just need some extra
 juice.  Even though I don't have a background in astrophysics, I think they're
 bound to run into all sorts of gnarly software problems.  I'm happy to help
-however I can there.
+however I can there, and I also learned the driving for Lyft in a targeted
+fashion is a great way to hustle up a few connections.
 
 ![LitePulse Image](https://static.wixstatic.com/media/581152_d1fa99b059f446ec819742500e0458e1~mv2.png/v1/fill/w_2123,h_729,al_c,q_90,enc_auto/581152_d1fa99b059f446ec819742500e0458e1~mv2.png)
 
@@ -89,18 +98,6 @@ Earlier in my career, I co-founded BigML and served as its President from 2011
 to 2013. There, I spearheaded the development of interactive model and
 distribution visualizations and took charge of various administrative tasks,
 setting the foundation for the company's growth.
-
-
-
-## What I know
-
-My expertise encompasses model optimization, time series analysis, anomaly
-detection, and advanced ML/web visualization. I'm well-versed in programming
-languages like Python, R, and familiar with Docker and core web technologies.
-Over the years, I've had the opportunity to work on diverse and impactful
-projects with trusted Salesforce partners, crafting custom solutions ranging
-from advanced candidate profilers to anomaly detection models for global
-enterprises.  Make sure to check out my [C.V.](cv.qmd) for more details.
 
 
 ### Let's Connect!
