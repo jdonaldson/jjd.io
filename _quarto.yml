@@ -13,16 +13,16 @@ format:
 
 website:
   favicon: "images/nav-logo.jpeg"
-  twitter-card: true
+  twitter-card:
+    site: "@omgjjd"
   open-graph: true
   title: "Justin Donaldson, Ph.D."
   navbar:
     logo : "images/nav-logo.jpeg"
     left:
-      - text: About
-        href: index.qmd
+      - index.qmd
+      - about.qmd
       - cv.qmd
-      - blog.qmd
     right:
       - icon: github
         href: https://github.com/jdonaldson

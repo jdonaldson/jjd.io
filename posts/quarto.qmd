@@ -7,7 +7,7 @@ categories:
   - blog
 ---
 
-![Blogging with Quarto](https://quarto.org/docs/publishing/images/quarto-pub-admin-site.png)
+![Blogging with Quarto](images/quarto.jpeg)
 
 I'm creating a new blog, and was surveying the various options. I've been using
 the default Jekyll "Pages" functionality offered from Github for years, but it's time
@@ -69,7 +69,7 @@ Now, there are some that will argue that Quarto is not at all free, in fact it c
 
 However, I would also argue:
 
-# It has a High "Give a S@&$! Factor"
+# It Has a High "Give a S@&$! Factor"
 
 We're entering an age where most text written online will be generated or
 influenced by a generative AI.  This post has been written with the help of
