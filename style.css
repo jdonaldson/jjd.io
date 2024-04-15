@@ -23,6 +23,12 @@ summary {
     display: block;
 }
 
+.navbar-logo {
+  padding-right:0px;
+  margin-right:4px;
+  clip-path: circle(50% at center);
+}
+
 /**
  * Correct `inline-block` display not defined in IE 8/9.
  */

@@ -8,13 +8,16 @@ number-sections: false
 format:
   html:
     theme: solar
-    css: jjd-css-stylesheet.css
-    embed-resources: true
+    css: style.css
     page-layout: full
 
 website:
+  favicon: "images/nav-logo.jpeg"
+  twitter-card: true
+  open-graph: true
   title: "Justin Donaldson, Ph.D."
   navbar:
+    logo : "images/nav-logo.jpeg"
     left:
       - text: About
         href: index.qmd
