@@ -8,7 +8,7 @@ nocite: |
 # J Justin Donaldson, Ph.D.
 #### Human-Computer-Interaction/Data/AI Scientist, Engineer
 
-##### [jjd@jjd.io](mailto:jjd@jjd.io) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/cv) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson) | [(919)-289-9553](tel:9192899553)
+##### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/cv) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
 
 
 ## Skills
