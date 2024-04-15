@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2024-04-15">
+<meta name="description" content="Creating my Webpage with Quarto">
 
-<title>Justin Donaldson, Ph.D. - About Me</title>
+<title>Justin Donaldson, Ph.D. - Blogging with Quarto</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,23 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -81,14 +84,46 @@ ga('send', {
   'anonymizeIp': true,
 });
 </script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Justin Donaldson, Ph.D.&nbsp;- About Me">
-<meta property="og:description" content="">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Justin Donaldson, Ph.D.&nbsp;- Blogging with Quarto">
+<meta property="og:description" content="Creating my Webpage with Quarto">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Justin Donaldson, Ph.D.&nbsp;- About Me">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Justin Donaldson, Ph.D.&nbsp;- Blogging with Quarto">
+<meta name="twitter:description" content="Creating my Webpage with Quarto">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -99,10 +134,10 @@ ga('send', {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.jpeg" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.jpeg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -113,15 +148,15 @@ ga('send', {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">Curriculum Vitae</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Ogni Parte ad Ogni Parte Splende</span></a>
   </li>  
 </ul>
@@ -157,18 +192,10 @@ ga('send', {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-i-know" id="toc-what-i-know" class="nav-link active" data-scroll-target="#what-i-know">What I know</a></li>
-  <li><a href="#hushh.ai-cto" id="toc-hushh.ai-cto" class="nav-link" data-scroll-target="#hushh.ai-cto">Hushh.ai (CTO)</a></li>
-  <li><a href="#dagworks-investoradvisor" id="toc-dagworks-investoradvisor" class="nav-link" data-scroll-target="#dagworks-investoradvisor">Dagworks (Investor/Advisor)</a></li>
-  <li><a href="#pulsespace-investoradvisor" id="toc-pulsespace-investoradvisor" class="nav-link" data-scroll-target="#pulsespace-investoradvisor">PulseSpace (Investor/Advisor)</a></li>
-  <li><a href="#previously" id="toc-previously" class="nav-link" data-scroll-target="#previously">Previously</a>
-  <ul class="collapse">
-  <li><a href="#salesforce" id="toc-salesforce" class="nav-link" data-scroll-target="#salesforce">Salesforce</a></li>
-  <li><a href="#bigml" id="toc-bigml" class="nav-link" data-scroll-target="#bigml">BigML</a>
-  <ul class="collapse">
-  <li><a href="#lets-connect" id="toc-lets-connect" class="nav-link" data-scroll-target="#lets-connect">Let’s Connect!</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#its-free" id="toc-its-free" class="nav-link active" data-scroll-target="#its-free">It’s Free</a></li>
+  <li><a href="#it-has-a-high-give-a-s-factor" id="toc-it-has-a-high-give-a-s-factor" class="nav-link" data-scroll-target="#it-has-a-high-give-a-s-factor">It has a High “Give a S@&amp;$! Factor”</a></li>
+  <li><a href="#its-open-source-and-lindy" id="toc-its-open-source-and-lindy" class="nav-link" data-scroll-target="#its-open-source-and-lindy">It’s Open Source and Lindy</a></li>
+  <li><a href="#thanks-for-reading" id="toc-thanks-for-reading" class="nav-link" data-scroll-target="#thanks-for-reading">Thanks for Reading!</a></li>
   </ul>
 </nav>
     </div>
@@ -177,14 +204,34 @@ ga('send', {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About Me</h1>
-</div>
+<h1 class="title">Blogging with Quarto</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">blog</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Creating my Webpage with Quarto
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Donaldson </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 15, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -196,86 +243,56 @@ ga('send', {
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/me.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Justin Donaldson</figcaption>
+<p><img src="https://quarto.org/docs/publishing/images/quarto-pub-admin-site.png" class="img-fluid figure-img"></p>
+<figcaption>Blogging with Quarto</figcaption>
 </figure>
 </div>
-<p>Hello! I’m Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI Scientist and Engineer with a diverse skill set spanning large language model research, data science, and machine learning. My journey has led me from academia to industry, and back again. I’m always eager to learn something complex, and turn it into something beautiful.</p>
-<section id="what-i-know" class="level2">
-<h2 class="anchored" data-anchor-id="what-i-know">What I know</h2>
-<p>My expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and fluent with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced customer behavior modeling for banks to anomaly detection models for global enterprises. Make sure to check out my <a href="./cv.html">C.V.</a> for more details.</p>
+<p>I’m creating a new blog, and was surveying the various options. I’ve been using the default Jekyll “Pages” functionality offered from Github for years, but it’s time to move to something more modern.</p>
+<p>I came across <a href="https://quarto.org/">Quarto</a> from a recent <a href="https://www.fast.ai/posts/2022-07-28-nbdev2.html">post by Jeremy Howard</a>, and was immediately sold. Quarto has its lineage somewhat in the realm of Tex, which is an ancient text setting program written by <a href="https://en.wikipedia.org/wiki/Donald_Knuth#Digital_typesetting">Donald Knuth</a>, one of the early fathers of computer programming. The Tex computer program eventually evolved into <a href="https://en.wikipedia.org/wiki/LaTeX">LaTex</a>, which has a scholarly citation management system called <a href="https://en.wikipedia.org/wiki/BibTeX">BibTeX</a>. So, Quarto has a mechanism to use scholarly bibliographic formats, like the ones I maintain <a href="https://github.com/jdonaldson/jjd.io/tree/main/bibliographies">for myself</a> when I was writing my <a href="https://www.proquest.com/openview/a8602e3dae373559fa6d87841fa265e6/1?pq-origsite=gscholar&amp;cbl=18750">dissertation</a>.</p>
+<p>However, instead of using the <a href="http://xahlee.info/cmaci/notation/TeX_pestilence.html">somewhat obtuse</a> LaTex syntax, Quarto uses variations on <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>, which is a much simpler plain text format for creating basic formatted text. The “qmd” format is easy enough to type out manually with no editor other than a basic terminal (which is also what I use to write these posts). You can see the basic qmd format for this post here.</p>
+<p>I find that I don’t need to write as many mathematical formulas here. Although Quarto enables that easily as well. Here’s one of my favorites, the formula for <a href="https://en.wikipedia.org/wiki/Entropy#Information_theory">information entropy</a>.</p>
+<p><span class="math display">\[H(X) = -\sum_{i=1}^n p(x_i) \log p(x_i)\]</span></p>
+<p>I can also draw some simple diagrams using a builtin <a href="https://mermaid-js.github.io/mermaid/#/">Mermaid</a> syntax:</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Hard edge] --&gt; B(Round edge)
+  B --&gt; C{Decision}
+  C --&gt; D[Result one]
+  C --&gt; E[Result two]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<p>I can also easily embed youtube clips:</p>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/IM4PVmmKnog" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
+<p>All in all, most of the basic WYSIWYG functionality is handled through simple text specification. There’s ways to tweak things using css, but for now I’m happy with some basic defaults and theming.</p>
+<p>There’s two main reasons why I think it’s worth using Quarto:</p>
+<section id="its-free" class="level1">
+<h1>It’s Free</h1>
+<p>It doesn’t cost a dime to use Quarto. I simply took the time to set it up with my free Github account, and use it to publish my site free on Github as well.</p>
+<p>Now, there are some that will argue that Quarto is not at all free, in fact it costs time to set this up and write things yourself.</p>
+<p>However, I would also argue:</p>
 </section>
-<section id="hushh.ai-cto" class="level1">
-<h1>Hushh.ai (CTO)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/hushh_ai.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Hushh.ai Seattle Team</figcaption>
-</figure>
-</div>
-<p>I’m helping start <a href="http://www.hush.ai">Hushh.ai</a>, a company I co-founded with <a href="https://www.linkedin.com/in/manishsainani/">Manish Sainani</a> in 2024. At Hushh, we’re pioneering on-device hybrid LLM search capabilities and nurturing a vibrant R&amp;D culture with a talented team of international interns.</p>
+<section id="it-has-a-high-give-a-s-factor" class="level1">
+<h1>It has a High “Give a S@&amp;$! Factor”</h1>
+<p>We’re entering an age where most text written online will be generated or influenced by a generative AI. This post has been written with the help of one. However, I believe that human communication requires some actual friction… some way of showing that the author cares about the topic. It’s going to get very difficult to do that unless you structure your communication in a way that shows a deep level of interest in a topic, and not just churning out dross for the sake of posting to Linkedin.</p>
+<p>The main reason isn’t that it’s cheap or shows you care though, it’s because you should own your story as long as you can, and you will probably outlive any company that tries to do too many things for you. This brings up the next advantage of Quarto:</p>
 </section>
-<section id="dagworks-investoradvisor" class="level1">
-<h1>Dagworks (Investor/Advisor)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/stefan.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Stefan and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/skrawczyk/">Stefan</a> and <a href="https://www.linkedin.com/in/elijahbenizzy/">Elijah</a> when they were just getting started building <a href="https://www.dagworks.io/">Dagworks.io</a>. They had some of the same notions I had on the importance of <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graphs</a> as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.dagworks.io/lineage_view.png" class="img-fluid figure-img"></p>
-<figcaption>Dagworks DAG Example</figcaption>
-</figure>
-</div>
+<section id="its-open-source-and-lindy" class="level1">
+<h1>It’s Open Source and Lindy</h1>
+<p>Technology has been around long enough that it should be clear that languages, frameworks, and applications come and go along with the companies that invent them. The concept of <a href="https://en.wikipedia.org/wiki/Lindy_effect">Lindy</a> argues that future life expectancy of some non-perishable thing (like an idea or technology) is proportional to its age. Right now, Quarto is built on top of some of the earliest ideas in all of computer theory, and its editable and usable inside my <a href="https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim">Neovim</a> editor, which itself is based off of the <a href="https://en.wikipedia.org/wiki/Vi_(text_editor)">VI editor</a> from 1976, using the <a href="https://en.wikipedia.org/wiki/QWERTY">QWERTY keyboard layout</a> from 1878. None of these technologies are going to go anywhere. They’re good bets for writing things down that you want to control and preserve.</p>
 </section>
-<section id="pulsespace-investoradvisor" class="level1">
-<h1>PulseSpace (Investor/Advisor)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/karl.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Karl and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/thekarlstedman/">Karl Stedman</a> when he was taking me to the airport as a Lyft driver. There’s an awful lot you can learn about someone in a 30 minute drive to the airport, and I got a chance to hear about <a href="https://www.litepulse.com/">Litepulse</a> (soon to be <a href="https://pulsespace.com/">PulseSpace</a>), and their goal of providing remote power for satellites. With the growth of the private space industry thanks to SpaceX and Blue Origin, there’s a whole ecosystem of young startups looking to provide service level agreements for orbital infrastructure. PulseSpace is looking to be a sort of “gas station” for satellites that may have malfunctioning or damaged solar panels, or maybe they just need some extra juice. Even though I don’t have a background in astrophysics, I think they’re bound to run into all sorts of gnarly software problems. I’m happy to help however I can there, and I also learned the driving for Lyft in a targeted fashion is a great way to hustle up a few connections.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://static.wixstatic.com/media/581152_d1fa99b059f446ec819742500e0458e1~mv2.png/v1/fill/w_2123,h_729,al_c,q_90,enc_auto/581152_d1fa99b059f446ec819742500e0458e1~mv2.png" class="img-fluid figure-img"></p>
-<figcaption>LitePulse Image</figcaption>
-</figure>
-</div>
-</section>
-<section id="previously" class="level1">
-<h1>Previously</h1>
-<section id="salesforce" class="level2">
-<h2 class="anchored" data-anchor-id="salesforce">Salesforce</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/grenoble.jpeg" class="img-fluid figure-img"></p>
-<figcaption>The Grenoble Team and I</figcaption>
-</figure>
-</div>
-<p>Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore multiple hats as a Principal Data Scientist and Engineer. I had the privilege to lead early search infrastructure modernization projects like migrating the core search infrastructure to model-trained ranking coefficients, and also developed patented deep learning models for detecting error states in Salesforce’s enormous code base. Under <a href="https://www.linkedin.com/in/scottrickard/">Scott Rickard</a>I co-founded the Search/Service Cloud Datascience team and contributed significantly to the creation of an ML education program for engineers. My contributions also extended to investigating and developing GPT-3 technologies. I also enjoyed meeting with the team in Grenoble France!</p>
-</section>
-<section id="bigml" class="level2">
-<h2 class="anchored" data-anchor-id="bigml">BigML</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/bigml.jpeg" class="img-fluid figure-img"></p>
-<figcaption>BigML Visualization</figcaption>
-</figure>
-</div>
-<p>Earlier in my career, I co-founded BigML and served as its President from 2011 to 2013. There, I spearheaded the development of interactive model and distribution visualizations and took charge of various administrative tasks, setting the foundation for the company’s growth.</p>
-<section id="lets-connect" class="level3">
-<h3 class="anchored" data-anchor-id="lets-connect">Let’s Connect!</h3>
-<p>I’m always eager to connect with like-minded professionals and enthusiasts. Feel free to reach out to me via: <a href="mailto:jjd@jjd.io">email</a>, <a href="https://twitter.com/omgjjd">Twitter</a>, <a href="https://www.linkedin.com/in/jjustindonaldson/">LinkedIn</a>, or explore my <a href="http://jdonaldson.github.io/cv">CV</a> and <a href="https://www.github.com/jdonaldson">GitHub</a></p>
-<p>Looking forward to connecting with you!</p>
+<section id="thanks-for-reading" class="level1">
+<h1>Thanks for Reading!</h1>
+<p>I hope I gave a good overview of what Quarto is about, and why it matters. Hoping to see your Quarto site out there as well some day!</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

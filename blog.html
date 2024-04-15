@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Justin Donaldson, Ph.D. - About Me</title>
+<title>Justin Donaldson, Ph.D. - Ogni Parte ad Ogni Parte Splende</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,6 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,6 +69,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
 <script type="text/javascript">
 
@@ -82,13 +113,40 @@ ga('send', {
 });
 </script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Justin Donaldson, Ph.D.&nbsp;- About Me">
-<meta property="og:description" content="">
+<meta property="og:title" content="Justin Donaldson, Ph.D.&nbsp;- Ogni Parte ad Ogni Parte Splende">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Justin Donaldson, Ph.D.&nbsp;- About Me">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Justin Donaldson, Ph.D.&nbsp;- Ogni Parte ad Ogni Parte Splende">
 <meta name="twitter:card" content="summary">
 </head>
 
@@ -113,7 +171,7 @@ ga('send', {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
@@ -121,7 +179,7 @@ ga('send', {
 <span class="menu-text">Curriculum Vitae</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link active" href="./blog.html" aria-current="page"> 
 <span class="menu-text">Ogni Parte ad Ogni Parte Splende</span></a>
   </li>  
 </ul>
@@ -153,31 +211,14 @@ ga('send', {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#what-i-know" id="toc-what-i-know" class="nav-link active" data-scroll-target="#what-i-know">What I know</a></li>
-  <li><a href="#hushh.ai-cto" id="toc-hushh.ai-cto" class="nav-link" data-scroll-target="#hushh.ai-cto">Hushh.ai (CTO)</a></li>
-  <li><a href="#dagworks-investoradvisor" id="toc-dagworks-investoradvisor" class="nav-link" data-scroll-target="#dagworks-investoradvisor">Dagworks (Investor/Advisor)</a></li>
-  <li><a href="#pulsespace-investoradvisor" id="toc-pulsespace-investoradvisor" class="nav-link" data-scroll-target="#pulsespace-investoradvisor">PulseSpace (Investor/Advisor)</a></li>
-  <li><a href="#previously" id="toc-previously" class="nav-link" data-scroll-target="#previously">Previously</a>
-  <ul class="collapse">
-  <li><a href="#salesforce" id="toc-salesforce" class="nav-link" data-scroll-target="#salesforce">Salesforce</a></li>
-  <li><a href="#bigml" id="toc-bigml" class="nav-link" data-scroll-target="#bigml">BigML</a>
-  <ul class="collapse">
-  <li><a href="#lets-connect" id="toc-lets-connect" class="nav-link" data-scroll-target="#lets-connect">Let’s Connect!</a></li>
-  </ul></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(1)</span></div><div class="category" data-category="blog">blog <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About Me</h1>
+<h1 class="title">Ogni Parte ad Ogni Parte Splende</h1>
 </div>
 
 
@@ -194,91 +235,50 @@ ga('send', {
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/me.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Justin Donaldson</figcaption>
-</figure>
-</div>
-<p>Hello! I’m Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI Scientist and Engineer with a diverse skill set spanning large language model research, data science, and machine learning. My journey has led me from academia to industry, and back again. I’m always eager to learn something complex, and turn it into something beautiful.</p>
-<section id="what-i-know" class="level2">
-<h2 class="anchored" data-anchor-id="what-i-know">What I know</h2>
-<p>My expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and fluent with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced customer behavior modeling for banks to anomaly detection models for global enterprises. Make sure to check out my <a href="./cv.html">C.V.</a> for more details.</p>
-</section>
-<section id="hushh.ai-cto" class="level1">
-<h1>Hushh.ai (CTO)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/hushh_ai.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Hushh.ai Seattle Team</figcaption>
-</figure>
-</div>
-<p>I’m helping start <a href="http://www.hush.ai">Hushh.ai</a>, a company I co-founded with <a href="https://www.linkedin.com/in/manishsainani/">Manish Sainani</a> in 2024. At Hushh, we’re pioneering on-device hybrid LLM search capabilities and nurturing a vibrant R&amp;D culture with a talented team of international interns.</p>
-</section>
-<section id="dagworks-investoradvisor" class="level1">
-<h1>Dagworks (Investor/Advisor)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/stefan.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Stefan and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/skrawczyk/">Stefan</a> and <a href="https://www.linkedin.com/in/elijahbenizzy/">Elijah</a> when they were just getting started building <a href="https://www.dagworks.io/">Dagworks.io</a>. They had some of the same notions I had on the importance of <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graphs</a> as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.dagworks.io/lineage_view.png" class="img-fluid figure-img"></p>
-<figcaption>Dagworks DAG Example</figcaption>
-</figure>
-</div>
-</section>
-<section id="pulsespace-investoradvisor" class="level1">
-<h1>PulseSpace (Investor/Advisor)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/karl.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Karl and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/thekarlstedman/">Karl Stedman</a> when he was taking me to the airport as a Lyft driver. There’s an awful lot you can learn about someone in a 30 minute drive to the airport, and I got a chance to hear about <a href="https://www.litepulse.com/">Litepulse</a> (soon to be <a href="https://pulsespace.com/">PulseSpace</a>), and their goal of providing remote power for satellites. With the growth of the private space industry thanks to SpaceX and Blue Origin, there’s a whole ecosystem of young startups looking to provide service level agreements for orbital infrastructure. PulseSpace is looking to be a sort of “gas station” for satellites that may have malfunctioning or damaged solar panels, or maybe they just need some extra juice. Even though I don’t have a background in astrophysics, I think they’re bound to run into all sorts of gnarly software problems. I’m happy to help however I can there, and I also learned the driving for Lyft in a targeted fashion is a great way to hustle up a few connections.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://static.wixstatic.com/media/581152_d1fa99b059f446ec819742500e0458e1~mv2.png/v1/fill/w_2123,h_729,al_c,q_90,enc_auto/581152_d1fa99b059f446ec819742500e0458e1~mv2.png" class="img-fluid figure-img"></p>
-<figcaption>LitePulse Image</figcaption>
-</figure>
-</div>
-</section>
-<section id="previously" class="level1">
-<h1>Previously</h1>
-<section id="salesforce" class="level2">
-<h2 class="anchored" data-anchor-id="salesforce">Salesforce</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/grenoble.jpeg" class="img-fluid figure-img"></p>
-<figcaption>The Grenoble Team and I</figcaption>
-</figure>
-</div>
-<p>Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore multiple hats as a Principal Data Scientist and Engineer. I had the privilege to lead early search infrastructure modernization projects like migrating the core search infrastructure to model-trained ranking coefficients, and also developed patented deep learning models for detecting error states in Salesforce’s enormous code base. Under <a href="https://www.linkedin.com/in/scottrickard/">Scott Rickard</a>I co-founded the Search/Service Cloud Datascience team and contributed significantly to the creation of an ML education program for engineers. My contributions also extended to investigating and developing GPT-3 technologies. I also enjoyed meeting with the team in Grenoble France!</p>
-</section>
-<section id="bigml" class="level2">
-<h2 class="anchored" data-anchor-id="bigml">BigML</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/bigml.jpeg" class="img-fluid figure-img"></p>
-<figcaption>BigML Visualization</figcaption>
-</figure>
-</div>
-<p>Earlier in my career, I co-founded BigML and served as its President from 2011 to 2013. There, I spearheaded the development of interactive model and distribution visualizations and took charge of various administrative tasks, setting the foundation for the company’s growth.</p>
-<section id="lets-connect" class="level3">
-<h3 class="anchored" data-anchor-id="lets-connect">Let’s Connect!</h3>
-<p>I’m always eager to connect with like-minded professionals and enthusiasts. Feel free to reach out to me via: <a href="mailto:jjd@jjd.io">email</a>, <a href="https://twitter.com/omgjjd">Twitter</a>, <a href="https://www.linkedin.com/in/jjustindonaldson/">LinkedIn</a>, or explore my <a href="http://jdonaldson.github.io/cv">CV</a> and <a href="https://www.github.com/jdonaldson">GitHub</a></p>
-<p>Looking forward to connecting with you!</p>
 
 
-</section>
-</section>
-</section>
 
-</main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="blog" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1713209680265" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="628">
+<div class="thumbnail">
+<p><a href="./posts/quarto.html" class="no-external"></a></p><a href="./posts/quarto.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/quarto.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/quarto.html" class="no-external">Blogging with Quarto</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/quarto.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('blog'); return false;">
+blog
+</div>
+</div>
+<div class="listing-description">
+<a href="./posts/quarto.html" class="no-external">Creating my Webpage with Quarto</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/quarto.html" class="no-external">
+<div class="listing-date">
+Apr 15, 2024
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
