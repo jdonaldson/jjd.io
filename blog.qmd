@@ -1,0 +1,9 @@
+---
+title: "Ogni Parte ad Ogni Parte Splende"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---
+

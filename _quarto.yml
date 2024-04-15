@@ -22,6 +22,7 @@ website:
       - text: About
         href: index.qmd
       - cv.qmd
+      - blog.qmd
     right:
       - icon: github
         href: https://github.com/jdonaldson
