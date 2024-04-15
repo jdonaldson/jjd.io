@@ -7,3 +7,9 @@ listing:
   categories: true
 ---
 
+This is my personal weblog.  You can click my face to learn more [about me](about.qmd).
+
+[![About Me](images/me.jpeg)](about.qmd)
+
+
+

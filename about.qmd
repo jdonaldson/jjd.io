@@ -1,15 +1,29 @@
 
 ---
 title: "About Me"
+about:
+  template: marquee
+  image: images/me.jpeg
+  links:
+    - icon: twitter
+      text: twitter
+      href: https://twitter.com/omgjjd
+    - icon: github
+      text: Github
+      href: https://github.com/jdonaldson
+
 ---
 
-![Justin Donaldson](images/me.jpeg)
+:::{#hero-heading}
 
 Hello! I'm Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI
 Scientist and Engineer with a diverse skill set spanning large language model
 research, data science, and machine learning. My journey has led me from
 academia to industry, and back again.  I'm always eager to learn something
 complex, and turn it into something beautiful.
+
+
+:::
 
 ## What I know
 

@@ -13,6 +13,7 @@ format:
 
 website:
   favicon: "images/nav-logo.jpeg"
+  site-url: "http://www.jjd.io"
   twitter-card:
     site: "@omgjjd"
   open-graph: true
