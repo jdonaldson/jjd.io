@@ -7,7 +7,7 @@ number-sections: false
 
 format:
   html:
-    theme: solar
+    theme: sandstone
     css: style.css
     page-layout: full
 
@@ -33,6 +33,9 @@ website:
       - icon: linkedin
         href: https://www.linkedin.com/in/jjustindonaldson/
         aria-label: Linkedin
+      - icon: vinyl-fill
+        href: https://www.discogs.com/user/omgjjd
+        aria-label: Discogs
 
   google-analytics: "G-J1DD0F3VY9"
 

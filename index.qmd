@@ -9,7 +9,7 @@ listing:
 
 This is my personal weblog.  You can click my face to learn more [about me](about.qmd).
 
-[![About Me](images/me.jpeg)](about.qmd)
+[![About Me](images/justinian.jpeg)](about.qmd)
 
 
 
