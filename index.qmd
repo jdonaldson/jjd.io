@@ -7,9 +7,11 @@ listing:
   categories: true
 ---
 
-This is my personal weblog.  You can click my face to learn more [about me](about.qmd).
+*"Each part to each part shines"*
 
-[![About Me](images/justinian.jpeg)](about.qmd)
+This is the personal blog of Justin Donaldson.  You can read the entries below, or learn more [about me](about.qmd).
+
+[![About Me](images/sisters.jpeg)](about.qmd)
 
 
 
