@@ -43,7 +43,8 @@ details.
 I'm helping start [Hushh.ai](http://www.hush.ai), a company I co-founded with
 [Manish Sainani](https://www.linkedin.com/in/manishsainani/) in 2024. At Hushh,
 we're pioneering on-device hybrid LLM search capabilities and nurturing a
-vibrant R&D culture with a talented team of international interns.
+vibrant R&D culture with a talented team of international interns. You can read
+more about what we're up to over at [Hushh Labs](https://hushh-labs.github.io/hushh-labs-blog/)
 
 
 
