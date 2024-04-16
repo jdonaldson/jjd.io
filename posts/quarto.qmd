@@ -10,8 +10,9 @@ categories:
 ![Blogging with Quarto](images/quarto.jpeg)
 
 I'm creating a new blog, and was surveying the various options. I've been using
-the default Jekyll "Pages" functionality offered from Github for years, but it's time
-to move to something more modern.
+the default [Jekyll "Pages"](https://jekyllrb.com/docs/github-pages/)
+functionality offered from Github for years, but it's time to move to something
+more modern.
 
 I came across [Quarto](https://quarto.org/) from a recent [post by Jeremy
 Howard](https://www.fast.ai/posts/2022-07-28-nbdev2.html), and was immediately
@@ -21,8 +22,8 @@ Knuth](https://en.wikipedia.org/wiki/Donald_Knuth#Digital_typesetting), one of
 the early fathers of computer programming.  The Tex computer program eventually
 evolved into [LaTex](https://en.wikipedia.org/wiki/LaTeX), which has a
 scholarly citation management system called
-[BibTeX](https://en.wikipedia.org/wiki/BibTeX). So, Quarto has a mechanism to
-use scholarly bibliographic formats, like the ones I maintain [for
+[BibTeX](https://en.wikipedia.org/wiki/BibTeX). Quarto has a mechanism to
+use these scholarly bibliographic formats, like the ones I maintain [for
 myself](https://github.com/jdonaldson/jjd.io/tree/main/bibliographies) when I
 was writing my
 [dissertation](https://www.proquest.com/openview/a8602e3dae373559fa6d87841fa265e6/1?pq-origsite=gscholar&cbl=18750).
@@ -31,12 +32,15 @@ was writing my
 However, instead of using the [somewhat
 obtuse](http://xahlee.info/cmaci/notation/TeX_pestilence.html) LaTex syntax,
 Quarto uses variations on [Markdown](https://en.wikipedia.org/wiki/Markdown),
-which is a much simpler plain text format for creating basic formatted
-text.  The "qmd" format is easy enough to type out manually with no editor
-other than a basic terminal (which is also what I use to write these posts).
-You can see the basic qmd format for this post here.
+which is a much simpler plain text format for creating basic formatted text.
+The "qmd" format is easy enough to type out manually with no editor other than
+a basic terminal (which is also what I use to write these posts). You can see
+the basic qmd format for this post
+[here](https://github.com/jdonaldson/jjd.io/blob/main/posts/quarto.qmd).
 
-I find that I don't need to write as many mathematical formulas here.  Although Quarto enables that easily as well.  Here's one of my favorites, the formula for [information entropy](https://en.wikipedia.org/wiki/Entropy#Information_theory).
+I find that I don't need to write as many mathematical formulas here.  Although
+Quarto enables that easily as well.  Here's one of my favorites, the formula
+for [entropy in information theory](https://en.wikipedia.org/wiki/Entropy#Information_theory).
 
 $$H(X) = -\sum_{i=1}^n p(x_i) \log p(x_i)$$
 
@@ -55,17 +59,20 @@ I can also easily embed youtube clips:
 
 {{< video https://www.youtube.com/watch?v=IM4PVmmKnog >}}
 
-All in all, most of the basic WYSIWYG functionality is handled through simple
-text specification.  There's ways to tweak things using css, but for now I'm
-happy with some basic defaults and theming.
+All in all, most of the basic [WYSIWYG](https://en.wikipedia.org/wiki/WYSIWYG)
+formatting work is handled through simple text specification.  There's ways to
+tweak things even more using css, but for now I'm happy with some basic
+defaults and theming.
 
 There's two main reasons why I think it's worth using Quarto:
 
 # It's Free
 
-It doesn't cost a dime to use Quarto.  I simply took the time to set it up with my free Github account, and use it to publish my site free on Github as well.
+It doesn't cost a dime to use Quarto.  I simply took the time to set it up with
+my free Github account, and use it to publish my site free on Github as well.
 
-Now, there are some that will argue that Quarto is not at all free, in fact it costs time to set this up and write things yourself.
+Now, there are some that will argue that Quarto is not at all free, in fact it
+costs time to set this up and write things yourself.
 
 However, I would also argue:
 
@@ -74,10 +81,10 @@ However, I would also argue:
 We're entering an age where most text written online will be generated or
 influenced by a generative AI.  This post has been written with the help of
 one.  However, I believe that human communication requires some actual
-friction... some way of showing that the author cares about the topic.  It's
+proof of work... some way of showing that the author cares about the topic.  It's
 going to get very difficult to do that unless you structure your communication
 in a way that shows a deep level of interest in a topic, and not just churning
-out dross for the sake of posting to Linkedin.
+out one-off dross for the sake of posting to Linkedin.
 
 The main reason isn't that it's cheap or shows you care though, it's because
 you should own your story as long as you can, and you will probably outlive any
@@ -88,21 +95,23 @@ advantage of Quarto:
 
 Technology has been around long enough that it should be clear that languages,
 frameworks, and applications come and go along with the companies that invent
-them.  The concept of [Lindy](https://en.wikipedia.org/wiki/Lindy_effect)
-argues that future life expectancy of some non-perishable thing (like an idea
-or technology) is proportional to its age.  Right now, Quarto is built on top
-of some of the earliest ideas in all of computer theory, and its editable and
-usable inside my
+them.  The concept of the [Lindy
+effect](https://en.wikipedia.org/wiki/Lindy_effect) argues that future life
+expectancy of some non-perishable thing (like an idea or technology) is
+proportional to its age.  Right now, Quarto is built on top of some of the
+oldest ideas in all of computer theory, and it's editable and usable inside my
 [Neovim](https://en.wikipedia.org/wiki/Vim_(text_editor)#Neovim) editor, which
 itself is based off of the [VI
 editor](https://en.wikipedia.org/wiki/Vi_(text_editor)) from 1976, using the
-[QWERTY keyboard layout](https://en.wikipedia.org/wiki/QWERTY)  from 1878.
+[QWERTY keyboard layout](https://en.wikipedia.org/wiki/QWERTY) from 1878.
+
 None of these technologies are going to go anywhere.  They're good bets for
 writing things down that you want to control and preserve.
 
 # Thanks for Reading!
 
 I hope I gave a good overview of what Quarto is about, and why it matters.
-Hoping to see your Quarto site out there as well some day!
+Thanks for taking the time to read.  Hoping to see your Quarto site out there
+some day!
 
 
