@@ -11,7 +11,7 @@ listing:
 
 This is the personal blog of Justin Donaldson.  You can read the entries below, or learn more [about me](about.qmd).
 
-[![About Me](images/sisters.jpeg)](about.qmd)
+[![The Three Sisters Mountains in Sisters, Oregon](images/sisters.jpeg)](about.qmd)
 
 
 
