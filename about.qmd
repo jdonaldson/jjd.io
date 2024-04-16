@@ -59,7 +59,9 @@ Graphs](https://en.wikipedia.org/wiki/Directed_acyclic_graph) as a fundamental
 programming theme.  Their decorator-based approach for static methods creates
 the necessary coupling between imperative graph steps, and overall graph
 execution order in an especially elegant way.  I believe most people will adopt
-it at some point if they are using Python to manage data.  It's just that good.
+it at some point if they are using Python to manage data.  It's just that good!
+You can try [Dagworks Hamilton framework online](https://www.tryhamilton.dev/), or check it out [on Github](https://github.com/dagworks-inc/hamilton)
+You can also follow [their blog](https://blog.dagworks.io/).
 
 ![Dagworks DAG Example](https://www.dagworks.io/lineage_view.png)
 
