@@ -47,8 +47,12 @@ vibrant R&D culture with a talented team of international interns. You can read
 more about what we're up to over at [Hushh Labs](https://hushh-labs.github.io/hushh-labs-blog/)
 
 
+# Investor/Advisor
 
-# Dagworks (Investor/Advisor)
+Since leaving Salesforce I invest and advise startups through the year.  Here's
+a few folks and organizations I believe you should be keeping your eye on.
+
+## Dagworks
 ![Stefan and I](images/stefan.jpeg)
 
 I met [Stefan](https://www.linkedin.com/in/skrawczyk/) and
@@ -66,7 +70,7 @@ You can also follow [their blog](https://blog.dagworks.io/).
 ![Dagworks DAG Example](https://www.dagworks.io/lineage_view.png)
 
 
-# PulseSpace (Investor/Advisor)
+## PulseSpace
 ![Karl and I](images/karl.jpeg)
 
 I met [Karl Stedman](https://www.linkedin.com/in/thekarlstedman/) when he was
