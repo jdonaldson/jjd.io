@@ -70,6 +70,20 @@
     "text": "What I know\nMy expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and fluent with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced customer behavior modeling for banks to anomaly detection models for global enterprises. Make sure to check out my C.V. for more details."
   },
   {
+    "objectID": "about.html#dagworks",
+    "href": "about.html#dagworks",
+    "title": "About Me",
+    "section": "Dagworks",
+    "text": "Dagworks\n\n\n\nStefan and I\n\n\nI met Stefan and Elijah when they were just getting started building Dagworks.io. They had some of the same notions I had on the importance of Directed Acyclic Graphs as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good! You can try Dagworks Hamilton framework online, or check it out on Github You can also follow their blog.\n\n\n\nDagworks DAG Example"
+  },
+  {
+    "objectID": "about.html#pulsespace",
+    "href": "about.html#pulsespace",
+    "title": "About Me",
+    "section": "PulseSpace",
+    "text": "PulseSpace\n\n\n\nKarl and I\n\n\nI met Karl Stedman when he was taking me to the airport as a Lyft driver. There’s an awful lot you can learn about someone in a 30 minute drive to the airport, and I got a chance to hear about Litepulse (soon to be PulseSpace), and their goal of providing remote power for satellites. With the growth of the private space industry thanks to SpaceX and Blue Origin, there’s a whole ecosystem of young startups looking to provide service level agreements for orbital infrastructure. PulseSpace is looking to be a sort of “gas station” for satellites that may have malfunctioning or damaged solar panels, or maybe they just need some extra juice. Even though I don’t have a background in astrophysics, I think they’re bound to run into all sorts of gnarly software problems. I’m happy to help however I can there, and I also learned the driving for Lyft in a targeted fashion is a great way to hustle up a few connections.\n\n\n\nLitePulse Image"
+  },
+  {
     "objectID": "about.html#salesforce",
     "href": "about.html#salesforce",
     "title": "About Me",
