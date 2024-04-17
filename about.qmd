@@ -98,11 +98,10 @@ to lead early search infrastructure modernization projects like migrating the
 core search infrastructure to model-trained ranking coefficients, and also
 developed patented deep learning models for detecting error states in
 Salesforce's enormous code base. Under [Scott
-Rickard](https://www.linkedin.com/in/scottrickard/)I co-founded the
+Rickard](https://www.linkedin.com/in/scottrickard/) I co-founded the
 Search/Service Cloud Datascience team and contributed significantly to the
 creation of an ML education program for engineers. My contributions also
-extended to investigating and developing GPT-3 technologies.  I also enjoyed
-meeting with the team in Grenoble France!
+extended to investigating and developing GPT-3 technologies.
 
 
 
@@ -117,7 +116,7 @@ distribution visualizations and took charge of various administrative tasks,
 setting the foundation for the company's growth.
 
 
-### Let's Connect!
+# Let's Connect!
 
 I'm always eager to connect with like-minded professionals and enthusiasts.
 Feel free to reach out to me via:
