@@ -6,7 +6,7 @@ nocite: |
 ---
 
 # J Justin Donaldson, Ph.D.
-#### Human-Computer-Interaction/Data/AI Scientist, Engineer
+#### AI/Design and Engineering
 
 ##### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/cv) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
 
