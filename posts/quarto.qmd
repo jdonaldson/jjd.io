@@ -7,7 +7,7 @@ categories:
   - blog
 ---
 
-![Blogging with Quarto](images/quarto.jpeg)
+![Quarto Example](images/quarto.jpeg){.preview-image}
 
 I'm creating a new blog, and was surveying the various options. I've been using
 the default [Jekyll "Pages"](https://jekyllrb.com/docs/github-pages/)
