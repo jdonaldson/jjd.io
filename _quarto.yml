@@ -15,7 +15,7 @@ website:
   favicon: "images/nav-logo.jpeg"
   site-url: "http://www.jjd.io"
   twitter-card:
-    creator: "@omgjjd"
+    site: "@omgjjd"
     card-style: "summary_large_image"
   image : "images/noisy.jpeg"
   open-graph: true
