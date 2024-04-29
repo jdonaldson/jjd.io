@@ -74,7 +74,7 @@
     "href": "about.html#dagworks",
     "title": "About Me",
     "section": "Dagworks",
-    "text": "Dagworks\n\n\n\nStefan and I\n\n\nI met Stefan and Elijah when they were just getting started building Dagworks.io. They had some of the same notions I had on the importance of Directed Acyclic Graphs as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good! You can try Dagworks Hamilton framework online, or check it out on Github You can also follow their blog.\n\n\n\nDagworks DAG Example"
+    "text": "Dagworks\n\n\n\nStefan and I\n\n\nI met Stefan and Elijah when they were just getting started building Dagworks.io. They had some of the same notions I had on the importance of Directed Acyclic Graphs as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good! You can try Dagworks Hamilton framework online, or check it out on Github. You can also follow their blog.\n\n\n\nDagworks DAG Example"
   },
   {
     "objectID": "about.html#pulsespace",
