@@ -22,6 +22,10 @@ summary {
 	display: block;
 }
 
+#copyright {
+  font:italic
+}
+
 .navbar-logo {
 	padding-right: 0px;
 	margin-right: 4px;
