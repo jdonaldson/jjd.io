@@ -1,14 +1,19 @@
 ---
-title: "Curriculum Vitae"
+title: "Curriculm Vitae"
+format:
+  pdf:
+    toc: false
+    number-sections: false
+    colorlinks: true
+
 bibliography: bibliographies/all.bib
 nocite: |
   @*
 ---
 
 # J Justin Donaldson, Ph.D.
-#### AI/Design and Engineering
 
-##### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/cv) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
+#### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/jjd.io/cv.pdf) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
 
 
 ## Skills
