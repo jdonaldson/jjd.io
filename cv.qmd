@@ -1,10 +1,5 @@
 ---
 title: "Curriculm Vitae"
-format:
-  pdf:
-    toc: false
-    number-sections: false
-    colorlinks: true
 
 bibliography: bibliographies/all.bib
 nocite: |
