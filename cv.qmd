@@ -1,5 +1,5 @@
 ---
-title: "Curriculm Vitae"
+title: "Curriculum Vitae"
 
 bibliography: bibliographies/all.bib
 nocite: |
@@ -8,7 +8,7 @@ nocite: |
 
 # J Justin Donaldson, Ph.D.
 
-#### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/jjd.io/cv.pdf) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
+#### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [\@omgjjd](https://twitter.com/omgjjd) | [cv](http://jdonaldson.github.io/jjd.io/cv.html) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
 
 
 ## Skills
