@@ -25,7 +25,7 @@ website:
     logo : "images/nav-logo.jpeg"
     left:
       - index.qmd
-      - about.qmd
+      - blog.qmd
       - cv.qmd
     right:
       - icon: github

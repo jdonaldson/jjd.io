@@ -1,0 +1,18 @@
+---
+title: "Ogni Parte ad Ogni Parte Splende"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+---
+
+*"Each part to each part shines"*
+
+This is the personal blog of Justin Donaldson.  You can read the entries below,
+or learn more [about me](index.qmd).  You can also check out my [CV](cv.qmd)
+
+[![The Three Sisters Mountains in Sisters, Oregon](images/sisters.jpeg)](index.qmd)
+
+
+
