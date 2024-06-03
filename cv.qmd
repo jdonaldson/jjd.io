@@ -28,6 +28,7 @@ nocite: |
 *Cofounder 2024-*
 
 *Leadership and Engineering Highlights:*
+
 * Developed strategies for on-device hybrid LLM search and modeling.
 * Coordinated and managed a large team of R&D interns.
 
