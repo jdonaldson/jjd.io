@@ -11,6 +11,14 @@ categories:
 
 ![TODO](images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png)
 
+This post introduces a simple tool, called
+[rumpus](https://github.com/jdonaldson/rumpus) that helps me keep track of
+TODOs, etc. using the macos menubar.  It's not that interesting on its own.
+What's interesting is the fact that it's written completely using a local LLM
+in 15 minutes.  I wanted to write a quick post on the how and why of it, and
+how I see programming beginning to change with the increasing power that "off
+the shelf" LLM models can provide.
+
 As a programmer, there are always minor improvements or tweaks I wish I could
 implement. However, the cost/benefit tradeoff often deters me from spending
 time on these enhancements. Recently, I've been exploring how to integrate
