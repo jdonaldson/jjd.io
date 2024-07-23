@@ -1,0 +1,16 @@
+---
+title: "Perchance to Dream"
+description: "Generative AI can generate convincing images, but not text.  Just like we dreamed it would happen."
+author: "Justin Donaldson"
+date: "7/13/2024"
+image : "https://img.youtube.com/vi/ZBEw_4vZ_Dc/0.jpg"
+draft: true
+categories:
+  - blog
+  - genai
+---
+
+
+
+[![Perchance to Dream](https://img.youtube.com/vi/ZBEw_4vZ_Dc/0.jpg)](https://www.youtube.com/watch?v=ZBEw_4vZ_Dc)
+

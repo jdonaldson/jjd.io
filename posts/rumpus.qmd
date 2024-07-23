@@ -1,0 +1,98 @@
+---
+title: "Automated Coding with LLMs"
+description: "LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically."
+image: "images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png"
+author: "Justin Donaldson"
+date: "7/22/2024"
+categories:
+  - LLM
+  - CodeGen
+---
+
+![TODO](images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png)
+
+As a programmer, there are always minor improvements or tweaks I wish I could
+implement. However, the cost/benefit tradeoff often deters me from spending
+time on these enhancements. Recently, I've been exploring how to integrate
+large language models (LLMs) into my workflow to streamline this process.
+
+I prefer keeping reminders in the menubar at the top of my screen for easy
+access, but I find the flexibility of conventional apps lacking. To address
+this, I started using TODO, FIXME, and other comments throughout my code, often
+accompanied by emojis. These comments are typically actionable and convey more
+information than a simple tag or word.
+
+Here’s a sample piece of code with such comments:
+
+```python
+# TODO: Implement the function to calculate the factorial of a number
+def factorial(n):
+    # XXX: This is a placeholder implementation
+    if n == 0:
+        return 1
+    else:
+        # FIXME: This recursive call might cause a stack overflow for large n
+        return n * factorial(n - 1)
+
+# TODO: Add proper error handling for invalid input
+def safe_factorial(n):
+    try:
+        if n < 0:
+            raise ValueError("Negative numbers are not allowed")
+        return factorial(n)
+    except TypeError:
+        print("Input must be an integer")
+    except ValueError as ve:
+        print(ve)
+
+# NOTE: This is a test function to demonstrate the usage of factorial functions
+def test_factorial():
+    test_cases = [0, 1, 5, -3, 'a']
+    for case in test_cases:
+        print(f"Factorial of {case}: {safe_factorial(case)}")
+
+# FIXME: Ensure that the main guard is correctly implemented
+if __name__ == "__main__":
+    test_factorial()
+```
+
+These comments help track necessary actions across a project. While most IDEs
+display TODOs in a separate panel, my TODOs are scattered across multiple
+files, including markdown files that don't require an editor. I wanted a
+centralized list of these flags visible in the menubar, which is always
+accessible regardless of the active program.
+
+The [rump](https://github.com/jaredks/rumps) library simplifies menubar
+configuration, but it requires reading the API documentation and managing basic
+UI functionality (e.g., showing file matches under the emoji and opening them
+when clicked). I started with a simple "Hello World" example using rumps, with
+the help of an LLM:
+
+```python
+import rumps
+
+class HelloWorldApp(rumps.App):
+    def __init__(self):
+        super(HelloWorldApp, self).__init__("Hello World")
+
+if __name__ == "__main__":
+    HelloWorldApp().run()
+```
+
+From there, it only took a few iterations to develop a script that processes
+path/extension arguments, searches through files, and tabulates the hits into
+emoji-based entries in the menubar. The final result looks like this:
+
+![rumpus](images/rumpus.png)
+
+This tally of tasks and reminders in my menubar was satisfying to create
+end-to-end using a library I wanted to work with and an LLM to help compose the
+functionality. Coding the entire thing took about 15 minutes, far less time
+than writing this blog post.
+
+Automated coding is reaching a point where it can significantly shift the
+cost/benefit analysis for certain tasks. While there may still be challenges, I
+believe the resulting
+[script](https://github.com/jdonaldson/rumpus/blob/main/src/rumpus.py) is of
+higher quality than my usual "15 minute" hacks.
+
