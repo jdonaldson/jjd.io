@@ -25,10 +25,11 @@ time on these enhancements. Recently, I've been exploring how to integrate
 large language models (LLMs) into my workflow to streamline this process.
 
 I prefer keeping reminders in the menubar at the top of my screen for easy
-access, but I find the flexibility of conventional apps lacking. To address
-this, I started using TODO, FIXME, and other comments throughout my code, often
-accompanied by emojis. These comments are typically actionable and convey more
-information than a simple tag or word.
+access, but I find the flexibility of conventional "Todo" apps lacking. To
+address this, I started using TODO, FIXME, and other comments throughout my
+code, often accompanied by emojis. These comments are typically actionable and
+convey more information than a simple tag or word.  My menubar is already
+pretty crowded enough!
 
 Here’s a sample piece of code with such comments:
 
