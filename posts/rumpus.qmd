@@ -66,15 +66,14 @@ if __name__ == "__main__":
 
 These comments help track necessary actions across a project. While most IDEs
 display TODOs in a separate panel, my TODOs are scattered across multiple
-files, including markdown files that don't require an editor.
+files, including markdown files that don't require an editor.  For instance,
+here's a basic TODO panel from Eclipse. It's nice, but Eclipse is a memory hog.
+I don't want to open it just to see my list.
 
 ![Example IDE showing TODOS](images/tasks-view.png)
 
-
-
-I wanted a
-centralized list of these flags visible in the menubar, which is always
-accessible regardless of the active program.
+I wanted a centralized list of these flags visible in the menubar, which is
+always accessible regardless of the active program.
 
 The [rump](https://github.com/jaredks/rumps) library simplifies menubar
 configuration, but it requires reading the API documentation and managing basic
@@ -108,5 +107,8 @@ Automated coding is reaching a point where it can significantly shift the
 cost/benefit analysis for certain tasks. While there may still be challenges, I
 believe the resulting
 [script](https://github.com/jdonaldson/rumpus/blob/main/src/rumpus.py) is of
-higher quality than my usual "15 minute" hacks.
+higher quality than my usual "15 minute" hacks.  I also learned that it's a good idea to
+use a combination of libraries and tools as a starting point, rather than just letting the
+model decide itself what to use.
 
+There's certainly more to be written here, but it's not bad for 15 minutes of coding!
