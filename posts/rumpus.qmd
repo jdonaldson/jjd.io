@@ -58,7 +58,13 @@ if __name__ == "__main__":
 
 These comments help track necessary actions across a project. While most IDEs
 display TODOs in a separate panel, my TODOs are scattered across multiple
-files, including markdown files that don't require an editor. I wanted a
+files, including markdown files that don't require an editor.
+
+![Example IDE showing TODOS](images/tasks-view.png)
+
+
+
+I wanted a
 centralized list of these flags visible in the menubar, which is always
 accessible regardless of the active program.
 
