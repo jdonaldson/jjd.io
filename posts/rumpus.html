@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2024-07-22">
+<meta name="description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
 
-<title>Curriculum Vitae – Justin Donaldson, Ph.D.</title>
+<title>Automated Coding with LLMs – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,46 +23,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -98,16 +115,20 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Curriculum Vitae – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/images/me.jpeg">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Automated Coding with LLMs – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
+<meta property="og:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Curriculum Vitae – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/images/me.jpeg">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
+<meta name="twitter:title" content="Automated Coding with LLMs – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
+<meta name="twitter:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1024">
 </head>
 
 <body class="nav-fixed">
@@ -117,10 +138,10 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.jpeg" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.jpeg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -131,15 +152,15 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Ogni Parte ad Ogni Parte Splende</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./cv.html" aria-current="page"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">Curriculum Vitae</span></a>
   </li>  
 </ul>
@@ -175,36 +196,43 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#j-justin-donaldson-ph.d." id="toc-j-justin-donaldson-ph.d." class="nav-link active" data-scroll-target="#j-justin-donaldson-ph.d.">J Justin Donaldson, Ph.D.</a>
-  <ul class="collapse">
-  <li><a href="#skills" id="toc-skills" class="nav-link" data-scroll-target="#skills">Skills</a></li>
-  <li><a href="#experience" id="toc-experience" class="nav-link" data-scroll-target="#experience">Experience</a></li>
-  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
-  <li><a href="#publications" id="toc-publications" class="nav-link" data-scroll-target="#publications">Publications</a></li>
-  <li><a href="#patents" id="toc-patents" class="nav-link" data-scroll-target="#patents">Patents</a></li>
-  <li><a href="#pro-bono" id="toc-pro-bono" class="nav-link" data-scroll-target="#pro-bono">Pro Bono</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Curriculum Vitae</h1>
+<h1 class="title">Automated Coding with LLMs</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LLM</div>
+    <div class="quarto-category">CodeGen</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.
+  </div>
 </div>
 
 
+<div class="quarto-title-meta column-page">
 
-<div class="quarto-title-meta column-page-left">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Donaldson </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 22, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -214,167 +242,65 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
-<section id="j-justin-donaldson-ph.d." class="level1">
-<h1>J Justin Donaldson, Ph.D.</h1>
-<section id="jdonaldsongmail.com-omgjjd-cv-linkedin-github" class="level4">
-<h4 class="anchored" data-anchor-id="jdonaldsongmail.com-omgjjd-cv-linkedin-github"><a href="mailto:jdonaldson@gmail.com">jdonaldson@gmail.com</a> | <a href="https://twitter.com/omgjjd">@omgjjd</a> | <a href="http://jdonaldson.github.io/jjd.io/cv.html">cv</a> | <a href="https://www.linkedin.com/in/jjustindonaldson/">linkedin</a> | <a href="https://www.github.com/jdonaldson">github</a></h4>
-</section>
-<section id="skills" class="level2">
-<h2 class="anchored" data-anchor-id="skills">Skills</h2>
-<ul>
-<li>Large Language Model Research and Applications</li>
-<li>Data Science and Advanced Machine Learning</li>
-<li>Modeling, Model Optimization, Time Series, Anomaly Detection</li>
-<li>Advanced ML/Web Visualization (Embedding/ML/SVG Related)</li>
-<li>Interaction Design, Prototyping, and Design Theory</li>
-<li>Customer Service Analysis</li>
-<li>Programming Language Design</li>
-<li>Docker, Python, R, + most core web technologies and languages.</li>
-</ul>
-</section>
-<section id="experience" class="level2">
-<h2 class="anchored" data-anchor-id="experience">Experience</h2>
-<p><strong>Hushh.ai</strong> <em>Cofounder 2024-</em></p>
-<p><em>Leadership and Engineering Highlights:</em></p>
-<ul>
-<li>Developed strategies for on-device hybrid LLM search and modeling.</li>
-<li>Coordinated and managed a large team of R&amp;D interns.</li>
-</ul>
-<p><strong>Salesforce.com</strong> <em>Principal Data Scientist/Engineer</em> Service Cloud 2014-2023</p>
-<p><em>Data Science and Engineering Highlights:</em></p>
-<ul>
-<li>First Senior Search Datascientist.</li>
-<li>Migrated the core search infrastructure to model-trained ranking coefficients from their previous ad hoc system of boosts and filters.</li>
-<li>Developed and patented deep learning models for predicting integration test failures, and error assignments based on code changes.</li>
-<li>Co-founding member of Service Cloud Datascience team.</li>
-<li>Part of a small team of data scientists tasked with creating an ML education program for all Salesforce engineers.</li>
-<li>Produced the initial Docker Container configuration and serving code that is used as the basis for all production AWS Sagemaker deployments.</li>
-<li>Co-founding member of Foundational AI Components team that produced re-usable libraries and components for advanced ML services.</li>
-<li>Member of joint Engineering/Research Leadership Team responsible for investigating and developing related GPT-3 technologies.</li>
-</ul>
-<p><em>C-level projects with Trusted Salesforce Partners:</em></p>
-<ul>
-<li>Wrote a custom job candidate scoring function for CPL, Ireland’s largest recruitment firm.</li>
-<li>Wrote an advanced candidate profiler for Allegis, The fourth largest recruitment firm in the world.</li>
-<li>Wrote an anomaly detection model for Hulu to detect when an isolated event was affecting global customer call volume to an unsustainable degree.</li>
-<li>Worked with Citibank data center team to combine customer financial activity with service interactions in order to drive predictive customer issue resolution.</li>
-</ul>
-<p><strong>BigML</strong> <em>Co-founder/President</em> 2011-2013</p>
-<p><em>Leadership and Engineering Highlights</em></p>
-<ul>
-<li>Developed and patented interactive visualizations used to represent and explore trained models and distributions.</li>
-<li>Managed various administrative tasks as President (Insurance, Expenses, Office management, etc.)</li>
-<li>Led development of website, and integration with internal/external APIs.</li>
-</ul>
-</section>
-<section id="education" class="level2">
-<h2 class="anchored" data-anchor-id="education">Education</h2>
-<p><strong>Indiana University</strong> - Bloomington, Indiana - 2011<br>
-Ph.D, Informatics - January 2011</p>
-<p>My <a href="https://en.wikipedia.org/wiki/Erd%C5%91s_number">Erdös Number</a> is 4:</p>
-<ol type="1">
-<li><a href="https://en.wikipedia.org/wiki/Paul_Erd%C5%91s">Paul Erdös</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Fan_Chung">Fan Chung</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Alessandro_Vespignani">Alessandro Vespignani</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Filippo_Menczer">Filippo Menczer</a></li>
-<li>(me)</li>
-</ol>
-<p><strong>Dissertation:</strong> <em>“Visualization of music relational information sources for analysis, navigation, and discovery”</em></p>
-<p><strong>Advising Committee :</strong> <a href="https://luddy.indiana.edu/contact/profile/?Erik_Stolterman~Bergqvist">Erik A. Stolterman</a> (Chair), <a href="https://en.wikipedia.org/wiki/Filippo_Menczer">Filippo Menczer</a>, <a href="https://luddy.indiana.edu/contact/profile/?profile_id=269">Jon Paolillo</a>, <a href="https://ist.psu.edu/directory/jsb6077a">Jeff Bardzell</a>, <a href="https://homes.luddy.indiana.edu/donbyrd/">Donald Byrd</a>, <a href="https://marctorrens.net/">Marc Torrens</a>.</p>
-<p>President of Graduate Student Body (School of Informatics)</p>
-<p>Best Paper Award <span class="citation" data-cites="zmds">(<a href="#ref-zmds" role="doc-biblioref">J. Donaldson 2006b</a>)</span></p>
-<p><strong>Indiana University</strong> - Bloomington, Indiana - 2006<br>
-M.S., Human Computer Interaction Design</p>
-<p><strong>Depauw University</strong> - Greencastle, Indiana - 2001<br>
-B.S., Computer Science (Minor in Mathematics)</p>
-</section>
-<section id="publications" class="level2">
-<h2 class="anchored" data-anchor-id="publications">Publications</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-baccigalupo2008uncovering" class="csl-entry" role="listitem">
-Baccigalupo, Claudio, Enric Plaza, and Justin Donaldson. 2008. <span>“Uncovering Affinity of Artists to Multiple Genres from Social Behaviour Data.”</span> In <em>ISMIR</em>, 275–80.
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png" class="img-fluid figure-img"></p>
+<figcaption>TODO</figcaption>
+</figure>
 </div>
-<div id="ref-limestick" class="csl-entry" role="listitem">
-Donaldson, Justin. 2006a. <span>“Limestick: Designing for Performer-Audience Connection in Laptop Based Computer Music.”</span> In <em>CHI ’06: CHI ’06 Extended Abstracts on Human Factors in Computing Systems</em>, 712–17. New York, NY, USA: ACM. https://doi.org/<a href="http://doi.acm.org/10.1145/1125451.1125595">http://doi.acm.org/10.1145/1125451.1125595</a>.
+<p>As a programmer, there are always minor improvements or tweaks I wish I could implement. However, the cost/benefit tradeoff often deters me from spending time on these enhancements. Recently, I’ve been exploring how to integrate large language models (LLMs) into my workflow to streamline this process.</p>
+<p>I prefer keeping reminders in the menubar at the top of my screen for easy access, but I find the flexibility of conventional apps lacking. To address this, I started using TODO, FIXME, and other comments throughout my code, often accompanied by emojis. These comments are typically actionable and convey more information than a simple tag or word.</p>
+<p>Here’s a sample piece of code with such comments:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement the function to calculate the factorial of a number</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># XXX: This is a placeholder implementation</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">FIXME</span><span class="co">: This recursive call might cause a stack overflow for large n</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n <span class="op">*</span> factorial(n <span class="op">-</span> <span class="dv">1</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add proper error handling for invalid input</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_factorial(n):</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Negative numbers are not allowed"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> factorial(n)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Input must be an integer"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> ve:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(ve)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This is a test function to demonstrate the usage of factorial functions</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_factorial():</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    test_cases <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">3</span>, <span class="st">'a'</span>]</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> case <span class="kw">in</span> test_cases:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Factorial of </span><span class="sc">{</span>case<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>safe_factorial(case)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: Ensure that the main guard is correctly implemented</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    test_factorial()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>These comments help track necessary actions across a project. While most IDEs display TODOs in a separate panel, my TODOs are scattered across multiple files, including markdown files that don’t require an editor. I wanted a centralized list of these flags visible in the menubar, which is always accessible regardless of the active program.</p>
+<p>The <a href="https://github.com/jaredks/rumps">rump</a> library simplifies menubar configuration, but it requires reading the API documentation and managing basic UI functionality (e.g., showing file matches under the emoji and opening them when clicked). I started with a simple “Hello World” example using rumps, with the help of an LLM:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rumps</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> HelloWorldApp(rumps.App):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(HelloWorldApp, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="st">"Hello World"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    HelloWorldApp().run()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>From there, it only took a few iterations to develop a script that processes path/extension arguments, searches through files, and tabulates the hits into emoji-based entries in the menubar. The final result looks like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/rumpus.png" class="img-fluid figure-img"></p>
+<figcaption>rumpus</figcaption>
+</figure>
 </div>
-<div id="ref-zmds" class="csl-entry" role="listitem">
-———. 2006b. <span>“ZMDS: Visualizing Structural Entropy in Queried Network Sub-Graphs.”</span> In. Netsci ’06. Bloomington, IN, USA: Association for Computing Machinery. <a href="http://vw.indiana.edu/netsci06/conference/Donaldson_ZMDS_.pdf">http://vw.indiana.edu/netsci06/conference/Donaldson_ZMDS_.pdf</a>.
-</div>
-<div id="ref-hybrid_recommender" class="csl-entry" role="listitem">
-———. 2007a. <span>“A Hybrid Social-Acoustic Recommendation System for Popular Music.”</span> In <em>Proceedings of the 2007 ACM Conference on Recommender Systems</em>, 187–90. RecSys ’07. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/1297231.1297271">https://doi.org/10.1145/1297231.1297271</a>.
-</div>
-<div id="ref-donaldson2007music" class="csl-entry" role="listitem">
-———. 2007b. <span>“Music Recommendation Mapping and Interface Based on Structural Network Entropy.”</span> In <em>2007 IEEE 23rd International Conference on Data Engineering Workshop</em>, 811–17. IEEE.
-</div>
-<div id="ref-donaldson2011visualization" class="csl-entry" role="listitem">
-———. 2011. <span>“Visualization of Music Relational Information Sources for Analysis, Navigation, and Discovery.”</span> PhD thesis, Indiana University.
-</div>
-<div id="ref-donaldson2008visualizing" class="csl-entry" role="listitem">
-Donaldson, Justin J, Michael Conover, Benjamin Markines, Heather Roinestad, and Filippo Menczer. 2008. <span>“Visualizing Social Links in Exploratory Search.”</span> In <em>Proceedings of the Nineteenth ACM Conference on Hypertext and Hypermedia</em>, 213–18.
-</div>
-<div id="ref-donaldson2005echoes" class="csl-entry" role="listitem">
-Donaldson, Justin, Joshua Evnin, and Sidharth Saxena. 2005. <span>“ECHOES: Encouraging Companionship, Home Organization, and Entertainment in Seniors.”</span> In <em>CHI’05 Extended Abstracts on Human Factors in Computing Systems</em>, 2084–88.
-</div>
-<div id="ref-donaldson2004dove" class="csl-entry" role="listitem">
-Donaldson, Justin, Alla Genkina, Scott MacArthur, Muzaffer Ozakca, and Amanda Stephano. 2004. <span>“DOVE: Digital Olympic Voting Environment.”</span> In <em>CHI’04 Extended Abstracts on Human Factors in Computing Systems</em>, 1631–35.
-</div>
-<div id="ref-donaldson2008candidate" class="csl-entry" role="listitem">
-Donaldson, Justin, and William Hazlewood. 2008. <span>“Candidate Mapping: Finding Your Place Amongst the Candidates.”</span> In <em>2008 12th International Conference Information Visualisation</em>, 63–68. IEEE.
-</div>
-<div id="ref-donaldson2007chroma" class="csl-entry" role="listitem">
-Donaldson, Justin, Ian Knopke, and Chris Raphael. 2007. <span>“Chroma Palette: Chromatic Maps of Sound as Granular Synthesis Interface.”</span> In <em>Proceedings of the 7th International Conference on New Interfaces for Musical Expression</em>, 213–18.
-</div>
-<div id="ref-donaldson2009using" class="csl-entry" role="listitem">
-Donaldson, Justin, and Paul Lamere. 2009. <span>“Using Visualizations for Music Discovery.”</span> <em>Tutorial at ISMIR</em> 9: 99.
-</div>
-<div id="ref-Lim2008" class="csl-entry" role="listitem">
-Lim, Youn-kyung, Justin Donaldson, Heekyoung Jung, Breanne Kunz, David Royer, Shruti Ramalingam, Sindhia Thirumaran, and Erik Stolterman. 2008. <span>“Emotional Experience and Interaction Design.”</span> In <em>Affect and Emotion in Human-Computer Interaction: From Theory to Applications</em>, edited by Christian Peter and Russell Beale, 116–29. Berlin, Heidelberg: Springer Berlin Heidelberg. <a href="https://doi.org/10.1007/978-3-540-85099-1_10">https://doi.org/10.1007/978-3-540-85099-1_10</a>.
-</div>
-<div id="ref-10.1145/1314161.1314183" class="csl-entry" role="listitem">
-Lim, Youn-kyung, Erik Stolterman, Heekyoung Jung, and Justin Donaldson. 2007a. <span>“Interaction Gestalt and the Design of Aesthetic Interactions.”</span> In <em>Proceedings of the 2007 Conference on Designing Pleasurable Products and Interfaces</em>, 239–54. DPPI ’07. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/1314161.1314183">https://doi.org/10.1145/1314161.1314183</a>.
-</div>
-<div id="ref-lim2007interaction" class="csl-entry" role="listitem">
-———. 2007b. <span>“Interaction Gestalt and the Design of Aesthetic Interactions.”</span> In <em>Proceedings of the 2007 Conference on Designing Pleasurable Products and Interfaces</em>, 239–54.
-</div>
-<div id="ref-Martin_Donaldson_Ashenfelter_Torrens_Hangartner_2011" class="csl-entry" role="listitem">
-Martin, Francisco J., Justin Donaldson, Adam Ashenfelter, Marc Torrens, and Rick Hangartner. 2011. <span>“The Big Promise of Recommender Systems.”</span> <em>AI Magazine</em> 32 (3): 19–27. <a href="https://doi.org/10.1609/aimag.v32i3.2360">https://doi.org/10.1609/aimag.v32i3.2360</a>.
-</div>
-</div>
-</section>
-<section id="patents" class="level2">
-<h2 class="anchored" data-anchor-id="patents">Patents</h2>
-<p>Justin Donaldson. Real-time visualization of user consumption of media items. US8332406B2</p>
-<p>J. Justin Donaldson, Adam Ashenfelter, Francisco Martin, Jos Verwoerd, Jose Antonio Ortega, Charles Parker. Visualization and interaction with compact representations of decision trees.<br>
-US20200379951A1</p>
-<p>Francisco J. Martin, Adam Ashenfelter, J. Justin Donaldson, Jos Verwoerd, Jose Antonio Ortega, Charles Parker. Evolving parallel system to automatically improve the performance of multiple concurrent tasks on large datasets. US9558036B1</p>
-<p>Francisco J. Martin, Oscar Rovira, Jos Verwoerd, Poul Petersen, Charles Parker, Jose Antonio Ortega, Beatriz Garcia, J. Justin Donaldson, Antonio Blasco, Adam Ashenfelter. Predictive modeling and data analysis in a secure shared system. US20170140302A1</p>
-<p>J. Justin Donaldson, Benjamin Busjaeger, Siddharth Rajaram, Berk Coker, Hormoz Tarevern. Machine learning based ranking of test cases for software development. US10474562B2</p>
-<p>Justin Donaldson. Personal music recommendation mapping WO2008051882A3</p>
-<p>J. Justin Donaldson, Hormoz Tarevern, Sadiya Hameed, Siddharth Srivastava, Feifei Jiang. Error assignment for computer programs. US10409667B2</p>
-<p>Zachary Alexander, Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson. Accounting for positional bias in a document retrieval system using machine learning. US10565265B2</p>
-<p>Scott Thurston Rickard, Jr., Clifford Z. Huang, J. Justin Donaldson. Adjusting feature weights for ranking entity based search results. US20180052853A1</p>
-</section>
-<section id="pro-bono" class="level2">
-<h2 class="anchored" data-anchor-id="pro-bono">Pro Bono</h2>
-<p><strong>University of Washington</strong> - <em>Instructor/Contributor</em></p>
-<ul>
-<li><p>Co-Instructor for UW 410 Advanced Machine Learning.<br>
-(Slides Available: <a href="https://jdonaldson.github.io/uw-mlearn410/" class="uri">https://jdonaldson.github.io/uw-mlearn410/</a>)</p></li>
-<li><p>Member of UW Advisory Board for their school of Professional and Continuing Education</p></li>
-</ul>
-<p><strong>Haxe Foundation</strong> - <em>Contributor/Member</em></p>
-<ul>
-<li><p>Developed the Lua target for the Haxe language <a href="https://haxe.org/blog/hello-lua/">blog announcement</a> | <a href="https://news.ycombinator.com/front?day=2016-4-29">hacker news fp</a></p></li>
-<li><p>Sponsored Summer-of-Code for Haxe programmers through mentorship and financial contributions.</p></li>
-</ul>
-<p><strong>UCLA Graduate School</strong> - <em>Data Science Advisor/Mentor</em></p>
-<ul>
-<li>Co-hosted a graduate student Data Science competition in collaboration with Boston Day Academy (Slides Available : <a href="https://is.gd/qnji8A" class="uri">https://is.gd/qnji8A</a>)</li>
-</ul>
+<p>This tally of tasks and reminders in my menubar was satisfying to create end-to-end using a library I wanted to work with and an LLM to help compose the functionality. Coding the entire thing took about 15 minutes, far less time than writing this blog post.</p>
+<p>Automated coding is reaching a point where it can significantly shift the cost/benefit analysis for certain tasks. While there may still be challenges, I believe the resulting <a href="https://github.com/jdonaldson/rumpus/blob/main/src/rumpus.py">script</a> is of higher quality than my usual “15 minute” hacks.</p>
 
 
-</section>
-</section>
 
 <p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
