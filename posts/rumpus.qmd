@@ -1,5 +1,5 @@
 ---
-title: "Automated Coding with LLMs"
+title: "Automated Coding with LLMs: Making a Rumpus"
 description: "LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically."
 image: "images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png"
 author: "Justin Donaldson"
