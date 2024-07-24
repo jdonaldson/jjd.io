@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About Me – Justin Donaldson, Ph.D.</title>
+<title>llama3.1 – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,60 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -75,16 +110,20 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="About Me – Justin Donaldson, Ph.D.">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Justin Donaldson, Ph.D.">
 <meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/images/me.jpeg">
+<meta property="og:image" content="http://www.jjd.io/notebooks/images/me.jpeg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="About Me – Justin Donaldson, Ph.D.">
+<meta name="twitter:title" content="Justin Donaldson, Ph.D.">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/images/me.jpeg">
+<meta name="twitter:image" content="http://www.jjd.io/notebooks/images/me.jpeg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -96,10 +135,10 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.jpeg" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.jpeg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -110,15 +149,15 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Ogni Parte ad Ogni Parte Splende</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">Curriculum Vitae</span></a>
   </li>  
 </ul>
@@ -154,137 +193,90 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#what-i-know" id="toc-what-i-know" class="nav-link active" data-scroll-target="#what-i-know">What I know</a></li>
-  <li><a href="#hushh.ai-cto" id="toc-hushh.ai-cto" class="nav-link" data-scroll-target="#hushh.ai-cto">Hushh.ai (CTO)</a></li>
-  <li><a href="#investoradvisor" id="toc-investoradvisor" class="nav-link" data-scroll-target="#investoradvisor">Investor/Advisor</a>
-  <ul class="collapse">
-  <li><a href="#dagworks" id="toc-dagworks" class="nav-link" data-scroll-target="#dagworks">Dagworks</a></li>
-  <li><a href="#pulsespace" id="toc-pulsespace" class="nav-link" data-scroll-target="#pulsespace">PulseSpace</a></li>
-  </ul></li>
-  <li><a href="#previously" id="toc-previously" class="nav-link" data-scroll-target="#previously">Previously</a>
-  <ul class="collapse">
-  <li><a href="#salesforce" id="toc-salesforce" class="nav-link" data-scroll-target="#salesforce">Salesforce</a></li>
-  <li><a href="#bigml" id="toc-bigml" class="nav-link" data-scroll-target="#bigml">BigML</a></li>
-  </ul></li>
-  <li><a href="#lets-connect" id="toc-lets-connect" class="nav-link" data-scroll-target="#lets-connect">Let’s Connect!</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<div class="quarto-about-marquee column-page-left">
-  <div class="about-image-container">
-    <img src="images/me.jpeg" class="about-image " style="width: 100%;">
-  </div>
-  <div class="about-contents">
-    <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">About Me</h1>
-</div>
-<div class="quarto-title-meta column-page-left">
-  </div>
-</header> <main class="content column-page-left" id="quarto-document-content">
-
-<p>Hello! I’m Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI Scientist and Engineer with a diverse skill set spanning large language model research, data science, and machine learning. My journey has led me from academia to industry, and back again. I’m always eager to learn something complex, and turn it into something beautiful.</p>
-<p>For a more formal breakdown on my career, check out my <a href="./cv.html">CV</a></p>
-<section id="what-i-know" class="level2">
-<h2 data-anchor-id="what-i-know">What I know</h2>
-<p>My expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and fluent with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced customer behavior modeling for banks to anomaly detection models for global enterprises. Make sure to check out my <a href="./cv.html">C.V.</a> for more details.</p>
-</section>
-<section id="hushh.ai-cto" class="level1">
-<h1>Hushh.ai (CTO)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/hushh_ai.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Hushh.ai Seattle Team</figcaption>
-</figure>
-</div>
-<p>I’m helping start <a href="http://www.hush.ai">Hushh.ai</a>, a company I co-founded with <a href="https://www.linkedin.com/in/manishsainani/">Manish Sainani</a> in 2024. At Hushh, we’re pioneering on-device hybrid LLM search capabilities and nurturing a vibrant R&amp;D culture with a talented team of international interns. You can read more about what we’re up to over at <a href="https://hushh-labs.github.io/hushh-labs-blog/">Hushh Labs</a></p>
-</section>
-<section id="investoradvisor" class="level1">
-<h1>Investor/Advisor</h1>
-<p>Since leaving Salesforce I invest and advise startups through the year. Here’s a few folks and organizations I believe you should be keeping your eye on.</p>
-<section id="dagworks" class="level2">
-<h2 data-anchor-id="dagworks">Dagworks</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/stefan.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Stefan and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/skrawczyk/">Stefan</a> and <a href="https://www.linkedin.com/in/elijahbenizzy/">Elijah</a> when they were just getting started building <a href="https://www.dagworks.io/">Dagworks.io</a>. They had some of the same notions I had on the importance of <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graphs</a> as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good! You can try <a href="https://www.tryhamilton.dev/">Dagworks Hamilton framework online</a>, or check it out <a href="https://github.com/dagworks-inc/hamilton">on Github</a>. You can also follow <a href="https://blog.dagworks.io/">their blog</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.dagworks.io/lineage_view.png" class="img-fluid figure-img"></p>
-<figcaption>Dagworks DAG Example</figcaption>
-</figure>
-</div>
-</section>
-<section id="pulsespace" class="level2">
-<h2 data-anchor-id="pulsespace">PulseSpace</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/karl.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Karl and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/thekarlstedman/">Karl Stedman</a> and got a chance to hear about<a href="https://pulsespace.com/">PulseSpace</a>). PulseSpace’s goal is all about providing remote power for satellites. With the growth of the private space industry thanks to SpaceX and Blue Origin, there’s a whole ecosystem of young startups looking to provide service level agreements for orbital infrastructure. PulseSpace is looking to be a sort of “gas station” for satellites that may have malfunctioning or damaged solar panels. Even though I don’t have a background in astrophysics, I think they’re bound to run into all sorts of gnarly software problems that don’t fit easily into conventional industry applications.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/pulsespace.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Pulse Space</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="previously" class="level1">
-<h1>Previously</h1>
-<section id="salesforce" class="level2">
-<h2 data-anchor-id="salesforce">Salesforce</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/grenoble.jpeg" class="img-fluid figure-img"></p>
-<figcaption>The Grenoble Team and I</figcaption>
-</figure>
-</div>
-<p>Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore multiple hats as a Principal Data Scientist and Engineer. I had the privilege to lead early search infrastructure modernization projects like migrating the core search infrastructure to model-trained ranking coefficients, and also developed patented deep learning models for detecting error states in Salesforce’s enormous code base. Under <a href="https://www.linkedin.com/in/scottrickard/">Scott Rickard</a> I co-founded the Search/Service Cloud Datascience team and contributed significantly to the creation of an ML education program for engineers. My contributions also extended to investigating and developing GPT-3 technologies.</p>
-</section>
-<section id="bigml" class="level2">
-<h2 data-anchor-id="bigml">BigML</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/bigml.jpeg" class="img-fluid figure-img"></p>
-<figcaption>BigML Visualization</figcaption>
-</figure>
-</div>
-<p>Earlier in my career, I co-founded BigML and served as its President from 2011 to 2013. There, I spearheaded the development of interactive model and distribution visualizations and took charge of various administrative tasks, setting the foundation for the company’s growth.</p>
-</section>
-</section>
-<section id="lets-connect" class="level1">
-<h1>Let’s Connect!</h1>
-<p>I’m always eager to connect with like-minded professionals and enthusiasts. Feel free to reach out to me via: <a href="mailto:jjd@jjd.io">email</a>, <a href="https://twitter.com/omgjjd">Twitter</a>, <a href="https://www.linkedin.com/in/jjustindonaldson/">LinkedIn</a>, or explore my <a href="http://jdonaldson.github.io/cv">CV</a> and <a href="https://www.github.com/jdonaldson">GitHub</a></p>
-<p>Looking forward to connecting with you!</p>
+<main class="content column-page" id="quarto-document-content">
 
 
-</section>
-<p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> 
-    <div class="about-footer"><div class="about-links">
-  <a href="https://twitter.com/omgjjd" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">twitter</span>
-  </a>
-  <a href="https://github.com/jdonaldson" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+
+
+<div id="797bd226-ae00-491a-b312-3b55c4418911" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForCausalLM, AutoTokenizer, pipeline</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>torch.backends.quantized.engine <span class="op">=</span> <span class="st">"qnnpack"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the pre-trained model and tokenizer</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>model_name <span class="op">=</span> <span class="st">"meta-llama/Meta-Llama-3-8B-Instruct"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(model_name)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(model_name)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply dynamic quantization to the model</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>quantized_model <span class="op">=</span> torch.quantization.quantize_dynamic(</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    model, {torch.nn.Linear}, dtype<span class="op">=</span>torch.qint8</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a pipeline with the quantized model</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>quantized_pipeline <span class="op">=</span> pipeline(</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text-generation"</span>, </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span>quantized_model, </span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    tokenizer<span class="op">=</span>tokenizer,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    device <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>normal_pipeline <span class="op">=</span> pipeline(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"text-generation"</span>, </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span>model, </span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    tokenizer<span class="op">=</span>tokenizer,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    device <span class="op">=</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"a848c7af82e54c8699c6eaa50bcffb27","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
 </div>
 </div>
-  </div>
+<div id="f9a41a7d-fdf9-457b-a676-5c11e7c41883" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_model_size(model):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    param_size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> param <span class="kw">in</span> model.parameters():</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        param_size <span class="op">+=</span> param.numel() <span class="op">*</span> param.element_size()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    buffer_size <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="bu">buffer</span> <span class="kw">in</span> model.buffers():</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        buffer_size <span class="op">+=</span> <span class="bu">buffer</span>.numel() <span class="op">*</span> <span class="bu">buffer</span>.element_size()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    size_all_mb <span class="op">=</span> (param_size <span class="op">+</span> buffer_size) <span class="op">/</span> <span class="dv">1024</span><span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> size_all_mb</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'model'</span>, get_model_size(model))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'quantized'</span>, get_model_size(quantized_model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>model 30633.023681640625
+quantized 2005.023681640625</code></pre>
 </div>
- <!-- /main -->
+</div>
+<div id="390e9677-e49c-4490-bbe7-25db3a9e208a" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_pipeline(pipe, prompt<span class="op">=</span><span class="st">"Tell a dad joke that involves socks with sandals"</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Test the quantized model</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> pipe(prompt, max_length<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(output)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>test_pipeline(quantized_pipeline)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>test_pipeline(normal_pipeline)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.
+Setting `pad_token_id` to `eos_token_id`:128001 for open-end generation.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[{'generated_text': "Tell a dad joke that involves socks with sandals\nHere's one:\n\nWhy did the sock go to the party with the sandal?\n\nBecause it was a sole-ful occasion! (get it? sole, like the bottom of the foot,"}]
+[{'generated_text': "Tell a dad joke that involves socks with sandals\nHere's one: Why did the sock go with the sandal? Because it was a sole-ful match! (get it? sole-ful, like soulful, but also a reference"}]</code></pre>
+</div>
+</div>
+
+
+
+<p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -305,6 +297,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
