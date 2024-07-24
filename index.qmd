@@ -72,22 +72,18 @@ also follow [their blog](https://blog.dagworks.io/).
 ## PulseSpace
 ![Karl and I](images/karl.jpeg)
 
-I met [Karl Stedman](https://www.linkedin.com/in/thekarlstedman/) when he was
-taking me to the airport as a Lyft driver.  There's an awful lot you can learn
-about someone in a 30 minute drive to the airport, and I got a chance to hear
-about [Litepulse](https://www.litepulse.com/) (soon to be
-[PulseSpace](https://pulsespace.com/)), and their goal of providing remote
-power for satellites.  With the growth of the private space industry thanks to
-SpaceX and Blue Origin, there's a whole ecosystem of young startups looking to
-provide service level agreements for orbital infrastructure.  PulseSpace is
-looking to be a sort of "gas station" for satellites that may have
-malfunctioning or damaged solar panels, or maybe they just need some extra
-juice.  Even though I don't have a background in astrophysics, I think they're
-bound to run into all sorts of gnarly software problems.  I'm happy to help
-however I can there, and I also learned the driving for Lyft in a targeted
-fashion is a great way to hustle up a few connections.
+I met [Karl Stedman](https://www.linkedin.com/in/thekarlstedman/) and got a
+chance to hear about[PulseSpace](https://pulsespace.com/)).  PulseSpace's goal
+is all about providing remote power for satellites.  With the growth of the
+private space industry thanks to SpaceX and Blue Origin, there's a whole
+ecosystem of young startups looking to provide service level agreements for
+orbital infrastructure.  PulseSpace is looking to be a sort of "gas station"
+for satellites that may have malfunctioning or damaged solar panels.  Even
+though I don't have a background in astrophysics, I think they're bound to run
+into all sorts of gnarly software problems that don't fit easily into
+conventional industry applications.
 
-![LitePulse Image](https://static.wixstatic.com/media/581152_d1fa99b059f446ec819742500e0458e1~mv2.png/v1/fill/w_2123,h_729,al_c,q_90,enc_auto/581152_d1fa99b059f446ec819742500e0458e1~mv2.png)
+![Pulse Space](images/pulsespace.jpeg)
 
 # Previously
 
@@ -105,8 +101,6 @@ Rickard](https://www.linkedin.com/in/scottrickard/) I co-founded the
 Search/Service Cloud Datascience team and contributed significantly to the
 creation of an ML education program for engineers. My contributions also
 extended to investigating and developing GPT-3 technologies.
-
-
 
 
 ## BigML
