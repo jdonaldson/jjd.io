@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Justin Donaldson">
-<meta name="dcterms.date" content="2024-07-22">
-<meta name="description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
 
-<title>Automated Coding with LLMs: Making a Rumpus – Justin Donaldson, Ph.D.</title>
+<title>J Justin Donaldson, Ph.D. – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,60 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -115,20 +78,17 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="../style.css">
-<meta property="og:title" content="Automated Coding with LLMs: Making a Rumpus – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
-<meta property="og:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="cv.css">
+<meta property="og:title" content="J Justin Donaldson, Ph.D.&nbsp;– Justin Donaldson, Ph.D.">
+<meta property="og:description" content="">
+<meta property="og:image" content="http://www.jjd.io/images/me.jpeg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta property="og:image:height" content="1024">
-<meta property="og:image:width" content="1024">
-<meta name="twitter:title" content="Automated Coding with LLMs: Making a Rumpus – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
-<meta name="twitter:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png">
+<meta name="twitter:title" content="J Justin Donaldson, Ph.D.&nbsp;– Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="http://www.jjd.io/images/me.jpeg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1024">
 </head>
 
 <body class="nav-fixed">
@@ -138,10 +98,10 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../images/nav-logo.jpeg" alt="" class="navbar-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/nav-logo.jpeg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -152,19 +112,19 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html"> 
+    <a class="nav-link" href="./cv.html"> 
 <span class="menu-text">cv</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../resume.html"> 
+    <a class="nav-link active" href="./resume.html" aria-current="page"> 
 <span class="menu-text">resume</span></a>
   </li>  
 </ul>
@@ -200,41 +160,21 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="resume.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Automated Coding with LLMs: Making a Rumpus</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">LLM</div>
-    <div class="quarto-category">CodeGen</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.
-  </div>
+<h1 class="title">J Justin Donaldson, Ph.D.</h1>
 </div>
 
 
-<div class="quarto-title-meta column-page">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Justin Donaldson </p>
-          </div>
-  </div>
+<div class="quarto-title-meta column-page-left">
+
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 22, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -244,74 +184,72 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png" class="img-fluid figure-img"></p>
-<figcaption>TODO</figcaption>
-</figure>
-</div>
-<p>This post introduces a simple tool, called <a href="https://github.com/jdonaldson/rumpus">rumpus</a> that helps me keep track of TODOs, etc. using the macos menubar. It’s not that interesting on its own. What’s interesting is the fact that it’s written completely using a local LLM in 15 minutes. I wanted to write a quick post on the how and why of it, and how I see programming beginning to change with the increasing power that “off the shelf” LLM models can provide.</p>
-<p>As a programmer, there are always minor improvements or tweaks I wish I could implement. However, the cost/benefit tradeoff often deters me from spending time on these enhancements. Recently, I’ve been exploring how to integrate large language models (LLMs) into my workflow to streamline this process.</p>
-<p>I prefer keeping reminders in the menubar at the top of my screen for easy access, but I find the flexibility of conventional “Todo” apps lacking. To address this, I started using TODO, FIXME, and other comments throughout my code, often accompanied by emojis. These comments are typically actionable and convey more information than a simple tag or word. My menubar is already pretty crowded enough!</p>
-<p>Here’s a sample piece of code with such comments:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement the function to calculate the factorial of a number</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># XXX: This is a placeholder implementation</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">FIXME</span><span class="co">: This recursive call might cause a stack overflow for large n</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n <span class="op">*</span> factorial(n <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add proper error handling for invalid input</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_factorial(n):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Negative numbers are not allowed"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> factorial(n)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Input must be an integer"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> ve:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(ve)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This is a test function to demonstrate the usage of factorial functions</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_factorial():</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    test_cases <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">3</span>, <span class="st">'a'</span>]</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> case <span class="kw">in</span> test_cases:</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Factorial of </span><span class="sc">{</span>case<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>safe_factorial(case)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: Ensure that the main guard is correctly implemented</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    test_factorial()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These comments help track necessary actions across a project. While most IDEs display TODOs in a separate panel, my TODOs are scattered across multiple files, including markdown files that don’t require an editor. For instance, here’s a basic TODO panel from Eclipse. It’s nice, but Eclipse is a memory hog. I don’t want to open it just to see my list.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/tasks-view.png" class="img-fluid figure-img"></p>
-<figcaption>Example IDE showing TODOS</figcaption>
-</figure>
-</div>
-<p>I wanted a centralized list of these flags visible in the menubar, which is always accessible regardless of the active program.</p>
-<p>The <a href="https://github.com/jaredks/rumps">rump</a> library simplifies menubar configuration, but it requires reading the API documentation and managing basic UI functionality (e.g., showing file matches under the emoji and opening them when clicked). I started with a simple “Hello World” example using rumps, with the help of an LLM:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rumps</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> HelloWorldApp(rumps.App):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(HelloWorldApp, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="st">"Hello World"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    HelloWorldApp().run()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>From there, it only took a few iterations to develop a script that processes path/extension arguments, searches through files, and tabulates the hits into emoji-based entries in the menubar. The final result looks like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rumpus.png" class="img-fluid figure-img"></p>
-<figcaption>rumpus</figcaption>
-</figure>
-</div>
-<p>This tally of tasks and reminders in my menubar was satisfying to create end-to-end using a library I wanted to work with and an LLM to help compose the functionality. Coding the entire thing took about 15 minutes, far less time than writing this blog post.</p>
-<p>Automated coding is reaching a point where it can significantly shift the cost/benefit analysis for certain tasks. While there may still be challenges, I believe the resulting <a href="https://github.com/jdonaldson/rumpus/blob/main/src/rumpus.py">script</a> is of higher quality than my usual “15 minute” hacks. I also learned that it’s a good idea to use a combination of libraries and tools as a starting point, rather than just letting the model decide itself what to use.</p>
-<p>There’s certainly more to be written here, but it’s not bad for 15 minutes of coding!</p>
+<section id="jdonaldsongmail.com-jjd.io-cv-linkedin-github" class="level4">
+<h4 class="anchored" data-anchor-id="jdonaldsongmail.com-jjd.io-cv-linkedin-github"><a href="mailto:jdonaldson@gmail.com">jdonaldson@gmail.com</a> | <a href="https://jjd.io">jjd.io</a> | <a href="https://jjd.io/cv.pdf">cv</a> | <a href="https://www.linkedin.com/in/jjustindonaldson/">linkedin</a> | <a href="https://www.github.com/jdonaldson">github</a></h4>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Experienced Data Scientist and Engineer with a strong background in Large Language Models, Machine Learning, and Advanced Analytics. Proven track record in developing innovative solutions for complex problems in various industries. Ph.D.&nbsp;in Informatics with expertise in visualization, interaction design, and programming language design.</p>
+</section>
+<section id="skills" class="level2">
+<h2 class="anchored" data-anchor-id="skills">Skills</h2>
+<ul>
+<li>Large Language Model Research and Applications</li>
+<li>Data Science and Advanced Machine Learning</li>
+<li>Modeling, Model Optimization, Time Series, Anomaly Detection</li>
+<li>Advanced ML/Web Visualization</li>
+<li>Interaction Design and Prototyping</li>
+<li>Customer Service Analysis</li>
+<li>Programming Language Design</li>
+<li>Docker, Python, R, Web Technologies</li>
+</ul>
+</section>
+<section id="professional-experience" class="level2">
+<h2 class="anchored" data-anchor-id="professional-experience">Professional Experience</h2>
+<section id="hushh.ai" class="level3">
+<h3 class="anchored" data-anchor-id="hushh.ai">Hushh.ai</h3>
+<p><strong>Cofounder</strong> (2024 - Present) - Developed strategies for on-device hybrid LLM search and modeling - Coordinated and managed a large team of R&amp;D interns</p>
+</section>
+<section id="salesforce.com" class="level3">
+<h3 class="anchored" data-anchor-id="salesforce.com">Salesforce.com</h3>
+<p><strong>Principal Data Scientist/Engineer, Service Cloud</strong> (2014 - 2023) - First Senior Search Data Scientist; migrated core search infrastructure to model-trained ranking coefficients - Developed and patented deep learning models for predicting integration test failures and error assignments - Co-founding member of Service Cloud Data Science team and Foundational AI Components team - Produced initial Docker container configuration for AWS SageMaker deployments - Member of Engineering/Research Leadership Team investigating GPT-3 technologies</p>
+<p>Key Projects with Trusted Partners: - Custom job candidate scoring for CPL (Ireland’s largest recruitment firm) - Advanced candidate profiler for Allegis (4th largest recruitment firm globally) - Anomaly detection model for Hulu’s customer call volume - Predictive customer issue resolution model for Citibank</p>
+</section>
+<section id="bigml" class="level3">
+<h3 class="anchored" data-anchor-id="bigml">BigML</h3>
+<p><strong>Co-founder/President</strong> (2011 - 2013) - Developed and patented interactive visualizations for trained models and distributions - Led website development and API integration - Managed administrative tasks as President</p>
+</section>
+</section>
+<section id="education" class="level2">
+<h2 class="anchored" data-anchor-id="education">Education</h2>
+<p><strong>Ph.D., Informatics</strong> - Indiana University, Bloomington (2011) - Dissertation: “Visualization of music relational information sources for analysis, navigation, and discovery” - Best Paper Award</p>
+<p><strong>M.S., Human Computer Interaction Design</strong> - Indiana University, Bloomington (2006)</p>
+<p><strong>B.S., Computer Science (Minor in Mathematics)</strong> - DePauw University, Greencastle (2001)</p>
+</section>
+<section id="patents" class="level2">
+<h2 class="anchored" data-anchor-id="patents">Patents</h2>
+<ul>
+<li>Real-time visualization of user consumption of media items (US8332406B2)</li>
+<li>Visualization and interaction with compact representations of decision trees (US20200379951A1)</li>
+<li>Evolving parallel system to automatically improve the performance of multiple concurrent tasks on large datasets (US9558036B1)</li>
+<li>Machine learning based ranking of test cases for software development (US10474562B2)</li>
+<li>Error assignment for computer programs (US10409667B2)</li>
+<li>Accounting for positional bias in a document retrieval system using machine learning (US10565265B2)</li>
+<li>(Additional patents listed in full CV)</li>
+</ul>
+</section>
+<section id="publications" class="level2">
+<h2 class="anchored" data-anchor-id="publications">Publications</h2>
+<p>Multiple peer-reviewed publications in the fields of data science, machine learning, and information visualization (Full list available upon request)</p>
+</section>
+<section id="pro-bono-work" class="level2">
+<h2 class="anchored" data-anchor-id="pro-bono-work">Pro Bono Work</h2>
+<p><strong>University of Washington</strong> - Co-Instructor for UW 410 Advanced Machine Learning - Member of UW Advisory Board for School of Professional and Continuing Education</p>
+<p><strong>Haxe Foundation</strong> - Developed the Lua target for the Haxe language - Sponsored and mentored Summer-of-Code programmers</p>
+<p><strong>UCLA Graduate School</strong> - Data Science Advisor/Mentor for graduate student Data Science competition</p>
 
 
+</section>
 
 <p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
