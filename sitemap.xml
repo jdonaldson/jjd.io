@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.jjd.io/cv.html</loc>
-    <lastmod>2024-07-24T18:17:54.306Z</lastmod>
-  </url>
-  <url>
     <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
-    <lastmod>2024-07-24T18:17:54.338Z</lastmod>
+    <lastmod>2024-08-06T19:54:30.956Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/rumpus.html</loc>
-    <lastmod>2024-07-24T18:17:54.354Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/posts/quarto.html</loc>
-    <lastmod>2024-07-24T18:17:54.354Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/index.html</loc>
-    <lastmod>2024-07-24T18:17:54.338Z</lastmod>
+    <lastmod>2024-08-06T19:54:30.972Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/blog.html</loc>
-    <lastmod>2024-07-24T18:17:54.306Z</lastmod>
+    <lastmod>2024-08-06T19:54:30.924Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/cv.html</loc>
+    <lastmod>2024-08-06T19:54:30.924Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/quarto.html</loc>
+    <lastmod>2024-08-06T19:54:30.972Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/index.html</loc>
+    <lastmod>2024-08-06T19:54:30.956Z</lastmod>
   </url>
 </urlset>
