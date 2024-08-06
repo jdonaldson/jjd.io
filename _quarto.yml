@@ -27,8 +27,6 @@ website:
         href: blog.qmd
       - text: "cv"
         href: cv.qmd
-      - text: "resume"
-        href: resume.qmd
     right:
       - icon: github
         href: https://github.com/jdonaldson
