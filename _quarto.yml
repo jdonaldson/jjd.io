@@ -1,8 +1,6 @@
 project:
   type: website
 
-toc: true
-
 number-sections: false
 
 format:
@@ -25,8 +23,10 @@ website:
     logo : "images/nav-logo.jpeg"
     left:
       - index.qmd
-      - blog.qmd
-      - cv.qmd
+      - text: "blog"
+        href: blog.qmd
+      - text: "cv"
+        href: cv.qmd
     right:
       - icon: github
         href: https://github.com/jdonaldson
