@@ -1,0 +1,89 @@
+---
+title: "J Justin Donaldson, Ph.D."
+format:
+  html:
+    toc: false
+  pdf:
+    author: Justin Donaldson
+    pdf-engine: weasyprint
+css: cv.css
+format-links: [pdf]
+---
+
+#### [jdonaldson@gmail.com](mailto:jdonaldson@gmail.com) | [jjd.io](https://jjd.io) | [cv](https://jjd.io/cv.pdf) | [linkedin](https://www.linkedin.com/in/jjustindonaldson/) | [github](https://www.github.com/jdonaldson)
+
+## Summary
+Experienced Data Scientist and Engineer with a strong background in Large Language Models, Machine Learning, and Advanced Analytics. Proven track record in developing innovative solutions for complex problems in various industries. Ph.D. in Informatics with expertise in visualization, interaction design, and programming language design.
+
+## Skills
+- Large Language Model Research and Applications
+- Data Science and Advanced Machine Learning
+- Modeling, Model Optimization, Time Series, Anomaly Detection
+- Advanced ML/Web Visualization
+- Interaction Design and Prototyping
+- Customer Service Analysis
+- Programming Language Design
+- Docker, Python, R, Web Technologies
+
+## Professional Experience
+
+### Hushh.ai
+**Cofounder** (2024 - Present)
+- Developed strategies for on-device hybrid LLM search and modeling
+- Coordinated and managed a large team of R&D interns
+
+### Salesforce.com
+**Principal Data Scientist/Engineer, Service Cloud** (2014 - 2023)
+- First Senior Search Data Scientist; migrated core search infrastructure to model-trained ranking coefficients
+- Developed and patented deep learning models for predicting integration test failures and error assignments
+- Co-founding member of Service Cloud Data Science team and Foundational AI Components team
+- Produced initial Docker container configuration for AWS SageMaker deployments
+- Member of Engineering/Research Leadership Team investigating GPT-3 technologies
+
+Key Projects with Trusted Partners:
+- Custom job candidate scoring for CPL (Ireland's largest recruitment firm)
+- Advanced candidate profiler for Allegis (4th largest recruitment firm globally)
+- Anomaly detection model for Hulu's customer call volume
+- Predictive customer issue resolution model for Citibank
+
+### BigML
+**Co-founder/President** (2011 - 2013)
+- Developed and patented interactive visualizations for trained models and distributions
+- Led website development and API integration
+- Managed administrative tasks as President
+
+## Education
+
+**Ph.D., Informatics** - Indiana University, Bloomington (2011)
+- Dissertation: "Visualization of music relational information sources for analysis, navigation, and discovery"
+- Best Paper Award
+
+**M.S., Human Computer Interaction Design** - Indiana University, Bloomington (2006)
+
+**B.S., Computer Science (Minor in Mathematics)** - DePauw University, Greencastle (2001)
+
+## Patents
+- Real-time visualization of user consumption of media items (US8332406B2)
+- Visualization and interaction with compact representations of decision trees (US20200379951A1)
+- Evolving parallel system to automatically improve the performance of multiple concurrent tasks on large datasets (US9558036B1)
+- Machine learning based ranking of test cases for software development (US10474562B2)
+- Error assignment for computer programs (US10409667B2)
+- Accounting for positional bias in a document retrieval system using machine learning (US10565265B2)
+- (Additional patents listed in full CV)
+
+## Publications
+Multiple peer-reviewed publications in the fields of data science, machine learning, and information visualization (Full list available upon request)
+
+## Pro Bono Work
+
+**University of Washington**
+- Co-Instructor for UW 410 Advanced Machine Learning
+- Member of UW Advisory Board for School of Professional and Continuing Education
+
+**Haxe Foundation**
+- Developed the Lua target for the Haxe language
+- Sponsored and mentored Summer-of-Code programmers
+
+**UCLA Graduate School**
+- Data Science Advisor/Mentor for graduate student Data Science competition
+
