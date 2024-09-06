@@ -73,7 +73,7 @@ also follow [their blog](https://blog.dagworks.io/).
 ![Karl and I](images/karl.jpeg)
 
 I met [Karl Stedman](https://www.linkedin.com/in/thekarlstedman/) and got a
-chance to hear about[PulseSpace](https://pulsespace.com/).  PulseSpace's goal
+chance to hear about [PulseSpace](https://pulsespace.com/).  PulseSpace's goal
 is all about providing remote power for satellites.  With the growth of the
 private space industry thanks to SpaceX and Blue Origin, there's a whole
 ecosystem of young startups looking to provide service level agreements for
