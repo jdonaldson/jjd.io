@@ -28,7 +28,7 @@ The resulting book isn't just another investment manual. It's a deeply personal 
 
 ## Bridging Generations Through Technology
 
-Using the hal9 framework, we've created something unique: an AI agent that has thoroughly studied my father's investment philosophy and can engage in detailed discussions about the book's concepts. This isn't just another large language model trained on internet data—it's a specialized interface to a specific body of knowledge, maintaining the integrity of the original work while making it interactively accessible.
+Using the [hal9](https://hal9.com/) framework, we've created something unique: an AI agent that has thoroughly studied my father's investment philosophy and can engage in detailed discussions about the book's concepts. This isn't just another large language model trained on internet data—it's a specialized interface to a specific body of knowledge, maintaining the integrity of the original work while making it interactively accessible.
 
 ## Why This Matters
 
