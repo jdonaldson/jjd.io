@@ -32,14 +32,15 @@ Using the [hal9](https://hal9.com/) framework, we've created something unique: a
 
 In our fast-paced digital age, we often sacrifice depth for breadth. While general-purpose AI models can speak broadly about many topics, there's immense value in systems that deeply understand specific, well-vetted sources. This approach creates a more reliable foundation for learning and discussion, especially in fields like investment where accuracy and context are crucial.
 
-## Try It Yourself
+## Try the Rising Income Bot Yourself
 
 Below this paragraph, you'll find an interactive interface where you can ask
 questions about the book's concepts and investment philosophies for rising
-income. While this AI agent can provide detailed information about the book's
-content and concepts, please note that it cannot and should not provide
-personalized financial advice. All interactions should be considered
-educational in nature and not as recommendations for specific investment
+income. While this Rising Income AI agent can provide detailed information
+about the book's content and concepts, please note that it cannot and should
+not provide personalized financial advice. All interactions should be
+considered educational in nature and not as recommendations for specific
+investment
 
 ::: {.callout-important}
 ## Important Legal Information
