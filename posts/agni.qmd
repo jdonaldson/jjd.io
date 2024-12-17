@@ -1,0 +1,112 @@
+
+---
+title: "Converting a Gaming Machine into a Dedicated LLM Server with Unraid"
+description: "Gaming machines are also powerful LLM servers thanks to NVIDIA 4090 hardware.  However, there's a number of steps that are necessary to shed the Windows bloat and harness the raw GPU power in a flexible fashion."
+author: "Justin Donaldson"
+date: "7/29/2024"
+draft: true
+image: images/omgjjd_retro_80s_robot_that_has_a_face_screen_that_shows_a_supe_266d7e06-7290-45f5-a13c-a211a1d1caf4.png
+categories:
+  - gpu
+  - llm
+  - unraid
+---
+
+
+## Turning a Clown-Shoes Gaming Rig Into a Shared LLM Service
+
+Unraid is a versatile and powerful operating system designed to help you manage your data, applications, and media with ease. This guide will walk you through the process of setting up your Unraid server, from creating a boot disk to configuring your RAID array and installing essential plugins. Let's get started!
+
+### 1. Create a Unraid Boot Disk
+
+To get started with Unraid, you'll need to create a boot disk. Here's how to do it:
+
+1. **Download the Unraid OS**: Visit the [Unraid website](https://unraid.net/download) and download the latest USB creator software for your platform.
+
+2. **Prepare a USB Drive**: Use a USB drive with at least 8GB of storage. Make sure to back up any important data on the drive, as this process will erase all existing content.
+
+3. **Set Up the USB Drive**: Once the bootable drive is created, insert it into your server. You may need to enter your BIOS/UEFI settings and set the USB drive as the primary boot device.
+
+### 2. Purchase an Unraid License
+
+Unraid offers a range of licenses based on the number of storage devices you plan to use. Here’s how to purchase and activate your Unraid license:
+
+1. **Choose a License**: Visit the [Unraid pricing page](https://unraid.net/pricing) to select a license that fits your needs. Unraid offers Basic, Plus, and Pro licenses, supporting different numbers of attached storage devices.
+
+2. **Purchase the License**: Follow the prompts to purchase the license. You'll need to create an Unraid account if you don't already have one.
+
+3. **Activate the License**: After purchasing, you'll receive a key file. Place this key file on the root of your Unraid USB drive. The key file will activate your license the next time you boot your server.
+
+### 3. Disable Secure Boot and Adjust Boot Order
+
+To ensure your server boots correctly from the USB drive, you may need to disable Secure Boot and adjust the boot order in your BIOS/UEFI settings:
+
+1. **Enter BIOS/UEFI**: Restart your server and press the appropriate key (usually F2, Del, or Esc) to enter the BIOS/UEFI settings.
+
+2. **Disable Secure Boot**: Navigate to the Secure Boot settings and disable it. This setting is usually found under the Boot or Security tab.
+
+3. **Set Boot Order**: Adjust the boot order to prioritize your USB drive. Move the USB drive to the top of the boot order list.
+
+4. **Save and Exit**: Save your changes and exit the BIOS/UEFI settings. Your server should now boot from the Unraid USB drive.
+
+### 4. Blacklist the i915 GPU
+
+If you encounter issues with the Intel i915 GPU, you may need to blacklist it.
+
+1. **Access the Unraid Terminal**: Once your server is up and running, access the terminal either via the web GUI or directly on the server.
+
+2. **Edit the Syslinux Configuration**: Open the syslinux configuration file for editing:
+   ```sh
+   nano /boot/syslinux/syslinux.cfg
+   ```
+
+3. **Add Blacklist Parameter**: Find the section that begins with `label Unraid OS` and add the following line to the `append` parameter:
+   ```sh
+   append initrd=/bzroot i915.blacklist=1
+   ```
+
+4. **Save and Reboot**: Save your changes and reboot the server:
+   ```sh
+   reboot
+   ```
+
+### 5. Configure the RAID Array
+
+Configuring your RAID array is a crucial step in setting up your Unraid server. Follow these steps:
+
+1. **Access the Web GUI**: Open a web browser and navigate to the IP address of your Unraid server.
+
+2. **Assign Devices**: Go to the "Main" tab and assign your storage devices to the appropriate slots (e.g., parity, disk1, disk2, etc.).
+
+3. **Start the Array**: Click on "Start" to initialize the array. Unraid will format the drives if necessary.
+
+4. **Parity Check**: Perform a parity check to ensure data integrity. This process may take some time, depending on the size of your drives.
+
+### 6. Install the Nvidia GPU Pass Through Plugin
+
+For enhanced GPU performance, you can install the Nvidia GPU Pass Through plugin:
+
+1. **Access Community Applications**: In the Unraid web GUI, navigate to the "Apps" tab and search for "Nvidia GPU Pass Through".
+
+2. **Install the Plugin**: Click "Install" and follow the prompts to add the plugin to your Unraid server.
+
+3. **Configure the Plugin**: Once installed, you may need to configure the plugin to ensure your Nvidia GPU is correctly recognized and utilized by your virtual machines or Docker containers.
+
+### 7. Install Ollama and Open-Web
+
+To enhance your Unraid server's capabilities, you can install applications like Ollama and Open-Web:
+
+1. **Ollama**:
+   - Search for "Ollama" in the Community Applications.
+   - Click "Install" and follow the instructions to set up Ollama on your server.
+
+2. **Open-Web**:
+   - Search for "Open-Web" in the Community Applications.
+   - Click "Install" and follow the instructions to set up Open-Web on your server.
+
+### Conclusion
+
+By following these steps, you can set up a robust and flexible Unraid server capable of managing your data, applications, and media. Whether you're a home user or a small business owner, Unraid offers a scalable solution to meet your needs. Happy configuring!
+```
+i915 0000:00:02.0 [drm] VT-d active for gfx access
+```

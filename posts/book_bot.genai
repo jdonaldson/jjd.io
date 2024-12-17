@@ -1,0 +1,54 @@
+
+# instructions
+Write a blog post about a language model agent that has been trained on a pdf
+of a book. it is written the son of the book's author, avoid trying to make
+obvious sales pitches.
+The URL where the book can be purchased is https://www.gregdonaldson.com/
+Please use the link when referencing the book.
+
+# Description of blog post
+Paper books are often seen as a dinosaur in the era of Generative AI.
+However, they serve as a vital 'ground truth' for human generated
+content, and AI interfaces into specific books can provide a stable
+question and answer platform against a static source of ideas.
+
+# Description of "Hidden Power of Rising Dividends"
+On October 19, 1987, the world watched in disbelief as stock exchanges
+across the globe began to plummet. As he witnessed millions of dollars
+drain from the portfolios his small investment firm managed, Greg
+Donaldson was flooded with uncertainty. Within hours, everything he
+thought he knew about investing quickly faded into the darkness of
+“Black Monday.”
+
+But what he thought was the worst day of his professional life,
+unexpectedly became the greatest turning point of his career. During
+that fateful day, he received three phone calls that opened his eyes
+to a neglected method of valuing an investment. The Hidden Power of
+Rising Dividends follows Greg as he embarks on a quest guided by
+wisdom and faith, to find a stock’s true value using a simple but
+powerful strategy.
+
+Donaldson’s timeless narrative is more than just a book on investing.
+It’s a personal journey, with engaging real-life anecdotes and
+dramatic insights that will both inform and entertain readers. The
+author eloquently weaves his discovery of a safe and financially
+rewarding investment strategy with the raw realities of building a
+trustworthy financial firm at the height of stock market hysteria.
+This story will inspire you to think about your own life in new and
+provocative ways…and teach you not only how to invest wisely but how
+to live life fully.
+
+# Description of Technologies
+
+This bot was generated using the hal9 python framework (hal9.com).
+It's an example of a bot that can be hosted in the cloud, or run on a
+local machine that's roughly as powerful as a PS5 pro.
+
+# Description of bot IFRAME
+
+The blog post has an integrated IFRAME that connects directly to an
+agent assigned to read "Hiden Power of Rising Dividends", and can
+answer questions about it.  Any advice it gives should not be
+construed as financial advice.  Take any other legal precaution with
+wording to prevent putting the author of the blog post and/or service
+at risk.

@@ -4,19 +4,21 @@ description: "Paper books are often seen as a dinosaur in the era of Generative 
 author: "Justin Donaldson"
 date: "12/16/2024"
 draft: true
+draft-mode: unlinked
 
 categories:
-  - gpu
-  - llm
-  - unraid
+  - AI
+  - investing
+  - Agent
 ---
-![Quarto Example](images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png){.preview-image}
-
-
 
 # When AI Meets Family Legacy: A New Way to Interface with Investment Literature
 
 In an era where ChatGPT makes headlines and generative AI seems to be everywhere, traditional books might appear antiquated. Yet, there's something powerful about the permanence of printed wisdom—especially when it captures pivotal moments in financial history and personal revelation. I recently had the unique opportunity to create an AI interface for my father's book, "The Hidden Power of Rising Dividends," and the experience revealed something fascinating about the intersection of traditional publishing and modern technology.
+
+[![The Hidden Power of Rising Income](images/ri_book_cover.png){ width=200px .float-right }](https://www.gregdonaldson.com/)
+
+
 
 ## The Story Behind the Book
 
@@ -42,11 +44,15 @@ personalized financial advice. All interactions should be considered
 educational in nature and not as recommendations for specific investment
 decisions.
 
-<iframe src="https://hal9.com/ujavso/risingincome-bot?embed&guest" width="100%" height="400"></iframe>
-
+::: {.callout-important}
 ## Legal Notice
 
 The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.
+:::
+
+```{=html}
+<iframe src="https://hal9.com/ujavso/risingincome-bot?embed&guest" width="100%" height="400"></iframe>
+```
 
 ## Looking Forward
 
