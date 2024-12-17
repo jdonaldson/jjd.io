@@ -42,11 +42,13 @@ personalized financial advice. All interactions should be considered
 educational in nature and not as recommendations for specific investment
 
 ::: {.callout-important}
-## Important Legal/Technical Notices
+## Important Legal Information
+The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.
+:::
 
-* The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.
-* Please be patient with the bot.  It is running free on commodity hardware, and as such, isn't tuned for performance.
-
+::: {.callout-tip}
+## Please be Patient!
+Please be patient with the bot.  It is running free on commodity hardware, and as such, isn't tuned for performance.
 :::
 
 
