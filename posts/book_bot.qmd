@@ -1,0 +1,56 @@
+---
+title: "Creating an LLM Agent for Books"
+description: "Paper books are often seen as a dinosaur in the era of Generative AI.  However, they serve as a vital 'ground truth' for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas."
+author: "Justin Donaldson"
+date: "12/16/2024"
+draft: true
+
+categories:
+  - gpu
+  - llm
+  - unraid
+---
+![Quarto Example](images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png){.preview-image}
+
+
+
+# When AI Meets Family Legacy: A New Way to Interface with Investment Literature
+
+In an era where ChatGPT makes headlines and generative AI seems to be everywhere, traditional books might appear antiquated. Yet, there's something powerful about the permanence of printed wisdom—especially when it captures pivotal moments in financial history and personal revelation. I recently had the unique opportunity to create an AI interface for my father's book, "The Hidden Power of Rising Dividends," and the experience revealed something fascinating about the intersection of traditional publishing and modern technology.
+
+## The Story Behind the Book
+
+The narrative begins on Black Monday—October 19, 1987. As markets worldwide spiraled downward, my father, Greg Donaldson, watched his clients' portfolios hemorrhage value. What could have been a career-ending catastrophe instead became a moment of profound insight, triggered by three unexpected phone calls that would reshape his entire approach to investment valuation.
+
+The resulting book isn't just another investment manual. It's a deeply personal journey that weaves together market wisdom, faith, and the raw challenges of building a trustworthy financial practice during times of extreme market volatility. For those interested in the full story, you can find the book [here](https://www.gregdonaldson.com/).
+
+## Bridging Generations Through Technology
+
+Using the hal9 framework, we've created something unique: an AI agent that has thoroughly studied my father's investment philosophy and can engage in detailed discussions about the book's concepts. This isn't just another large language model trained on internet data—it's a specialized interface to a specific body of knowledge, maintaining the integrity of the original work while making it interactively accessible.
+
+## Why This Matters
+
+In our fast-paced digital age, we often sacrifice depth for breadth. While general-purpose AI models can speak broadly about many topics, there's immense value in systems that deeply understand specific, well-vetted sources. This approach creates a more reliable foundation for learning and discussion, especially in fields like investment where accuracy and context are crucial.
+
+## Try It Yourself
+
+Below this paragraph, you'll find an interactive interface where you can ask
+questions about the book's concepts and investment philosophies for rising
+income. While this AI agent can provide detailed information about the book's
+content and concepts, please note that it cannot and should not provide
+personalized financial advice. All interactions should be considered
+educational in nature and not as recommendations for specific investment
+decisions.
+
+<iframe src="https://hal9.com/ujavso/risingincome-bot?embed&guest" width="100%" height="400"></iframe>
+
+## Legal Notice
+
+The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.
+
+## Looking Forward
+
+This project represents more than just a technological experiment—it's a bridge between traditional investment wisdom and modern accessibility. While the underlying technology (running on hardware comparable to a PS5 Pro) is impressive, what truly matters is how it helps preserve and transmit valuable knowledge across generations.
+
+The future of financial education might just lie in this blend of time-tested wisdom and cutting-edge technology. By creating focused AI interfaces for specific, high-quality sources, we can maintain the depth and nuance of traditional literature while making it more accessible and interactive for modern learners.
+
