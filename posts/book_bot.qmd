@@ -12,13 +12,13 @@ categories:
   - Agent
 ---
 
-# When AI Meets Family Legacy: A New Way to Interface with Investment Literature
 
+# When AI Meets Family Legacy: A New Way to Interface with Investment Literature
 In an era where ChatGPT makes headlines and generative AI seems to be everywhere, traditional books might appear antiquated. Yet, there's something powerful about the permanence of printed wisdom—especially when it captures pivotal moments in financial history and personal revelation. I recently had the unique opportunity to create an AI interface for my father's book, "The Hidden Power of Rising Dividends," and the experience revealed something fascinating about the intersection of traditional publishing and modern technology.
 
-[![The Hidden Power of Rising Income](images/ri_book_cover.png){ width=200px .float-right }](https://www.gregdonaldson.com/)
 
 
+[![](images/ri_book_cover.png){ width=200px .float-right }](https://www.gregdonaldson.com/)
 
 ## The Story Behind the Book
 
