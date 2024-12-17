@@ -49,6 +49,13 @@ from: https://github.com/quarto-dev/quarto-cli/discussions/2538#discussioncommen
   header {
     margin-block-end: 5em;
   }
+  h4 {
+    text-align:center
+  }
+  h1 {
+    text-align: center
+  }
+
   header h1.title {
       display: none;
   }
