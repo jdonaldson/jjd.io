@@ -12,10 +12,8 @@ categories:
   - Agent
 ---
 
-
 # When AI Meets Family Legacy: A New Way to Interface with Investment Literature
 In an era where ChatGPT makes headlines and generative AI seems to be everywhere, traditional books might appear antiquated. Yet, there's something powerful about the permanence of printed wisdom—especially when it captures pivotal moments in financial history and personal revelation. I recently had the unique opportunity to create an AI interface for my father's book, "The Hidden Power of Rising Dividends," and the experience revealed something fascinating about the intersection of traditional publishing and modern technology.
-
 
 
 [![](images/ri_book_cover.png){ width=200px .float-right }](https://www.gregdonaldson.com/)
@@ -42,13 +40,15 @@ income. While this AI agent can provide detailed information about the book's
 content and concepts, please note that it cannot and should not provide
 personalized financial advice. All interactions should be considered
 educational in nature and not as recommendations for specific investment
-decisions.
 
 ::: {.callout-important}
-## Legal Notice
+## Important Legal/Technical Notices
 
-The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.
+* The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.
+* Please be patient with the bot.  It is running free on commodity hardware, and as such, isn't tuned for performance.
+
 :::
+
 
 ```{=html}
 <iframe src="https://hal9.com/ujavso/risingincome-bot?embed&guest" width="100%" height="400"></iframe>
