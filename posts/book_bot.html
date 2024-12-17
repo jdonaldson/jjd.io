@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Justin Donaldson">
-<meta name="dcterms.date" content="2024-07-22">
-<meta name="description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
+<meta name="dcterms.date" content="2024-12-16">
+<meta name="description" content="Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.">
 
-<title>Automated Coding with LLMs: Making a Rumpus – Justin Donaldson, Ph.D.</title>
+<title>Creating an LLM Agent for Books – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -113,28 +79,31 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
+<meta name="quarto:status" content="draft">
 
 
 <link rel="stylesheet" href="../style.css">
-<meta property="og:title" content="Automated Coding with LLMs: Making a Rumpus – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
-<meta property="og:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png">
+<meta property="og:title" content="Creating an LLM Agent for Books – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.">
+<meta property="og:image" content="http://www.jjd.io/posts/images/ri_book_cover.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta property="og:image:height" content="1024">
-<meta property="og:image:width" content="1024">
-<meta name="twitter:title" content="Automated Coding with LLMs: Making a Rumpus – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.">
-<meta name="twitter:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png">
+<meta property="og:image:alt" content="The Hidden Power of Rising Income">
+<meta property="og:image:height" content="1224">
+<meta property="og:image:width" content="728">
+<meta name="twitter:title" content="Creating an LLM Agent for Books – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.">
+<meta name="twitter:image" content="http://www.jjd.io/posts/images/ri_book_cover.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1024">
+<meta name="twitter:image:alt" content="The Hidden Power of Rising Income">
+<meta name="twitter:image-height" content="1224">
+<meta name="twitter:image-width" content="728">
 </head>
 
 <body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -202,16 +171,17 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Automated Coding with LLMs: Making a Rumpus</h1>
+<h1 class="title">Creating an LLM Agent for Books</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">LLM</div>
-    <div class="quarto-category">CodeGen</div>
+    <div class="quarto-category">AI</div>
+    <div class="quarto-category">investing</div>
+    <div class="quarto-category">Agent</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.
+    Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.
   </div>
 </div>
 
@@ -228,7 +198,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 22, 2024</p>
+      <p class="date">December 16, 2024</p>
     </div>
   </div>
   
@@ -240,74 +210,54 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
+<section id="when-ai-meets-family-legacy-a-new-way-to-interface-with-investment-literature" class="level1">
+<h1>When AI Meets Family Legacy: A New Way to Interface with Investment Literature</h1>
+<p>In an era where ChatGPT makes headlines and generative AI seems to be everywhere, traditional books might appear antiquated. Yet, there’s something powerful about the permanence of printed wisdom—especially when it captures pivotal moments in financial history and personal revelation. I recently had the unique opportunity to create an AI interface for my father’s book, “The Hidden Power of Rising Dividends,” and the experience revealed something fascinating about the intersection of traditional publishing and modern technology.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png" class="preview-image img-fluid figure-img"></p>
-<figcaption>TODO</figcaption>
+<p><a href="https://www.gregdonaldson.com/"><img src="images/ri_book_cover.png" class="float-right img-fluid figure-img" width="200" alt="The Hidden Power of Rising Income"></a></p>
+<figcaption>The Hidden Power of Rising Income</figcaption>
 </figure>
 </div>
-<p>This post introduces a simple tool, called <a href="https://github.com/jdonaldson/rumpus">rumpus</a> that helps me keep track of TODOs, etc. using the macos menubar. It’s not that interesting on its own. What’s interesting is the fact that it’s written completely using a local LLM in 15 minutes. I wanted to write a quick post on the how and why of it, and how I see programming beginning to change with the increasing power that “off the shelf” LLM models can provide.</p>
-<p>As a programmer, there are always minor improvements or tweaks I wish I could implement. However, the cost/benefit tradeoff often deters me from spending time on these enhancements. Recently, I’ve been exploring how to integrate large language models (LLMs) into my workflow to streamline this process.</p>
-<p>I prefer keeping reminders in the menubar at the top of my screen for easy access, but I find the flexibility of conventional “Todo” apps lacking. To address this, I started using TODO, FIXME, and other comments throughout my code, often accompanied by emojis. These comments are typically actionable and convey more information than a simple tag or word. My menubar is already pretty crowded enough!</p>
-<p>Here’s a sample piece of code with such comments:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Implement the function to calculate the factorial of a number</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> factorial(n):</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># XXX: This is a placeholder implementation</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> n <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span><span class="al">FIXME</span><span class="co">: This recursive call might cause a stack overflow for large n</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> n <span class="op">*</span> factorial(n <span class="op">-</span> <span class="dv">1</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Add proper error handling for invalid input</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_factorial(n):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Negative numbers are not allowed"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> factorial(n)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">TypeError</span>:</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Input must be an integer"</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> ve:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(ve)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: This is a test function to demonstrate the usage of factorial functions</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_factorial():</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    test_cases <span class="op">=</span> [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>, <span class="op">-</span><span class="dv">3</span>, <span class="st">'a'</span>]</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> case <span class="kw">in</span> test_cases:</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Factorial of </span><span class="sc">{</span>case<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>safe_factorial(case)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">FIXME</span><span class="co">: Ensure that the main guard is correctly implemented</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    test_factorial()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>These comments help track necessary actions across a project. While most IDEs display TODOs in a separate panel, my TODOs are scattered across multiple files, including markdown files that don’t require an editor. For instance, here’s a basic TODO panel from Eclipse. It’s nice, but Eclipse is a memory hog. I don’t want to open it just to see my list.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/tasks-view.png" class="img-fluid figure-img"></p>
-<figcaption>Example IDE showing TODOS</figcaption>
-</figure>
+<section id="the-story-behind-the-book" class="level2">
+<h2 class="anchored" data-anchor-id="the-story-behind-the-book">The Story Behind the Book</h2>
+<p>The narrative begins on Black Monday—October 19, 1987. As markets worldwide spiraled downward, my father, Greg Donaldson, watched his clients’ portfolios hemorrhage value. What could have been a career-ending catastrophe instead became a moment of profound insight, triggered by three unexpected phone calls that would reshape his entire approach to investment valuation.</p>
+<p>The resulting book isn’t just another investment manual. It’s a deeply personal journey that weaves together market wisdom, faith, and the raw challenges of building a trustworthy financial practice during times of extreme market volatility. For those interested in the full story, you can find the book <a href="https://www.gregdonaldson.com/">here</a>.</p>
+</section>
+<section id="bridging-generations-through-technology" class="level2">
+<h2 class="anchored" data-anchor-id="bridging-generations-through-technology">Bridging Generations Through Technology</h2>
+<p>Using the hal9 framework, we’ve created something unique: an AI agent that has thoroughly studied my father’s investment philosophy and can engage in detailed discussions about the book’s concepts. This isn’t just another large language model trained on internet data—it’s a specialized interface to a specific body of knowledge, maintaining the integrity of the original work while making it interactively accessible.</p>
+</section>
+<section id="why-this-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-matters">Why This Matters</h2>
+<p>In our fast-paced digital age, we often sacrifice depth for breadth. While general-purpose AI models can speak broadly about many topics, there’s immense value in systems that deeply understand specific, well-vetted sources. This approach creates a more reliable foundation for learning and discussion, especially in fields like investment where accuracy and context are crucial.</p>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try It Yourself</h2>
+<p>Below this paragraph, you’ll find an interactive interface where you can ask questions about the book’s concepts and investment philosophies for rising income. While this AI agent can provide detailed information about the book’s content and concepts, please note that it cannot and should not provide personalized financial advice. All interactions should be considered educational in nature and not as recommendations for specific investment decisions.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>I wanted a centralized list of these flags visible in the menubar, which is always accessible regardless of the active program.</p>
-<p>The <a href="https://github.com/jaredks/rumps">rump</a> library simplifies menubar configuration, but it requires reading the API documentation and managing basic UI functionality (e.g., showing file matches under the emoji and opening them when clicked). I started with a simple “Hello World” example using rumps, with the help of an LLM:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rumps</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> HelloWorldApp(rumps.App):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(HelloWorldApp, <span class="va">self</span>).<span class="fu">__init__</span>(<span class="st">"Hello World"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    HelloWorldApp().run()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>From there, it only took a few iterations to develop a script that processes path/extension arguments, searches through files, and tabulates the hits into emoji-based entries in the menubar. The final result looks like this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/rumpus.png" class="img-fluid figure-img"></p>
-<figcaption>rumpus</figcaption>
-</figure>
+<div class="callout-title-container flex-fill">
+Legal Notice
 </div>
-<p>This tally of tasks and reminders in my menubar was satisfying to create end-to-end using a library I wanted to work with and an LLM to help compose the functionality. Coding the entire thing took about 15 minutes, far less time than writing this blog post.</p>
-<p>Automated coding is reaching a point where it can significantly shift the cost/benefit analysis for certain tasks. While there may still be challenges, I believe the resulting <a href="https://github.com/jdonaldson/rumpus/blob/main/src/rumpus.py">script</a> is of higher quality than my usual “15 minute” hacks. I also learned that it’s a good idea to use a combination of libraries and tools as a starting point, rather than just letting the model decide itself what to use.</p>
-<p>There’s certainly more to be written here, but it’s not bad for 15 minutes of coding!</p>
+</div>
+<div class="callout-body-container callout-body">
+<p>The AI interface provided is for educational and informational purposes only. Neither the AI system nor its responses constitute financial advice, and users should not rely on this system for making investment decisions. All investment strategies involve risk, and past performance does not guarantee future results. Please consult with qualified financial professionals for personalized investment advice tailored to your specific situation.</p>
+</div>
+</div>
+<iframe src="https://hal9.com/ujavso/risingincome-bot?embed&amp;guest" width="100%" height="400"></iframe>
+</section>
+<section id="looking-forward" class="level2">
+<h2 class="anchored" data-anchor-id="looking-forward">Looking Forward</h2>
+<p>This project represents more than just a technological experiment—it’s a bridge between traditional investment wisdom and modern accessibility. While the underlying technology (running on hardware comparable to a PS5 Pro) is impressive, what truly matters is how it helps preserve and transmit valuable knowledge across generations.</p>
+<p>The future of financial education might just lie in this blend of time-tested wisdom and cutting-edge technology. By creating focused AI interfaces for specific, high-quality sources, we can maintain the depth and nuance of traditional literature while making it more accessible and interactive for modern learners.</p>
 
 
+</section>
+</section>
 
 <p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

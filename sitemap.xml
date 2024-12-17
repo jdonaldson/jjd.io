@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.jjd.io/posts/quarto.html</loc>
-    <lastmod>2024-09-06T22:01:53.215Z</lastmod>
+    <loc>http://www.jjd.io/blog.html</loc>
+    <lastmod>2024-12-17T20:56:08.152Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/rumpus.html</loc>
-    <lastmod>2024-09-06T22:01:53.215Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/cv.html</loc>
-    <lastmod>2024-09-06T22:01:53.167Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
-    <lastmod>2024-09-06T22:01:53.199Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/blog.html</loc>
-    <lastmod>2024-09-06T22:01:53.167Z</lastmod>
+    <lastmod>2024-12-17T20:56:08.216Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/index.html</loc>
-    <lastmod>2024-09-06T22:01:53.199Z</lastmod>
+    <lastmod>2024-12-17T20:56:08.184Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/cv.html</loc>
+    <lastmod>2024-12-17T20:56:08.152Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/resume.html</loc>
-    <lastmod>2024-09-06T22:01:53.215Z</lastmod>
+    <lastmod>2024-12-17T20:56:08.216Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
+    <lastmod>2024-12-17T20:56:08.184Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/quarto.html</loc>
+    <lastmod>2024-12-17T20:56:08.212Z</lastmod>
   </url>
 </urlset>
