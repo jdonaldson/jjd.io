@@ -10,9 +10,11 @@ categories:
   - Agent
 ---
 
-# When AI Meets Family Legacy: A New Way to Interface with Investment
+![Book Bot](images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png){.preview-image}
 
-Literature In an era where ChatGPT makes headlines and generative AI seems to
+# When AI Meets Family Legacy: A New Way to Interface with Investment Literature
+
+In an era where ChatGPT makes headlines and generative AI seems to
 be everywhere, traditional books might appear antiquated. Yet, there's
 something powerful about the permanence of printed wisdom—especially when it
 captures pivotal moments in financial history and personal (and humbling)
