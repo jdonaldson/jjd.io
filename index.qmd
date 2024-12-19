@@ -20,9 +20,6 @@ research, data science, and machine learning. My journey has led me from
 academia to industry, and back again.  I'm always eager to learn something
 complex, and turn it into something beautiful.
 
-For a more formal breakdown on my career, check out my [CV](cv.qmd)
-
-
 ## What I know
 
 My expertise encompasses model optimization, time series analysis, anomaly
