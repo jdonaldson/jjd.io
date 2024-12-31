@@ -55,7 +55,8 @@ machine learning concepts at the [University of
 Washington](https://www.pce.uw.edu/). I also served on the UW Advisory Board
 for the School of Professional and Continuing Education. In the open-source
 space, I developed a Lua target for the [Haxe language](https://haxe.org),
-which wound up enabling video games such as Pokemon Sword & Shield to run
+which wound up enabling video games such as
+[Pokemon Sword & Shield](https://www.youtube.com/watch?v=uBYORdr_TY8) to run
 efficiently on the Nintendo Switch. Additionally, I mentored graduate students
 in data science through [UCLA](https://grad.ucla.edu/)’s program and co-hosted
 a data science competition with [Boston Day Academy](https://www.bdea.org/).
