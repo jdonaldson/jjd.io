@@ -2,10 +2,10 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/intelligence_chases_chaos.html",
       "/posts/book_bot.html",
       "/posts/rumpus.html",
-      "/posts/quarto.html",
-      "/posts/intelligence_chases_chaos.html"
+      "/posts/quarto.html"
     ]
   }
 ]
