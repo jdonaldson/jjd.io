@@ -2,7 +2,7 @@
 title: "Intelligence Chases Chaos"
 description: "The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn't infinite. It’s structured. And that structure is fractal."
 author: "Justin Donaldson"
-date: "2/3/2024"
+date: "2/3/2025"
 
 categories:
   - AI
