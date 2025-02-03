@@ -62,9 +62,10 @@ some of his most recent insight on it [here](https://arxiv.org/pdf/2102.12627)
 More concretely, techniques like fractal interpolation and fractal compression
 have direct computational analogues in how neural networks learn and
 generalize. Both involve recursive strategies for capturing complex patterns at
-multiple scales of resolution.  This holds for images in several senses.  Transformer
-models can "hallucinate" parts of an image at any scale, and language models can
-condense or expand text handily through summary or extrapolation.
+multiple scales of resolution.  This holds for images and text in several
+senses.  Transformer models can "hallucinate" parts of an image at any scale,
+and language models can condense or expand text handily through summary or
+extrapolation.
 
 ## The Fractal Shortcut to Understanding
 
@@ -100,11 +101,11 @@ in finance can detect patterns even seasoned traders miss. And why AI in
 science is accelerating discoveries faster than human intuition alone ever
 could.
 
-Intelligence—ours or artificial—isn’t ultimately about conquering Chaos. It’s
+Intelligence—ours or artificial—isn’t ultimately about defeating Chaos. It’s
 about finding its shape in the areas we care about, and learning how to ride
-its back.  Part of my goal this year is to integrate more fractal consideration
-of data in my projects this year.... Oh and also to remember to hold on with
-both hands.
+its back when necessary.  Part of my goal this year is to integrate more
+fractal consideration of data in my projects this year.... Oh and also to
+remember to hold on with both hands.
 
 ![Riding a Bull](images/omgjjd_cowboy_riding_the_back_of_a_bull_named_chaos._norman_roc_51afd6bd-7c0a-447b-a02b-1cad5813af32.png)
 
