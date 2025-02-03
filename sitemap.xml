@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.jjd.io/blog.html</loc>
-    <lastmod>2024-12-31T05:04:55.304Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/posts/rumpus.html</loc>
-    <lastmod>2024-12-31T05:04:55.364Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/index.html</loc>
-    <lastmod>2024-12-31T05:04:55.336Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/cv.html</loc>
-    <lastmod>2024-12-31T05:04:55.304Z</lastmod>
-  </url>
-  <url>
     <loc>http://www.jjd.io/resume.html</loc>
-    <lastmod>2024-12-31T05:04:55.364Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
-    <lastmod>2024-12-31T05:04:55.336Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/posts/book_bot.html</loc>
-    <lastmod>2024-12-31T05:04:55.336Z</lastmod>
+    <lastmod>2025-02-03T22:17:42.814Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/quarto.html</loc>
-    <lastmod>2024-12-31T05:04:55.364Z</lastmod>
+    <lastmod>2025-02-03T22:17:42.814Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/intelligence_chases_chaos.html</loc>
+    <lastmod>2025-02-03T22:17:42.814Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/index.html</loc>
+    <lastmod>2025-02-03T22:17:42.774Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/blog.html</loc>
+    <lastmod>2025-02-03T22:17:42.748Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/cv.html</loc>
+    <lastmod>2025-02-03T22:17:42.748Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/book_bot.html</loc>
+    <lastmod>2025-02-03T22:17:42.775Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/rumpus.html</loc>
+    <lastmod>2025-02-03T22:17:42.814Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
+    <lastmod>2025-02-03T22:17:42.774Z</lastmod>
   </url>
 </urlset>
