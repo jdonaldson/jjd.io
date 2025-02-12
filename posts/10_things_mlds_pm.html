@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2025-02-12">
+<meta name="description" content="Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome.">
 
-<title>Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.</title>
+<title>10 Things an AI Project Manager Needs To Know – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-453bbb6d1d9cb7fba2a81fb4686694e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-453bbb6d1d9cb7fba2a81fb4686694e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
 
 <script type="text/javascript">
@@ -108,61 +80,34 @@ gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/images/sisters.jpeg">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="10 Things an AI Project Manager Needs To Know – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome.">
+<meta property="og:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell._children_programming_an_AI_af3ffb58-9afe-4038-beed-3babfd6e7005.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta property="og:image:alt" content="The Three Sisters Mountains in Sisters, Oregon">
-<meta name="twitter:title" content="Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/images/sisters.jpeg">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
+<meta name="twitter:title" content="10 Things an AI Project Manager Needs To Know – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome.">
+<meta name="twitter:image" content="http://www.jjd.io/posts/images/omgjjd_norman_rockwell._children_programming_an_AI_af3ffb58-9afe-4038-beed-3babfd6e7005.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="The Three Sisters Mountains in Sisters, Oregon">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1024">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.jpeg" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.jpeg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -173,15 +118,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">cv</span></a>
   </li>  
 </ul>
@@ -217,22 +162,42 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QWdlbnQ=">Agent <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZUdlbg==">CodeGen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmxvZw==">blog <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z3B1">gpu <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW52ZXN0aW5n">investing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGxt">llm <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dW5yYWlk">unraid <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ogni Parte ad Ogni Parte Splende</h1>
-</div>
+<h1 class="title">10 Things an AI Project Manager Needs To Know</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">gpu</div>
+    <div class="quarto-category">llm</div>
+    <div class="quarto-category">unraid</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Donaldson </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 12, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -242,205 +207,52 @@ window.Quarto = {
 </header>
 
 
-<p><em>“Each part to each part shines”</em></p>
-<p>This is the personal blog of Justin Donaldson. You can read the entries below, or learn more <a href="./index.html">about me</a>. You can also check out my <a href="./cv.html">CV</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./index.html"><img src="images/sisters.jpeg" class="img-fluid figure-img" alt="The Three Sisters Mountains in Sisters, Oregon"></a></p>
-<figcaption>The Three Sisters Mountains in Sisters, Oregon</figcaption>
+<p><img src="images/omgjjd_norman_rockwell._children_programming_an_AI_af3ffb58-9afe-4038-beed-3babfd6e7005.png" class="preview-image img-fluid figure-img"></p>
+<figcaption>Things to Know About AI Management</figcaption>
 </figure>
 </div>
+<section id="data-is-everything-and-its-often-messy" class="level2">
+<h2 class="anchored" data-anchor-id="data-is-everything-and-its-often-messy">1. Data is Everything (And It’s Often Messy)</h2>
+<p><img src="images/omgjjd_norman_rockwell._messy_room_and_not_much_time_to_clean_i_199bfde1-85fc-42bc-a48f-443e05f2ba0c.png" class="img-fluid" alt="Messy Data"> ML models live and die by the quality of data. Unlike traditional software, where development is more deterministic, ML projects require extensive data collection, cleaning, and preprocessing before even getting to model training. PMs should allocate time and resources for proper data preparation rather than assuming clean datasets exist.</p>
+</section>
+<section id="models-are-not-magic-they-require-experimentation" class="level2">
+<h2 class="anchored" data-anchor-id="models-are-not-magic-they-require-experimentation">2. Models Are Not Magic – They Require Experimentation</h2>
+<p><img src="images/omgjjd_norman_rockwell._Models_are_not_magic._They_require_expe_8c440650-e881-4580-afcc-e7b0a748722c.png" class="img-fluid" alt="Intelligence Requires Experimentation"> ML isn’t just about feeding data into an algorithm and getting perfect results. It involves iterative experimentation, hyperparameter tuning, and evaluation to find the best-performing model. Rushing the process or setting unrealistic deadlines can lead to poor model performance and technical debt.</p>
+</section>
+<section id="define-success-metrics-early" class="level2">
+<h2 class="anchored" data-anchor-id="define-success-metrics-early">3. Define Success Metrics Early</h2>
+<p><img src="images/omgjjd_norman_rockwell._multi-ethnic._define_sucess_metrics_ear_00c79b48-3650-4165-8681-7cb7ee60fd54.png" class="img-fluid" alt="Defining Success"> Project Managers should work with ML teams to define clear, measurable success metrics upfront. Whether it’s accuracy, recall, precision, F1-score, or business KPIs, agreeing on success criteria helps avoid last-minute changes in expectations.</p>
+</section>
+<section id="ml-models-need-maintenance-and-monitoring" class="level2">
+<h2 class="anchored" data-anchor-id="ml-models-need-maintenance-and-monitoring">4. ML Models Need Maintenance and Monitoring</h2>
+<p><img src="images/omgjjd_norman_rockwell._multi-ethnic._robots_require_maintenanc_68f61ca3-00c0-4f6d-bd8d-648c9b35fa3b.png" class="img-fluid" alt="Some Maintenance Required"> Unlike traditional software, ML models degrade over time due to data drift and changing user behavior. Deployment is just the beginning—models require ongoing monitoring, retraining, and evaluation. PMs should plan for post-deployment maintenance and allocate resources accordingly.</p>
+</section>
+<section id="computational-costs-can-be-high" class="level2">
+<h2 class="anchored" data-anchor-id="computational-costs-can-be-high">5. Computational Costs Can Be High</h2>
+<p><img src="images/omgjjd_norman_rockwell._money_problems._04914a25-c5f1-4c36-b52a-3dfe88f50fe2.png" class="img-fluid" alt="Costs are High"> Training large ML models, especially deep learning models, requires significant computational resources. GPUs, TPUs, and cloud compute can be expensive. PMs should work with engineers to balance cost, performance, and feasibility when designing ML solutions.</p>
+</section>
+<section id="explainability-matters-but-its-not-always-easy" class="level2">
+<h2 class="anchored" data-anchor-id="explainability-matters-but-its-not-always-easy">6. Explainability Matters – But It’s Not Always Easy</h2>
+<p><img src="images/omgjjd_norman_rockwell._parents_looking_disappointed_at_kids_th_87f1f2b0-7dc2-4ab6-9f52-fdb26600b226.png" class="img-fluid" alt="Explainability Matters"> Stakeholders often ask, “Why did the model make this decision?” While some models (like decision trees) are interpretable, deep learning models can be black boxes. Expecting full explainability from every ML model is unrealistic, but PMs should work with engineers to determine an appropriate level of transparency.</p>
+</section>
+<section id="not-every-problem-needs-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="not-every-problem-needs-machine-learning">7. Not Every Problem Needs Machine Learning</h2>
+<p><img src="images/omgjjd_norman_rockwell._multi-ethnic._Not_every_problem_needs_m_664350cd-c96b-4175-a167-7bd4796b353c.png" class="img-fluid" alt="AI Not Required"> Just because ML is trendy doesn’t mean it’s always the best solution. Many problems can be solved with simpler heuristics, rule-based systems, or traditional analytics. PMs should work with engineers to evaluate whether ML is the right tool for the job rather than assuming it’s always necessary.</p>
+</section>
+<section id="data-privacy-and-compliance-are-critical" class="level2">
+<h2 class="anchored" data-anchor-id="data-privacy-and-compliance-are-critical">8. Data Privacy and Compliance Are Critical</h2>
+<p><img src="images/omgjjd_norman_rockwell._multi-ethnic._children._courtoom_argume_178079bc-979f-4ce9-90f9-f7826db8db42.png" class="img-fluid" alt="Courtroom Drama"> ML engineers need to follow strict data privacy laws like GDPR and CCPA. PMs should be aware of these regulations and plan projects with compliance in mind, ensuring legal and ethical handling of user data. ## 9. Data Scientists and ML Engineers Are Not the Same <img src="images/omgjjd_norman_rockwell._data_scientists_and_ML_engineers_are_no_6f4b16c4-d547-47f9-b7a6-3f481e9c79b1.png" class="img-fluid" alt="Different Breed"> While both roles work with data, data scientists focus on analytics, insights, and modeling, while ML engineers focus on productionizing and scaling models. Understanding this distinction helps PMs allocate tasks more effectively and set realistic expectations.</p>
+</section>
+<section id="communication-is-key-avoid-the-black-box-syndrome" class="level2">
+<h2 class="anchored" data-anchor-id="communication-is-key-avoid-the-black-box-syndrome">10. Communication Is Key – Avoid the “Black Box” Syndrome</h2>
+<p><img src="images/omgjjd_norman_rockwell._multi-ethnic_workplace._mysterious_blac_32589cdc-96d7-4d32-b1b8-d0ffab14d73c.png" class="img-fluid" alt="Mysterious Black Box"> ML engineers and data scientists sometimes get deep into technical work, making it hard for PMs and stakeholders to follow. At the same time, vague project requirements can lead to misalignment. Regular check-ins, clear documentation, and collaborative discussions ensure everyone stays on the same page.</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="Z3B1JTJDbGxtJTJDdW5yYWlk" data-listing-date-sort="1739318400000" data-listing-file-modified-sort="1739392317875" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="487">
-<div class="thumbnail">
-<p><a href="./posts/10_things_mlds_pm.html" class="no-external"></a></p><a href="./posts/10_things_mlds_pm.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_norman_rockwell._children_programming_an_AI_af3ffb58-9afe-4038-beed-3babfd6e7005.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/10_things_mlds_pm.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/10_things_mlds_pm.html" class="no-external">10 Things an AI Project Manager Needs To Know</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/10_things_mlds_pm.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Z3B1'); return false;">
-gpu
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('bGxt'); return false;">
-llm
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('dW5yYWlk'); return false;">
-unraid
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/10_things_mlds_pm.html" class="no-external">Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/10_things_mlds_pm.html" class="no-external">
-<div class="listing-date">
-Feb 12, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1739392317998" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="696">
-<div class="thumbnail">
-<p><a href="./posts/intelligence_chases_chaos.html" class="no-external"></a></p><a href="./posts/intelligence_chases_chaos.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/intelligence_chases_chaos.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">Intelligence Chases Chaos</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">
-<div class="listing-date">
-Feb 3, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1739392317875" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
-<div class="thumbnail">
-<p><a href="./posts/book_bot.html" class="no-external"></a></p><a href="./posts/book_bot.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/book_bot.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/book_bot.html" class="no-external">Creating an LLM Agent for Books</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/book_bot.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('aW52ZXN0aW5n'); return false;">
-investing
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnQ='); return false;">
-Agent
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/book_bot.html" class="no-external">Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/book_bot.html" class="no-external">
-<div class="listing-date">
-Dec 16, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1739392317999" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail">
-<p><a href="./posts/rumpus.html" class="no-external"></a></p><a href="./posts/rumpus.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/rumpus.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/rumpus.html" class="no-external">Automated Coding with LLMs: Making a Rumpus</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/rumpus.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">
-LLM
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZUdlbg=='); return false;">
-CodeGen
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/rumpus.html" class="no-external">LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/rumpus.html" class="no-external">
-<div class="listing-date">
-Jul 22, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1739392317999" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
-<div class="thumbnail">
-<p><a href="./posts/quarto.html" class="no-external"></a></p><a href="./posts/quarto.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/quarto.webp"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/quarto.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/quarto.html" class="no-external">Blogging with Quarto</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/quarto.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('YmxvZw=='); return false;">
-blog
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/quarto.html" class="no-external">Creating my Webpage with Quarto</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/quarto.html" class="no-external">
-<div class="listing-date">
-Apr 15, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

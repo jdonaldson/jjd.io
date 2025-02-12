@@ -1,39 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.jjd.io/resume.html</loc>
-    <lastmod>2025-02-03T23:04:49.752Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/posts/quarto.html</loc>
-    <lastmod>2025-02-03T23:04:49.752Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/posts/intelligence_chases_chaos.html</loc>
-    <lastmod>2025-02-03T23:04:49.752Z</lastmod>
+    <loc>http://www.jjd.io/blog.html</loc>
+    <lastmod>2025-02-12T20:31:57.848Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/index.html</loc>
-    <lastmod>2025-02-03T23:04:49.712Z</lastmod>
+    <lastmod>2025-02-12T20:31:57.874Z</lastmod>
   </url>
   <url>
-    <loc>http://www.jjd.io/blog.html</loc>
-    <lastmod>2025-02-03T23:04:49.686Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/cv.html</loc>
-    <lastmod>2025-02-03T23:04:49.686Z</lastmod>
+    <loc>http://www.jjd.io/posts/intelligence_chases_chaos.html</loc>
+    <lastmod>2025-02-12T20:31:57.998Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/book_bot.html</loc>
-    <lastmod>2025-02-03T23:04:49.713Z</lastmod>
+    <lastmod>2025-02-12T20:31:57.875Z</lastmod>
   </url>
   <url>
-    <loc>http://www.jjd.io/posts/rumpus.html</loc>
-    <lastmod>2025-02-03T23:04:49.752Z</lastmod>
+    <loc>http://www.jjd.io/posts/quarto.html</loc>
+    <lastmod>2025-02-12T20:31:57.999Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/resume.html</loc>
+    <lastmod>2025-02-12T20:31:57.999Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
-    <lastmod>2025-02-03T23:04:49.712Z</lastmod>
+    <lastmod>2025-02-12T20:31:57.875Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/rumpus.html</loc>
+    <lastmod>2025-02-12T20:31:57.999Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/10_things_mlds_pm.html</loc>
+    <lastmod>2025-02-12T20:31:57.875Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/cv.html</loc>
+    <lastmod>2025-02-12T20:31:57.849Z</lastmod>
   </url>
 </urlset>
