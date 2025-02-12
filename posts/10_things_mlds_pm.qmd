@@ -6,9 +6,9 @@ author: "Justin Donaldson"
 date: "2/12/2025"
 draft: false
 categories:
-  - gpu
-  - llm
-  - unraid
+  - AI
+  - Engineering
+  - Best Practices
 ---
 
 ![Things to Know About AI Management](images/omgjjd_norman_rockwell._children_programming_an_AI_af3ffb58-9afe-4038-beed-3babfd6e7005.png){.preview-image}
