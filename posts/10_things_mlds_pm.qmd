@@ -45,6 +45,7 @@ Just because ML is trendy doesn’t mean it’s always the best solution. Many p
 ## 8. Data Privacy and Compliance Are Critical
 ![Courtroom Drama](images/omgjjd_norman_rockwell._multi-ethnic._children._courtoom_argume_178079bc-979f-4ce9-90f9-f7826db8db42.png)
 ML engineers need to follow strict data privacy laws like GDPR and CCPA. PMs should be aware of these regulations and plan projects with compliance in mind, ensuring legal and ethical handling of user data.
+
 ## 9. Data Scientists and ML Engineers Are Not the Same
 ![Different Breed](images/omgjjd_norman_rockwell._data_scientists_and_ML_engineers_are_no_6f4b16c4-d547-47f9-b7a6-3f481e9c79b1.png)
 While both roles work with data, data scientists focus on analytics, insights, and modeling, while ML engineers focus on productionizing and scaling models. Understanding this distinction helps PMs allocate tasks more effectively and set realistic expectations.
