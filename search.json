@@ -4,7 +4,7 @@
     "href": "blog.html",
     "title": "Ogni Parte ad Ogni Parte Splende",
     "section": "",
-    "text": "“Each part to each part shines”\nThis is the personal blog of Justin Donaldson. You can read the entries below, or learn more about me. You can also check out my CV\n\n\n\nThe Three Sisters Mountains in Sisters, Oregon\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n10 Things an AI Project Manager Needs To Know\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntelligence Chases Chaos\n\n\n\n\n\n\nAI\n\n\n\nThe world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.\n\n\n\n\n\nFeb 3, 2025\n\n\nJustin Donaldson\n\n\n\n\n\n\n\n\n\n\n\n\nCreating an LLM Agent for Books\n\n\n\n\n\n\nAI\n\n\ninvesting\n\n\nAgent\n\n\n\nPaper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.\n\n\n\n\n\nDec 16, 2024\n\n\nJustin Donaldson\n\n\n\n\n\n\n\n\n\n\n\n\nAutomated Coding with LLMs: Making a Rumpus\n\n\n\n\n\n\nLLM\n\n\nCodeGen\n\n\n\nLLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.\n\n\n\n\n\nJul 22, 2024\n\n\nJustin Donaldson\n\n\n\n\n\n\n\n\n\n\n\n\nBlogging with Quarto\n\n\n\n\n\n\nblog\n\n\n\nCreating my Webpage with Quarto\n\n\n\n\n\nApr 15, 2024\n\n\nJustin Donaldson\n\n\n\n\n\n\nNo matching items\n\n© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
+    "text": "“Each part to each part shines”\nThis is the personal blog of Justin Donaldson. You can read the entries below, or learn more about me. You can also check out my CV\n\n\n\nThe Three Sisters Mountains in Sisters, Oregon\n\n\n\n\n\n\n\n\n\n\n\n&lt;!-- img(9CEB782EFEE6)[progressive=false, height=]:listing:posts/10_things_mlds_pm.html --&gt;\n\n\n\n\n10 Things an AI Project Manager Needs To Know\n\n\n\n\n\n&lt;!-- desc(5A0113B34292)[max=175]:posts/10_things_mlds_pm.html --&gt;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIntelligence Chases Chaos\n\n\n\n\n\n\nAI\n\n\n\nThe world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.\n\n\n\n\n\nFeb 3, 2025\n\n\nJustin Donaldson\n\n\n\n\n\n\n\n\n\n\n\n\nCreating an LLM Agent for Books\n\n\n\n\n\n\nAI\n\n\ninvesting\n\n\nAgent\n\n\n\nPaper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.\n\n\n\n\n\nDec 16, 2024\n\n\nJustin Donaldson\n\n\n\n\n\n\n\n\n\n\n\n\nAutomated Coding with LLMs: Making a Rumpus\n\n\n\n\n\n\nLLM\n\n\nCodeGen\n\n\n\nLLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.\n\n\n\n\n\nJul 22, 2024\n\n\nJustin Donaldson\n\n\n\n\n\n\n\n\n\n\n\n\nBlogging with Quarto\n\n\n\n\n\n\nblog\n\n\n\nCreating my Webpage with Quarto\n\n\n\n\n\nApr 15, 2024\n\n\nJustin Donaldson\n\n\n\n\n\n\nNo matching items\n\n© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
   },
   {
     "objectID": "index.html",
@@ -194,83 +194,6 @@
     "title": "Automated Coding with LLMs: Making a Rumpus",
     "section": "",
     "text": "TODO\n\n\nThis post introduces a simple tool, called rumpus that helps me keep track of TODOs, etc. using the macos menubar. It’s not that interesting on its own. What’s interesting is the fact that it’s written completely using a local LLM in 15 minutes. I wanted to write a quick post on the how and why of it, and how I see programming beginning to change with the increasing power that “off the shelf” LLM models can provide.\nAs a programmer, there are always minor improvements or tweaks I wish I could implement. However, the cost/benefit tradeoff often deters me from spending time on these enhancements. Recently, I’ve been exploring how to integrate large language models (LLMs) into my workflow to streamline this process.\nI prefer keeping reminders in the menubar at the top of my screen for easy access, but I find the flexibility of conventional “Todo” apps lacking. To address this, I started using TODO, FIXME, and other comments throughout my code, often accompanied by emojis. These comments are typically actionable and convey more information than a simple tag or word. My menubar is already pretty crowded enough!\nHere’s a sample piece of code with such comments:\n# TODO: Implement the function to calculate the factorial of a number\ndef factorial(n):\n    # XXX: This is a placeholder implementation\n    if n == 0:\n        return 1\n    else:\n        # FIXME: This recursive call might cause a stack overflow for large n\n        return n * factorial(n - 1)\n\n# TODO: Add proper error handling for invalid input\ndef safe_factorial(n):\n    try:\n        if n &lt; 0:\n            raise ValueError(\"Negative numbers are not allowed\")\n        return factorial(n)\n    except TypeError:\n        print(\"Input must be an integer\")\n    except ValueError as ve:\n        print(ve)\n\n# NOTE: This is a test function to demonstrate the usage of factorial functions\ndef test_factorial():\n    test_cases = [0, 1, 5, -3, 'a']\n    for case in test_cases:\n        print(f\"Factorial of {case}: {safe_factorial(case)}\")\n\n# FIXME: Ensure that the main guard is correctly implemented\nif __name__ == \"__main__\":\n    test_factorial()\nThese comments help track necessary actions across a project. While most IDEs display TODOs in a separate panel, my TODOs are scattered across multiple files, including markdown files that don’t require an editor. For instance, here’s a basic TODO panel from Eclipse. It’s nice, but Eclipse is a memory hog. I don’t want to open it just to see my list.\n\n\n\nExample IDE showing TODOS\n\n\nI wanted a centralized list of these flags visible in the menubar, which is always accessible regardless of the active program.\nThe rump library simplifies menubar configuration, but it requires reading the API documentation and managing basic UI functionality (e.g., showing file matches under the emoji and opening them when clicked). I started with a simple “Hello World” example using rumps, with the help of an LLM:\nimport rumps\n\nclass HelloWorldApp(rumps.App):\n    def __init__(self):\n        super(HelloWorldApp, self).__init__(\"Hello World\")\n\nif __name__ == \"__main__\":\n    HelloWorldApp().run()\nFrom there, it only took a few iterations to develop a script that processes path/extension arguments, searches through files, and tabulates the hits into emoji-based entries in the menubar. The final result looks like this:\n\n\n\nrumpus\n\n\nThis tally of tasks and reminders in my menubar was satisfying to create end-to-end using a library I wanted to work with and an LLM to help compose the functionality. Coding the entire thing took about 15 minutes, far less time than writing this blog post.\nAutomated coding is reaching a point where it can significantly shift the cost/benefit analysis for certain tasks. While there may still be challenges, I believe the resulting script is of higher quality than my usual “15 minute” hacks. I also learned that it’s a good idea to use a combination of libraries and tools as a starting point, rather than just letting the model decide itself what to use.\nThere’s certainly more to be written here, but it’s not bad for 15 minutes of coding!\n\n\n\n© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html",
-    "href": "posts/10_things_mlds_pm.html",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "Things to Know About AI Management\n\n\nA successful AI project manager needs to embrace uncertainties, balancing technical feasibility with business goals. It’s not just about building a model—it’s about understanding when machine learning is the right tool, defining success metrics early, and ensuring models remain useful long after deployment.\nPerhaps most importantly, AI project managers act as the bridge between data scientists, engineers, and business stakeholders. Without strong communication, projects can devolve into a “black box” where decisions are made without clear explanations. To keep everyone aligned, PMs must translate technical complexities into practical insights, ensuring AI delivers real-world impact.\nThis guide covers ten crucial things every AI project manager needs to know, from managing messy data to avoiding costly mistakes.\n\n\n ML models live and die by the quality of data. Unlike traditional software, where development is more deterministic, ML projects require extensive data collection, cleaning, and preprocessing before even getting to model training. PMs should allocate time and resources for proper data preparation rather than assuming clean datasets exist.\n\n\n\n ML isn’t just about feeding data into an algorithm and getting perfect results. It involves iterative experimentation, hyperparameter tuning, and evaluation to find the best-performing model. Rushing the process or setting unrealistic deadlines can lead to poor model performance and technical debt.\n\n\n\n Project Managers should work with ML teams to define clear, measurable success metrics upfront. Whether it’s accuracy, recall, precision, F1-score, or business KPIs, agreeing on success criteria helps avoid last-minute changes in expectations.\n\n\n\n Unlike traditional software, ML models degrade over time due to data drift and changing user behavior. Deployment is just the beginning—models require ongoing monitoring, retraining, and evaluation. PMs should plan for post-deployment maintenance and allocate resources accordingly.\n\n\n\n Training large ML models, especially deep learning models, requires significant computational resources. GPUs, TPUs, and cloud compute can be expensive. PMs should work with engineers to balance cost, performance, and feasibility when designing ML solutions.\n\n\n\n Stakeholders often ask, “Why did the model make this decision?” While some models (like decision trees) are interpretable, deep learning models can be black boxes. Expecting full explainability from every ML model is unrealistic, but PMs should work with engineers to determine an appropriate level of transparency.\n\n\n\n Just because ML is trendy doesn’t mean it’s always the best solution. Many problems can be solved with simpler heuristics, rule-based systems, or traditional analytics. PMs should work with engineers to evaluate whether ML is the right tool for the job rather than assuming it’s always necessary.\n\n\n\n ML engineers need to follow strict data privacy laws like GDPR and CCPA. PMs should be aware of these regulations and plan projects with compliance in mind, ensuring legal and ethical handling of user data.\n\n\n\n While both roles work with data, data scientists focus on analytics, insights, and modeling, while ML engineers focus on productionizing and scaling models. Understanding this distinction helps PMs allocate tasks more effectively and set realistic expectations.\n\n\n\n ML engineers and data scientists sometimes get deep into technical work, making it hard for PMs and stakeholders to follow. At the same time, vague project requirements can lead to misalignment. Regular check-ins, clear documentation, and collaborative discussions ensure everyone stays on the same page.\n© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#data-is-everything-and-its-often-messy",
-    "href": "posts/10_things_mlds_pm.html#data-is-everything-and-its-often-messy",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "ML models live and die by the quality of data. Unlike traditional software, where development is more deterministic, ML projects require extensive data collection, cleaning, and preprocessing before even getting to model training. PMs should allocate time and resources for proper data preparation rather than assuming clean datasets exist."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#models-are-not-magic-they-require-experimentation",
-    "href": "posts/10_things_mlds_pm.html#models-are-not-magic-they-require-experimentation",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "ML isn’t just about feeding data into an algorithm and getting perfect results. It involves iterative experimentation, hyperparameter tuning, and evaluation to find the best-performing model. Rushing the process or setting unrealistic deadlines can lead to poor model performance and technical debt."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#define-success-metrics-early",
-    "href": "posts/10_things_mlds_pm.html#define-success-metrics-early",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "Project Managers should work with ML teams to define clear, measurable success metrics upfront. Whether it’s accuracy, recall, precision, F1-score, or business KPIs, agreeing on success criteria helps avoid last-minute changes in expectations."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#ml-models-need-maintenance-and-monitoring",
-    "href": "posts/10_things_mlds_pm.html#ml-models-need-maintenance-and-monitoring",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "Unlike traditional software, ML models degrade over time due to data drift and changing user behavior. Deployment is just the beginning—models require ongoing monitoring, retraining, and evaluation. PMs should plan for post-deployment maintenance and allocate resources accordingly."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#computational-costs-can-be-high",
-    "href": "posts/10_things_mlds_pm.html#computational-costs-can-be-high",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "Training large ML models, especially deep learning models, requires significant computational resources. GPUs, TPUs, and cloud compute can be expensive. PMs should work with engineers to balance cost, performance, and feasibility when designing ML solutions."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#explainability-matters-but-its-not-always-easy",
-    "href": "posts/10_things_mlds_pm.html#explainability-matters-but-its-not-always-easy",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "Stakeholders often ask, “Why did the model make this decision?” While some models (like decision trees) are interpretable, deep learning models can be black boxes. Expecting full explainability from every ML model is unrealistic, but PMs should work with engineers to determine an appropriate level of transparency."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#not-every-problem-needs-machine-learning",
-    "href": "posts/10_things_mlds_pm.html#not-every-problem-needs-machine-learning",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "Just because ML is trendy doesn’t mean it’s always the best solution. Many problems can be solved with simpler heuristics, rule-based systems, or traditional analytics. PMs should work with engineers to evaluate whether ML is the right tool for the job rather than assuming it’s always necessary."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#data-privacy-and-compliance-are-critical",
-    "href": "posts/10_things_mlds_pm.html#data-privacy-and-compliance-are-critical",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "ML engineers need to follow strict data privacy laws like GDPR and CCPA. PMs should be aware of these regulations and plan projects with compliance in mind, ensuring legal and ethical handling of user data."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#data-scientists-and-ml-engineers-are-not-the-same",
-    "href": "posts/10_things_mlds_pm.html#data-scientists-and-ml-engineers-are-not-the-same",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "While both roles work with data, data scientists focus on analytics, insights, and modeling, while ML engineers focus on productionizing and scaling models. Understanding this distinction helps PMs allocate tasks more effectively and set realistic expectations."
-  },
-  {
-    "objectID": "posts/10_things_mlds_pm.html#communication-is-key-avoid-the-black-box-syndrome",
-    "href": "posts/10_things_mlds_pm.html#communication-is-key-avoid-the-black-box-syndrome",
-    "title": "10 Things an AI Project Manager Needs To Know",
-    "section": "",
-    "text": "ML engineers and data scientists sometimes get deep into technical work, making it hard for PMs and stakeholders to follow. At the same time, vague project requirements can lead to misalignment. Regular check-ins, clear documentation, and collaborative discussions ensure everyone stays on the same page."
   },
   {
     "objectID": "cv.html",
