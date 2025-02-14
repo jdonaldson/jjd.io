@@ -1,10 +1,10 @@
-# 
+
 ---
 title: "10 Things an AI Project Manager Needs To Know"
 description: "Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome."
 author: "Justin Donaldson"
 date: "2/12/2025"
-draft: true
+draft: false
 categories:
   - AI
   - Engineering
