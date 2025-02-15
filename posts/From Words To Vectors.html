@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2025-02-14">
+<meta name="description" content="Word embeddings transform individual words into dense numerical vectors in a high-dimensional space, where geometric relationships mirror semantic meaning. Through neural network training that learns from how words appear together in context, the system converts simple tokenized text into rich representations where similar words cluster together and vector arithmetic can reveal complex relationships. This mathematical model of language meaning enables machines to understand the nuanced connections between words that humans grasp intuitively, powering a wide range of natural language processing applications.">
 
-<title>Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.</title>
+<title>From Words to Vectors: The Journey of Neural Word Embeddings – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +26,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-453bbb6d1d9cb7fba2a81fb4686694e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-453bbb6d1d9cb7fba2a81fb4686694e5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
 
 <script type="text/javascript">
@@ -107,62 +79,34 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
+<script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/images/sisters.jpeg">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="From Words to Vectors: The Journey of Neural Word Embeddings – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="Word embeddings transform individual words into dense numerical vectors in a high-dimensional space, where geometric relationships mirror semantic meaning. Through neural network training that learns from how words appear together in context, the system converts simple tokenized text into rich representations where similar words cluster together and vector arithmetic can reveal complex relationships. This mathematical model of language meaning enables machines to understand the nuanced connections between words that humans grasp intuitively, powering a wide range of natural language processing applications.">
+<meta property="og:image" content="http://www.jjd.io/posts/images/me.jpeg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta property="og:image:alt" content="The Three Sisters Mountains in Sisters, Oregon">
-<meta name="twitter:title" content="Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/images/sisters.jpeg">
+<meta name="twitter:title" content="From Words to Vectors: The Journey of Neural Word Embeddings – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="Word embeddings transform individual words into dense numerical vectors in a high-dimensional space, where geometric relationships mirror semantic meaning. Through neural network training that learns from how words appear together in context, the system converts simple tokenized text into rich representations where similar words cluster together and vector arithmetic can reveal complex relationships. This mathematical model of language meaning enables machines to understand the nuanced connections between words that humans grasp intuitively, powering a wide range of natural language processing applications.">
+<meta name="twitter:image" content="http://www.jjd.io/posts/images/me.jpeg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="The Three Sisters Mountains in Sisters, Oregon">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.jpeg" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.jpeg" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -173,15 +117,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">cv</span></a>
   </li>  
 </ul>
@@ -217,22 +161,41 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(3)</span></div><div class="category" data-category="QWdlbnQ=">Agent <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QmVzdCUyMFByYWN0aWNlcw==">Best Practices <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZUdlbg==">CodeGen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RW1iZWRkaW5ncw==">Embeddings <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RW5naW5lZXJpbmc=">Engineering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TmV1cmFsJTIwTmV0d29ya3M=">Neural Networks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmxvZw==">blog <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW52ZXN0aW5n">investing <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ogni Parte ad Ogni Parte Splende</h1>
-</div>
+<h1 class="title">From Words to Vectors: The Journey of Neural Word Embeddings</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Neural Networks</div>
+    <div class="quarto-category">Embeddings</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    Word embeddings transform individual words into dense numerical vectors in a high-dimensional space, where geometric relationships mirror semantic meaning. Through neural network training that learns from how words appear together in context, the system converts simple tokenized text into rich representations where similar words cluster together and vector arithmetic can reveal complex relationships. This mathematical model of language meaning enables machines to understand the nuanced connections between words that humans grasp intuitively, powering a wide range of natural language processing applications.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Donaldson </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 14, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -242,241 +205,122 @@ window.Quarto = {
 </header>
 
 
-<p><em>“Each part to each part shines”</em></p>
-<p>This is the personal blog of Justin Donaldson. You can read the entries below, or learn more <a href="./index.html">about me</a>. You can also check out my <a href="./cv.html">CV</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="./index.html"><img src="images/sisters.jpeg" class="img-fluid figure-img" alt="The Three Sisters Mountains in Sisters, Oregon"></a></p>
-<figcaption>The Three Sisters Mountains in Sisters, Oregon</figcaption>
-</figure>
+<section id="what-are-embeddings" class="level1">
+<h1>What Are Embeddings?</h1>
+<p>Embeddings are numerical representations of objects (such as words, sentences, or images) in a continuous vector space. These representations capture semantic meaning, making it possible for machines to understand and compare them.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">graph LR
+    %% Main embedding concepts
+    E[Embeddings] --&gt; SE[Sentence Embeddings]
+    E --&gt; ME[Multi-Modal Embeddings]
+    E --&gt; DE[Document Embeddings]
+    
+    %% Media types
+    MT[Media Types] --&gt; T[Text]
+    MT --&gt; I[Images]
+    MT --&gt; A[Audio]
+    MT --&gt; V[Video]
+    
+    %% Embedding techniques for different media
+    T --&gt; TE[Text Embeddings]
+    T --&gt; SE
+    I --&gt; IE[Image Embeddings]
+    A --&gt; AE[Audio Embeddings]
+    V --&gt; VE[Video Embeddings]
+    
+    %% Relationships between embeddings
+    TE --&gt; ME
+    IE --&gt; ME
+    AE --&gt; ME
+    VE --&gt; ME
+    
+    %% Cross-modal connections
+    ME --&gt; CR[Cross-Modal Retrieval]
+    ME --&gt; MS[Multi-Modal Search]
+    
+    %% Properties
+    style E fill:#f9f,stroke:#333
+    style MT fill:#bbf,stroke:#333
+    style ME fill:#bfb,stroke:#333
+    style CR fill:#fbb,stroke:#333
+    style MS fill:#fbb,stroke:#333
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p>The core concept of embeddings branches into three main types:</p>
+<ul>
+<li>Sentence embeddings (specialized for text)</li>
+<li>Multi-modal embeddings (can handle multiple types of media)</li>
+<li>Document embeddings (for longer text)</li>
+</ul></li>
+<li><p>Different media types (text, images, audio, video) each have their own specialized embedding techniques</p></li>
+<li><p>All these individual embedding types can feed into multi-modal embeddings, which enable:</p>
+<ul>
+<li>Cross-modal retrieval (finding related content across different media types)</li>
+<li>Multi-modal search (searching across different types of media simultaneously)</li>
+</ul></li>
+</ol>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    subgraph Input[Input Processing]
+        T[Text Input] --&gt; TOK[Tokenization]
+        TOK --&gt; VOC[Vocabulary Creation]
+        VOC --&gt; OHE[One-Hot Encoding]
+    end
+
+    subgraph Training[Training Process]
+        OHE --&gt; NNI[Neural Network Input Layer]
+        NNI --&gt; HID[Hidden Layer]
+        HID --&gt; CTX[Context Learning]
+        
+        subgraph Context[Context Window]
+            CW[Sliding Window]
+            TW[Target Word]
+            SW[Surrounding Words]
+        end
+        
+        CTX --&gt; OPT[Optimization]
+        OPT --&gt; LSF[Loss Function]
+        LSF --&gt; BP[Backpropagation]
+        BP --&gt; UP[Update Weights]
+    end
+
+    subgraph Output[Embedding Result]
+        UP --&gt; WV[Word Vectors]
+        WV --&gt; VS[Vector Space]
+        VS --&gt; SIM[Semantic Similarities]
+        
+        SIM --&gt; |Similar words cluster together| REL[Related Words]
+        SIM --&gt; |Vector arithmetic possible| ANA[Analogies]
+        SIM --&gt; |Distance measures similarity| DIS[Word Relationships]
+    end
+
+    style Input fill:#e1f3ff,stroke:#333
+    style Training fill:#fff3e1,stroke:#333
+    style Output fill:#e1ffe1,stroke:#333
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
 </div>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="TmV1cmFsJTIwTmV0d29ya3MlMkNFbWJlZGRpbmdz" data-listing-date-sort="1739491200000" data-listing-file-modified-sort="1739588495508" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="644">
-<div class="thumbnail">
-<p><a href="./posts/From Words To Vectors.html" class="no-external"></a></p><a href="./posts/From Words To Vectors.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/From Words To Vectors.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/From Words To Vectors.html" class="no-external">From Words to Vectors: The Journey of Neural Word Embeddings</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/From Words To Vectors.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TmV1cmFsJTIwTmV0d29ya3M='); return false;">
-Neural Networks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RW1iZWRkaW5ncw=='); return false;">
-Embeddings
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/From Words To Vectors.html" class="no-external">Word embeddings transform individual words into dense numerical vectors in a high-dimensional space, where geometric relationships mirror semantic meaning. Through neural network training that learns from how words appear together in context, the system converts simple tokenized text into rich representations where similar words cluster together and vector arithmetic can reveal complex relationships. This mathematical model of language meaning enables machines to understand the nuanced connections between words that humans grasp intuitively, powering a wide range of natural language processing applications.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/From Words To Vectors.html" class="no-external">
-<div class="listing-date">
-Feb 14, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="QUklMkNFbmdpbmVlcmluZyUyQ0Jlc3QlMjBQcmFjdGljZXM=" data-listing-date-sort="1739318400000" data-listing-file-modified-sort="1739588495507" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="599">
-<div class="thumbnail">
-<p><a href="./posts/10_things_mlds_pm.html" class="no-external"></a></p><a href="./posts/10_things_mlds_pm.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_norman_rockwell._children_programming_an_AI_af3ffb58-9afe-4038-beed-3babfd6e7005.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/10_things_mlds_pm.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/10_things_mlds_pm.html" class="no-external">10 Things an AI Project Manager Needs To Know</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/10_things_mlds_pm.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('RW5naW5lZXJpbmc='); return false;">
-Engineering
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QmVzdCUyMFByYWN0aWNlcw=='); return false;">
-Best Practices
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/10_things_mlds_pm.html" class="no-external">Managing an AI project isn’t like traditional software development—it’s messy, experimental, and requires constant iteration. Data is rarely clean, models need fine-tuning, and deployment is just the beginning. Success comes from setting clear metrics, planning for maintenance, and knowing when ML is the right tool (and when it’s not). Most importantly, strong communication keeps everyone aligned and avoids the dreaded “black box” syndrome.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/10_things_mlds_pm.html" class="no-external">
-<div class="listing-date">
-Feb 12, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1739588495631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="696">
-<div class="thumbnail">
-<p><a href="./posts/intelligence_chases_chaos.html" class="no-external"></a></p><a href="./posts/intelligence_chases_chaos.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/intelligence_chases_chaos.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">Intelligence Chases Chaos</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">
-<div class="listing-date">
-Feb 3, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1739588495508" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
-<div class="thumbnail">
-<p><a href="./posts/book_bot.html" class="no-external"></a></p><a href="./posts/book_bot.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/book_bot.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/book_bot.html" class="no-external">Creating an LLM Agent for Books</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/book_bot.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">
-AI
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('aW52ZXN0aW5n'); return false;">
-investing
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnQ='); return false;">
-Agent
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/book_bot.html" class="no-external">Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/book_bot.html" class="no-external">
-<div class="listing-date">
-Dec 16, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1739588495631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail">
-<p><a href="./posts/rumpus.html" class="no-external"></a></p><a href="./posts/rumpus.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/rumpus.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/rumpus.html" class="no-external">Automated Coding with LLMs: Making a Rumpus</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/rumpus.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">
-LLM
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZUdlbg=='); return false;">
-CodeGen
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/rumpus.html" class="no-external">LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/rumpus.html" class="no-external">
-<div class="listing-date">
-Jul 22, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1739588495631" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
-<div class="thumbnail">
-<p><a href="./posts/quarto.html" class="no-external"></a></p><a href="./posts/quarto.html" class="no-external">
-<p class="card-img-top"><img src="posts/images/quarto.webp"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/quarto.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/quarto.html" class="no-external">Blogging with Quarto</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/quarto.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('YmxvZw=='); return false;">
-blog
-</div>
-</div>
-<div class="listing-description">
-<a href="./posts/quarto.html" class="no-external">Creating my Webpage with Quarto</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/quarto.html" class="no-external">
-<div class="listing-date">
-Apr 15, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
