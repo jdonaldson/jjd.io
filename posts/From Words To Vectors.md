@@ -1,6 +1,6 @@
 # From Words to Vectors: The Journey of Neural Word Embeddings
 Justin Donaldson
-2024-02-14
+2025-02-14
 
 # What Are Embeddings?
 
