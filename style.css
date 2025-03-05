@@ -100,13 +100,23 @@ main, .sidebar {
 }
 
 
-figure p .preview-image {
-  clip-path: inset(10% 0 40% 0);
-  pointer-events: none;
-  display: block;
-  margin-top: -10%;
-  margin-bottom: -40%;
+.figure p {
+  position: relative;
+  width: 100%;
+  padding-bottom: 50%;
+  overflow:hidden
+
 }
+
+.figure p .preview-image {
+  position: absolute;
+  left: 0%;
+  top: -11.11%;
+  width: 100%;
+  height: 166.67%;
+  object-fit: cover;
+}
+
 
 .float-right {
   float: right;
