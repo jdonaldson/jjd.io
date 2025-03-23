@@ -7,6 +7,7 @@ date: "2/3/2025"
 categories:
   - AI
 ---
+
 ![Intelligence Chases Chaos](images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.png){.preview-image}
 
 Fractals have an astonishing property: their dimensionality is only a fraction
@@ -104,10 +105,7 @@ could.
 Intelligence—ours or artificial—isn’t ultimately about defeating Chaos. It’s
 about finding its shape in the areas we care about, and learning how to ride
 its back when necessary.  Part of my goal this year is to integrate more
-fractal consideration of data in my projects this year.... Oh and also to
-remember to hold on with both hands.
-
-![Riding a Bull](images/omgjjd_cowboy_riding_the_back_of_a_bull_named_chaos._norman_roc_51afd6bd-7c0a-447b-a02b-1cad5813af32.png)
+fractal consideration of data in my projects this year.
 
 
 
