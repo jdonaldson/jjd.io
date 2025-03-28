@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>My Notebook – Justin Donaldson, Ph.D.</title>
+<title>Spam Detection Example – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,13 +116,13 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../style.css">
-<meta property="og:title" content="My Notebook – Justin Donaldson, Ph.D.">
+<meta property="og:title" content="Spam Detection Example – Justin Donaldson, Ph.D.">
 <meta property="og:description" content="">
 <meta property="og:image" content="http://www.jjd.io/posts/images/omgjjd_star_wars._robot_teaching_children._purple_details._norm_4dbf6075-53b0-47ef-90bc-ab2cc8cb7a86.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
 <meta property="og:image:height" content="512">
 <meta property="og:image:width" content="512">
-<meta name="twitter:title" content="My Notebook – Justin Donaldson, Ph.D.">
+<meta name="twitter:title" content="Spam Detection Example – Justin Donaldson, Ph.D.">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="http://www.jjd.io/posts/images/omgjjd_star_wars._robot_teaching_children._purple_details._norm_4dbf6075-53b0-47ef-90bc-ab2cc8cb7a86.png">
 <meta name="twitter:site" content="@omgjjd">
@@ -198,14 +198,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Spam Detector Example</h2>
+    <h2 id="toc-title">Spam Detection Example</h2>
    
   <ul>
-  <li><a href="#spam-detection-example" id="toc-spam-detection-example" class="nav-link active" data-scroll-target="#spam-detection-example">Spam Detection Example</a>
-  <ul class="collapse">
-  <li><a href="#download-some-libraries" id="toc-download-some-libraries" class="nav-link" data-scroll-target="#download-some-libraries">Download some Libraries</a></li>
+  <li><a href="#download-some-libraries" id="toc-download-some-libraries" class="nav-link active" data-scroll-target="#download-some-libraries">Download some Libraries</a></li>
   <li><a href="#download-some-free-spam" id="toc-download-some-free-spam" class="nav-link" data-scroll-target="#download-some-free-spam">Download Some Free Spam</a></li>
-  </ul></li>
   <li><a href="#create-message-embeddings" id="toc-create-message-embeddings" class="nav-link" data-scroll-target="#create-message-embeddings">Create Message Embeddings</a></li>
   </ul>
 </nav>
@@ -215,7 +212,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Notebook</h1>
+<h1 class="title">Spam Detection Example</h1>
 </div>
 
 
@@ -232,119 +229,26 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
-<section id="spam-detection-example" class="level1">
-<h1>Spam Detection Example</h1>
 <p>TODO: Write intro</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../posts/images/omgjjd_star_wars._robot_teaching_children._purple_details._norm_4dbf6075-53b0-47ef-90bc-ab2cc8cb7a86.png" class="img-fluid figure-img"></p>
-<figcaption>Warning! AI Generated Content</figcaption>
+<figcaption>Warning! AI Generated Content Ahead!</figcaption>
 </figure>
 </div>
 <section id="download-some-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="download-some-libraries">Download some Libraries</h2>
 <div id="6a444142-95f5-4749-ada6-35c29a0b32bd" class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install polars floret gdown sentence<span class="op">-</span>transformers tqdm pyarrow altair ipywidgets pandas matplotlib</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: polars in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (1.26.0)
-Requirement already satisfied: floret in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (0.10.5)
-Requirement already satisfied: gdown in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (5.2.0)
-Requirement already satisfied: sentence-transformers in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (4.0.1)
-Requirement already satisfied: tqdm in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (4.67.1)
-Requirement already satisfied: pyarrow in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (19.0.1)
-Requirement already satisfied: altair in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (5.5.0)
-Requirement already satisfied: ipywidgets in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (8.1.5)
-Requirement already satisfied: pandas in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (2.2.3)
-Collecting matplotlib
-  Downloading matplotlib-3.10.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (11 kB)
-Requirement already satisfied: numpy in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from floret) (2.2.4)
-Requirement already satisfied: beautifulsoup4 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from gdown) (4.13.3)
-Requirement already satisfied: filelock in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from gdown) (3.18.0)
-Requirement already satisfied: requests[socks] in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from gdown) (2.32.3)
-Requirement already satisfied: transformers&lt;5.0.0,&gt;=4.41.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (4.50.2)
-Requirement already satisfied: torch&gt;=1.11.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (2.6.0)
-Requirement already satisfied: scikit-learn in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (1.6.1)
-Requirement already satisfied: scipy in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (1.15.2)
-Requirement already satisfied: huggingface-hub&gt;=0.20.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (0.29.3)
-Requirement already satisfied: Pillow in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (11.1.0)
-Requirement already satisfied: typing_extensions&gt;=4.5.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sentence-transformers) (4.12.2)
-Requirement already satisfied: jinja2 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from altair) (3.1.5)
-Requirement already satisfied: jsonschema&gt;=3.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from altair) (4.23.0)
-Requirement already satisfied: narwhals&gt;=1.14.2 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from altair) (1.32.0)
-Requirement already satisfied: packaging in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from altair) (24.2)
-Requirement already satisfied: comm&gt;=0.1.3 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipywidgets) (0.2.2)
-Requirement already satisfied: ipython&gt;=6.1.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipywidgets) (8.32.0)
-Requirement already satisfied: traitlets&gt;=4.3.1 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipywidgets) (5.14.3)
-Requirement already satisfied: widgetsnbextension~=4.0.12 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipywidgets) (4.0.13)
-Requirement already satisfied: jupyterlab-widgets~=3.0.12 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipywidgets) (3.0.13)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from pandas) (2.9.0.post0)
-Requirement already satisfied: pytz&gt;=2020.1 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from pandas) (2025.2)
-Requirement already satisfied: tzdata&gt;=2022.7 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from pandas) (2025.2)
-Collecting contourpy&gt;=1.0.1 (from matplotlib)
-  Using cached contourpy-1.3.1-cp313-cp313-macosx_11_0_arm64.whl.metadata (5.4 kB)
-Collecting cycler&gt;=0.10 (from matplotlib)
-  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
-Collecting fonttools&gt;=4.22.0 (from matplotlib)
-  Downloading fonttools-4.56.0-cp313-cp313-macosx_10_13_universal2.whl.metadata (101 kB)
-Collecting kiwisolver&gt;=1.3.1 (from matplotlib)
-  Downloading kiwisolver-1.4.8-cp313-cp313-macosx_11_0_arm64.whl.metadata (6.2 kB)
-Collecting pyparsing&gt;=2.3.1 (from matplotlib)
-  Downloading pyparsing-3.2.3-py3-none-any.whl.metadata (5.0 kB)
-Requirement already satisfied: fsspec&gt;=2023.5.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from huggingface-hub&gt;=0.20.0-&gt;sentence-transformers) (2025.3.0)
-Requirement already satisfied: pyyaml&gt;=5.1 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from huggingface-hub&gt;=0.20.0-&gt;sentence-transformers) (6.0.2)
-Requirement already satisfied: decorator in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (5.1.1)
-Requirement already satisfied: jedi&gt;=0.16 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (0.19.2)
-Requirement already satisfied: matplotlib-inline in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (0.1.7)
-Requirement already satisfied: pexpect&gt;4.3 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (4.9.0)
-Requirement already satisfied: prompt_toolkit&lt;3.1.0,&gt;=3.0.41 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (3.0.50)
-Requirement already satisfied: pygments&gt;=2.4.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (2.19.1)
-Requirement already satisfied: stack_data in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from ipython&gt;=6.1.0-&gt;ipywidgets) (0.6.3)
-Requirement already satisfied: attrs&gt;=22.2.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from jsonschema&gt;=3.0-&gt;altair) (25.1.0)
-Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from jsonschema&gt;=3.0-&gt;altair) (2024.10.1)
-Requirement already satisfied: referencing&gt;=0.28.4 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from jsonschema&gt;=3.0-&gt;altair) (0.36.2)
-Requirement already satisfied: rpds-py&gt;=0.7.1 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from jsonschema&gt;=3.0-&gt;altair) (0.22.3)
-Requirement already satisfied: six&gt;=1.5 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)
-Requirement already satisfied: networkx in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from torch&gt;=1.11.0-&gt;sentence-transformers) (3.4.2)
-Requirement already satisfied: setuptools in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from torch&gt;=1.11.0-&gt;sentence-transformers) (75.8.0)
-Requirement already satisfied: sympy==1.13.1 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from torch&gt;=1.11.0-&gt;sentence-transformers) (1.13.1)
-Requirement already satisfied: mpmath&lt;1.4,&gt;=1.1.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from sympy==1.13.1-&gt;torch&gt;=1.11.0-&gt;sentence-transformers) (1.3.0)
-Requirement already satisfied: regex!=2019.12.17 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from transformers&lt;5.0.0,&gt;=4.41.0-&gt;sentence-transformers) (2024.11.6)
-Requirement already satisfied: tokenizers&lt;0.22,&gt;=0.21 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from transformers&lt;5.0.0,&gt;=4.41.0-&gt;sentence-transformers) (0.21.1)
-Requirement already satisfied: safetensors&gt;=0.4.3 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from transformers&lt;5.0.0,&gt;=4.41.0-&gt;sentence-transformers) (0.5.3)
-Requirement already satisfied: soupsieve&gt;1.2 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from beautifulsoup4-&gt;gdown) (2.6)
-Requirement already satisfied: MarkupSafe&gt;=2.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from jinja2-&gt;altair) (3.0.2)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from requests[socks]-&gt;gdown) (3.4.1)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from requests[socks]-&gt;gdown) (3.10)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from requests[socks]-&gt;gdown) (2.3.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from requests[socks]-&gt;gdown) (2025.1.31)
-Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from requests[socks]-&gt;gdown) (1.7.1)
-Requirement already satisfied: joblib&gt;=1.2.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from scikit-learn-&gt;sentence-transformers) (1.4.2)
-Requirement already satisfied: threadpoolctl&gt;=3.1.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from scikit-learn-&gt;sentence-transformers) (3.6.0)
-Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=6.1.0-&gt;ipywidgets) (0.8.4)
-Requirement already satisfied: ptyprocess&gt;=0.5 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=6.1.0-&gt;ipywidgets) (0.7.0)
-Requirement already satisfied: wcwidth in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython&gt;=6.1.0-&gt;ipywidgets) (0.2.13)
-Requirement already satisfied: executing&gt;=1.2.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from stack_data-&gt;ipython&gt;=6.1.0-&gt;ipywidgets) (2.2.0)
-Requirement already satisfied: asttokens&gt;=2.1.0 in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from stack_data-&gt;ipython&gt;=6.1.0-&gt;ipywidgets) (3.0.0)
-Requirement already satisfied: pure-eval in /opt/homebrew/Caskroom/miniconda/base/envs/jjd/lib/python3.13/site-packages (from stack_data-&gt;ipython&gt;=6.1.0-&gt;ipywidgets) (0.2.3)
-Downloading matplotlib-3.10.1-cp313-cp313-macosx_11_0_arm64.whl (8.0 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 78.8 MB/s eta 0:00:00
-Using cached contourpy-1.3.1-cp313-cp313-macosx_11_0_arm64.whl (255 kB)
-Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
-Downloading fonttools-4.56.0-cp313-cp313-macosx_10_13_universal2.whl (2.7 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 87.6 MB/s eta 0:00:00
-Downloading kiwisolver-1.4.8-cp313-cp313-macosx_11_0_arm64.whl (65 kB)
-Downloading pyparsing-3.2.3-py3-none-any.whl (111 kB)
-Installing collected packages: pyparsing, kiwisolver, fonttools, cycler, contourpy, matplotlib
-Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver-1.4.8 matplotlib-3.10.1 pyparsing-3.2.3</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## uncomment this and execute to download libraries for this notebook</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install polars floret gdown sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="download-some-free-spam" class="level2">
 <h2 class="anchored" data-anchor-id="download-some-free-spam">Download Some Free Spam</h2>
 <div id="0e78262a-0521-4de9-8fb7-c7ad3a5df48f" class="cell" data-tags="[]" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> pl.read_csv(<span class="st">"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv"</span>, separator <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dat.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> pl.read_csv(<span class="st">"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv"</span>, separator <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dat.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div><style>
 .dataframe > thead > tr,
@@ -392,18 +296,17 @@ Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver
 </div>
 </div>
 </section>
-</section>
 <section id="create-message-embeddings" class="level1">
 <h1>Create Message Embeddings</h1>
 <div id="7334c99b-d9bf-49a9-b9f6-8a0094e826a5" class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SentenceTransformer(<span class="st">"all-MiniLM-L6-v2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SentenceTransformer(<span class="st">"all-MiniLM-L6-v2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="dfc10a78-1856-4924-808c-08222a37062c" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> dat.with_columns(   </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [pl.col(<span class="st">"Message"</span>).map_elements(model.encode, return_dtype<span class="op">=</span>pl.Object).alias(<span class="st">"Message_embeddings"</span>)]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> dat.with_columns(   </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [pl.col(<span class="st">"Message"</span>).map_elements(model.encode, return_dtype<span class="op">=</span>pl.Object).alias(<span class="st">"Message_embeddings"</span>)]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div><style>
 .dataframe > thead > tr,
@@ -437,83 +340,83 @@ Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver
 </div>
 </div>
 </div>
-<div id="bc7ed946-5c69-4f02-af24-21ace9460e2d" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, f1_score</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Load your Polars DataFrame (assuming it's already available)</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: df = pl.read_csv("your_data.csv") if reading from a file</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert labels to binary (spam = 1, ham = 0) and keep as a Polars expression</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns((pl.col(<span class="st">"Type"</span>) <span class="op">==</span> <span class="st">"spam"</span>).cast(pl.Int32).alias(<span class="st">"Label"</span>))</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Polars columns directly to PyTorch tensors</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.tensor(df[<span class="st">"Message_embeddings"</span>], dtype<span class="op">=</span>torch.float32)  <span class="co"># Embeddings tensor</span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(df[<span class="st">"Label"</span>], dtype<span class="op">=</span>torch.float32).unsqueeze(<span class="dv">1</span>)  <span class="co"># Labels tensor</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Define logistic regression model</span></span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogisticRegression(nn.Module):</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim):</span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(LogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)  <span class="co"># Single output node</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigmoid <span class="op">=</span> nn.Sigmoid()</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sigmoid(<span class="va">self</span>.linear(x))</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize model</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>input_dim <span class="op">=</span> X.shape[<span class="dv">1</span>]  <span class="co"># Get embedding size</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(input_dim)</span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Define loss and optimizer</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.BCELoss()  <span class="co"># Binary cross-entropy loss</span></span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Training loop</span></span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>holdout_metrics <span class="op">=</span> []</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> model(X_train)</span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(outputs, y_train)</span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate the model on the holdout</span></span>
-<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()</span>
-<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>            y_pred <span class="op">=</span> model(X_test)</span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>            holdout_loss <span class="op">=</span> criterion(y_pred, y_test)</span>
-<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>            y_pred_labels <span class="op">=</span> (y_pred <span class="op">&gt;</span> <span class="fl">0.5</span>).<span class="bu">float</span>()  <span class="co"># Convert probabilities to binary (0 or 1)</span></span>
-<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert tensors to NumPy arrays for sklearn metrics</span></span>
-<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>        y_test_np <span class="op">=</span> y_test.numpy()</span>
-<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>        y_pred_np <span class="op">=</span> y_pred_labels.numpy()</span>
-<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute evaluation metrics</span></span>
-<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>        accuracy <span class="op">=</span> accuracy_score(y_test_np, y_pred_np)</span>
-<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>        metrics <span class="op">=</span> {</span>
-<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>            <span class="st">"epoch"</span> : epoch,</span>
-<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>            <span class="st">"loss"</span> : loss.item(),</span>
-<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_loss"</span> : holdout_loss.item(),</span>
-<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_accuracy"</span> : accuracy,</span>
-<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a>        holdout_metrics.append(metrics)</span>
-<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> pd.DataFrame(holdout_metrics).set_index(<span class="st">"epoch"</span>)</span>
-<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="20">
+<div id="bc7ed946-5c69-4f02-af24-21ace9460e2d" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, f1_score</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert labels to binary (spam = 1, ham = 0) and keep as a Polars expression</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns((pl.col(<span class="st">"Type"</span>) <span class="op">==</span> <span class="st">"spam"</span>).cast(pl.Int32).alias(<span class="st">"Label"</span>))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Polars columns directly to PyTorch tensors</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.tensor(df[<span class="st">"Message_embeddings"</span>], dtype<span class="op">=</span>torch.float32)  <span class="co"># Embeddings tensor</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(df[<span class="st">"Label"</span>], dtype<span class="op">=</span>torch.float32).unsqueeze(<span class="dv">1</span>)  <span class="co"># Labels tensor</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Define logistic regression model</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogisticRegression(nn.Module):</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim):</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(LogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)  <span class="co"># Single output node</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigmoid <span class="op">=</span> nn.Sigmoid()</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sigmoid(<span class="va">self</span>.linear(x))</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize model</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>input_dim <span class="op">=</span> X.shape[<span class="dv">1</span>]  <span class="co"># Get embedding size</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(input_dim)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Define loss and optimizer</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.BCELoss()  <span class="co"># Binary cross-entropy loss</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Training loop</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>holdout_metrics <span class="op">=</span> []</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> model(X_train)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(outputs, y_train)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate the model on the holdout</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>            y_pred <span class="op">=</span> model(X_test)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>            holdout_loss <span class="op">=</span> criterion(y_pred, y_test)</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>            y_pred_labels <span class="op">=</span> (y_pred <span class="op">&gt;</span> <span class="fl">0.5</span>).<span class="bu">float</span>()  <span class="co"># Convert probabilities to binary (0 or 1)</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert tensors to NumPy arrays for sklearn metrics</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        y_test_np <span class="op">=</span> y_test.numpy()</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        y_pred_np <span class="op">=</span> y_pred_labels.numpy()</span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute evaluation metrics</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        accuracy <span class="op">=</span> accuracy_score(y_test_np, y_pred_np)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>        metrics <span class="op">=</span> {</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>            <span class="st">"epoch"</span> : epoch,</span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>            <span class="st">"loss"</span> : loss.item(),</span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_loss"</span> : holdout_loss.item(),</span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_accuracy"</span> : accuracy,</span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>        holdout_metrics.append(metrics)</span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> pd.DataFrame(holdout_metrics).set_index(<span class="st">"epoch"</span>)</span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/5j/pmm3r4y967d_s8q5f92p5ld00000gp/T/ipykernel_81205/3871731784.py:13: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:257.)
+  X = torch.tensor(df["Message_embeddings"], dtype=torch.float32)  # Embeddings tensor</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -535,32 +438,32 @@ Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>0.694177</td>
-<td>0.669596</td>
-<td>0.833333</td>
+<td>0.684548</td>
+<td>0.661170</td>
+<td>0.878788</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">10</td>
-<td>0.489731</td>
-<td>0.485265</td>
+<td>0.483083</td>
+<td>0.479492</td>
 <td>0.878788</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
-<td>0.374139</td>
-<td>0.386231</td>
+<td>0.369715</td>
+<td>0.382444</td>
 <td>0.878788</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">30</td>
-<td>0.308182</td>
-<td>0.332601</td>
+<td>0.305010</td>
+<td>0.329953</td>
 <td>0.878788</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">40</td>
-<td>0.264232</td>
-<td>0.297609</td>
+<td>0.261684</td>
+<td>0.295536</td>
 <td>0.886364</td>
 </tr>
 </tbody>
@@ -569,7 +472,7 @@ Successfully installed contourpy-1.3.1 cycler-0.12.1 fonttools-4.56.0 kiwisolver
 </div>
 </div>
 </div>
-<div id="8a04ad18-f01c-4f3b-b3ee-4aedc2b9850a" class="cell" data-tags="[]" data-execution_count="21">
+<div id="8a04ad18-f01c-4f3b-b3ee-4aedc2b9850a" class="cell" data-tags="[]" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>metrics.plot(title<span class="op">=</span><span class="st">"Holdout Training Metrics by Epoch"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
