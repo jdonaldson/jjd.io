@@ -2,46 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://www.jjd.io/resume.html</loc>
-    <lastmod>2025-03-23T17:31:02.890Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.207Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/cv.html</loc>
-    <lastmod>2025-03-23T17:31:02.739Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.055Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/book_bot.html</loc>
-    <lastmod>2025-03-23T17:31:02.766Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.082Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/intelligence_chases_chaos.html</loc>
-    <lastmod>2025-03-23T17:31:02.890Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.206Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/quarto.html</loc>
-    <lastmod>2025-03-23T17:31:02.890Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.206Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/notebooks/llama3.1.html</loc>
-    <lastmod>2025-03-23T17:31:02.765Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.082Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/notebooks/Spam Detector.html</loc>
+    <lastmod>2025-03-28T16:15:16.082Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/index.html</loc>
-    <lastmod>2025-03-23T17:31:02.765Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.081Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/From Words To Vectors.html</loc>
-    <lastmod>2025-03-23T17:31:02.766Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.082Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/10_things_mlds_pm.html</loc>
-    <lastmod>2025-03-23T17:31:02.765Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.082Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/rumpus.html</loc>
-    <lastmod>2025-03-23T17:31:02.890Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.206Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/blog.html</loc>
-    <lastmod>2025-03-23T17:31:02.739Z</lastmod>
+    <lastmod>2025-03-28T16:15:16.055Z</lastmod>
   </url>
 </urlset>
