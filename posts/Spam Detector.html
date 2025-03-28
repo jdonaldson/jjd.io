@@ -118,13 +118,13 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Spam Detection Example – Justin Donaldson, Ph.D.">
 <meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/posts/Spam Detector_files/figure-html/cell-7-output-1.png">
+<meta property="og:image" content="http://www.jjd.io/posts/Spam Detector_files/figure-html/cell-8-output-1.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
 <meta property="og:image:height" content="455">
 <meta property="og:image:width" content="547">
 <meta name="twitter:title" content="Spam Detection Example – Justin Donaldson, Ph.D.">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/posts/Spam Detector_files/figure-html/cell-7-output-1.png">
+<meta name="twitter:image" content="http://www.jjd.io/posts/Spam Detector_files/figure-html/cell-8-output-1.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image-height" content="455">
@@ -201,9 +201,12 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <h2 id="toc-title">Spam Detection Example</h2>
    
   <ul>
-  <li><a href="#download-some-libraries" id="toc-download-some-libraries" class="nav-link active" data-scroll-target="#download-some-libraries">Download some Libraries</a></li>
-  <li><a href="#download-some-free-spam" id="toc-download-some-free-spam" class="nav-link" data-scroll-target="#download-some-free-spam">Download Some Free Spam</a></li>
-  <li><a href="#create-message-embeddings" id="toc-create-message-embeddings" class="nav-link" data-scroll-target="#create-message-embeddings">Create Message Embeddings</a></li>
+  <li><a href="#step-1-define-scope" id="toc-step-1-define-scope" class="nav-link active" data-scroll-target="#step-1-define-scope">Step 1 : Define Scope</a></li>
+  <li><a href="#step-2-data-collection-and-processing" id="toc-step-2-data-collection-and-processing" class="nav-link" data-scroll-target="#step-2-data-collection-and-processing">Step 2: Data Collection and Processing</a></li>
+  <li><a href="#step-3-feature-engineering" id="toc-step-3-feature-engineering" class="nav-link" data-scroll-target="#step-3-feature-engineering">Step 3: Feature Engineering</a></li>
+  <li><a href="#step-4-model-selection" id="toc-step-4-model-selection" class="nav-link" data-scroll-target="#step-4-model-selection">Step 4: Model Selection</a></li>
+  <li><a href="#step-5-training" id="toc-step-5-training" class="nav-link" data-scroll-target="#step-5-training">Step 5: Training</a></li>
+  <li><a href="#step-6-evaluation" id="toc-step-6-evaluation" class="nav-link" data-scroll-target="#step-6-evaluation">Step 6: Evaluation</a></li>
   </ul>
 </nav>
     </div>
@@ -229,25 +232,84 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
-<p>TODO: Write intro</p>
 <div class="alert alert-warning">
 <p>Warning! This document contains AI generated content.</p>
 </div>
+<p>Spam detection is the process of identifying and filtering unwanted or malicious messages, such as emails, SMS, or social media posts. Spam can range from harmless but annoying advertisements to dangerous phishing attempts and malware distribution. Given the vast volume of digital communication, automated spam detection systems are essential for maintaining security, efficiency, and user experience.</p>
+<p>Building an optimal spam detection model involves multiple considerations, including data collection, feature selection, model choice, and evaluation. The decision-making process typically follows these key steps:</p>
+<ol type="1">
+<li>Defining the Problem Scope</li>
+</ol>
+<ul>
+<li><p>What type of spam needs to be detected (emails, SMS, social media posts, etc.)?</p></li>
+<li><p>What is the acceptable trade-off between false positives (legitimate messages flagged as spam) and false negatives (spam messages that get through)?</p></li>
+</ul>
+<ol start="2" type="1">
+<li>Data Collection and Preprocessing</li>
+</ol>
+<ul>
+<li><p>Gathering labeled datasets of spam and non-spam messages.</p></li>
+<li><p>Cleaning the data by removing noise, tokenizing text, and handling missing values.</p></li>
+<li><p>Augmenting data with additional signals like sender reputation, message structure, and frequency patterns.</p></li>
+</ul>
+<ol start="3" type="1">
+<li>Feature Engineering</li>
+</ol>
+<ul>
+<li><p>Extracting relevant features such as word frequency, n-grams, TF-IDF scores, or embeddings from NLP models.</p></li>
+<li><p>Incorporating metadata features (e.g., sender history, link presence, HTML content).</p></li>
+</ul>
+<ol start="4" type="1">
+<li>Model Selection</li>
+</ol>
+<ul>
+<li><p>Choosing between rule-based systems, classical machine learning models (Naïve Bayes, SVMs, Random Forests), or deep learning approaches (LSTMs, Transformers).</p></li>
+<li><p>Evaluating trade-offs between interpretability, computational cost, and effectiveness.</p></li>
+</ul>
+<ol start="5" type="1">
+<li>Training and</li>
+</ol>
+<ul>
+<li>Splitting data into training, validation, and test sets.</li>
+</ul>
+<ol start="6" type="1">
+<li>Evaluation</li>
+</ol>
+<ul>
+<li><p>Using metrics like precision, recall, F1-score, and ROC-AUC to assess performance.</p></li>
+<li><p>Implementing techniques like cross-validation and hyperparameter tuning to optimize the model.</p></li>
+</ul>
 <!-- ![Warning!  AI Generated Content Ahead!](../posts/images/omgjjd_star_wars._robot_teaching_children._purple_details._norm_4dbf6075-53b0-47ef-90bc-ab2cc8cb7a86.png) -->
-<section id="download-some-libraries" class="level2">
-<h2 class="anchored" data-anchor-id="download-some-libraries">Download some Libraries</h2>
-<div id="6a444142-95f5-4749-ada6-35c29a0b32bd" class="cell" data-tags="[]" data-execution_count="1">
+<section id="step-1-define-scope" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-define-scope">Step 1 : Define Scope</h2>
+<p>For the purposes of this exercise we’ll look at e-mail messages that contain known spam or non-spam (“ham”) messages.</p>
+<p>This model is size-appropriate</p>
+<p>What is an embedding?</p>
+<ul>
+<li>keep it high level</li>
+<li>reading follow ups.</li>
+</ul>
+<p>Which model to choose?</p>
+<ul>
+<li><p>older tf/idf?</p></li>
+<li><p>simpler word embedding?</p></li>
+<li><p>sentence embedding?</p></li>
+<li><p>instruction-based embedding? (GPT &gt;=3)</p></li>
+<li><p>Frame this as a trade-off discussion.</p></li>
+<li><p>Understand <em>why</em> we’re having discussions.</p></li>
+</ul>
+<div id="6a444142-95f5-4749-ada6-35c29a0b32bd" class="cell" data-tags="[]" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">## uncomment this and execute to download libraries for this notebook</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install polars floret gdown sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="download-some-free-spam" class="level2">
-<h2 class="anchored" data-anchor-id="download-some-free-spam">Download Some Free Spam</h2>
-<div id="0e78262a-0521-4de9-8fb7-c7ad3a5df48f" class="cell" data-tags="[]" data-execution_count="2">
+<section id="step-2-data-collection-and-processing" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-data-collection-and-processing">Step 2: Data Collection and Processing</h2>
+<div id="0e78262a-0521-4de9-8fb7-c7ad3a5df48f" class="cell" data-tags="[]" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>dat <span class="op">=</span> pl.read_csv(<span class="st">"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv"</span>, separator <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dat.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(<span class="st">"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv"</span>, separator <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -294,18 +356,22 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="create-message-embeddings" class="level1">
-<h1>Create Message Embeddings</h1>
-<div id="7334c99b-d9bf-49a9-b9f6-8a0094e826a5" class="cell" data-tags="[]" data-execution_count="3">
+<section id="step-3-feature-engineering" class="level1">
+<h1>Step 3: Feature Engineering</h1>
+<div id="7334c99b-d9bf-49a9-b9f6-8a0094e826a5" class="cell" data-tags="[]" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> SentenceTransformer(<span class="st">"all-MiniLM-L6-v2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sentence_model <span class="op">=</span> SentenceTransformer(<span class="st">"all-MiniLM-L6-v2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="dfc10a78-1856-4924-808c-08222a37062c" class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> dat.with_columns(   </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [pl.col(<span class="st">"Message"</span>).map_elements(model.encode, return_dtype<span class="op">=</span>pl.Object).alias(<span class="st">"Message_embeddings"</span>)]</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="dfc10a78-1856-4924-808c-08222a37062c" class="cell" data-tags="[]" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the embeddings and save them efficiently as a numpy array</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>embeddings <span class="op">=</span> sentence_model.encode(df[<span class="st">"Message"</span>].to_numpy())</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind the numpy array to the rest of the dataframe</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns([</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    pl.Series(embeddings).alias(<span class="st">"Message_Embeddings"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
 <div><style>
 .dataframe > thead > tr,
 .dataframe > tbody > tr {
@@ -313,108 +379,135 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
   white-space: pre-wrap;
 }
 </style>
-<small>shape: (1, 3)</small>
+<small>shape: (5, 3)</small>
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">Type</th>
 <th data-quarto-table-cell-role="th">Message</th>
-<th data-quarto-table-cell-role="th">Message_embeddings</th>
+<th data-quarto-table-cell-role="th">Message_Embeddings</th>
 </tr>
 <tr class="even">
 <th>str</th>
 <th>str</th>
-<th>object</th>
+<th>array[f32, 384]</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>"ham"</td>
 <td>"Go until jurong point, crazy..…</td>
-<td>[-1.69181824e-02 -3.81679200e-02&nbsp;&nbsp;7.14857653e-02 -5.73437065e-02 -8.66633356e-02&nbsp;&nbsp;4.65233661e-02&nbsp;&nbsp;6.01777025e-02 -2.38348581e-02 &nbsp;&nbsp;6.06626458e-02 -7.05441236e-02&nbsp;&nbsp;5.93964718e-02 -7.71391839e-02 -4.15645130e-02 -3.41324471e-02&nbsp;&nbsp;8.53624567e-02 -7.76045993e-02 &nbsp;&nbsp;1.13105521e-01 -3.69878896e-02&nbsp;&nbsp;1.39168883e-02 -4.90012504e-02 &nbsp;&nbsp;1.83193274e-02 -4.10681814e-02 -1.09108746e-01&nbsp;&nbsp;4.61956151e-02 -1.21960320e-01 -4.33768295e-02 -1.78877972e-02&nbsp;&nbsp;1.99523382e-03 &nbsp;&nbsp;3.06233601e-03 -7.96412118e-03 -1.33218328e-02&nbsp;&nbsp;1.67141780e-01 -7.55039454e-02 -1.78407524e-02&nbsp;&nbsp;1.32588185e-02 -3.15061733e-02 -9.53863785e-02 -8.83596465e-02&nbsp;&nbsp;7.96378553e-02&nbsp;&nbsp;6.11798614e-02 -3.47491424e-03&nbsp;&nbsp;7.61992484e-02 -3.70001234e-02 -2.13697832e-02 &nbsp;&nbsp;1.12011898e-02 -1.18908651e-01&nbsp;&nbsp;2.00325884e-02&nbsp;&nbsp;5.57313748e-02 &nbsp;&nbsp;9.57565531e-02 -2.27366723e-02 -5.79422303e-02&nbsp;&nbsp;4.35438938e-02 &nbsp;&nbsp;2.38019638e-02&nbsp;&nbsp;5.64076426e-03 -3.35444361e-02 -8.53418722e-04 &nbsp;&nbsp;8.05954728e-03 -3.84804234e-02&nbsp;&nbsp;3.83039899e-02&nbsp;&nbsp;4.17757519e-02 &nbsp;&nbsp;4.58615273e-03&nbsp;&nbsp;3.06468420e-02&nbsp;&nbsp;5.60260145e-03 -8.75349063e-03 -2.39509307e-02&nbsp;&nbsp;1.25138625e-03 -4.45523672e-02&nbsp;&nbsp;6.51425496e-02 &nbsp;&nbsp;1.13622770e-02&nbsp;&nbsp;1.23233702e-02&nbsp;&nbsp;4.87583410e-03 -1.38713280e-02 -8.03859252e-03&nbsp;&nbsp;1.26386555e-02&nbsp;&nbsp;7.52020627e-02&nbsp;&nbsp;3.70769165e-02 -5.59643880e-02 -8.63211080e-02 -6.10754788e-02&nbsp;&nbsp;3.70548405e-02 -4.91377525e-02 -3.20833735e-02&nbsp;&nbsp;1.90563817e-02 -3.72626409e-02 &nbsp;&nbsp;1.72842620e-03 -1.64863726e-04&nbsp;&nbsp;1.60731317e-03&nbsp;&nbsp;1.12929739e-01 &nbsp;&nbsp;6.42531589e-02 -2.71103233e-02&nbsp;&nbsp;4.35887836e-02&nbsp;&nbsp;1.85125731e-02 -1.32856295e-01&nbsp;&nbsp;1.19323749e-02&nbsp;&nbsp;4.25306447e-02 -3.10521144e-02 -2.45824866e-02&nbsp;&nbsp;4.72321436e-02 -6.77127242e-02&nbsp;&nbsp;4.09979597e-02 &nbsp;&nbsp;4.67088893e-02&nbsp;&nbsp;9.03373137e-02&nbsp;&nbsp;4.29132208e-02&nbsp;&nbsp;6.37918562e-02 -1.86576694e-02&nbsp;&nbsp;1.70605835e-02&nbsp;&nbsp;7.74438903e-02&nbsp;&nbsp;5.55131994e-02 &nbsp;&nbsp;5.83152138e-02 -7.39113986e-02 -7.65196234e-02&nbsp;&nbsp;2.44083293e-02 &nbsp;&nbsp;6.38015196e-02 -1.20272905e-01 -2.81793270e-02 -1.37958815e-02 &nbsp;&nbsp;2.02865135e-02 -1.56714451e-02&nbsp;&nbsp;5.54748774e-02 -9.40069370e-03 &nbsp;&nbsp;1.18104391e-01&nbsp;&nbsp;1.41699789e-02 -2.63116732e-02&nbsp;&nbsp;4.67997789e-02 -1.04309969e-01 -3.17853987e-02 -1.02161113e-02 -1.32458551e-33 -1.99304000e-02 -1.26173627e-03&nbsp;&nbsp;8.28732848e-02&nbsp;&nbsp;1.75689452e-03 &nbsp;&nbsp;6.08917512e-02 -4.11049376e-04 -9.47755873e-02 -5.35774678e-02 -4.20552231e-02 -5.85285909e-02 -2.15330888e-02 -1.25193462e-01 -2.87181288e-02 -2.14101449e-02&nbsp;&nbsp;3.05047128e-02&nbsp;&nbsp;2.54149064e-02 &nbsp;&nbsp;1.24499738e-01 -6.86813220e-02&nbsp;&nbsp;1.34712756e-02 -7.46099502e-02 &nbsp;&nbsp;3.00230719e-02 -1.12213850e-01 -6.02861419e-02 -4.42803279e-02 -3.26453298e-02&nbsp;&nbsp;7.86900148e-02&nbsp;&nbsp;9.16252658e-03&nbsp;&nbsp;1.77258067e-02 &nbsp;&nbsp;5.64120896e-02&nbsp;&nbsp;3.82041037e-02 -4.73747551e-02&nbsp;&nbsp;1.42837996e-02 &nbsp;&nbsp;3.25910258e-03 -4.89112968e-03 -2.64929198e-02&nbsp;&nbsp;1.90504678e-02 -7.25003704e-02 -1.86688025e-02&nbsp;&nbsp;4.56063263e-03 -3.65367979e-02 &nbsp;&nbsp;5.22860326e-02&nbsp;&nbsp;1.19018525e-01 -4.44218554e-02&nbsp;&nbsp;5.88492639e-02 -2.44770143e-02&nbsp;&nbsp;9.23932269e-02&nbsp;&nbsp;1.11726988e-02&nbsp;&nbsp;3.72147970e-02 &nbsp;&nbsp;1.18185461e-01 -3.04004606e-02 -6.19890504e-02 -2.62813084e-02 -9.48503315e-02 -2.85046343e-02 -2.49951351e-02&nbsp;&nbsp;3.44672315e-02 -2.21120268e-02 -6.38141949e-03 -7.25123100e-03 -7.64134061e-03 &nbsp;&nbsp;1.10825926e-01 -2.99052522e-02&nbsp;&nbsp;3.89806926e-02 -4.21310030e-02 &nbsp;&nbsp;6.89505832e-03&nbsp;&nbsp;3.36252451e-02 -2.92518288e-02 -3.65735777e-02 &nbsp;&nbsp;5.29934876e-02&nbsp;&nbsp;3.28635215e-03&nbsp;&nbsp;3.69590260e-02&nbsp;&nbsp;2.61338404e-03 &nbsp;&nbsp;8.76879618e-02&nbsp;&nbsp;4.68911864e-02&nbsp;&nbsp;6.13586307e-02 -6.01785397e-03 &nbsp;&nbsp;1.88666750e-02 -2.91370470e-02&nbsp;&nbsp;3.46963890e-02 -2.07888172e-03 &nbsp;&nbsp;6.27531623e-03 -1.33823538e-02 -3.74364331e-02&nbsp;&nbsp;3.24327461e-02 &nbsp;&nbsp;3.75855044e-02 -2.19553672e-02&nbsp;&nbsp;5.73135093e-02 -6.04293793e-02 &nbsp;&nbsp;8.59184712e-02 -4.22911206e-03 -6.22577071e-02&nbsp;&nbsp;2.70021465e-02 &nbsp;&nbsp;4.54709008e-02 -4.48018610e-02 -5.65327071e-02&nbsp;&nbsp;5.57557312e-34 &nbsp;&nbsp;4.14824523e-02 -3.16414237e-02&nbsp;&nbsp;8.82135797e-03&nbsp;&nbsp;2.14761775e-02 &nbsp;&nbsp;3.89992073e-02&nbsp;&nbsp;2.41183788e-02 -5.67613952e-02&nbsp;&nbsp;4.12703156e-02 &nbsp;&nbsp;4.11817692e-02&nbsp;&nbsp;5.81647307e-02 -9.73564982e-02 -3.09904013e-02 &nbsp;&nbsp;9.69219580e-02 -5.61235212e-02&nbsp;&nbsp;3.41982618e-02&nbsp;&nbsp;1.07519306e-01 &nbsp;&nbsp;9.06308144e-02 -4.00391631e-02&nbsp;&nbsp;1.25106135e-02&nbsp;&nbsp;1.24085620e-01 -6.26365375e-03 -3.65534425e-02&nbsp;&nbsp;2.52256170e-02&nbsp;&nbsp;1.07734790e-02 -4.92042229e-02&nbsp;&nbsp;1.75992511e-02&nbsp;&nbsp;3.69748212e-02&nbsp;&nbsp;8.42630640e-02 -6.63305894e-02 -1.66913122e-02 -6.10412173e-02 -3.11728548e-02 -7.21557289e-02 -1.66528746e-02 -1.02617703e-02&nbsp;&nbsp;1.62422378e-02 -2.06661932e-02&nbsp;&nbsp;3.92794749e-03 -6.43087970e-03&nbsp;&nbsp;6.30945563e-02 -5.36041819e-02 -4.91470620e-02&nbsp;&nbsp;4.55063302e-03&nbsp;&nbsp;4.88804914e-02 &nbsp;&nbsp;6.50152490e-02&nbsp;&nbsp;2.36753002e-02&nbsp;&nbsp;7.23623559e-02&nbsp;&nbsp;1.58664735e-03 -2.46164910e-02 -7.03328522e-03&nbsp;&nbsp;6.42405599e-02&nbsp;&nbsp;3.70860472e-02 -9.38719884e-02&nbsp;&nbsp;2.34099831e-02&nbsp;&nbsp;6.17754413e-03&nbsp;&nbsp;4.73575667e-03 -1.38120297e-02 -4.17801877e-03 -8.14963952e-02 -5.73687106e-02 -3.31521849e-03 -1.86633866e-03 -5.81240878e-02&nbsp;&nbsp;6.45614713e-02 &nbsp;&nbsp;5.63419983e-02 -1.48974499e-03 -1.90959163e-02&nbsp;&nbsp;8.73385891e-02 -8.87677968e-02 -6.11231802e-03 -2.63885390e-02&nbsp;&nbsp;1.62656177e-02 -3.67152281e-02 -3.57657336e-02 -7.20747262e-02&nbsp;&nbsp;3.37118767e-02 -9.34335310e-03 -1.96274668e-02&nbsp;&nbsp;2.12872121e-02 -4.48771231e-02 &nbsp;&nbsp;4.40328708e-03&nbsp;&nbsp;5.67067713e-02 -6.76035210e-02 -2.58699134e-02 &nbsp;&nbsp;6.85539022e-02&nbsp;&nbsp;6.24181889e-02&nbsp;&nbsp;1.43683366e-02&nbsp;&nbsp;9.24333464e-03 &nbsp;&nbsp;5.71860326e-03 -3.62973684e-03 -4.11234498e-02&nbsp;&nbsp;5.80872372e-02 -3.05861775e-02 -4.40317430e-02 -1.17556658e-04 -2.76080296e-08 &nbsp;&nbsp;3.06018023e-03&nbsp;&nbsp;1.22044953e-02 -1.19921025e-02&nbsp;&nbsp;2.68007000e-03 &nbsp;&nbsp;2.42149327e-02 -8.79795104e-02 -4.37452421e-02&nbsp;&nbsp;1.05309878e-02 &nbsp;&nbsp;6.26235753e-02&nbsp;&nbsp;1.22771144e-01 -5.61710633e-02 -2.56135575e-02 &nbsp;&nbsp;4.92233858e-02 -4.79623722e-03 -6.59028813e-02&nbsp;&nbsp;6.13308437e-02 &nbsp;&nbsp;5.94741516e-02 -2.99019776e-02 -1.98101420e-02&nbsp;&nbsp;1.19421957e-02 -3.48647498e-03&nbsp;&nbsp;1.16272703e-01&nbsp;&nbsp;2.60050427e-02 -8.41647312e-02 -3.59536707e-03&nbsp;&nbsp;1.33070266e-02&nbsp;&nbsp;3.01273614e-02 -2.32840627e-02 &nbsp;&nbsp;6.92448113e-03 -2.48819869e-02&nbsp;&nbsp;2.56498531e-03 -2.41190381e-02 -1.07202325e-02 -8.39264765e-02&nbsp;&nbsp;1.80417206e-02 -3.52585725e-02 -1.23782434e-01 -1.32526588e-02 -3.55782770e-02 -5.06126229e-03 &nbsp;&nbsp;7.70425983e-03 -1.88829061e-02&nbsp;&nbsp;2.94495281e-02 -3.18319388e-02 -1.80741213e-02&nbsp;&nbsp;1.31877894e-02&nbsp;&nbsp;2.83850245e-02 -6.47806143e-03 -1.25165051e-02&nbsp;&nbsp;2.86001377e-02 -6.50383383e-02 -2.05947123e-02 &nbsp;&nbsp;6.62037684e-03 -3.18170339e-02&nbsp;&nbsp;6.85986802e-02 -3.24419402e-02 -1.66954510e-02&nbsp;&nbsp;6.08403757e-02&nbsp;&nbsp;7.08020255e-02&nbsp;&nbsp;2.01966185e-02 &nbsp;&nbsp;3.42436433e-02 -6.21646829e-02 -7.35691339e-02 -1.25749502e-03]</td>
+<td>[-0.016918, -0.038168, … -0.001258]</td>
+</tr>
+<tr class="even">
+<td>"ham"</td>
+<td>"Ok lar... Joking wif u oni..."</td>
+<td>[-0.013369, -0.04987, … -0.003396]</td>
+</tr>
+<tr class="odd">
+<td>"spam"</td>
+<td>"Free entry in 2 a wkly comp to…</td>
+<td>[-0.015434, 0.063041, … 0.015645]</td>
+</tr>
+<tr class="even">
+<td>"ham"</td>
+<td>"U dun say so early hor... U c …</td>
+<td>[-0.012308, 0.037198, … -0.003828]</td>
+</tr>
+<tr class="odd">
+<td>"ham"</td>
+<td>"Nah I don't think he goes to u…</td>
+<td>[0.0777, -0.132872, … 0.009034]</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<div id="bc7ed946-5c69-4f02-af24-21ace9460e2d" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, f1_score</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert labels to binary (spam = 1, ham = 0) and keep as a Polars expression</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns((pl.col(<span class="st">"Type"</span>) <span class="op">==</span> <span class="st">"spam"</span>).cast(pl.Int32).alias(<span class="st">"Label"</span>))</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Polars columns directly to PyTorch tensors</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.tensor(df[<span class="st">"Message_embeddings"</span>], dtype<span class="op">=</span>torch.float32)  <span class="co"># Embeddings tensor</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(df[<span class="st">"Label"</span>], dtype<span class="op">=</span>torch.float32).unsqueeze(<span class="dv">1</span>)  <span class="co"># Labels tensor</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Define logistic regression model</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogisticRegression(nn.Module):</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim):</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(LogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)  <span class="co"># Single output node</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigmoid <span class="op">=</span> nn.Sigmoid()</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sigmoid(<span class="va">self</span>.linear(x))</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize model</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>input_dim <span class="op">=</span> X.shape[<span class="dv">1</span>]  <span class="co"># Get embedding size</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(input_dim)</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Define loss and optimizer</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.BCELoss()  <span class="co"># Binary cross-entropy loss</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Training loop</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">50</span></span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>holdout_metrics <span class="op">=</span> []</span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> model(X_train)</span>
-<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(outputs, y_train)</span>
-<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
-<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
-<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
-<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate the model on the holdout</span></span>
-<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()</span>
-<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
-<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>            y_pred <span class="op">=</span> model(X_test)</span>
-<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>            holdout_loss <span class="op">=</span> criterion(y_pred, y_test)</span>
-<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>            y_pred_labels <span class="op">=</span> (y_pred <span class="op">&gt;</span> <span class="fl">0.5</span>).<span class="bu">float</span>()  <span class="co"># Convert probabilities to binary (0 or 1)</span></span>
-<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert tensors to NumPy arrays for sklearn metrics</span></span>
-<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>        y_test_np <span class="op">=</span> y_test.numpy()</span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        y_pred_np <span class="op">=</span> y_pred_labels.numpy()</span>
-<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute evaluation metrics</span></span>
-<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>        accuracy <span class="op">=</span> accuracy_score(y_test_np, y_pred_np)</span>
-<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>        metrics <span class="op">=</span> {</span>
-<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>            <span class="st">"epoch"</span> : epoch,</span>
-<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>            <span class="st">"loss"</span> : loss.item(),</span>
-<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_loss"</span> : holdout_loss.item(),</span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_accuracy"</span> : accuracy,</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>        holdout_metrics.append(metrics)</span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> pd.DataFrame(holdout_metrics).set_index(<span class="st">"epoch"</span>)</span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>/var/folders/5j/pmm3r4y967d_s8q5f92p5ld00000gp/T/ipykernel_81205/3871731784.py:13: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /Users/runner/work/pytorch/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:257.)
-  X = torch.tensor(df["Message_embeddings"], dtype=torch.float32)  # Embeddings tensor</code></pre>
+</section>
+<section id="step-4-model-selection" class="level1">
+<h1>Step 4: Model Selection</h1>
+<div id="290b323f-f070-429a-befd-2c8372270ae2" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define logistic regression model</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogisticRegression(nn.Module):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, input_dim):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(LogisticRegression, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.linear <span class="op">=</span> nn.Linear(input_dim, <span class="dv">1</span>)  <span class="co"># Single output node</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigmoid <span class="op">=</span> nn.Sigmoid()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sigmoid(<span class="va">self</span>.linear(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+</section>
+<section id="step-5-training" class="level1">
+<h1>Step 5: Training</h1>
+<div id="bc7ed946-5c69-4f02-af24-21ace9460e2d" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This cell contains a mix of AI and Human Generated Code.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, precision_score, recall_score, f1_score</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert labels to binary (spam = 1, ham = 0) and keep as a Polars expression</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.with_columns((pl.col(<span class="st">"Type"</span>) <span class="op">==</span> <span class="st">"spam"</span>).cast(pl.Int32).alias(<span class="st">"Label"</span>))</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Polars columns directly to PyTorch tensors</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.tensor(df[<span class="st">"Message_Embeddings"</span>], dtype<span class="op">=</span>torch.float32)  <span class="co"># Embeddings tensor</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(df[<span class="st">"Label"</span>], dtype<span class="op">=</span>torch.float32).unsqueeze(<span class="dv">1</span>)  <span class="co"># Labels tensor</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Split into train and test sets</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize model</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>input_dim <span class="op">=</span> X.shape[<span class="dv">1</span>]  <span class="co"># Get embedding size</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LogisticRegression(input_dim)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Define loss and optimizer</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.BCELoss()  <span class="co"># Binary cross-entropy loss</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(model.parameters(), lr<span class="op">=</span><span class="fl">0.01</span>)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Training loop</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>holdout_metrics <span class="op">=</span> []</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> model(X_train)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(outputs, y_train)</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">10</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Evaluate the model on the holdout</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        model.<span class="bu">eval</span>()</span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> torch.no_grad():</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>            y_pred <span class="op">=</span> model(X_test)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>            holdout_loss <span class="op">=</span> criterion(y_pred, y_test)</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>            y_pred_labels <span class="op">=</span> (y_pred <span class="op">&gt;</span> <span class="fl">0.5</span>).<span class="bu">float</span>()  <span class="co"># Convert probabilities to binary (0 or 1)</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert tensors to NumPy arrays for sklearn metrics</span></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>        y_test_np <span class="op">=</span> y_test.numpy()</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>        y_pred_np <span class="op">=</span> y_pred_labels.numpy()</span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute evaluation metrics</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>        accuracy <span class="op">=</span> accuracy_score(y_test_np, y_pred_np)</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>        metrics <span class="op">=</span> {</span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>            <span class="st">"epoch"</span> : epoch,</span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>            <span class="st">"loss"</span> : loss.item(),</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_loss"</span> : holdout_loss.item(),</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>            <span class="st">"holdout_accuracy"</span> : accuracy,</span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>        holdout_metrics.append(metrics)</span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> pd.DataFrame(holdout_metrics).set_index(<span class="st">"epoch"</span>)</span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>metrics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
@@ -436,32 +529,32 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>0.684548</td>
-<td>0.661170</td>
-<td>0.878788</td>
+<td>0.688025</td>
+<td>0.662975</td>
+<td>0.871212</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">10</td>
-<td>0.483083</td>
-<td>0.479492</td>
+<td>0.485827</td>
+<td>0.480892</td>
 <td>0.878788</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">20</td>
-<td>0.369715</td>
-<td>0.382444</td>
+<td>0.371861</td>
+<td>0.383493</td>
 <td>0.878788</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">30</td>
-<td>0.305010</td>
-<td>0.329953</td>
+<td>0.306713</td>
+<td>0.330718</td>
 <td>0.878788</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">40</td>
-<td>0.261684</td>
-<td>0.295536</td>
+<td>0.263094</td>
+<td>0.296044</td>
 <td>0.886364</td>
 </tr>
 </tbody>
@@ -470,12 +563,15 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div id="8a04ad18-f01c-4f3b-b3ee-4aedc2b9850a" class="cell" data-tags="[]" data-execution_count="6">
+</section>
+<section id="step-6-evaluation" class="level1">
+<h1>Step 6: Evaluation</h1>
+<div id="8a04ad18-f01c-4f3b-b3ee-4aedc2b9850a" class="cell" data-tags="[]" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>metrics.plot(title<span class="op">=</span><span class="st">"Holdout Training Metrics by Epoch"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Spam Detector_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="Spam Detector_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>

@@ -228,21 +228,21 @@
     "href": "posts/Spam Detector.html",
     "title": "Spam Detection Example",
     "section": "",
-    "text": "TODO: Write intro\n© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
+    "text": "Warning! This document contains AI generated content.\nSpam detection is the process of identifying and filtering unwanted or malicious messages, such as emails, SMS, or social media posts. Spam can range from harmless but annoying advertisements to dangerous phishing attempts and malware distribution. Given the vast volume of digital communication, automated spam detection systems are essential for maintaining security, efficiency, and user experience.\nBuilding an optimal spam detection model involves multiple considerations, including data collection, feature selection, model choice, and evaluation. The decision-making process typically follows these key steps:\n© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
   },
   {
-    "objectID": "posts/Spam Detector.html#download-some-libraries",
-    "href": "posts/Spam Detector.html#download-some-libraries",
+    "objectID": "posts/Spam Detector.html#step-1-define-scope",
+    "href": "posts/Spam Detector.html#step-1-define-scope",
     "title": "Spam Detection Example",
-    "section": "Download some Libraries",
-    "text": "Download some Libraries\n\n## uncomment this and execute to download libraries for this notebook\n# !pip install polars floret gdown sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib"
+    "section": "Step 1 : Define Scope",
+    "text": "Step 1 : Define Scope\nFor the purposes of this exercise we’ll look at e-mail messages that contain known spam or non-spam (“ham”) messages.\nThis model is size-appropriate\nWhat is an embedding?\n\nkeep it high level\nreading follow ups.\n\nWhich model to choose?\n\nolder tf/idf?\nsimpler word embedding?\nsentence embedding?\ninstruction-based embedding? (GPT &gt;=3)\nFrame this as a trade-off discussion.\nUnderstand why we’re having discussions.\n\n\n## uncomment this and execute to download libraries for this notebook\n# !pip install polars floret gdown sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib"
   },
   {
-    "objectID": "posts/Spam Detector.html#download-some-free-spam",
-    "href": "posts/Spam Detector.html#download-some-free-spam",
+    "objectID": "posts/Spam Detector.html#step-2-data-collection-and-processing",
+    "href": "posts/Spam Detector.html#step-2-data-collection-and-processing",
     "title": "Spam Detection Example",
-    "section": "Download Some Free Spam",
-    "text": "Download Some Free Spam\n\nimport polars as pl\ndat = pl.read_csv(\"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv\", separator = \"\\t\")\ndat.head()\n\n\nshape: (5, 2)\n\n\n\nType\nMessage\n\n\nstr\nstr\n\n\n\n\n\"ham\"\n\"Go until jurong point, crazy..…\n\n\n\"ham\"\n\"Ok lar... Joking wif u oni...\"\n\n\n\"spam\"\n\"Free entry in 2 a wkly comp to…\n\n\n\"ham\"\n\"U dun say so early hor... U c …\n\n\n\"ham\"\n\"Nah I don't think he goes to u…"
+    "section": "Step 2: Data Collection and Processing",
+    "text": "Step 2: Data Collection and Processing\n\nimport polars as pl\ndf = pl.read_csv(\"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv\", separator = \"\\t\")\ndf.head()\n\n\nshape: (5, 2)\n\n\n\nType\nMessage\n\n\nstr\nstr\n\n\n\n\n\"ham\"\n\"Go until jurong point, crazy..…\n\n\n\"ham\"\n\"Ok lar... Joking wif u oni...\"\n\n\n\"spam\"\n\"Free entry in 2 a wkly comp to…\n\n\n\"ham\"\n\"U dun say so early hor... U c …\n\n\n\"ham\"\n\"Nah I don't think he goes to u…"
   },
   {
     "objectID": "posts/llama3.1.html",
