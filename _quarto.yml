@@ -20,7 +20,7 @@ website:
   title: "Justin Donaldson, Ph.D."
   body-footer: "<i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i>"
   navbar:
-    logo : "images/nav-logo.jpeg"
+    logo : "images/nav-logo.png"
     left:
       - index.qmd
       - text: "blog"
