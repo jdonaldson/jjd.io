@@ -5,6 +5,9 @@ number-sections: false
 
 format:
   html:
+    toc: true
+    toc-location: right
+    page-navigation: true
     theme: sandstone
     css: style.css
     # page-layout: full
