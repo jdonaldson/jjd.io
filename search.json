@@ -235,7 +235,21 @@
     "href": "posts/Spam Detector.html#step-1-define-scope",
     "title": "Spam Detection",
     "section": "Step 1 : Define Scope",
-    "text": "Step 1 : Define Scope\nFor the purposes of this exercise we’ll look at e-mail messages that contain known spam or non-spam (“ham”) messages.\nThis model is size-appropriate\nWhat is an embedding?\n\nkeep it high level\nreading follow ups.\n\nWhich model to choose?\n\nolder tf/idf?\nsimpler word embedding?\nsentence embedding?\ninstruction-based embedding? (GPT &gt;=3)\nFrame this as a trade-off discussion.\nUnderstand why we’re having discussions.\n\n\n## uncomment this and execute to download libraries for this notebook\n# !pip install polars floret gdown sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib"
+    "text": "Step 1 : Define Scope\nFor the purposes of this exercise we’ll look at e-mail messages that contain known spam or non-spam (“ham”) messages.\nThis model is size-appropriate\nWhat is an embedding?\n\nkeep it high level\nreading follow ups.\n\nWhich model to choose?\n\nolder tf/idf?\nsimpler word embedding?\nsentence embedding?\ninstruction-based embedding? (GPT &gt;=3)\nFrame this as a trade-off discussion.\nUnderstand why we’re having discussions.\n\n\n## If you have jupyter lab running already, just uncomment this cell to install what you need.\n# !pip install polars sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib"
+  },
+  {
+    "objectID": "posts/Spam Detector.html#required-python-packages",
+    "href": "posts/Spam Detector.html#required-python-packages",
+    "title": "Spam Detection",
+    "section": "Required Python Packages",
+    "text": "Required Python Packages\nThe following Python packages are needed for the project:\n\npolars – Fast DataFrame library\n\nsentence-transformers – Pre-trained models for sentence embeddings\n\ntqdm – Progress bar library\n\npyarrow – Apache Arrow for fast data processing\n\naltair – Declarative statistical visualization library\n\nipywidgets – Interactive widgets for Jupyter notebooks\n\npandas – Data analysis library\n\nmatplotlib – Visualization library"
+  },
+  {
+    "objectID": "posts/Spam Detector.html#recommended-install-miniconda",
+    "href": "posts/Spam Detector.html#recommended-install-miniconda",
+    "title": "Spam Detection",
+    "section": "Recommended: Install Miniconda",
+    "text": "Recommended: Install Miniconda\nUsing Miniconda is highly recommended to manage dependencies efficiently. Follow the instructions below to install Miniconda and set up an environment.\n\n1. Install Miniconda\n\nMac & Linux\nRun the following commands in a terminal:\n# Download Miniconda installer\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh\n# OR for macOS (Intel)\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -O miniconda.sh\n# OR for macOS (Apple Silicon)\nwget https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -O miniconda.sh\n\n# Install Miniconda\nbash miniconda.sh -b -p $HOME/miniconda\n\n# Initialize Conda\n$HOME/miniconda/bin/conda init\nRestart your terminal for the changes to take effect.\n\n\nWindows\n\nDownload the latest Miniconda installer.\nRun the installer and follow the on-screen instructions.\nOpen Anaconda Prompt or PowerShell, then initialize Conda:\nconda init\n\nRestart your terminal or PowerShell session.\n\n\n\n2. Create a Conda Environment\nCreate and activate a new environment named myenv (or another name of your choice):\nconda create -n myenv python=3.10 -y\nconda activate myenv\n\n\n3. Install Required Packages\nWith the Conda environment activated, install the required packages:\npip install polars sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib\n\n\n4. Verify Installation\nTo check that everything is installed correctly, run:\npython -c \"import polars, sentence_transformers, tqdm, pyarrow, altair, ipywidgets, pandas, matplotlib; print('All packages installed successfully!')\"\n\n\n5. Launch JupyterLab\nTo start JupyterLab, run:\njupyter lab"
   },
   {
     "objectID": "posts/Spam Detector.html#step-2-data-collection-and-processing",
