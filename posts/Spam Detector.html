@@ -201,7 +201,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#step-1-define-scope" id="toc-step-1-define-scope" class="nav-link active" data-scroll-target="#step-1-define-scope">Step 1 : Define Scope</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#step-1-define-scope" id="toc-step-1-define-scope" class="nav-link" data-scroll-target="#step-1-define-scope">Step 1 : Define Scope</a></li>
   <li><a href="#step-2.-install-dependencies" id="toc-step-2.-install-dependencies" class="nav-link" data-scroll-target="#step-2.-install-dependencies">Step 2. Install Dependencies</a>
   <ul class="collapse">
   <li><a href="#required-python-packages" id="toc-required-python-packages" class="nav-link" data-scroll-target="#required-python-packages">Required Python Packages</a></li>
@@ -247,7 +248,9 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div class="alert alert-info">
 <p>Note: This document contains AI generated content - code and editing refinement provided by GPT-3 class models.</p>
 </div>
-<p>Spam detection is the process of identifying and filtering unwanted or malicious messages, such as emails, SMS, or social media posts. Spam can range from harmless but annoying advertisements to dangerous phishing attempts and malware distribution. Given the vast volume of digital communication, automated spam detection systems are essential for maintaining security, efficiency, and user experience.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Spam detection is the process of identifying and filtering unwanted or malicious messages, such as emails, SMS, or social media posts. Spam can range from harmless but annoying advertisements to dangerous phishing attempts and malware distribution. Given the vast volume of digital communication, automated spam detection systems are essential for maintaining security, efficiency, and user experience. This article walks through the construction of a spam classifier using open source models and tooling. The article itself is written as a jupyter notebook and rendered to html. The original jupyter notebook is avaialable <a href="https://github.com/jdonaldson/jjd.io/blob/main/posts/Spam%20Detector.ipynb">here</a></p>
 <p>Building an optimal spam detection model involves multiple considerations, including data collection, feature selection, model choice, and evaluation. The decision-making process typically follows these key steps:</p>
 <ol type="1">
 <li>Defining the Problem Scope</li>
@@ -291,6 +294,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <li><p>Using metrics like precision, recall, F1-score, and ROC-AUC to assess performance.</p></li>
 <li><p>Implementing techniques like cross-validation and hyperparameter tuning to optimize the model.</p></li>
 </ul>
+</section>
 <section id="step-1-define-scope" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-define-scope">Step 1 : Define Scope</h2>
 <p>For the purposes of this exercise we’ll look at e-mail messages that contain known spam or non-spam (“ham”) messages.</p>
