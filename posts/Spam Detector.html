@@ -202,7 +202,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
    
   <ul>
   <li><a href="#step-1-define-scope" id="toc-step-1-define-scope" class="nav-link active" data-scroll-target="#step-1-define-scope">Step 1 : Define Scope</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a>
+  <li><a href="#step-2.-install-dependencies" id="toc-step-2.-install-dependencies" class="nav-link" data-scroll-target="#step-2.-install-dependencies">Step 2. Install Dependencies</a>
   <ul class="collapse">
   <li><a href="#required-python-packages" id="toc-required-python-packages" class="nav-link" data-scroll-target="#required-python-packages">Required Python Packages</a></li>
   <li><a href="#recommended-install-miniconda" id="toc-recommended-install-miniconda" class="nav-link" data-scroll-target="#recommended-install-miniconda">Recommended: Install Miniconda</a>
@@ -213,12 +213,12 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
   <li><a href="#verify-installation" id="toc-verify-installation" class="nav-link" data-scroll-target="#verify-installation"><strong>4. Verify Installation</strong></a></li>
   <li><a href="#launch-jupyterlab" id="toc-launch-jupyterlab" class="nav-link" data-scroll-target="#launch-jupyterlab"><strong>5. Launch JupyterLab</strong></a></li>
   </ul></li>
-  <li><a href="#step-2-data-collection-and-processing" id="toc-step-2-data-collection-and-processing" class="nav-link" data-scroll-target="#step-2-data-collection-and-processing">Step 2: Data Collection and Processing</a></li>
+  <li><a href="#step-3-data-collection-and-processing" id="toc-step-3-data-collection-and-processing" class="nav-link" data-scroll-target="#step-3-data-collection-and-processing">Step 3: Data Collection and Processing</a></li>
   </ul></li>
-  <li><a href="#step-3-feature-engineering" id="toc-step-3-feature-engineering" class="nav-link" data-scroll-target="#step-3-feature-engineering">Step 3: Feature Engineering</a></li>
-  <li><a href="#step-4-model-selection" id="toc-step-4-model-selection" class="nav-link" data-scroll-target="#step-4-model-selection">Step 4: Model Selection</a></li>
-  <li><a href="#step-5-training" id="toc-step-5-training" class="nav-link" data-scroll-target="#step-5-training">Step 5: Training</a></li>
-  <li><a href="#step-6-evaluation" id="toc-step-6-evaluation" class="nav-link" data-scroll-target="#step-6-evaluation">Step 6: Evaluation</a></li>
+  <li><a href="#step-4-feature-engineering" id="toc-step-4-feature-engineering" class="nav-link" data-scroll-target="#step-4-feature-engineering">Step 4: Feature Engineering</a></li>
+  <li><a href="#step-5-model-selection" id="toc-step-5-model-selection" class="nav-link" data-scroll-target="#step-5-model-selection">Step 5: Model Selection</a></li>
+  <li><a href="#step-6-training" id="toc-step-6-training" class="nav-link" data-scroll-target="#step-6-training">Step 6: Training</a></li>
+  <li><a href="#step-7-evaluation" id="toc-step-7-evaluation" class="nav-link" data-scroll-target="#step-7-evaluation">Step 7: Evaluation</a></li>
   </ul>
 </nav>
     </div>
@@ -314,8 +314,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># !pip install polars sentence-transformers tqdm pyarrow altair ipywidgets pandas matplotlib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="installation" class="level1">
-<h1>Installation</h1>
+<section id="step-2.-install-dependencies" class="level1">
+<h1>Step 2. Install Dependencies</h1>
 <section id="required-python-packages" class="level2">
 <h2 class="anchored" data-anchor-id="required-python-packages">Required Python Packages</h2>
 <p>The following Python packages are needed for the project:</p>
@@ -392,8 +392,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
-<section id="step-2-data-collection-and-processing" class="level2">
-<h2 class="anchored" data-anchor-id="step-2-data-collection-and-processing">Step 2: Data Collection and Processing</h2>
+<section id="step-3-data-collection-and-processing" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-data-collection-and-processing">Step 3: Data Collection and Processing</h2>
 <div id="0e78262a-0521-4de9-8fb7-c7ad3a5df48f" class="cell" data-tags="[]" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pl.read_csv(<span class="st">"https://raw.githubusercontent.com/bigmlcom/python/refs/heads/master/data/spam.csv"</span>, separator <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
@@ -446,8 +446,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </div>
 </section>
 </section>
-<section id="step-3-feature-engineering" class="level1">
-<h1>Step 3: Feature Engineering</h1>
+<section id="step-4-feature-engineering" class="level1">
+<h1>Step 4: Feature Engineering</h1>
 <div id="7334c99b-d9bf-49a9-b9f6-8a0094e826a5" class="cell" data-tags="[]" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sentence_transformers <span class="im">import</span> SentenceTransformer</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>sentence_model <span class="op">=</span> SentenceTransformer(<span class="st">"all-MiniLM-L6-v2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -515,8 +515,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="step-4-model-selection" class="level1">
-<h1>Step 4: Model Selection</h1>
+<section id="step-5-model-selection" class="level1">
+<h1>Step 5: Model Selection</h1>
 <div id="290b323f-f070-429a-befd-2c8372270ae2" class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define logistic regression model</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> LogisticRegression(nn.Module):</span>
@@ -529,8 +529,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.sigmoid(<span class="va">self</span>.linear(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="step-5-training" class="level1">
-<h1>Step 5: Training</h1>
+<section id="step-6-training" class="level1">
+<h1>Step 6: Training</h1>
 <div id="bc7ed946-5c69-4f02-af24-21ace9460e2d" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This cell contains a mix of AI and Human Generated Code.</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
@@ -654,8 +654,8 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
-<section id="step-6-evaluation" class="level1">
-<h1>Step 6: Evaluation</h1>
+<section id="step-7-evaluation" class="level1">
+<h1>Step 7: Evaluation</h1>
 <div id="8a04ad18-f01c-4f3b-b3ee-4aedc2b9850a" class="cell" data-tags="[]" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>metrics.plot(title<span class="op">=</span><span class="st">"Holdout Training Metrics by Epoch"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
