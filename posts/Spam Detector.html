@@ -738,6 +738,12 @@ $ Message &lt;str&gt; 'Go until jurong point, crazy.. Available only in bugis n 
 <section id="step-6-training" class="level1">
 <h1>Step 6: Training</h1>
 <p>We will define a training loop. Since we are borrowing a sentence embedder with MiniLM, we don’t need to train a new one. However, we will need to train a simpler linear model.</p>
+<p>We need to call out some specific choices here:</p>
+<ul>
+<li>criterion - choice of “loss” function, in this case <a href="https://en.wikipedia.org/wiki/Cross-entropy">binary cross entropy (BCE)</a>.</li>
+<li>optimizer - choice of step function, in this case (most cases) <a href="https://en.wikipedia.org/wiki/Stochastic_gradient_descent">adam</a>.</li>
+<li>epoch - number of complete passes through the data that the training routine has completed.</li>
+</ul>
 <div id="bc7ed946-5c69-4f02-af24-21ace9460e2d" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This cell contains a mix of AI and Human Generated Code.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
@@ -885,7 +891,7 @@ $ Message &lt;str&gt; 'Go until jurong point, crazy.. Available only in bugis n 
 <ol type="1">
 <li>What are some pieces of information that could be added to the training embedding/vector? How?</li>
 <li>What do we need to do to maintain this model? How would we detect model drift?</li>
-<li>If we need to change from a binary classification model to a multi-class model, what needs to change?</li>
+<li>If we need to change from a binary classification model to a multi-class model, what needs to change? What <a href="https://en.wikipedia.org/wiki/Precision_and_recall">metrics</a> should be used?</li>
 </ol>
 </section>
 <section id="recommended-readings" class="level1">
