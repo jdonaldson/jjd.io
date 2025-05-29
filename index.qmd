@@ -95,8 +95,12 @@ You can try [Dagworks Hamilton framework online](https://www.tryhamilton.dev/),
 or check it out [on Github](https://github.com/dagworks-inc/hamilton).  You can
 also follow [their blog](https://blog.dagworks.io/).
 
+
 ![Dagworks DAG Example](https://www.dagworks.io/lineage_view.png)
 
+::: {.callout-note}
+(Update: Dagworks has been [acquired by Salesforce](https://www.linkedin.com/feed/update/urn:li:activity:7333540416102780928/), while [Hamilton](https://github.com/apache/hamilton) and [Burr](https://projects.apache.org/project.html?incubator-burr) have been accepted into the Apache Software Foundation as new projects)
+:::
 
 ## PulseSpace
 ![Karl and I](images/karl.jpeg)
