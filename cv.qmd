@@ -32,8 +32,15 @@ nocite: |
 
 ## Experience
 
+**Curvo Labs** *Chief Data Scientist* 2024-
+
+*Leadership and Engineering Highlights:*
+
+* Leading data science initiatives and research.
+* Developing advanced machine learning solutions.
+
 **Hushh.ai**
-*Cofounder 2024-*
+*Cofounder 2024*
 
 *Leadership and Engineering Highlights:*
 

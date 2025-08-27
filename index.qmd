@@ -63,15 +63,24 @@ a data science competition with [Boston Day Academy](https://www.bdea.org/).
 More details in the [pro-bono](https://jjd.io/cv.html#pro-bono) section.
 
 
-# Hushh.ai (CTO)
+# Curvo Labs (Chief Data Scientist)
+
+![Curvo Labs Team - Franco Ponticelli (CTO), Justin Donaldson (Chief Data Scientist), Andy Perry (CEO)](images/IMG_9382.png)
+
+I'm currently serving as Chief Data Scientist at Curvo Labs, where I'm leading
+data science initiatives and developing advanced machine learning solutions.
+This role allows me to continue pushing the boundaries of AI and data science
+while working on cutting-edge research and applications alongside CTO [Franco Ponticelli](https://github.com/fponticelli) and CEO Andy Perry.
+
+# Previously: Hushh.ai (CTO)
 
 ![Hushh.ai Seattle Team](images/hushh_ai.jpeg)
 
-I'm helping start [Hushh.ai](http://www.hush.ai), a company I co-founded with
+I helped start [Hushh.ai](http://www.hush.ai), a company I co-founded with
 [Manish Sainani](https://www.linkedin.com/in/manishsainani/) in 2024. At Hushh,
-we're pioneering on-device hybrid LLM search capabilities and nurturing a
+we pioneered on-device hybrid LLM search capabilities and nurtured a
 vibrant R&D culture with a talented team of international interns. You can read
-more about what we're up to over at [Hushh Labs](https://hushh-labs.github.io/hushh-labs-blog/)
+more about what we did over at [Hushh Labs](https://hushh-labs.github.io/hushh-labs-blog/)
 
 
 # Investor/Advisor
