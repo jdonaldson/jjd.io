@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://www.jjd.io/posts/Spam Detector.html</loc>
-    <lastmod>2025-05-29T17:27:47.615Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/posts/rumpus.html</loc>
-    <lastmod>2025-05-29T17:27:47.745Z</lastmod>
-  </url>
-  <url>
     <loc>http://www.jjd.io/cv.html</loc>
-    <lastmod>2025-05-29T17:27:47.589Z</lastmod>
-  </url>
-  <url>
-    <loc>http://www.jjd.io/resume.html</loc>
-    <lastmod>2025-05-29T17:27:47.745Z</lastmod>
+    <lastmod>2025-08-27T22:30:17.552Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/index.html</loc>
-    <lastmod>2025-05-29T17:27:47.614Z</lastmod>
+    <lastmod>2025-08-27T22:30:17.595Z</lastmod>
   </url>
   <url>
-    <loc>http://www.jjd.io/blog.html</loc>
-    <lastmod>2025-05-29T17:27:47.589Z</lastmod>
+    <loc>http://www.jjd.io/posts/Spam Detector.html</loc>
+    <lastmod>2025-08-27T22:30:17.597Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/quarto.html</loc>
-    <lastmod>2025-05-29T17:27:47.744Z</lastmod>
+    <lastmod>2025-08-27T22:30:17.723Z</lastmod>
   </url>
   <url>
-    <loc>http://www.jjd.io/posts/intelligence_chases_chaos.html</loc>
-    <lastmod>2025-05-29T17:27:47.741Z</lastmod>
+    <loc>http://www.jjd.io/posts/rumpus.html</loc>
+    <lastmod>2025-08-27T22:30:17.723Z</lastmod>
   </url>
   <url>
-    <loc>http://www.jjd.io/posts/book_bot.html</loc>
-    <lastmod>2025-05-29T17:27:47.616Z</lastmod>
+    <loc>http://www.jjd.io/CLAUDE.html</loc>
+    <lastmod>2025-08-27T22:30:17.550Z</lastmod>
   </url>
   <url>
     <loc>http://www.jjd.io/posts/llama3.1.html</loc>
-    <lastmod>2025-05-29T17:27:47.741Z</lastmod>
+    <lastmod>2025-08-27T22:30:17.721Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/intelligence_chases_chaos.html</loc>
+    <lastmod>2025-08-27T22:30:17.721Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/posts/book_bot.html</loc>
+    <lastmod>2025-08-27T22:30:17.597Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/resume.html</loc>
+    <lastmod>2025-08-27T22:30:17.723Z</lastmod>
+  </url>
+  <url>
+    <loc>http://www.jjd.io/blog.html</loc>
+    <lastmod>2025-08-27T22:30:17.552Z</lastmod>
   </url>
 </urlset>
