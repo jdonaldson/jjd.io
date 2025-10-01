@@ -23,8 +23,9 @@ complex, and turn it into something beautiful.
 ## What I know
 
 ::: {.callout-tip}
-"All models are wrong, but some are useful"  - [George Box](https://en.wikipedia.org/wiki/George_E._P._Box)
 ![George Box](https://upload.wikimedia.org/wikipedia/commons/a/a2/GeorgeEPBox.jpg)
+"All models are wrong, but some are useful"  
+- [George Box](https://en.wikipedia.org/wiki/George_E._P._Box)
 :::
 
 
@@ -46,8 +47,9 @@ also involves emotional experience design and the use of visualizations for
 music discovery. For further details, visit the [publications section](https://jjd.io/cv.html#publications)
 
 ::: {.callout-tip}
-"There is no science without fancy and no art without fact."  - [Vladimir Nabokov](https://en.wikipedia.org/wiki/Vladimir_Nabokov)
 ![Vladimir Nabokov](https://upload.wikimedia.org/wikipedia/commons/8/87/Vladimir_Nabokov_1973.jpg)
+"There is no science without fancy and no art without fact."  
+- [Vladimir Nabokov](https://en.wikipedia.org/wiki/Vladimir_Nabokov)
 :::
 
 My patents span multiple areas in technology. They include
@@ -168,8 +170,9 @@ setting the foundation for the company's growth.
 
 
 ::: {.callout-tip}
-"Architects cannot teach nature anything."  - [Mark Twain](https://en.wikipedia.org/wiki/Mark_Twain)
 ![image](https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg)
+"Architects cannot teach nature anything."  
+- [Mark Twain](https://en.wikipedia.org/wiki/Mark_Twain)
 :::
 
 
