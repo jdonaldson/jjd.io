@@ -102,3 +102,14 @@ main, .sidebar {
 .float-right {
   float: right;
 }
+
+.callout-tip {
+  overflow: auto;
+}
+
+.callout-tip img {
+  float: right;
+  height: 8em;
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+}
