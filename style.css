@@ -108,8 +108,9 @@ main, .sidebar {
 }
 
 .callout-tip img {
-  float: right;
+  float: left;
   height: 8em;
-  margin-left: 1em;
+  margin-right: 1em;
   margin-bottom: 0.5em;
+  display: inline;
 }
