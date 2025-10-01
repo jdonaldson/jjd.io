@@ -22,6 +22,11 @@ complex, and turn it into something beautiful.
 
 ## What I know
 
+::: {.callout-tip}
+"All models are wrong, but some are useful"  - [George Box](https://en.wikipedia.org/wiki/George_E._P._Box)
+:::
+
+
 My expertise encompasses model optimization, time series analysis, anomaly
 detection, and advanced ML/web visualization. I'm well-versed in programming
 languages like Python, R, and fluent with Docker and core web technologies.
@@ -38,6 +43,10 @@ systems combining social and musical data, visualizing social network links for
 better exploratory search, and exploring aesthetic interaction design. My work
 also involves emotional experience design and the use of visualizations for
 music discovery. For further details, visit the [publications section](https://jjd.io/cv.html#publications)
+
+::: {.callout-tip}
+"There is no science without fancy and no art without fact."  - [Vladimir Nabokov](https://en.wikipedia.org/wiki/Vladimir_Nabokov)
+:::
 
 My patents span multiple areas in technology. They include
 systems for real-time media consumption visualization, decision tree
@@ -153,6 +162,13 @@ Earlier in my career, I co-founded BigML and served as its President from 2011
 to 2013. There, I spearheaded the development of interactive model and
 distribution visualizations and took charge of various administrative tasks,
 setting the foundation for the company's growth.
+
+
+
+::: {.callout-tip}
+"Architects cannot teach nature anything."  - [Mark Twain](https://en.wikipedia.org/wiki/Mark_Twain)
+![image](https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg)
+:::
 
 
 # Let's Connect!
