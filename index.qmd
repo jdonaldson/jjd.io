@@ -24,6 +24,7 @@ complex, and turn it into something beautiful.
 
 ::: {.callout-tip}
 "All models are wrong, but some are useful"  - [George Box](https://en.wikipedia.org/wiki/George_E._P._Box)
+![George Box](https://upload.wikimedia.org/wikipedia/commons/a/a2/GeorgeEPBox.jpg)
 :::
 
 
@@ -46,6 +47,7 @@ music discovery. For further details, visit the [publications section](https://j
 
 ::: {.callout-tip}
 "There is no science without fancy and no art without fact."  - [Vladimir Nabokov](https://en.wikipedia.org/wiki/Vladimir_Nabokov)
+![Vladimir Nabokov](https://upload.wikimedia.org/wikipedia/commons/8/87/Vladimir_Nabokov_1973.jpg)
 :::
 
 My patents span multiple areas in technology. They include
