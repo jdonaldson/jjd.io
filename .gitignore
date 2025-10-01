@@ -11,3 +11,5 @@ _extensions
 _site
 site_libs
 .ipynb_checkpoints/
+
+**/*.quarto_ipynb
