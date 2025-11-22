@@ -42,7 +42,19 @@ I've built a [live demo](https://semantic-proprioception-demo.streamlit.app) tha
 
 Traditional clustering requires you to specify how many clusters you want, tune distance thresholds, or provide seed examples. But what if the data could just *tell you* what patterns exist?
 
-The key is **LSH bucket density**. When you hash similar embeddings into buckets using Locality-Sensitive Hashing, the *density* of each bucket reveals something fundamental:
+The key is **LSH bucket density**. When you hash similar embeddings into buckets using Locality-Sensitive Hashing, the *density* of each bucket reveals something fundamental.
+
+LSH maps high-dimensional vectors to binary signatures using random hyperplanes:
+
+$$h_i(\mathbf{v}) = \begin{cases} 1 & \text{if } \mathbf{w}_i \cdot \mathbf{v} > 0 \\ 0 & \text{otherwise} \end{cases}$$
+
+where $\mathbf{w}_i$ is a random hyperplane. Combining $k$ such hash functions creates a bucket signature. Similar vectors collide in the same bucket with high probability:
+
+$$P(h(\mathbf{u}) = h(\mathbf{v})) = 1 - \frac{\theta(\mathbf{u}, \mathbf{v})}{\pi}$$
+
+where $\theta(\mathbf{u}, \mathbf{v})$ is the angle between vectors. Closer vectors (smaller angle) → higher collision probability.
+
+The density distribution then tells us:
 
 - **Dense buckets** (≥5 items): Common themes, frequently occurring concepts
 - **Medium buckets** (2-4 items): Boundary cases, transitional concepts
@@ -83,7 +95,11 @@ HN posts mix news headlines with discussion text. The clusters reflect both tren
 2. **Hash**: Apply LSH with a fixed seed (12345) so embeddings from different files map to the same bucket space
 3. **Discover**: Query Krapivin hash table for buckets with ≥5 items (O(1) operation)
 4. **Label**: Use an LLM or keyword extraction to generate semantic labels for each dense bucket
-5. **Merge**: Combine similar themes using Jaccard similarity on tokenized labels
+5. **Merge**: Combine similar themes using Jaccard similarity on tokenized labels:
+
+$$J(A, B) = \frac{|A \cap B|}{|A \cup B|}$$
+
+where $A$ and $B$ are sets of tokens from theme labels. Themes with $J \geq 0.5$ get merged automatically.
 
 All embeddings are pre-computed (~24 MB total), so the demo runs with zero API costs or inference overhead.
 
@@ -96,6 +112,35 @@ Because we use a **fixed LSH seed** across all files, the bucket spaces are comp
 - Query across multiple datasets → buckets naturally align
 
 Traditional approaches would require rebuilding the entire index when adding data. Krapivin hash tables with fixed seeds enable incremental, compositional updates.
+
+### Code Example
+
+Here's how to query dense buckets directly from the Parquet files:
+
+```python
+import polars as pl
+
+# Load dense buckets (≥5 items) from Parquet index
+dense = (pl.scan_parquet("twitter_lsh_index.parquet")
+    .group_by('bucket_id')
+    .agg(pl.count('row_id').alias('count'))
+    .filter(pl.col('count') >= 5)
+    .sort('count', descending=True)
+    .collect())
+
+print(f"Found {len(dense)} dense buckets")
+# Found 42 dense buckets
+
+# Get contents of bucket 132 (e.g., "password reset" theme)
+bucket_contents = (pl.scan_parquet("twitter_lsh_index.parquet")
+    .filter(pl.col('bucket_id') == 132)
+    .collect())
+
+print(f"Bucket 132 contains {len(bucket_contents)} items")
+# Bucket 132 contains 16 items
+```
+
+The key: **no scanning required**. Parquet's columnar format + Polars' lazy evaluation means we only read the columns we need.
 
 ## Try It Yourself
 
@@ -153,8 +198,6 @@ Semantic proprioception isn't just about visualization—it unlocks new capabili
 **Concept drift detection**: Track density distributions over time windows—sudden shifts indicate changing semantics.
 
 ## The Research Behind It
-
-This demo is part of the larger [Semantic Proprioception](https://github.com/jdonaldson/semantic-proprioception) project exploring multi-resolution density awareness for embedding spaces.
 
 Key papers:
 - **Krapivin et al. (2025)**: [Optimal Hash Tables with Deletion](https://arxiv.org/abs/2501.02305)
