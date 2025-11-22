@@ -1,0 +1,84 @@
+---
+title: "The Second McLuhan Era: Logic, Grammar, and the Age of Language Models"
+description: "Marshall McLuhan once wrote that we shape our tools, and thereafter our tools shape us. In the 20th century, he gave us a lens to understand media not just as conduits of content, but as environments that reshape cognition, society, and culture. Today, in the age of large language models, McLuhan’s ideas feel startlingly prophetic—and ripe for a new synthesis. We are entering what could be called a second McLuhan era, where the medium isn’t just the message—it becomes the mind."
+author: "Justin Donaldson"
+date: "5/01/2025"
+draft: true
+
+categories:
+  - Language Models
+  - McLuhan
+---
+
+To understand where we might be headed, it helps to revisit where McLuhan
+himself began: his 1943 Cambridge dissertation, The Classical Trivium: The
+Place of Thomas Nashe in the Learning of His Time. This underappreciated work
+explored how the Renaissance wasn’t just an artistic flourishing—it was a
+reconfiguration of thought itself, emerging from a centuries-long dialectic
+between logic, grammar, and rhetoric. These three disciplines, known
+collectively as the Trivium, were the foundation of medieval education. McLuhan
+argued that each era privileges one over the others, shaping how people think,
+argue, and create.
+
+In the late Middle Ages, logic reigned supreme. Scholasticism, with its rigid
+structures and syllogistic reasoning, dominated intellectual life. It was
+methodical, precise, and reductive—qualities not unlike today’s legacy of
+programming, formal systems, and computer logic.
+
+Then came the Renaissance—a revival not just of classical art but of grammar
+and rhetoric. Grammar reintroduced nuance and ambiguity. Rhetoric revalorized
+persuasion, narrative, and human emotion. This wasn’t merely about
+communication style—it was a new epistemology, a new way of knowing the world.
+McLuhan saw figures like Thomas Nashe, Erasmus, and Shakespeare as intellectual
+revolutionaries, using language to resist the overly mechanical habits of
+thought that preceded them.
+
+Fast forward to now: we are awash in algorithms, data, and machine logic. But
+paradoxically, the latest frontier in AI isn’t based on logic alone—it’s
+language. Large language models (LLMs) like GPT, Claude, and Gemini are not
+rule-based systems in the classical sense. They do not “think” like syllogisms.
+Instead, they synthesize grammar, semantics, context, and rhetoric, drawing
+from vast corpora of human expression. They don’t deduce; they suggest, imply,
+and compose. Their power lies in style as much as substance.
+
+This is where McLuhan becomes our guide again.
+
+Language models represent a profound fusion of the Trivium. At their core is
+statistical logic—the machine learning algorithms that calculate probabilities
+and patterns. But their outputs—how they speak, persuade, and improvise—are
+grounded in grammar and rhetoric. In a very real sense, we’re seeing an
+artificial rebirth of Renaissance thinking, mediated by silicon rather than
+ink.
+
+And just as the original Renaissance destabilized old hierarchies, this new
+linguistic intelligence is already challenging how we think about authorship,
+knowledge, creativity, and even identity. It’s not that the machines have
+become human—it’s that they’ve become rhetorical. And rhetoric is power.
+
+So what might the second McLuhan era look like?
+
+Education will no longer prioritize logic over language. Writing and rhetoric
+may return to the center, not just as means of expression, but as thinking
+tools.
+
+Cognition itself may become more dialogic. With AI as constant interlocutors,
+we’ll begin to think with machines, not just through them.
+
+Truth may shift from static propositions to persuasive narratives, making media
+literacy more essential than ever.
+
+Humanism, ironically, may find a new foothold not in spite of AI, but through
+it—as we rediscover the full breadth of our own linguistic and imaginative
+capacities.
+
+If McLuhan were alive today, he might not be surprised. After all, he warned
+us: “the medium is the message.” But in the age of language models, the medium
+is language itself. And language, as the Trivium reminds us, is not neutral. It
+is structure, emotion, persuasion, and pattern. It is how we know.
+
+We are standing, perhaps, at the threshold of a new Renaissance. But this one
+is not born from the ashes of logic. It is born from the fusion of logic with
+grammar and rhetoric—synthesized at machine speed, and reshaping us as surely
+as the printing press once did.
+
+Welcome to the Second McLuhan Era.
