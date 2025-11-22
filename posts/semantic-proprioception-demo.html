@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2025-11-22">
+<meta name="description" content="How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.">
 
-<title>Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.</title>
+<title>Semantic Proprioception: Teaching Data to Understand Itself – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,27 +26,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-81161df70946103be4ff68a34233701c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-81161df70946103be4ff68a34233701c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,35 +72,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
 
 <script type="text/javascript">
@@ -110,44 +82,15 @@ gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/images/sisters.jpeg">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Semantic Proprioception: Teaching Data to Understand Itself – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.">
+<meta property="og:image" content="http://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Ogni Parte ad Ogni Parte Splende – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/images/sisters.jpeg">
+<meta name="twitter:title" content="Semantic Proprioception: Teaching Data to Understand Itself – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.">
+<meta name="twitter:image" content="http://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -159,11 +102,11 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.png" alt="" class="navbar-logo light-content">
-    <img src="./images/nav-logo.png" alt="" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -174,15 +117,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">cv</span></a>
   </li>  
 </ul>
@@ -219,21 +162,65 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(7)</span></div><div class="category" data-category="QWdlbnQ=">Agent <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(2)</span></div><div class="category" data-category="YmxvZw==">blog <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZUdlbg==">CodeGen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHN0cnVjdHVyZXM=">data structures <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW1iZWRkaW5ncw==">embeddings <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW52ZXN0aW5n">investing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#semantic-proprioception-teaching-data-to-understand-itself" id="toc-semantic-proprioception-teaching-data-to-understand-itself" class="nav-link active" data-scroll-target="#semantic-proprioception-teaching-data-to-understand-itself">Semantic Proprioception: Teaching Data to Understand Itself</a>
+  <ul class="collapse">
+  <li><a href="#the-core-insight" id="toc-the-core-insight" class="nav-link" data-scroll-target="#the-core-insight">The Core Insight</a></li>
+  <li><a href="#why-krapivin-hash-tables-matter" id="toc-why-krapivin-hash-tables-matter" class="nav-link" data-scroll-target="#why-krapivin-hash-tables-matter">Why Krapivin Hash Tables Matter</a></li>
+  <li><a href="#three-datasets-one-technique" id="toc-three-datasets-one-technique" class="nav-link" data-scroll-target="#three-datasets-one-technique">Three Datasets, One Technique</a>
+  <ul class="collapse">
+  <li><a href="#twitter-customer-support-1000-tweets" id="toc-twitter-customer-support-1000-tweets" class="nav-link" data-scroll-target="#twitter-customer-support-1000-tweets">Twitter Customer Support (1,000 tweets)</a></li>
+  <li><a href="#arxiv-research-papers-1000-abstracts" id="toc-arxiv-research-papers-1000-abstracts" class="nav-link" data-scroll-target="#arxiv-research-papers-1000-abstracts">ArXiv Research Papers (1,000 abstracts)</a></li>
+  <li><a href="#hacker-news-684-posts" id="toc-hacker-news-684-posts" class="nav-link" data-scroll-target="#hacker-news-684-posts">Hacker News (684 posts)</a></li>
+  </ul></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
+  <li><a href="#the-composability-advantage" id="toc-the-composability-advantage" class="nav-link" data-scroll-target="#the-composability-advantage">The Composability Advantage</a></li>
+  <li><a href="#try-it-yourself" id="toc-try-it-yourself" class="nav-link" data-scroll-target="#try-it-yourself">Try It Yourself</a></li>
+  <li><a href="#what-this-enables" id="toc-what-this-enables" class="nav-link" data-scroll-target="#what-this-enables">What This Enables</a></li>
+  <li><a href="#the-research-behind-it" id="toc-the-research-behind-it" class="nav-link" data-scroll-target="#the-research-behind-it">The Research Behind It</a></li>
+  <li><a href="#technical-details" id="toc-technical-details" class="nav-link" data-scroll-target="#technical-details">Technical Details</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Ogni Parte ad Ogni Parte Splende</h1>
-</div>
+<h1 class="title">Semantic Proprioception: Teaching Data to Understand Itself</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">machine learning</div>
+    <div class="quarto-category">embeddings</div>
+    <div class="quarto-category">data structures</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Donaldson </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 22, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -243,221 +230,148 @@ window.Quarto = {
 </header>
 
 
-<p><em>“Each part to each part shines”</em></p>
-<p>This is the personal blog of Justin Donaldson. You can read the entries below, or learn more <a href="./index.html">about me</a>. You can also check out my <a href="./cv.html">CV</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="./index.html"><img src="images/sisters.jpeg" class="img-fluid figure-img"></a></p>
-<figcaption>The Three Sisters Mountains in Sisters, Oregon</figcaption>
-</figure>
+<section id="semantic-proprioception-teaching-data-to-understand-itself" class="level1">
+<h1>Semantic Proprioception: Teaching Data to Understand Itself</h1>
+<style>
+.hero-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: 1rem 0 2rem 0;
+  border-radius: 8px;
+  position: relative;
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: -33.33%;
+}
+</style>
+<div class="hero-image">
+<p><img src="images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png" class="img-fluid"></p>
 </div>
+<p>Just as proprioception lets you sense where your body is in space without looking, <strong>semantic proprioception</strong> gives data the ability to understand its own internal structure. No manual labeling, no predefined categories—just the data revealing patterns within itself.</p>
+<p>I’ve built a <a href="https://semantic-proprioception-demo.streamlit.app">live demo</a> that shows this in action across three very different datasets: Twitter customer support conversations, ArXiv research papers, and Hacker News discussions. The same technique discovers meaningful themes in all three, adapting to each domain’s unique semantics.</p>
+<section id="the-core-insight" class="level2">
+<h2 class="anchored" data-anchor-id="the-core-insight">The Core Insight</h2>
+<p>Traditional clustering requires you to specify how many clusters you want, tune distance thresholds, or provide seed examples. But what if the data could just <em>tell you</em> what patterns exist?</p>
+<p>The key is <strong>LSH bucket density</strong>. When you hash similar embeddings into buckets using Locality-Sensitive Hashing, the <em>density</em> of each bucket reveals something fundamental:</p>
+<ul>
+<li><strong>Dense buckets</strong> (≥5 items): Common themes, frequently occurring concepts</li>
+<li><strong>Medium buckets</strong> (2-4 items): Boundary cases, transitional concepts</li>
+<li><strong>Sparse buckets</strong> (1 item): Novel or rare content</li>
+</ul>
+<p>This isn’t just clustering—it’s the data developing awareness of its own distribution.</p>
+</section>
+<section id="why-krapivin-hash-tables-matter" class="level2">
+<h2 class="anchored" data-anchor-id="why-krapivin-hash-tables-matter">Why Krapivin Hash Tables Matter</h2>
+<p>Traditional LSH implementations have a problem: to find dense buckets, you’d have to scan every bucket and count items. That’s O(n) where n is the number of buckets—expensive and slow.</p>
+<p>Enter <strong>Krapivin hash tables</strong> (<a href="https://arxiv.org/abs/2501.02305">Krapivin et al.&nbsp;2025</a>), which provide O(1) density queries through their hierarchical structure. You can instantly ask: “Which buckets have ≥5 items?” without scanning anything.</p>
+<p>This transforms LSH from a search index into a <strong>semantic awareness system</strong>. The data doesn’t just answer “what’s similar to X?”—it can answer “what patterns exist in me?”</p>
+</section>
+<section id="three-datasets-one-technique" class="level2">
+<h2 class="anchored" data-anchor-id="three-datasets-one-technique">Three Datasets, One Technique</h2>
+<p>The <a href="https://semantic-proprioception-demo.streamlit.app">demo</a> shows how the same approach works across wildly different domains:</p>
+<section id="twitter-customer-support-1000-tweets" class="level3">
+<h3 class="anchored" data-anchor-id="twitter-customer-support-1000-tweets">Twitter Customer Support (1,000 tweets)</h3>
+<p><strong>Discovered themes</strong>: Password resets, billing issues, account access, network problems</p>
+<p>The short, action-oriented nature of support tickets creates tight, well-defined clusters. Users express problems in similar ways, leading to high-density buckets around common pain points.</p>
+</section>
+<section id="arxiv-research-papers-1000-abstracts" class="level3">
+<h3 class="anchored" data-anchor-id="arxiv-research-papers-1000-abstracts">ArXiv Research Papers (1,000 abstracts)</h3>
+<p><strong>Discovered themes</strong>: Deep learning architectures, quantum mechanics, genomics, optimization methods</p>
+<p>Academic writing has longer, more varied language, but technical concepts still cluster. Papers about “attention mechanisms” use similar terminology even when discussing different applications.</p>
+</section>
+<section id="hacker-news-684-posts" class="level3">
+<h3 class="anchored" data-anchor-id="hacker-news-684-posts">Hacker News (684 posts)</h3>
+<p><strong>Discovered themes</strong>: AI/ML developments, startup advice, privacy concerns, programming tools</p>
+<p>HN posts mix news headlines with discussion text. The clusters reflect both trending topics and perennial themes in the tech community.</p>
+</section>
+</section>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
+<ol type="1">
+<li><strong>Embed</strong>: Use <code>sentence-transformers</code> to convert text → 384 or 768-dimensional vectors</li>
+<li><strong>Hash</strong>: Apply LSH with a fixed seed (12345) so embeddings from different files map to the same bucket space</li>
+<li><strong>Discover</strong>: Query Krapivin hash table for buckets with ≥5 items (O(1) operation)</li>
+<li><strong>Label</strong>: Use an LLM or keyword extraction to generate semantic labels for each dense bucket</li>
+<li><strong>Merge</strong>: Combine similar themes using Jaccard similarity on tokenized labels</li>
+</ol>
+<p>All embeddings are pre-computed (~24 MB total), so the demo runs with zero API costs or inference overhead.</p>
+</section>
+<section id="the-composability-advantage" class="level2">
+<h2 class="anchored" data-anchor-id="the-composability-advantage">The Composability Advantage</h2>
+<p>Because we use a <strong>fixed LSH seed</strong> across all files, the bucket spaces are compatible. This means:</p>
+<ul>
+<li>Add new data files → just compute their LSH signatures → merge with existing index</li>
+<li>Remove files → delete their entries from affected buckets</li>
+<li>Query across multiple datasets → buckets naturally align</li>
+</ul>
+<p>Traditional approaches would require rebuilding the entire index when adding data. Krapivin hash tables with fixed seeds enable incremental, compositional updates.</p>
+</section>
+<section id="try-it-yourself" class="level2">
+<h2 class="anchored" data-anchor-id="try-it-yourself">Try It Yourself</h2>
+<style>
+.streamlit-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.streamlit-container::before {
+  content: "🧠 Interactive Demo";
+  display: block;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #495057;
+}
+.streamlit-container iframe {
+  width: 100%;
+  height: 800px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: white;
+}
+</style>
+<div class="streamlit-container">
+<iframe src="https://semantic-proprioception-demo.streamlit.app/?embedded=true">
+</iframe>
+</div>
+<p><strong>Direct link</strong>: <a href="https://semantic-proprioception-demo.streamlit.app">semantic-proprioception-demo.streamlit.app</a></p>
+<p><strong>Source code</strong>: <a href="https://github.com/jdonaldson/semantic-proprioception-demo">github.com/jdonaldson/semantic-proprioception-demo</a></p>
+<p>Select a dataset, choose an embedding model, and watch themes emerge automatically. Click into any theme to see the actual text samples that cluster together.</p>
+<p>You can also: - Compare how different models (MiniLM-L3/L6/L12, MPNet-base) cluster the same data - Adjust the semantic merging threshold to consolidate or separate themes - Search for similar items using both brute-force cosine similarity and LSH-accelerated lookup</p>
+</section>
+<section id="what-this-enables" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-enables">What This Enables</h2>
+<p>Semantic proprioception isn’t just about visualization—it unlocks new capabilities:</p>
+<p><strong>Hallucination detection</strong>: If an LLM generates text with high confidence but low embedding density (sparse bucket), it’s likely hallucinating content outside its training distribution.</p>
+<p><strong>Active learning</strong>: Sample from sparse regions (novel concepts) or high-entropy buckets (boundary cases) to maximize labeling efficiency.</p>
+<p><strong>Content gap analysis</strong>: Compare query density (what users search for) vs.&nbsp;corpus density (what you have) to find opportunities.</p>
+<p><strong>Concept drift detection</strong>: Track density distributions over time windows—sudden shifts indicate changing semantics.</p>
+</section>
+<section id="the-research-behind-it" class="level2">
+<h2 class="anchored" data-anchor-id="the-research-behind-it">The Research Behind It</h2>
+<p>This demo is part of the larger <a href="https://github.com/jdonaldson/semantic-proprioception">Semantic Proprioception</a> project exploring multi-resolution density awareness for embedding spaces.</p>
+<p>Key papers: - <strong>Krapivin et al.&nbsp;(2025)</strong>: <a href="https://arxiv.org/abs/2501.02305">Optimal Hash Tables with Deletion</a> - <strong>Indyk &amp; Motwani (1998)</strong>: <a href="https://dl.acm.org/doi/10.1145/276698.276876">Approximate Nearest Neighbors via LSH</a></p>
+</section>
+<section id="technical-details" class="level2">
+<h2 class="anchored" data-anchor-id="technical-details">Technical Details</h2>
+<p>Built with: - <strong>Streamlit</strong> for the interactive UI - <strong>Polars</strong> for fast DataFrame operations - <strong>sentence-transformers</strong> (HuggingFace) for embeddings - <strong>Krapivin hash tables</strong> (Rust + Python bindings) for O(1) density queries - <strong>Parquet</strong> (zstd compression) for efficient storage</p>
+<p>Total dataset size: ~24 MB (1,000 tweets + 1,000 papers + 684 HN posts, 4 models each)</p>
+<hr>
+<p>The key insight: <strong>data can understand itself</strong>. Give it the right structure (LSH + Krapivin), and patterns emerge without manual intervention. Not clustering, not search—semantic self-awareness.</p>
+<p>Try the <a href="https://semantic-proprioception-demo.streamlit.app">demo</a> and see what patterns hide in your own data.</p>
 
 
+</section>
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1763845684544" data-listing-reading-time-sort="8" data-listing-word-count-sort="1588">
-<div class="thumbnail"><a href="./posts/Spam Detector.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/images/spam_spam.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Spam Detector.html" class="no-external">Spam Detection</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/Spam Detector.html" class="no-external">
-Note: This document contains AI generated content - code and editing refinement provided by GPT-3 class models.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Spam Detector.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1763845684668">
-<div class="thumbnail"><a href="./posts/llama3.1.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/llama3.1.html" class="no-external"></a>
-</h3>
-<div class="delink listing-description"><a href="./posts/llama3.1.html" class="no-external">
-<i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or…</i>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/llama3.1.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ2RhdGElMjBzdHJ1Y3R1cmVz" data-listing-date-sort="1763769600000" data-listing-file-modified-sort="1763845684670" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="916">
-<div class="thumbnail"><a href="./posts/semantic-proprioception-demo.html" class="no-external">
-
-<img loading="lazy" src="./posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external">Semantic Proprioception: Teaching Data to Understand Itself</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHN0cnVjdHVyZXM='); return false;">data structures</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/semantic-proprioception-demo.html" class="no-external">
-<p>How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external">
-<div class="listing-date">
-Nov 22, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1763845684668" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail"><a href="./posts/intelligence_chases_chaos.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">Intelligence Chases Chaos</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/intelligence_chases_chaos.html" class="no-external">
-<p>The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">
-<div class="listing-date">
-Feb 3, 2025
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1763845684544" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
-<div class="thumbnail"><a href="./posts/book_bot.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/book_bot.html" class="no-external">Creating an LLM Agent for Books</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW52ZXN0aW5n'); return false;">investing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnQ='); return false;">Agent</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/book_bot.html" class="no-external">
-<p>Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/book_bot.html" class="no-external">
-<div class="listing-date">
-Dec 16, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1763845684670" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail"><a href="./posts/rumpus.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/rumpus.html" class="no-external">Automated Coding with LLMs: Making a Rumpus</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZUdlbg=='); return false;">CodeGen</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/rumpus.html" class="no-external">
-<p>LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/rumpus.html" class="no-external">
-<div class="listing-date">
-Jul 22, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1763845684670" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
-<div class="thumbnail"><a href="./posts/quarto.html" class="no-external">
-
-<p class="card-img-top"><img src="posts/images/quarto.webp"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/quarto.html" class="no-external">Blogging with Quarto</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmxvZw=='); return false;">blog</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/quarto.html" class="no-external">
-<p>Creating my Webpage with Quarto</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/quarto.html" class="no-external">
-<div class="listing-date">
-Apr 15, 2024
-</div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div><p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<p><i>© Copyright 2024 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
