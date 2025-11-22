@@ -1,0 +1,178 @@
+---
+title: "Semantic Proprioception: Teaching Data to Understand Itself"
+description: "How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness."
+author: "Justin Donaldson"
+date: "2025-11-22"
+image: "images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png"
+
+categories:
+  - machine learning
+  - embeddings
+  - data structures
+---
+
+# Semantic Proprioception: Teaching Data to Understand Itself
+
+<style>
+.hero-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: 1rem 0 2rem 0;
+  border-radius: 8px;
+  position: relative;
+}
+.hero-image img {
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: -33.33%;
+}
+</style>
+
+<div class="hero-image">
+![](images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png)
+</div>
+
+Just as proprioception lets you sense where your body is in space without looking, **semantic proprioception** gives data the ability to understand its own internal structure. No manual labeling, no predefined categories—just the data revealing patterns within itself.
+
+I've built a [live demo](https://semantic-proprioception-demo.streamlit.app) that shows this in action across three very different datasets: Twitter customer support conversations, ArXiv research papers, and Hacker News discussions. The same technique discovers meaningful themes in all three, adapting to each domain's unique semantics.
+
+## The Core Insight
+
+Traditional clustering requires you to specify how many clusters you want, tune distance thresholds, or provide seed examples. But what if the data could just *tell you* what patterns exist?
+
+The key is **LSH bucket density**. When you hash similar embeddings into buckets using Locality-Sensitive Hashing, the *density* of each bucket reveals something fundamental:
+
+- **Dense buckets** (≥5 items): Common themes, frequently occurring concepts
+- **Medium buckets** (2-4 items): Boundary cases, transitional concepts
+- **Sparse buckets** (1 item): Novel or rare content
+
+This isn't just clustering—it's the data developing awareness of its own distribution.
+
+## Why Krapivin Hash Tables Matter
+
+Traditional LSH implementations have a problem: to find dense buckets, you'd have to scan every bucket and count items. That's O(n) where n is the number of buckets—expensive and slow.
+
+Enter **Krapivin hash tables** ([Krapivin et al. 2025](https://arxiv.org/abs/2501.02305)), which provide O(1) density queries through their hierarchical structure. You can instantly ask: "Which buckets have ≥5 items?" without scanning anything.
+
+This transforms LSH from a search index into a **semantic awareness system**. The data doesn't just answer "what's similar to X?"—it can answer "what patterns exist in me?"
+
+## Three Datasets, One Technique
+
+The [demo](https://semantic-proprioception-demo.streamlit.app) shows how the same approach works across wildly different domains:
+
+### Twitter Customer Support (1,000 tweets)
+**Discovered themes**: Password resets, billing issues, account access, network problems
+
+The short, action-oriented nature of support tickets creates tight, well-defined clusters. Users express problems in similar ways, leading to high-density buckets around common pain points.
+
+### ArXiv Research Papers (1,000 abstracts)
+**Discovered themes**: Deep learning architectures, quantum mechanics, genomics, optimization methods
+
+Academic writing has longer, more varied language, but technical concepts still cluster. Papers about "attention mechanisms" use similar terminology even when discussing different applications.
+
+### Hacker News (684 posts)
+**Discovered themes**: AI/ML developments, startup advice, privacy concerns, programming tools
+
+HN posts mix news headlines with discussion text. The clusters reflect both trending topics and perennial themes in the tech community.
+
+## How It Works
+
+1. **Embed**: Use `sentence-transformers` to convert text → 384 or 768-dimensional vectors
+2. **Hash**: Apply LSH with a fixed seed (12345) so embeddings from different files map to the same bucket space
+3. **Discover**: Query Krapivin hash table for buckets with ≥5 items (O(1) operation)
+4. **Label**: Use an LLM or keyword extraction to generate semantic labels for each dense bucket
+5. **Merge**: Combine similar themes using Jaccard similarity on tokenized labels
+
+All embeddings are pre-computed (~24 MB total), so the demo runs with zero API costs or inference overhead.
+
+## The Composability Advantage
+
+Because we use a **fixed LSH seed** across all files, the bucket spaces are compatible. This means:
+
+- Add new data files → just compute their LSH signatures → merge with existing index
+- Remove files → delete their entries from affected buckets
+- Query across multiple datasets → buckets naturally align
+
+Traditional approaches would require rebuilding the entire index when adding data. Krapivin hash tables with fixed seeds enable incremental, compositional updates.
+
+## Try It Yourself
+
+<style>
+.streamlit-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.streamlit-container::before {
+  content: "🧠 Interactive Demo";
+  display: block;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #495057;
+}
+.streamlit-container iframe {
+  width: 100%;
+  height: 800px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: white;
+}
+</style>
+
+<div class="streamlit-container">
+<iframe src="https://semantic-proprioception-demo.streamlit.app/?embedded=true"></iframe>
+</div>
+
+**Direct link**: [semantic-proprioception-demo.streamlit.app](https://semantic-proprioception-demo.streamlit.app)
+
+**Source code**: [github.com/jdonaldson/semantic-proprioception-demo](https://github.com/jdonaldson/semantic-proprioception-demo)
+
+Select a dataset, choose an embedding model, and watch themes emerge automatically. Click into any theme to see the actual text samples that cluster together.
+
+You can also:
+- Compare how different models (MiniLM-L3/L6/L12, MPNet-base) cluster the same data
+- Adjust the semantic merging threshold to consolidate or separate themes
+- Search for similar items using both brute-force cosine similarity and LSH-accelerated lookup
+
+## What This Enables
+
+Semantic proprioception isn't just about visualization—it unlocks new capabilities:
+
+**Hallucination detection**: If an LLM generates text with high confidence but low embedding density (sparse bucket), it's likely hallucinating content outside its training distribution.
+
+**Active learning**: Sample from sparse regions (novel concepts) or high-entropy buckets (boundary cases) to maximize labeling efficiency.
+
+**Content gap analysis**: Compare query density (what users search for) vs. corpus density (what you have) to find opportunities.
+
+**Concept drift detection**: Track density distributions over time windows—sudden shifts indicate changing semantics.
+
+## The Research Behind It
+
+This demo is part of the larger [Semantic Proprioception](https://github.com/jdonaldson/semantic-proprioception) project exploring multi-resolution density awareness for embedding spaces.
+
+Key papers:
+- **Krapivin et al. (2025)**: [Optimal Hash Tables with Deletion](https://arxiv.org/abs/2501.02305)
+- **Indyk & Motwani (1998)**: [Approximate Nearest Neighbors via LSH](https://dl.acm.org/doi/10.1145/276698.276876)
+
+## Technical Details
+
+Built with:
+- **Streamlit** for the interactive UI
+- **Polars** for fast DataFrame operations
+- **sentence-transformers** (HuggingFace) for embeddings
+- **Krapivin hash tables** (Rust + Python bindings) for O(1) density queries
+- **Parquet** (zstd compression) for efficient storage
+
+Total dataset size: ~24 MB (1,000 tweets + 1,000 papers + 684 HN posts, 4 models each)
+
+---
+
+The key insight: **data can understand itself**. Give it the right structure (LSH + Krapivin), and patterns emerge without manual intervention. Not clustering, not search—semantic self-awareness.
+
+Try the [demo](https://semantic-proprioception-demo.streamlit.app) and see what patterns hide in your own data.
