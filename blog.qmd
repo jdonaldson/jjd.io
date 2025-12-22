@@ -1,7 +1,10 @@
 ---
 title: "Ogni Parte ad Ogni Parte Splende"
 listing:
-  contents: posts
+  contents:
+    - "posts/*.qmd"
+    - "posts/*.ipynb"
+    - "!posts/semantic-proprioception-demo.qmd"
   sort: "date desc"
   type: default
   categories: true

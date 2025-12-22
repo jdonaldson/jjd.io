@@ -4,8 +4,6 @@ description: "How LSH density analysis reveals hidden structure in text collecti
 author: "Justin Donaldson"
 date: "2025-11-22"
 image: "images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png"
-draft: true
-
 categories:
   - machine learning
   - embeddings
