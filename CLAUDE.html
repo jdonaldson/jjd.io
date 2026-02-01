@@ -83,11 +83,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <link rel="stylesheet" href="style.css">
 <meta property="og:title" content="Justin Donaldson, Ph.D.">
 <meta property="og:description" content="">
-<meta property="og:image" content="http://www.jjd.io/images/me.jpeg">
+<meta property="og:image" content="https://www.jjd.io/images/me.jpeg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
 <meta name="twitter:title" content="Justin Donaldson, Ph.D.">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="http://www.jjd.io/images/me.jpeg">
+<meta name="twitter:image" content="https://www.jjd.io/images/me.jpeg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -171,6 +171,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
   <li><a href="#content-guidelines" id="toc-content-guidelines" class="nav-link" data-scroll-target="#content-guidelines">Content Guidelines</a></li>
   <li><a href="#image-management" id="toc-image-management" class="nav-link" data-scroll-target="#image-management">Image Management</a></li>
   <li><a href="#development-notes" id="toc-development-notes" class="nav-link" data-scroll-target="#development-notes">Development Notes</a></li>
+  <li><a href="#social-sharing-open-graph" id="toc-social-sharing-open-graph" class="nav-link" data-scroll-target="#social-sharing-open-graph">Social Sharing / Open Graph</a></li>
   <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
   <li><a href="#maintenance-tasks" id="toc-maintenance-tasks" class="nav-link" data-scroll-target="#maintenance-tasks">Maintenance Tasks</a></li>
   <li><a href="#current-status" id="toc-current-status" class="nav-link" data-scroll-target="#current-status">Current Status</a></li>
@@ -236,6 +237,15 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <li>Jupyter notebooks (.ipynb) and Quarto markdown (.qmd) supported</li>
 <li>Site builds to <code>_site/</code> directory</li>
 <li>Google Analytics tracking enabled</li>
+</ul>
+</section>
+<section id="social-sharing-open-graph" class="level2">
+<h2 class="anchored" data-anchor-id="social-sharing-open-graph">Social Sharing / Open Graph</h2>
+<ul>
+<li><code>site-url</code> in <code>_quarto.yml</code> must be <code>https://</code> — LinkedIn and other crawlers reject <code>http://</code> OG image URLs</li>
+<li>Every blog post should have an <code>image:</code> field in frontmatter for social preview cards</li>
+<li>Site-level config enables <code>open-graph: true</code> and <code>twitter-card</code> with <code>summary_large_image</code></li>
+<li>Existing post images are in <code>posts/images/</code> (Midjourney collection, Norman Rockwell style)</li>
 </ul>
 </section>
 <section id="deployment" class="level2">
@@ -357,7 +367,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("http:\/\/www\.jjd\.io");
+        var filterRegex = new RegExp("https:\/\/www\.jjd\.io");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
