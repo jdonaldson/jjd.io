@@ -35,6 +35,12 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 - Site builds to `_site/` directory
 - Google Analytics tracking enabled
 
+## Social Sharing / Open Graph
+- `site-url` in `_quarto.yml` must be `https://` — LinkedIn and other crawlers reject `http://` OG image URLs
+- Every blog post should have an `image:` field in frontmatter for social preview cards
+- Site-level config enables `open-graph: true` and `twitter-card` with `summary_large_image`
+- Existing post images are in `posts/images/` (Midjourney collection, Norman Rockwell style)
+
 ## Deployment
 - **GitHub Actions**: Automated deployment via `.github/workflows/main.yml`
 - **Trigger**: Pushes to `main` branch automatically deploy
