@@ -40,6 +40,7 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 - Every blog post should have an `image:` field in frontmatter for social preview cards
 - Site-level config enables `open-graph: true` and `twitter-card` with `summary_large_image`
 - Existing post images are in `posts/images/` (Midjourney collection, Norman Rockwell style)
+- **LinkedIn crops to 1.91:1** (1200x628) — square images get top/bottom clipped. Always create a wide OG variant for social sharing
 
 ## Deployment
 - **GitHub Actions**: Automated deployment via `.github/workflows/main.yml`
