@@ -5,7 +5,7 @@ description: "Gaming machines are also powerful LLM servers thanks to NVIDIA 409
 author: "Justin Donaldson"
 date: "7/29/2024"
 draft: true
-image: images/omgjjd_retro_80s_robot_that_has_a_face_screen_that_shows_a_supe_266d7e06-7290-45f5-a13c-a211a1d1caf4.png
+image: images/omgjjd_retro_80s_robot_that_has_a_face_screen_that_shows_a_supe_266d7e06-7290-45f5-a13c-a211a1d1caf4.jpg
 categories:
   - gpu
   - llm

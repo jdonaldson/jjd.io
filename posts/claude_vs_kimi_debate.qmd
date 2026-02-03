@@ -3,7 +3,7 @@ title: "Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5"
 description: "I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost."
 author: "Justin Donaldson"
 date: "2026-01-31"
-image: images/claude_vs_kimi_og.png
+image: images/claude_vs_kimi_og.jpg
 categories:
   - llm
   - ai

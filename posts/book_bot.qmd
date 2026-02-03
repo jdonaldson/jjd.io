@@ -10,7 +10,7 @@ categories:
   - Agent
 ---
 
-![Book Bot](images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.png){.preview-image}
+![Book Bot](images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.jpg){.preview-image}
 
 # When AI Meets Family Legacy: A New Way to Interface with Investment Literature
 
@@ -24,7 +24,7 @@ revealed something fascinating about the intersection of traditional publishing
 and modern technology.
 
 
-[![](images/ri_book_cover.png){ width=200px .float-right }](https://www.gregdonaldson.com/)
+[![](images/ri_book_cover.jpg){ width=200px .float-right }](https://www.gregdonaldson.com/)
 
 ## The Story Behind the Book
 

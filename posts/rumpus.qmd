@@ -8,7 +8,7 @@ categories:
   - CodeGen
 ---
 
-![TODO](images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.png){.preview-image}
+![TODO](images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.jpg){.preview-image}
 
 This post introduces a simple tool, called
 [rumpus](https://github.com/jdonaldson/rumpus) that helps me keep track of

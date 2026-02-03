@@ -8,7 +8,7 @@ categories:
   - AI
 ---
 
-![Intelligence Chases Chaos](images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.png){.preview-image}
+![Intelligence Chases Chaos](images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg){.preview-image}
 
 Fractals have an astonishing property: their dimensionality is only a fraction
 of the space they inhabit. The paths of hurricanes, the spread of wildfires,
