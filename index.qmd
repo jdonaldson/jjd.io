@@ -89,7 +89,7 @@ while working on cutting-edge research and applications alongside CTO [Franco Po
 
 ![Hushh.ai Seattle Team](images/hushh_ai.jpeg)
 
-I helped start [Hushh.ai](http://www.hush.ai), a company I co-founded with
+I helped start [Hushh.ai](https://www.hushh.ai), a company I co-founded with
 [Manish Sainani](https://www.linkedin.com/in/manishsainani/) in 2024. At Hushh,
 we pioneered on-device hybrid LLM search capabilities and nurtured a
 vibrant R&D culture with a talented team of international interns. You can read
@@ -183,7 +183,7 @@ Feel free to reach out to me via:
 [email](mailto:jjd@jjd.io),
 [Twitter](https://twitter.com/omgjjd),
 [LinkedIn](https://www.linkedin.com/in/jjustindonaldson/), or explore my
-[CV](http://jdonaldson.github.io/cv) and
+[CV](cv.qmd) and
 [GitHub](https://www.github.com/jdonaldson)
 
 Looking forward to connecting with you!
