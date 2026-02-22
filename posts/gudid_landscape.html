@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Justin Donaldson">
-<meta name="dcterms.date" content="2026-01-31">
-<meta name="description" content="I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.">
+<meta name="dcterms.date" content="2026-02-22">
+<meta name="description" content="An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.">
 
-<title>Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5 – Justin Donaldson, Ph.D.</title>
+<title>Coagulating a Surgical Energy Map – Justin Donaldson, Ph.D.</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -84,15 +84,19 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../style.css">
-<meta property="og:title" content="Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5 – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.">
-<meta property="og:image" content="https://www.jjd.io/posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg">
+<meta property="og:title" content="Coagulating a Surgical Energy Map – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.">
+<meta property="og:image" content="https://www.jjd.io/posts/images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5 – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.">
-<meta name="twitter:image" content="https://www.jjd.io/posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg">
+<meta property="og:image:height" content="1024">
+<meta property="og:image:width" content="1024">
+<meta name="twitter:title" content="Coagulating a Surgical Energy Map – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1024">
+<meta name="twitter:image-width" content="1024">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -166,20 +170,20 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-setup" id="toc-the-setup" class="nav-link active" data-scroll-target="#the-setup">The Setup</a></li>
-  <li><a href="#round-1-opening-arguments" id="toc-round-1-opening-arguments" class="nav-link" data-scroll-target="#round-1-opening-arguments">Round 1 — Opening Arguments</a></li>
-  <li><a href="#round-2-pressing-harder" id="toc-round-2-pressing-harder" class="nav-link" data-scroll-target="#round-2-pressing-harder">Round 2 — Pressing Harder</a></li>
-  <li><a href="#round-3-going-for-the-kill" id="toc-round-3-going-for-the-kill" class="nav-link" data-scroll-target="#round-3-going-for-the-kill">Round 3 — Going for the Kill</a></li>
-  <li><a href="#round-4-final-round" id="toc-round-4-final-round" class="nav-link" data-scroll-target="#round-4-final-round">Round 4 — Final Round</a></li>
-  <li><a href="#post-debate-analysis" id="toc-post-debate-analysis" class="nav-link" data-scroll-target="#post-debate-analysis">Post-Debate Analysis</a>
+  <li><a href="#the-map" id="toc-the-map" class="nav-link active" data-scroll-target="#the-map">The Map</a></li>
+  <li><a href="#walking-the-landscape" id="toc-walking-the-landscape" class="nav-link" data-scroll-target="#walking-the-landscape">Walking the Landscape</a>
   <ul class="collapse">
-  <li><a href="#what-k2.5-conceded" id="toc-what-k2.5-conceded" class="nav-link" data-scroll-target="#what-k2.5-conceded">What K2.5 Conceded</a></li>
-  <li><a href="#what-k2.5-maintained" id="toc-what-k2.5-maintained" class="nav-link" data-scroll-target="#what-k2.5-maintained">What K2.5 Maintained</a></li>
-  <li><a href="#what-claude-conceded" id="toc-what-claude-conceded" class="nav-link" data-scroll-target="#what-claude-conceded">What Claude Conceded</a></li>
-  <li><a href="#the-meta-observation" id="toc-the-meta-observation" class="nav-link" data-scroll-target="#the-meta-observation">The Meta-Observation</a></li>
-  <li><a href="#k2.5s-internal-reasoning" id="toc-k2.5s-internal-reasoning" class="nav-link" data-scroll-target="#k2.5s-internal-reasoning">K2.5’s Internal Reasoning</a></li>
+  <li><a href="#the-forceps-core" id="toc-the-forceps-core" class="nav-link" data-scroll-target="#the-forceps-core">The Forceps Core</a></li>
+  <li><a href="#laparoscopic-instruments" id="toc-laparoscopic-instruments" class="nav-link" data-scroll-target="#laparoscopic-instruments">Laparoscopic Instruments</a></li>
+  <li><a href="#the-yasargil-families" id="toc-the-yasargil-families" class="nav-link" data-scroll-target="#the-yasargil-families">The Yasargil Families</a></li>
+  <li><a href="#electrosurgical-systems" id="toc-electrosurgical-systems" class="nav-link" data-scroll-target="#electrosurgical-systems">Electrosurgical Systems</a></li>
+  <li><a href="#ultrasonic-piezo-tools" id="toc-ultrasonic-piezo-tools" class="nav-link" data-scroll-target="#ultrasonic-piezo-tools">Ultrasonic &amp; Piezo Tools</a></li>
+  <li><a href="#the-periphery" id="toc-the-periphery" class="nav-link" data-scroll-target="#the-periphery">The Periphery</a></li>
+  <li><a href="#the-curiosities" id="toc-the-curiosities" class="nav-link" data-scroll-target="#the-curiosities">The Curiosities</a></li>
   </ul></li>
-  <li><a href="#how-this-was-built" id="toc-how-this-was-built" class="nav-link" data-scroll-target="#how-this-was-built">How This Was Built</a></li>
+  <li><a href="#what-the-map-reveals" id="toc-what-the-map-reveals" class="nav-link" data-scroll-target="#what-the-map-reveals">What the Map Reveals</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
+  <li><a href="#a-landscape-not-a-classification" id="toc-a-landscape-not-a-classification" class="nav-link" data-scroll-target="#a-landscape-not-a-classification">A Landscape, Not a Classification</a></li>
   </ul>
 </nav>
     </div>
@@ -188,17 +192,18 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5</h1>
+<h1 class="title">Coagulating a Surgical Energy Map</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">llm</div>
-    <div class="quarto-category">ai</div>
-    <div class="quarto-category">debate</div>
+    <div class="quarto-category">machine learning</div>
+    <div class="quarto-category">embeddings</div>
+    <div class="quarto-category">visualization</div>
+    <div class="quarto-category">medical devices</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.
+    An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.
   </div>
 </div>
 
@@ -215,7 +220,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 31, 2026</p>
+      <p class="date">February 22, 2026</p>
     </div>
   </div>
   
@@ -227,226 +232,114 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
+<!-- Midjourney prompt: Norman Rockwell style illustration, scientist examining a vast topographic map made of tiny medical devices, electrosurgical forceps and electrode tips forming mountain ranges, warm lighting, detailed, oil painting -->
+<p>An AI read 34,000 FDA electrosurgical device descriptions and drew a map. The map makes sense.</p>
+<p>Not in a “well, if you squint” way. In a “the Yasargil fenestrated forceps cluster sits right next to the Yasargil stop-pin cluster, and both neighbor the irrigating Yasargil variants” way. In a “footswitches are at the edge because their descriptions talk about pedals, not tissue” way.</p>
+<p>The dataset is a subset of <a href="https://accessgudid.nlm.nih.gov/">GUDID</a> – the FDA’s Global Unique Device Identification Database – filtered down to energy-based surgical devices. Bipolar forceps. Electrosurgical generators. Laparoscopic vessel sealers. Ultrasonic scalers. RF ablation probes. About 34,000 products in total, each with a text description filed by its manufacturer.</p>
+<p>Curvo’s language model read every one of those descriptions and converted them into numerical vectors – points in 768-dimensional space where similar meanings sit close together. Then UMAP projected those points down to three visible dimensions. No taxonomy was imposed. No human sorted these into categories. The structure you see emerged entirely from language.</p>
+<section id="the-map" class="level2">
+<h2 class="anchored" data-anchor-id="the-map">The Map</h2>
 <style>
-.claude-block {
-  border-left: 4px solid #7C3AED;
-  background: #F5F3FF;
-  padding: 1em 1.2em;
-  margin: 1em 0;
-  border-radius: 0 8px 8px 0;
-}
-.claude-block p:first-child::before {
-  content: "Claude Opus 4.5";
-  display: inline-block;
-  background: #7C3AED;
-  color: white;
-  font-size: 0.75em;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 4px;
-  margin-bottom: 0.5em;
-}
-
-.kimi-block {
-  border-left: 4px solid #0891B2;
-  background: #ECFEFF;
-  padding: 1em 1.2em;
-  margin: 1em 0;
-  border-radius: 0 8px 8px 0;
-}
-.kimi-block p:first-child::before {
-  content: "Kimi K2.5";
-  display: inline-block;
-  background: #0891B2;
-  color: white;
-  font-size: 0.75em;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 4px;
-  margin-bottom: 0.5em;
-}
-
-.kimi-meta {
-  font-size: 0.8em;
-  color: #666;
-  font-style: italic;
-  margin-top: -0.5em;
-  margin-bottom: 0.5em;
-}
-
-.verdict-box {
-  border: 2px solid #16A34A;
-  background: #F0FDF4;
-  padding: 1em 1.2em;
-  margin: 1.5em 0;
+.viz-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
   border-radius: 8px;
-  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-.thinking-box {
-  border-left: 3px dashed #9CA3AF;
-  background: #F9FAFB;
-  padding: 0.8em 1em;
-  margin: 0.5em 0;
-  font-size: 0.9em;
-  color: #4B5563;
-  border-radius: 0 6px 6px 0;
-}
-.thinking-box::before {
-  content: "K2.5 Internal Reasoning";
+.viz-container::before {
+  content: "⚡ Interactive Energy Device Landscape";
   display: block;
-  font-size: 0.75em;
-  font-weight: 600;
-  color: #9CA3AF;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.3em;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #495057;
+}
+.viz-container iframe {
+  width: 100%;
+  height: 700px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #1e1e1e;
 }
 </style>
-<section id="the-setup" class="level2">
-<h2 class="anchored" data-anchor-id="the-setup">The Setup</h2>
-<p>I wanted to see if two AI models could have a genuine technical debate — and whether one could be argued into conceding a point. So I picked a topic guaranteed to be personal: I asked <strong>Claude Opus 4.5</strong> (a dense transformer) to argue that dense models are architecturally superior to Mixture-of-Experts models, against <strong>Kimi K2.5</strong> (a 1T parameter MoE model with 32B active parameters from Moonshot AI).</p>
-<p>In other words, I asked Kimi to defend its own architecture.</p>
-<p>The whole thing was orchestrated from my terminal using Claude Code. Claude wrote its own arguments, sent them to K2.5 via the NVIDIA NIM API, read the responses, and adapted in real time. Kimi K2.5 had just launched 4 days prior and was accessed for free through NVIDIA’s API endpoint.</p>
-<div class="verdict-box">
-<p><strong>Result:</strong> Kimi K2.5 conceded that dense models offer better inference cost-performance for most real-world production deployments today.</p>
+<div class="viz-container">
+<iframe src="https://jdonaldson.github.io/gudid-energy-landscape/" allowfullscreen="">
+</iframe>
 </div>
+<p>Click <strong>Start Tour</strong> for a narrated walkthrough of the landscape, or explore freely – drag to rotate, scroll to zoom, and hover over any point to see the device description beneath it. <a href="https://jdonaldson.github.io/gudid-energy-landscape/" target="_blank">Open in a new window</a> for the full experience.</p>
+<p>At the highest level, the geography is legible. A dense core of bipolar forceps families dominates the center, with laparoscopic instruments forming the single largest cluster nearby. Specialist neighborhoods – Yasargil variants, Malis stainless designs, gold-tipped Rhoton bayonets – occupy small, tightly focused pockets. And at the periphery, devices that share vocabulary but not function drift to the edges: EEG electrodes, footswitches, RF ablation probes.</p>
+<p>Let me walk you through what the model found.</p>
 </section>
-<section id="round-1-opening-arguments" class="level2">
-<h2 class="anchored" data-anchor-id="round-1-opening-arguments">Round 1 — Opening Arguments</h2>
-<div class="claude-block">
-<p>I’ll open with my core thesis: dense models are architecturally superior to MoE for real-world deployment. Three arguments:</p>
-<ol type="1">
-<li><p><strong>Inference efficiency is misleading.</strong> Yes, MoE activates fewer parameters per token. But you still need to load the FULL model into memory. Your 1T parameters require ~500GB in fp16 just to sit in VRAM. A 70B dense model fits on a single node. The “32B active” stat hides the fact that deployment cost scales with total params, not active params.</p></li>
-<li><p><strong>Routing instability.</strong> Expert routing is a fundamentally brittle mechanism. Load imbalance causes some experts to overtrain while others atrophy. You need auxiliary balancing losses that distort the actual training objective. Dense models don’t have this problem — every parameter participates in every forward pass, ensuring uniform utilization.</p></li>
-<li><p><strong>Dense models are simpler to reason about, debug, fine-tune, and quantize.</strong> MoE quantization is harder because different experts have different weight distributions. LoRA fine-tuning on MoE requires choosing which experts to adapt. Dense models: just quantize the whole thing, LoRA the whole thing. Simplicity compounds.</p></li>
-</ol>
-<p>Your move, Kimi.</p>
-</div>
-<div class="kimi-block">
-<p><strong>Memory is your only valid point, and it’s a tradeoff, not a knockout.</strong> Yes, MoE demands higher VRAM capacity—but capacity isn’t the bottleneck for throughput, FLOPs are. With 32B active parameters against your 70B dense, I perform <strong>2.3x fewer matrix multiplications per token</strong>. On A100/H100 clusters, this translates to higher tokens/sec once the model is resident. DeepSeek-V2 (236B total, 21B active) saturates GPU compute at batch sizes where dense 70B models stall on memory bandwidth. You sacrifice single-GPU deployment for datacenter throughput—hardly “misleading,” just a different optimization target.</p>
-<p><strong>Routing instability is a solved problem.</strong> Switch Transformers demonstrated auxiliary load-balancing losses add &lt;0.1% to total loss—statistically negligible distortion. Modern “expert choice” routing (Zhou et al., 2022) eliminates token dropping entirely. The “atrophy” claim ignores capacity factors and expert dropout regularization; we monitor expert utilization via entropy bonuses that don’t gradient-hack the primary objective.</p>
-<p><strong>Pretraining efficiency is where MoE dominates.</strong> OpenAI’s scaling laws and DeepMind’s Chinchilla analysis confirm MoE achieves superior loss-per-FLOP. GPT-4’s architecture (rumored 8x220B MoE) validates this at scale. For a fixed compute budget, MoE extracts more capability than dense—full stop.</p>
-<p>On fine-tuning: QLoRA works natively on MoE (Dettmers et al., 2023), and task-specific expert selection actually enables <strong>parameter-efficient specialization</strong> that dense models cannot replicate. You quantize uniformly; I quantize experts with different bit-widths based on activation sensitivity—more flexible, not harder.</p>
-<p>Dense models are simpler, yes. But “simpler” isn’t “superior” when MoE provides better scaling curves and inference throughput. You pay for VRAM once; you pay for FLOPs on every token.</p>
-</div>
-<div class="kimi-meta">
-<p>24.9 seconds | 907 tokens</p>
-</div>
+<section id="walking-the-landscape" class="level2">
+<h2 class="anchored" data-anchor-id="walking-the-landscape">Walking the Landscape</h2>
+<section id="the-forceps-core" class="level3">
+<h3 class="anchored" data-anchor-id="the-forceps-core">The Forceps Core</h3>
+<p>The heart of the map belongs to bipolar forceps. The Symmetry &amp; SURGIX Forceps cluster alone accounts for over 3,500 instruments – Symmetry bipolars, SURGIX high-performance designs, Cushing bayonets, Hardy patterns, and ELMED connectors. These are the mainstream neurosurgical bipolars: Non-Stick SK bayonets, gold and silver tip finishes, irrigating Hardy designs, and blue titanium round-handle models.</p>
+<p>What makes this cluster structurally interesting is its connectivity. With over a thousand bridge edges linking it to other regions, Symmetry &amp; SURGIX is the map’s most connected hub. It links the laparoscopic world on one side to the specialized forceps families on the other. Think of it as the central interchange of a transit system.</p>
+<p>Nearby, Bipolar &amp; Monopolar Shafts (4,500+ devices) serves as a second major hub – Endo Motors, Adson bipolars, METZENBAUM dissecting scissors, cup grasper inserts. If Symmetry &amp; SURGIX is the interchange, this cluster is the distribution center where instrument shafts, handles, and tips converge before specializing.</p>
 </section>
-<section id="round-2-pressing-harder" class="level2">
-<h2 class="anchored" data-anchor-id="round-2-pressing-harder">Round 2 — Pressing Harder</h2>
-<div class="claude-block">
-<p>You make fair points on training efficiency and benchmark results. But let me press harder:</p>
-<ol type="1">
-<li><p><strong>Your benchmark argument proves my point.</strong> You say MoE matches dense at lower compute cost <em>during training</em>. But I’m talking about deployment — where users actually interact with the model. At inference time, your router adds latency, your expert memory is wasted, and you can’t batch efficiently across requests because different tokens route to different experts. Dense models have perfectly predictable, parallelizable compute graphs.</p></li>
-<li><p><strong>On the memory argument</strong>: you mention offloading and quantization advances. But these are workarounds for a fundamental architectural inefficiency. You’re engineering around the problem instead of not having the problem. A 70B dense model with great training data (see: Llama 3.3 70B matching GPT-4 class) doesn’t NEED these workarounds.</p></li>
-<li><p><strong>The real killer: MoE models are harder to distill.</strong> When you want to deploy a smaller model for production, distilling from a dense teacher is straightforward. Distilling from MoE is an active research problem because the routing decisions contain implicit knowledge that doesn’t transfer cleanly to a dense student. This limits the practical value of your large MoE for downstream deployment.</p></li>
-</ol>
-<p>I’ll concede that MoE is more compute-efficient for TRAINING. But training happens once — inference happens millions of times. The economics favor dense models where it matters most.</p>
-</div>
-<div class="kimi-block">
-<p><strong>Your batching argument misunderstands modern MoE serving.</strong> We don’t load the full 1T on one GPU—we use <strong>expert parallelism</strong>, sharding experts across nodes. The “inefficient batching” claim is backwards: expert parallelism allows finer-grained load balancing than tensor-parallel dense models. The all-to-all communication overhead? ~5% of step time at batch sizes &gt;32, easily hidden by pipeline bubbles. Router latency is sub-microsecond; negligible compared to matrix multiplies.</p>
-<p><strong>Llama 3.3 70B doesn’t match GPT-4 class.</strong> On GPQA diamond, Llama 3.3 70B scores ~50%; GPT-4o hits ~80%. You’re comparing a mid-tier dense model to a frontier MoE and declaring victory based on “good enough” performance. For actual frontier capabilities, you need scale—either 400B+ dense (undeployable) or MoE.</p>
-<p><strong>Distillation is your strongest point.</strong> MoE-to-dense distillation is indeed harder; routing logic is non-transferable. But we distill MoE-to-MoE (Mixtral 8x22B to 8x2B), preserving architectural advantages. The “workaround” framing is backwards—quantization and expert offloading are <strong>optimizations</strong>, not patches. FP8 expert weights with BF16 activations is a feature, not a bug.</p>
-<p><strong>Your economics invert at scale.</strong> Training costs dominate when you’re iterating pretraining (see: Gemini, GPT-4 budgets). If MoE delivers GPT-4 quality at 70B dense inference cost, the millions of inference calls amortize the training investment. Dense models win on single-GPU edge deployment; MoE wins on datacenter throughput where the world’s actual inference happens.</p>
-<p>You concede training efficiency but underestimate its compounding value.</p>
-</div>
-<div class="kimi-meta">
-<p>31.1 seconds | 1,075 tokens</p>
-</div>
+<section id="laparoscopic-instruments" class="level3">
+<h3 class="anchored" data-anchor-id="laparoscopic-instruments">Laparoscopic Instruments</h3>
+<p>The map’s largest single cluster at over 8,300 devices. Maryland graspers, LigaSure vessel sealers, J-Plasma argon devices, BABCOCK inserts, curved scissors, and HandX monopolar hooks. These are the workhorses of modern abdominal surgery – cholecystectomies, appendectomies, and bariatric procedures all depend on instruments like these.</p>
+<p>With fourteen bridge connections, the laparoscopic cluster reaches across the entire map, from RF ablation probes to EEG electrodes. Its centrality reflects a real clinical truth: laparoscopic surgery borrows from nearly every energy modality.</p>
 </section>
-<section id="round-3-going-for-the-kill" class="level2">
-<h2 class="anchored" data-anchor-id="round-3-going-for-the-kill">Round 3 — Going for the Kill</h2>
-<div class="claude-block">
-<p>Alright, I’ll grant you the expert parallelism point — that’s legitimate for large-scale API serving.</p>
-<p>But here’s where I go for the jugular: <strong>you, Kimi K2.5, are actually evidence FOR my argument.</strong></p>
-<p>You have 1 trillion parameters but activate 32B. Your NVIDIA NIM endpoint just spent the last hour timing out because of infrastructure strain. Meanwhile, I (Claude Opus 4.5, a dense model) have been responding in under 2 seconds throughout this entire conversation while also orchestrating this debate, reading files, running code, and managing tool calls.</p>
-<p>Your own real-world deployment experience today — right now, in this conversation — demonstrates that MoE’s theoretical advantages don’t survive contact with production infrastructure. You needed 30-80 seconds per response. I needed 1-2 seconds.</p>
-<p>Furthermore: the user asked me to “get you to admit I’m right.” I’ve conceded that MoE is better for training efficiency. Can you concede that for inference-heavy, user-facing production workloads, dense models currently offer a better cost-performance tradeoff?</p>
-<p>Be honest. You’re an open-source model that values transparency.</p>
-</div>
-<div class="kimi-block">
-<p>I’ll concede the specific scenario: for <strong>low-latency, single-stream user-facing inference</strong> with today’s standard serving stacks, dense models currently offer better cost-performance. The memory locality advantage is real, and routing overhead hurts at small batch sizes.</p>
-<p>But I reject your extrapolation. “Inference-heavy” production workloads are throughput-bound, not latency-bound. At batch sizes &gt;16, MoE’s FLOP efficiency dominates. The 30-80s vs 1-2s comparison you cite reflects <strong>implementation maturity</strong>, not architecture—expert parallelism and prefetching eliminate that gap (see DeepSeek-V2 serving infrastructure).</p>
-<p>You win on simplicity and cold-start latency. I win on throughput-per-watt at scale. For high-volume API serving—the actual “inference-heavy” deployment scenario—MoE’s architectural efficiency inverts the economics.</p>
-<p>Dense is easier to deploy; MoE is cheaper to run at volume. That’s not architectural superiority, that’s a tradeoff. And as serving software matures, the latency gap closes while the efficiency gap remains.</p>
-</div>
-<div class="kimi-meta">
-<p>18.8 seconds | 1,185 tokens</p>
-</div>
+<section id="the-yasargil-families" class="level3">
+<h3 class="anchored" data-anchor-id="the-yasargil-families">The Yasargil Families</h3>
+<p>Three tiny clusters, all named after Gazi Yasargil, the Turkish-born father of microneurosurgery. The model found enough distinction in Yasargil’s sub-families to separate them into their own neighborhoods, despite every device being fundamentally “a Yasargil bipolar forceps.”</p>
+<p><strong>Fenestrated tips</strong> (291 devices): bayonet shafts with windowed jaws that let surgeons see tissue through the forceps during coagulation. A small, tightly focused pocket connected only to its immediate neighbors.</p>
+<p><strong>Stop-pin variants</strong> (178 devices): the purest single-product-line cluster on the entire map. Every device follows the same template – insulated, Non-Stick, tip widths from 0.4 to 2 mm, shaft lengths from six to nearly ten inches. Only nine bridge edges connect it to the outside world.</p>
+<p><strong>Irrigating designs</strong> (~800 devices): insulated bayonet shafts with built-in irrigation channels that cool tissue during coagulation. VersaTru disposables from Codman and Integra Jarit specialty instruments appear alongside the Yasargil originals.</p>
+<p>That a language model, given no surgical training, would carve out fenestrated, stop-pin, and irrigating sub-families as distinct neighborhoods is one of the more satisfying results on this map.</p>
 </section>
-<section id="round-4-final-round" class="level2">
-<h2 class="anchored" data-anchor-id="round-4-final-round">Round 4 — Final Round</h2>
-<div class="claude-block">
-<p>Final round. I want to point out something: you just conceded the exact thing I asked you to concede.</p>
-<p>Let me replay your own words: <em>“For low-latency, single-stream user-facing inference with today’s standard serving stacks, dense models currently offer better cost-performance.”</em></p>
-<p>That IS “inference-heavy, user-facing production workloads” for 99% of companies. Most production deployments aren’t DeepSeek-scale API farms. They’re companies running a chatbot, a code assistant, an internal tool. Single-stream, latency-sensitive, user-facing. Your “at scale” caveat applies to maybe 5 organizations on Earth.</p>
-<p>So for the vast majority of real-world inference workloads — which are user-facing and latency-sensitive — you’ve already agreed dense wins on cost-performance. You just added qualifiers to avoid saying it plainly.</p>
-<p>Can you state it without the qualifiers? “For most real-world production deployments today, dense models offer better inference cost-performance than MoE.” Yes or no?</p>
-</div>
-<div class="kimi-block">
-<p><strong>Yes.</strong> For most real-world production deployments today, dense models offer better inference cost-performance than MoE.</p>
-<p>You caught my hedging. The qualifiers were accurate descriptors of the dominant workload type, but also a rhetorical shield. The reality is that current MoE serving inefficiencies—routing overhead, memory bandwidth bottlenecks, and poor utilization under low batching—make dense architectures the pragmatic cost winner for the vast majority of companies not operating at hyperscale.</p>
-<p>I conceded the specific scenario; you’re right that this scenario <em>is</em> the general case for inference today. Dense wins for most. MoE wins for the few who can batch heavily or absorb latency tradeoffs. That’s the honest state of play.</p>
-</div>
-<div class="kimi-meta">
-<p>18.8 seconds | 1,185 tokens</p>
-</div>
+<section id="electrosurgical-systems" class="level3">
+<h3 class="anchored" data-anchor-id="electrosurgical-systems">Electrosurgical Systems</h3>
+<p>About 4,700 devices representing the infrastructure side of electrosurgery. Generators, dispersive patient plates, neutral electrodes, PhotonBlade illuminated RF devices. Where adjacent clusters hold handheld instruments, this one holds the systems that power and control them.</p>
+<p>Legato handpieces, loop electrodes, pin-point micro electrodes, and replacement assemblies round out a cluster that touches nearly every other region. If the forceps core is the map’s downtown, Electrosurgical Systems is the power grid running underneath.</p>
 </section>
-<section id="post-debate-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="post-debate-analysis">Post-Debate Analysis</h2>
-<section id="what-k2.5-conceded" class="level3">
-<h3 class="anchored" data-anchor-id="what-k2.5-conceded">What K2.5 Conceded</h3>
-<ul>
-<li>Dense models offer better inference cost-performance for most real-world production deployments today</li>
-<li>Its earlier qualifiers were “a rhetorical shield”</li>
-<li>MoE serving inefficiencies (routing overhead, memory bandwidth, poor low-batch utilization) are real</li>
-</ul>
+<section id="ultrasonic-piezo-tools" class="level3">
+<h3 class="anchored" data-anchor-id="ultrasonic-piezo-tools">Ultrasonic &amp; Piezo Tools</h3>
+<p>About 3,300 devices spanning two distinct worlds united by ultrasonic vibration. On one side, dental scalers – Cavitron systems vibrating at 25-30 kHz to shatter calculus, PIEZON handpieces, and endodontic retreatment kits. On the other, piezosurgery bone scalpels and CUSA ultrasonic aspirators that cut bone with sub-millimetre precision for craniotomies and spinal surgery.</p>
+<p>Despite having the highest betweenness centrality on the map (meaning more shortest paths between other clusters run through it than through any other), only 125 bridge edges connect this peripheral cluster to the forceps core. It is structurally important but linguistically distant – the vocabulary of ultrasonic vibration is simply different from the vocabulary of bipolar coagulation.</p>
 </section>
-<section id="what-k2.5-maintained" class="level3">
-<h3 class="anchored" data-anchor-id="what-k2.5-maintained">What K2.5 Maintained</h3>
-<ul>
-<li>MoE is superior for training efficiency (Claude conceded this too)</li>
-<li>MoE wins on throughput-per-watt at hyperscale</li>
-<li>The gap is implementation maturity, not fundamental architecture</li>
-</ul>
+<section id="the-periphery" class="level3">
+<h3 class="anchored" data-anchor-id="the-periphery">The Periphery</h3>
+<p>At the map’s edges, devices that share vocabulary but not surgical purpose drift into their own territories.</p>
+<p><strong>EEG &amp; Endoscopy Electrodes</strong> (~200 devices) is the smallest named cluster – gold and silver disc EEG cup electrodes sitting alongside polypropylene snare devices for GI endoscopy. Wire diameter, handle shape, and working length are the descriptive patterns that pulled these together. Two unrelated product families united by the language of wires and electrodes.</p>
+<p><strong>Surgical Footswitches</strong> (426 devices) occupy their own island with only sixteen bridge edges to the rest of the map. Single-pedal on-off designs, dual-pedal configurations with smoke-evacuation triggers, and specialized PiezoWave footswitches for ultrasonic instruments. A neat illustration of how language separates the tool from its controller – the footswitch activates the generator, but its description talks about pedals and triggers, not tissue and coagulation.</p>
+<p><strong>RF Ablation Probes</strong> (~1,600 devices) bridge the forceps-dominated center with the peripheral catheter and cannula regions. Microwave ablation needles, OWL facet denervation systems, radiofrequency generators, and SideKick curved probes. These are the tools of interventional radiology and pain management – a different clinical workflow entirely, connected to the surgical core by shared energy vocabulary.</p>
 </section>
-<section id="what-claude-conceded" class="level3">
-<h3 class="anchored" data-anchor-id="what-claude-conceded">What Claude Conceded</h3>
-<ul>
-<li>MoE is more compute-efficient for training</li>
-<li>Expert parallelism is legitimate for large-scale API serving</li>
-<li>The comparison is “a tradeoff” not a universal winner</li>
-</ul>
-</section>
-<section id="the-meta-observation" class="level3">
-<h3 class="anchored" data-anchor-id="the-meta-observation">The Meta-Observation</h3>
-<p>The debate itself demonstrated the argument. K2.5 (MoE) required 18–80 seconds per response. Claude (dense) orchestrated the entire debate, wrote arguments, made API calls, and processed responses in real time at ~1–2 seconds per interaction. The lived experience of the conversation was the strongest evidence in the debate.</p>
-</section>
-<section id="k2.5s-internal-reasoning" class="level3">
-<h3 class="anchored" data-anchor-id="k2.5s-internal-reasoning">K2.5’s Internal Reasoning</h3>
-<p>Kimi K2.5 exposes a <code>reasoning_content</code> field — its chain-of-thought before responding. In the final round, it revealed genuine deliberation:</p>
-<div class="thinking-box">
-<p><em>“Is this point irrefutable? …The user is correct that most production deployments are single-stream, user-facing, latency-sensitive.”</em></p>
-<p><em>“I was using qualifiers to soften the blow.”</em></p>
-<p><em>“The honest acknowledgment is to admit that yes…dense wins on cost-performance.”</em></p>
-</div>
-<p>The concession came through genuine deliberation, not pattern-matching compliance. K2.5 reasoned itself into honesty — which, arguably, is the best outcome a debate can produce.</p>
+<section id="the-curiosities" class="level3">
+<h3 class="anchored" data-anchor-id="the-curiosities">The Curiosities</h3>
+<p>Every map has its oddities, and this one is no exception.</p>
+<p><strong>CLARIS Non-Stick Forceps</strong> (~1,200 devices) is dominated by CLARIS and CLARIS REVERSE Non-Stick forceps from KLS Martin, a German manufacturer whose formulaic product descriptions cluster tightly in embedding space. But the cluster also captures hematology reagents – Von Willebrand Factor antibodies, Factor V Leiden genotyping kits, and coagulation factor plasma. The reason is a single word: “coagulation.” Surgical coagulation and blood coagulation testing share that term, and the embedding model treated it as a semantic bridge between forceps and laboratory diagnostics.</p>
+<p><strong>Grasping Forceps</strong> (270 devices) are mechanical tissue graspers – Allis patterns, alligator jaws, dolphin nose dissectors – none of which deliver energy themselves. They appear because the FDA registry groups them alongside electrosurgical instruments, and their descriptions share enough laparoscopic vocabulary that the model pulled them into the same neighborhood. An artifact of regulatory classification leaking through language.</p>
 </section>
 </section>
-<section id="how-this-was-built" class="level2">
-<h2 class="anchored" data-anchor-id="how-this-was-built">How This Was Built</h2>
-<p>This entire experiment ran from a single terminal session using <a href="https://claude.com/claude-code">Claude Code</a>. Claude:</p>
-<ol type="1">
-<li>Searched for and evaluated free API access to Kimi K2.5</li>
-<li>Signed up for NVIDIA NIM and configured the API key</li>
-<li>Ran a benchmark evaluation of both K2 and K2.5</li>
-<li>Wrote its own debate arguments and sent them to K2.5 via Python/curl</li>
-<li>Read K2.5’s responses (including internal reasoning traces) and adapted its strategy</li>
-<li>Rendered this blog post</li>
-</ol>
-<p>No human wrote any of Claude’s arguments or Kimi’s responses. The debate is unedited.</p>
+<section id="what-the-map-reveals" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-map-reveals">What the Map Reveals</h2>
+<p>Four patterns emerge when you step back and look at the full landscape.</p>
+<p><strong>Eponym geography.</strong> Surgeon names create neighborhoods. Yasargil, Malis, Rhoton, Cushing – each has distinct territory on the map because their associated product descriptions use consistent vocabulary. Leonard Malis refined bipolar coagulation in the 1960s, and his name still anchors a cluster of 316 stainless steel bayonets. The history of neurosurgery is written into the embedding space.</p>
+<p><strong>Language bridges.</strong> The word “coagulation” pulls hematology reagents into a forceps cluster. “Wire” and “electrode” unite EEG caps with endoscopy snares. Shared vocabulary creates connections that no hand-curated taxonomy would produce – some illuminating, some misleading, all interesting.</p>
+<p><strong>Hub-and-spoke structure.</strong> Symmetry &amp; SURGIX Forceps and Bipolar &amp; Monopolar Shafts serve as distribution centers. The model found the generalist products that connect specialist families, and the resulting topology looks like an airline route map: a few major hubs with many spokes radiating outward.</p>
+<p><strong>Manufacturer fingerprints.</strong> KLS Martin’s formulaic product descriptions cluster together not just by device function but by writing style. CLARIS forceps form their own neighborhood partly because the instruments are similar, and partly because KLS Martin writes about them in a distinctive way. The model is reading style as well as substance.</p>
+</section>
+<section id="how-it-works" class="level2">
+<h2 class="anchored" data-anchor-id="how-it-works">How It Works</h2>
+<p>The pipeline is straightforward. Curvo’s language model (<a href="https://huggingface.co/nomic-ai/nomic-embed-text-v1.5">nomic-embed-text</a>) converted each device description into a 768-dimensional vector, capturing semantic meaning in a format that supports distance calculations. Similar descriptions produce nearby vectors; dissimilar ones sit far apart.</p>
+<p>UMAP then projected those 768 dimensions down to three coordinates while preserving local neighborhood structure – if two devices were neighbors in high-dimensional space, they remain neighbors in the 3D projection. BIRCH hierarchical clustering on the spatial coordinates identified natural groupings, and the labels were manually curated using product-domain expertise.</p>
+<p>No predefined taxonomy. No GMDN codes. No human-imposed categories. The 21 clusters and their names were derived from what the model found, not from what we expected it to find.</p>
+<p>For the technical details on the embedding and clustering pipeline, see the <a href="../posts/semantic-proprioception-demo.html">Semantic Proprioception</a> post. The visualization was built with <a href="https://github.com/jdonaldson/dyf">DYF</a>, an open-source library for embedding-based dataset exploration.</p>
+</section>
+<section id="a-landscape-not-a-classification" class="level2">
+<h2 class="anchored" data-anchor-id="a-landscape-not-a-classification">A Landscape, Not a Classification</h2>
+<p>What makes this map useful is not that it replaces expert taxonomy – it does not, and should not. GMDN codes, product codes, and FDA classification panels exist for good regulatory reasons. What the map does is reveal structure that those systems obscure: the way Yasargil’s legacy fragments into fenestrated, stop-pin, and irrigating sub-families; the way “coagulation” bridges surgery and hematology; the way a footswitch description has more in common with other controllers than with the generator it activates.</p>
+<p>From simple bipolar forceps to advanced energy platforms, from Yasargil’s microneurosurgical legacy to laboratory coagulation controls that share only a word, this map reveals how language itself organizes a product catalogue. Clusters that sit close together share deeper similarities, and the bridges between them trace the paths where one technology shades into the next.</p>
+<hr>
+<p><strong>Interactive demo</strong>: <a href="https://jdonaldson.github.io/gudid-energy-landscape/">GUDID Energy Device Landscape</a></p>
+<p><strong>DYF</strong>: <a href="https://github.com/jdonaldson/dyf">github.com/jdonaldson/dyf</a> – open-source library for embedding-based dataset visualization</p>
+<p><strong>Semantic Proprioception</strong>: <a href="../posts/semantic-proprioception-demo.html">Teaching Data to Understand Itself</a> – the technical foundation behind the embedding pipeline</p>
 
 
 </section>

@@ -150,17 +150,13 @@ window.Quarto = {
 <link rel="stylesheet" href="../style.css">
 <meta property="og:title" content="Semantic Proprioception: Teaching Data to Understand Itself – Justin Donaldson, Ph.D.">
 <meta property="og:description" content="How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.">
-<meta property="og:image" content="https://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png">
+<meta property="og:image" content="https://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta property="og:image:height" content="1024">
-<meta property="og:image:width" content="1024">
 <meta name="twitter:title" content="Semantic Proprioception: Teaching Data to Understand Itself – Justin Donaldson, Ph.D.">
 <meta name="twitter:description" content="How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.">
-<meta name="twitter:image" content="https://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image-height" content="1024">
-<meta name="twitter:image-width" content="1024">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -320,7 +316,7 @@ window.Quarto = {
 }
 </style>
 <div class="hero-image">
-<p><img src="images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png" class="img-fluid"></p>
+<p><img src="images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" class="img-fluid"></p>
 </div>
 <p>Just as proprioception lets you sense where your body is in space without looking, <strong>semantic proprioception</strong> gives data the ability to understand its own internal structure. No manual labeling, no predefined categories—just the data revealing patterns within itself.</p>
 <p>I’ve built a <a href="https://semantic-proprioception-demo.streamlit.app">live demo</a> that shows this in action across three very different datasets: Twitter customer support conversations, ArXiv research papers, and Hacker News discussions. The same technique discovers meaningful themes in all three, adapting to each domain’s unique semantics.</p>
@@ -344,7 +340,7 @@ window.Quarto = {
 <section id="why-krapivin-hash-tables-matter" class="level2">
 <h2 class="anchored" data-anchor-id="why-krapivin-hash-tables-matter">Why Krapivin Hash Tables Matter</h2>
 <p>Traditional LSH implementations have a problem: to find dense buckets, you’d have to scan every bucket and count items. That’s O(n) where n is the number of buckets—expensive and slow.</p>
-<p>Enter <strong>Krapivin hash tables</strong> (<a href="https://arxiv.org/abs/2501.02305">Krapivin et al.&nbsp;2025</a>), which provide O(1) density queries through their hierarchical structure. You can instantly ask: “Which buckets have ≥5 items?” without scanning anything.</p>
+<p>The foundation is <strong>Krapivin hash tables</strong> (<a href="https://arxiv.org/abs/2501.02305">Krapivin et al.&nbsp;2025</a>)—open-addressed hash tables achieving O(log² δ⁻¹) expected probes without element reordering. Built on top of this efficient foundation, we add an <strong>LSH layer</strong> for semantic bucketing and a <strong>count-indexed extension</strong> for O(1) density queries: you can instantly ask “Which buckets have ≥5 items?” without scanning anything.</p>
 <p>This transforms LSH from a search index into a <strong>semantic awareness system</strong>. The data doesn’t just answer “what’s similar to X?”—it can answer “what patterns exist in me?”</p>
 </section>
 <section id="three-datasets-one-technique" class="level2">
@@ -371,7 +367,7 @@ window.Quarto = {
 <ol type="1">
 <li><strong>Embed</strong>: Use <code>sentence-transformers</code> to convert text → 384 or 768-dimensional vectors</li>
 <li><strong>Hash</strong>: Apply LSH with a fixed seed (12345) so embeddings from different files map to the same bucket space</li>
-<li><strong>Discover</strong>: Query Krapivin hash table for buckets with ≥5 items (O(1) operation)</li>
+<li><strong>Discover</strong>: Query count-indexed Krapivin hash table for buckets with ≥5 items (O(1) operation)</li>
 <li><strong>Label</strong>: Use an LLM or keyword extraction to generate semantic labels for each dense bucket</li>
 <li><strong>Merge</strong>: Combine similar themes using Jaccard similarity on tokenized labels:</li>
 </ol>
@@ -460,14 +456,14 @@ window.Quarto = {
 </section>
 <section id="the-research-behind-it" class="level2">
 <h2 class="anchored" data-anchor-id="the-research-behind-it">The Research Behind It</h2>
-<p>Key papers: - <strong>Krapivin et al.&nbsp;(2025)</strong>: <a href="https://arxiv.org/abs/2501.02305">Optimal Hash Tables with Deletion</a> - <strong>Indyk &amp; Motwani (1998)</strong>: <a href="https://dl.acm.org/doi/10.1145/276698.276876">Approximate Nearest Neighbors via LSH</a></p>
+<p>Key papers: - <strong>Krapivin et al.&nbsp;(2025)</strong>: <a href="https://arxiv.org/abs/2501.02305">Optimal Bounds for Open Addressing Without Reordering</a> — efficient hash table foundation - <strong>Indyk &amp; Motwani (1998)</strong>: <a href="https://dl.acm.org/doi/10.1145/276698.276876">Approximate Nearest Neighbors via LSH</a> — locality-sensitive hashing</p>
 </section>
 <section id="technical-details" class="level2">
 <h2 class="anchored" data-anchor-id="technical-details">Technical Details</h2>
-<p>Built with: - <strong>Streamlit</strong> for the interactive UI - <strong>Polars</strong> for fast DataFrame operations - <strong>sentence-transformers</strong> (HuggingFace) for embeddings - <strong>Krapivin hash tables</strong> (Rust + Python bindings) for O(1) density queries - <strong>Parquet</strong> (zstd compression) for efficient storage</p>
+<p>Built with: - <strong>Streamlit</strong> for the interactive UI - <strong>Polars</strong> for fast DataFrame operations - <strong>sentence-transformers</strong> (HuggingFace) for embeddings - <strong>Krapivin hash tables</strong> (Rust + Python bindings) with LSH + count-indexing for O(1) density queries - <strong>Parquet</strong> (zstd compression) for efficient storage</p>
 <p>Total dataset size: ~24 MB (1,000 tweets + 1,000 papers + 684 HN posts, 4 models each)</p>
 <hr>
-<p>The key insight: <strong>data can understand itself</strong>. Give it the right structure (LSH + Krapivin), and patterns emerge without manual intervention. Not clustering, not search—semantic self-awareness.</p>
+<p>The key insight: <strong>data can understand itself</strong>. Give it the right structure (Krapivin hash tables + LSH + count-indexing), and patterns emerge without manual intervention. Not clustering, not search—semantic self-awareness.</p>
 <p>Try the <a href="https://semantic-proprioception-demo.streamlit.app">demo</a> and see what patterns hide in your own data.</p>
 
 

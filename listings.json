@@ -2,7 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/gudid_landscape.html",
       "/posts/claude_vs_kimi_debate.html",
+      "/posts/semantic-proprioception-demo.html",
       "/posts/intelligence_chases_chaos.html",
       "/posts/book_bot.html",
       "/posts/rumpus.html",
