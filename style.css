@@ -123,6 +123,10 @@ main, .sidebar {
   border-radius: 8px;
 }
 
+.quarto-figure img {
+  border-radius: 8px;
+}
+
 .callout-tip {
   overflow: auto;
   float: right;
@@ -138,4 +142,6 @@ main, .sidebar {
   margin-right: 0.75em;
   margin-bottom: 0.5em;
   display: inline;
+  border-radius: 50%;
+  filter: grayscale(100%);
 }

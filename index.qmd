@@ -62,6 +62,12 @@ optimizing search rankings through machine learning techniques. These patents
 collectively aim to improve user interaction, software performance, and data
 analysis.  Visit the [patents section](cv.qmd#patents) for more details.
 
+::: {.callout-tip}
+![Leonardo da Vinci](https://upload.wikimedia.org/wikipedia/commons/b/ba/Leonardo_self.jpg)
+"Learning never exhausts the mind."
+- [Leonardo da Vinci](https://en.wikipedia.org/wiki/Leonardo_da_Vinci)
+:::
+
 I have made notable contributions to education and open-source development. As
 a co-instructor for UW 410 Advanced Machine Learning, I helped teach advanced
 machine learning concepts at the [University of
