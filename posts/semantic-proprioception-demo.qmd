@@ -3,7 +3,7 @@ title: "Semantic Proprioception: Teaching Data to Understand Itself"
 description: "How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness."
 author: "Justin Donaldson"
 date: "2025-11-22"
-image: "images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png"
+image: "images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg"
 categories:
   - machine learning
   - embeddings
@@ -30,7 +30,7 @@ categories:
 </style>
 
 <div class="hero-image">
-![](images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.png)
+![](images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg)
 </div>
 
 Just as proprioception lets you sense where your body is in space without looking, **semantic proprioception** gives data the ability to understand its own internal structure. No manual labeling, no predefined categories—just the data revealing patterns within itself.
@@ -65,7 +65,7 @@ This isn't just clustering—it's the data developing awareness of its own distr
 
 Traditional LSH implementations have a problem: to find dense buckets, you'd have to scan every bucket and count items. That's O(n) where n is the number of buckets—expensive and slow.
 
-Enter **Krapivin hash tables** ([Krapivin et al. 2025](https://arxiv.org/abs/2501.02305)), which provide O(1) density queries through their hierarchical structure. You can instantly ask: "Which buckets have ≥5 items?" without scanning anything.
+The foundation is **Krapivin hash tables** ([Krapivin et al. 2025](https://arxiv.org/abs/2501.02305))—open-addressed hash tables achieving O(log² δ⁻¹) expected probes without element reordering. Built on top of this efficient foundation, we add an **LSH layer** for semantic bucketing and a **count-indexed extension** for O(1) density queries: you can instantly ask "Which buckets have ≥5 items?" without scanning anything.
 
 This transforms LSH from a search index into a **semantic awareness system**. The data doesn't just answer "what's similar to X?"—it can answer "what patterns exist in me?"
 
@@ -92,7 +92,7 @@ HN posts mix news headlines with discussion text. The clusters reflect both tren
 
 1. **Embed**: Use `sentence-transformers` to convert text → 384 or 768-dimensional vectors
 2. **Hash**: Apply LSH with a fixed seed (12345) so embeddings from different files map to the same bucket space
-3. **Discover**: Query Krapivin hash table for buckets with ≥5 items (O(1) operation)
+3. **Discover**: Query count-indexed Krapivin hash table for buckets with ≥5 items (O(1) operation)
 4. **Label**: Use an LLM or keyword extraction to generate semantic labels for each dense bucket
 5. **Merge**: Combine similar themes using Jaccard similarity on tokenized labels:
 
@@ -199,8 +199,8 @@ Semantic proprioception isn't just about visualization—it unlocks new capabili
 ## The Research Behind It
 
 Key papers:
-- **Krapivin et al. (2025)**: [Optimal Hash Tables with Deletion](https://arxiv.org/abs/2501.02305)
-- **Indyk & Motwani (1998)**: [Approximate Nearest Neighbors via LSH](https://dl.acm.org/doi/10.1145/276698.276876)
+- **Krapivin et al. (2025)**: [Optimal Bounds for Open Addressing Without Reordering](https://arxiv.org/abs/2501.02305) — efficient hash table foundation
+- **Indyk & Motwani (1998)**: [Approximate Nearest Neighbors via LSH](https://dl.acm.org/doi/10.1145/276698.276876) — locality-sensitive hashing
 
 ## Technical Details
 
@@ -208,13 +208,13 @@ Built with:
 - **Streamlit** for the interactive UI
 - **Polars** for fast DataFrame operations
 - **sentence-transformers** (HuggingFace) for embeddings
-- **Krapivin hash tables** (Rust + Python bindings) for O(1) density queries
+- **Krapivin hash tables** (Rust + Python bindings) with LSH + count-indexing for O(1) density queries
 - **Parquet** (zstd compression) for efficient storage
 
 Total dataset size: ~24 MB (1,000 tweets + 1,000 papers + 684 HN posts, 4 models each)
 
 ---
 
-The key insight: **data can understand itself**. Give it the right structure (LSH + Krapivin), and patterns emerge without manual intervention. Not clustering, not search—semantic self-awareness.
+The key insight: **data can understand itself**. Give it the right structure (Krapivin hash tables + LSH + count-indexing), and patterns emerge without manual intervention. Not clustering, not search—semantic self-awareness.
 
 Try the [demo](https://semantic-proprioception-demo.streamlit.app) and see what patterns hide in your own data.

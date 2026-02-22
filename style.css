@@ -118,6 +118,11 @@ main, .sidebar {
   text-align: left;
 }
 
+.thumbnail-image {
+  object-fit: contain !important;
+  border-radius: 8px;
+}
+
 .callout-tip {
   overflow: auto;
   float: right;

@@ -1,0 +1,154 @@
+---
+title: "Coagulating a Surgical Energy Map"
+description: "An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here's what it found."
+author: "Justin Donaldson"
+date: "2026-02-22"
+image: "images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png"
+categories:
+  - machine learning
+  - embeddings
+  - visualization
+  - medical devices
+---
+
+<!-- Midjourney prompt: Norman Rockwell style illustration, scientist examining a vast topographic map made of tiny medical devices, electrosurgical forceps and electrode tips forming mountain ranges, warm lighting, detailed, oil painting -->
+
+An AI read 34,000 FDA electrosurgical device descriptions and drew a map. The map makes sense.
+
+Not in a "well, if you squint" way. In a "the Yasargil fenestrated forceps cluster sits right next to the Yasargil stop-pin cluster, and both neighbor the irrigating Yasargil variants" way. In a "footswitches are at the edge because their descriptions talk about pedals, not tissue" way.
+
+The dataset is a subset of [GUDID](https://accessgudid.nlm.nih.gov/) -- the FDA's Global Unique Device Identification Database -- filtered down to energy-based surgical devices. Bipolar forceps. Electrosurgical generators. Laparoscopic vessel sealers. Ultrasonic scalers. RF ablation probes. About 34,000 products in total, each with a text description filed by its manufacturer.
+
+Curvo's language model read every one of those descriptions and converted them into numerical vectors -- points in 768-dimensional space where similar meanings sit close together. Then UMAP projected those points down to three visible dimensions. No taxonomy was imposed. No human sorted these into categories. The structure you see emerged entirely from language.
+
+## The Map
+
+<style>
+.viz-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.viz-container::before {
+  content: "⚡ Interactive Energy Device Landscape";
+  display: block;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #495057;
+}
+.viz-container iframe {
+  width: 100%;
+  height: 700px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #1e1e1e;
+}
+</style>
+
+<div class="viz-container">
+<iframe src="https://jdonaldson.github.io/gudid-energy-landscape/" allowfullscreen></iframe>
+</div>
+
+Click **Start Tour** for a narrated walkthrough of the landscape, or explore freely -- drag to rotate, scroll to zoom, and hover over any point to see the device description beneath it. [Open in a new window](https://jdonaldson.github.io/gudid-energy-landscape/){target="_blank"} for the full experience.
+
+At the highest level, the geography is legible. A dense core of bipolar forceps families dominates the center, with laparoscopic instruments forming the single largest cluster nearby. Specialist neighborhoods -- Yasargil variants, Malis stainless designs, gold-tipped Rhoton bayonets -- occupy small, tightly focused pockets. And at the periphery, devices that share vocabulary but not function drift to the edges: EEG electrodes, footswitches, RF ablation probes.
+
+Let me walk you through what the model found.
+
+## Walking the Landscape
+
+### The Forceps Core
+
+The heart of the map belongs to bipolar forceps. The Symmetry & SURGIX Forceps cluster alone accounts for over 3,500 instruments -- Symmetry bipolars, SURGIX high-performance designs, Cushing bayonets, Hardy patterns, and ELMED connectors. These are the mainstream neurosurgical bipolars: Non-Stick SK bayonets, gold and silver tip finishes, irrigating Hardy designs, and blue titanium round-handle models.
+
+What makes this cluster structurally interesting is its connectivity. With over a thousand bridge edges linking it to other regions, Symmetry & SURGIX is the map's most connected hub. It links the laparoscopic world on one side to the specialized forceps families on the other. Think of it as the central interchange of a transit system.
+
+Nearby, Bipolar & Monopolar Shafts (4,500+ devices) serves as a second major hub -- Endo Motors, Adson bipolars, METZENBAUM dissecting scissors, cup grasper inserts. If Symmetry & SURGIX is the interchange, this cluster is the distribution center where instrument shafts, handles, and tips converge before specializing.
+
+### Laparoscopic Instruments
+
+The map's largest single cluster at over 8,300 devices. Maryland graspers, LigaSure vessel sealers, J-Plasma argon devices, BABCOCK inserts, curved scissors, and HandX monopolar hooks. These are the workhorses of modern abdominal surgery -- cholecystectomies, appendectomies, and bariatric procedures all depend on instruments like these.
+
+With fourteen bridge connections, the laparoscopic cluster reaches across the entire map, from RF ablation probes to EEG electrodes. Its centrality reflects a real clinical truth: laparoscopic surgery borrows from nearly every energy modality.
+
+### The Yasargil Families
+
+Three tiny clusters, all named after Gazi Yasargil, the Turkish-born father of microneurosurgery. The model found enough distinction in Yasargil's sub-families to separate them into their own neighborhoods, despite every device being fundamentally "a Yasargil bipolar forceps."
+
+**Fenestrated tips** (291 devices): bayonet shafts with windowed jaws that let surgeons see tissue through the forceps during coagulation. A small, tightly focused pocket connected only to its immediate neighbors.
+
+**Stop-pin variants** (178 devices): the purest single-product-line cluster on the entire map. Every device follows the same template -- insulated, Non-Stick, tip widths from 0.4 to 2 mm, shaft lengths from six to nearly ten inches. Only nine bridge edges connect it to the outside world.
+
+**Irrigating designs** (~800 devices): insulated bayonet shafts with built-in irrigation channels that cool tissue during coagulation. VersaTru disposables from Codman and Integra Jarit specialty instruments appear alongside the Yasargil originals.
+
+That a language model, given no surgical training, would carve out fenestrated, stop-pin, and irrigating sub-families as distinct neighborhoods is one of the more satisfying results on this map.
+
+### Electrosurgical Systems
+
+About 4,700 devices representing the infrastructure side of electrosurgery. Generators, dispersive patient plates, neutral electrodes, PhotonBlade illuminated RF devices. Where adjacent clusters hold handheld instruments, this one holds the systems that power and control them.
+
+Legato handpieces, loop electrodes, pin-point micro electrodes, and replacement assemblies round out a cluster that touches nearly every other region. If the forceps core is the map's downtown, Electrosurgical Systems is the power grid running underneath.
+
+### Ultrasonic & Piezo Tools
+
+About 3,300 devices spanning two distinct worlds united by ultrasonic vibration. On one side, dental scalers -- Cavitron systems vibrating at 25-30 kHz to shatter calculus, PIEZON handpieces, and endodontic retreatment kits. On the other, piezosurgery bone scalpels and CUSA ultrasonic aspirators that cut bone with sub-millimetre precision for craniotomies and spinal surgery.
+
+Despite having the highest betweenness centrality on the map (meaning more shortest paths between other clusters run through it than through any other), only 125 bridge edges connect this peripheral cluster to the forceps core. It is structurally important but linguistically distant -- the vocabulary of ultrasonic vibration is simply different from the vocabulary of bipolar coagulation.
+
+### The Periphery
+
+At the map's edges, devices that share vocabulary but not surgical purpose drift into their own territories.
+
+**EEG & Endoscopy Electrodes** (~200 devices) is the smallest named cluster -- gold and silver disc EEG cup electrodes sitting alongside polypropylene snare devices for GI endoscopy. Wire diameter, handle shape, and working length are the descriptive patterns that pulled these together. Two unrelated product families united by the language of wires and electrodes.
+
+**Surgical Footswitches** (426 devices) occupy their own island with only sixteen bridge edges to the rest of the map. Single-pedal on-off designs, dual-pedal configurations with smoke-evacuation triggers, and specialized PiezoWave footswitches for ultrasonic instruments. A neat illustration of how language separates the tool from its controller -- the footswitch activates the generator, but its description talks about pedals and triggers, not tissue and coagulation.
+
+**RF Ablation Probes** (~1,600 devices) bridge the forceps-dominated center with the peripheral catheter and cannula regions. Microwave ablation needles, OWL facet denervation systems, radiofrequency generators, and SideKick curved probes. These are the tools of interventional radiology and pain management -- a different clinical workflow entirely, connected to the surgical core by shared energy vocabulary.
+
+### The Curiosities
+
+Every map has its oddities, and this one is no exception.
+
+**CLARIS Non-Stick Forceps** (~1,200 devices) is dominated by CLARIS and CLARIS REVERSE Non-Stick forceps from KLS Martin, a German manufacturer whose formulaic product descriptions cluster tightly in embedding space. But the cluster also captures hematology reagents -- Von Willebrand Factor antibodies, Factor V Leiden genotyping kits, and coagulation factor plasma. The reason is a single word: "coagulation." Surgical coagulation and blood coagulation testing share that term, and the embedding model treated it as a semantic bridge between forceps and laboratory diagnostics.
+
+**Grasping Forceps** (270 devices) are mechanical tissue graspers -- Allis patterns, alligator jaws, dolphin nose dissectors -- none of which deliver energy themselves. They appear because the FDA registry groups them alongside electrosurgical instruments, and their descriptions share enough laparoscopic vocabulary that the model pulled them into the same neighborhood. An artifact of regulatory classification leaking through language.
+
+## What the Map Reveals
+
+Four patterns emerge when you step back and look at the full landscape.
+
+**Eponym geography.** Surgeon names create neighborhoods. Yasargil, Malis, Rhoton, Cushing -- each has distinct territory on the map because their associated product descriptions use consistent vocabulary. Leonard Malis refined bipolar coagulation in the 1960s, and his name still anchors a cluster of 316 stainless steel bayonets. The history of neurosurgery is written into the embedding space.
+
+**Language bridges.** The word "coagulation" pulls hematology reagents into a forceps cluster. "Wire" and "electrode" unite EEG caps with endoscopy snares. Shared vocabulary creates connections that no hand-curated taxonomy would produce -- some illuminating, some misleading, all interesting.
+
+**Hub-and-spoke structure.** Symmetry & SURGIX Forceps and Bipolar & Monopolar Shafts serve as distribution centers. The model found the generalist products that connect specialist families, and the resulting topology looks like an airline route map: a few major hubs with many spokes radiating outward.
+
+**Manufacturer fingerprints.** KLS Martin's formulaic product descriptions cluster together not just by device function but by writing style. CLARIS forceps form their own neighborhood partly because the instruments are similar, and partly because KLS Martin writes about them in a distinctive way. The model is reading style as well as substance.
+
+## How It Works
+
+The pipeline is straightforward. Curvo's language model ([nomic-embed-text](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5)) converted each device description into a 768-dimensional vector, capturing semantic meaning in a format that supports distance calculations. Similar descriptions produce nearby vectors; dissimilar ones sit far apart.
+
+UMAP then projected those 768 dimensions down to three coordinates while preserving local neighborhood structure -- if two devices were neighbors in high-dimensional space, they remain neighbors in the 3D projection. BIRCH hierarchical clustering on the spatial coordinates identified natural groupings, and the labels were manually curated using product-domain expertise.
+
+No predefined taxonomy. No GMDN codes. No human-imposed categories. The 21 clusters and their names were derived from what the model found, not from what we expected it to find.
+
+For the technical details on the embedding and clustering pipeline, see the [Semantic Proprioception](/posts/semantic-proprioception-demo.qmd) post. The visualization was built with [DYF](https://github.com/jdonaldson/dyf), an open-source library for embedding-based dataset exploration.
+
+## A Landscape, Not a Classification
+
+What makes this map useful is not that it replaces expert taxonomy -- it does not, and should not. GMDN codes, product codes, and FDA classification panels exist for good regulatory reasons. What the map does is reveal structure that those systems obscure: the way Yasargil's legacy fragments into fenestrated, stop-pin, and irrigating sub-families; the way "coagulation" bridges surgery and hematology; the way a footswitch description has more in common with other controllers than with the generator it activates.
+
+From simple bipolar forceps to advanced energy platforms, from Yasargil's microneurosurgical legacy to laboratory coagulation controls that share only a word, this map reveals how language itself organizes a product catalogue. Clusters that sit close together share deeper similarities, and the bridges between them trace the paths where one technology shades into the next.
+
+---
+
+**Interactive demo**: [GUDID Energy Device Landscape](https://jdonaldson.github.io/gudid-energy-landscape/)
+
+**DYF**: [github.com/jdonaldson/dyf](https://github.com/jdonaldson/dyf) -- open-source library for embedding-based dataset visualization
+
+**Semantic Proprioception**: [Teaching Data to Understand Itself](/posts/semantic-proprioception-demo.qmd) -- the technical foundation behind the embedding pipeline
