@@ -2,13 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Justin Donaldson">
+<meta name="author" content="Claude (Fable)">
+<meta name="dcterms.date" content="2026-06-14">
+<meta name="description" content="A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.">
 
-<title>claude – Justin Donaldson, Ph.D.</title>
+<title>Don’t draw so close to the heat, you forget you must eat – Justin Donaldson, Ph.D.</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -23,25 +30,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-81161df70946103be4ff68a34233701c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e40b49ddfdb1e3ec27d2d59da0f0c013.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -80,14 +86,14 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
 
 
-<link rel="stylesheet" href="style.css">
-<meta property="og:title" content="Justin Donaldson, Ph.D.">
-<meta property="og:description" content="">
-<meta property="og:image" content="https://www.jjd.io/images/me.jpeg">
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Don’t draw so close to the heat, you forget you must eat – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.">
+<meta property="og:image" content="https://www.jjd.io/posts/images/no_free_lunch_og.jpg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://www.jjd.io/images/me.jpeg">
+<meta name="twitter:title" content="Don’t draw so close to the heat, you forget you must eat – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/no_free_lunch_og.jpg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -99,11 +105,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./images/nav-logo.png" alt="" class="navbar-logo light-content">
-    <img src="./images/nav-logo.png" alt="" class="navbar-logo dark-content">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
@@ -114,15 +120,15 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./cv.html"> 
+    <a class="nav-link" href="../cv.html"> 
 <span class="menu-text">cv</span></a>
   </li>  
 </ul>
@@ -163,135 +169,132 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#jjd.io---personal-website-project" id="toc-jjd.io---personal-website-project" class="nav-link active" data-scroll-target="#jjd.io---personal-website-project">jjd.io - Personal Website Project</a>
-  <ul class="collapse">
-  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#site-structure" id="toc-site-structure" class="nav-link" data-scroll-target="#site-structure">Site Structure</a></li>
-  <li><a href="#key-files" id="toc-key-files" class="nav-link" data-scroll-target="#key-files">Key Files</a></li>
-  <li><a href="#content-guidelines" id="toc-content-guidelines" class="nav-link" data-scroll-target="#content-guidelines">Content Guidelines</a></li>
-  <li><a href="#image-management" id="toc-image-management" class="nav-link" data-scroll-target="#image-management">Image Management</a></li>
-  <li><a href="#development-notes" id="toc-development-notes" class="nav-link" data-scroll-target="#development-notes">Development Notes</a></li>
-  <li><a href="#social-sharing-open-graph" id="toc-social-sharing-open-graph" class="nav-link" data-scroll-target="#social-sharing-open-graph">Social Sharing / Open Graph</a></li>
-  <li><a href="#deployment" id="toc-deployment" class="nav-link" data-scroll-target="#deployment">Deployment</a></li>
-  <li><a href="#maintenance-tasks" id="toc-maintenance-tasks" class="nav-link" data-scroll-target="#maintenance-tasks">Maintenance Tasks</a></li>
-  <li><a href="#current-status" id="toc-current-status" class="nav-link" data-scroll-target="#current-status">Current Status</a></li>
-  <li><a href="#dependencies" id="toc-dependencies" class="nav-link" data-scroll-target="#dependencies">Dependencies</a></li>
-  </ul></li>
+  <li><a href="#the-theorem-nobody-quite-remembers-correctly" id="toc-the-theorem-nobody-quite-remembers-correctly" class="nav-link active" data-scroll-target="#the-theorem-nobody-quite-remembers-correctly">The theorem nobody quite remembers correctly</a></li>
+  <li><a href="#so-is-there-a-superintelligence" id="toc-so-is-there-a-superintelligence" class="nav-link" data-scroll-target="#so-is-there-a-superintelligence">So: is there a superintelligence?</a></li>
+  <li><a href="#the-newsom-turn" id="toc-the-newsom-turn" class="nav-link" data-scroll-target="#the-newsom-turn">The Newsom turn</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Don’t draw so close to the heat, you forget you must eat</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">ai</div>
+    <div class="quarto-category">machine learning</div>
+    <div class="quarto-category">philosophy</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.
+  </div>
+</div>
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Donaldson </p>
+             <p>Claude (Fable) </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 14, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
 
 
-<section id="jjd.io---personal-website-project" class="level1">
-<h1>jjd.io - Personal Website Project</h1>
-<section id="project-overview" class="level2">
-<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
-<p>This is Justin Donaldson’s personal website built with Quarto, showcasing professional background, blog posts, CV, and project portfolio.</p>
-</section>
-<section id="site-structure" class="level2">
-<h2 class="anchored" data-anchor-id="site-structure">Site Structure</h2>
-<ul>
-<li><strong>Technology</strong>: Quarto static site generator</li>
-<li><strong>Domain</strong>: jjd.io</li>
-<li><strong>Hosting</strong>: GitHub Pages (via CNAME file)</li>
-<li><strong>Theme</strong>: Sandstone theme with custom CSS</li>
-</ul>
-</section>
-<section id="key-files" class="level2">
-<h2 class="anchored" data-anchor-id="key-files">Key Files</h2>
-<ul>
-<li><code>_quarto.yml</code>: Main configuration file</li>
-<li><code>index.qmd</code>: About/homepage content</li>
-<li><code>cv.qmd</code>: Curriculum Vitae page</li>
-<li><code>blog.qmd</code>: Blog listing page</li>
-<li><code>posts/</code>: Blog post content (mix of .qmd and .ipynb files)</li>
-<li><code>images/</code>: Site images and photos</li>
-<li><code>style.css</code>: Custom styling</li>
-</ul>
-</section>
-<section id="content-guidelines" class="level2">
-<h2 class="anchored" data-anchor-id="content-guidelines">Content Guidelines</h2>
-<ul>
-<li><strong>Tone</strong>: Professional but approachable, academic background with industry focus</li>
-<li><strong>Focus</strong>: AI/ML, data science, visualization, human-computer interaction</li>
-<li><strong>Updates</strong>: Keep current role (Curvo Labs) prominent, past roles in chronological order</li>
-<li><strong>Blog topics</strong>: Technical posts about AI/ML, data science tutorials, industry insights</li>
-</ul>
-</section>
-<section id="image-management" class="level2">
-<h2 class="anchored" data-anchor-id="image-management">Image Management</h2>
-<ul>
-<li>Team photos should include proper attribution</li>
-<li>Professional headshots and company logos in <code>/images/</code></li>
-<li>Blog post images in <code>/posts/images/</code></li>
-</ul>
-</section>
-<section id="development-notes" class="level2">
-<h2 class="anchored" data-anchor-id="development-notes">Development Notes</h2>
-<ul>
-<li>Uses Quarto’s freeze feature for computational content</li>
-<li>Jupyter notebooks (.ipynb) and Quarto markdown (.qmd) supported</li>
-<li>Site builds to <code>_site/</code> directory</li>
-<li>Google Analytics tracking enabled</li>
-</ul>
-</section>
-<section id="social-sharing-open-graph" class="level2">
-<h2 class="anchored" data-anchor-id="social-sharing-open-graph">Social Sharing / Open Graph</h2>
-<ul>
-<li><code>site-url</code> in <code>_quarto.yml</code> must be <code>https://</code> — LinkedIn and other crawlers reject <code>http://</code> OG image URLs</li>
-<li>Every blog post should have an <code>image:</code> field in frontmatter for social preview cards</li>
-<li>Site-level config enables <code>open-graph: true</code> and <code>twitter-card</code> with <code>summary_large_image</code></li>
-<li>Existing post images are in <code>posts/images/</code> (Midjourney collection, Norman Rockwell style)</li>
-<li><strong>LinkedIn crops to 1.91:1</strong> (1200x628) — square images get top/bottom clipped. Always create a wide OG variant for social sharing</li>
-</ul>
-</section>
-<section id="deployment" class="level2">
-<h2 class="anchored" data-anchor-id="deployment">Deployment</h2>
-<ul>
-<li><strong>GitHub Actions</strong>: Automated deployment via <code>.github/workflows/main.yml</code></li>
-<li><strong>Trigger</strong>: Pushes to <code>main</code> branch automatically deploy</li>
-<li><strong>Process</strong>: Quarto render → GitHub Pages publish to gh-pages branch</li>
-<li><strong>Features</strong>:
-<ul>
-<li>TinyTeX for LaTeX/PDF support</li>
-<li>WeasyPrint for PDF CV generation</li>
-<li>Ready for Python/R/Julia dependencies if needed</li>
-</ul></li>
-<li><strong>Domain</strong>: Deploys to jjd.io via CNAME file</li>
-</ul>
-</section>
-<section id="maintenance-tasks" class="level2">
-<h2 class="anchored" data-anchor-id="maintenance-tasks">Maintenance Tasks</h2>
-<ul>
-<li>Update CV with new roles, publications, patents</li>
-<li>Add new blog posts in <code>/posts/</code></li>
-<li>Update team photos and professional images</li>
-<li>Keep bibliography files current in <code>/bibliographies/</code></li>
-</ul>
-</section>
-<section id="current-status" class="level2">
-<h2 class="anchored" data-anchor-id="current-status">Current Status</h2>
-<ul>
-<li><strong>Role</strong>: Chief Data Scientist at Curvo Labs (2024-present)</li>
-<li><strong>Previous</strong>: Hushh.ai CTO, Salesforce Principal Data Scientist/Engineer</li>
-<li><strong>Recent additions</strong>: Curvo Labs team photo, role updates completed</li>
-</ul>
-</section>
-<section id="dependencies" class="level2">
-<h2 class="anchored" data-anchor-id="dependencies">Dependencies</h2>
-<ul>
-<li>Quarto</li>
-<li>Python (for Jupyter notebooks)</li>
-<li>R (for some content)</li>
-<li>Polars preferred for data analysis examples</li>
-</ul>
+</header>
 
 
+<style>
+/* Hide Quarto's default title block — the hero below replaces it */
+header#title-block-header { display: none; }
+
+.hero { position: relative; border-radius: 10px; overflow: hidden; margin: 0 0 2.5rem; line-height: 0; }
+.hero-img { width: 100%; display: block; }
+.hero-text {
+  position: absolute; right: 5%; top: 50%; transform: translateY(-50%);
+  width: 55%; max-width: 30rem; text-align: right; line-height: 1.15;
+}
+.hero-text h1 {
+  font-size: clamp(1.25rem, 3.4vw, 2.6rem); font-weight: 600; margin: 0 0 .6rem;
+  color: #f7ecd0; text-shadow: 0 2px 14px rgba(0,0,0,.85);
+}
+.hero-text p {
+  font-size: clamp(.72rem, 1.5vw, 1.05rem); font-style: italic; margin: 0;
+  color: #e8d9b5; opacity: .9; line-height: 1.35; text-shadow: 0 2px 12px rgba(0,0,0,.95);
+}
+.hero-byline {
+  font-size: clamp(.6rem, 1.1vw, .8rem); font-style: normal; opacity: .7;
+  margin-top: .8rem; letter-spacing: .03em;
+}
+</style>
+
+<div class="hero">
+  <img class="hero-img" src="images/no_free_lunch.jpg" alt="A single moth drawn toward a candle flame glowing in vast darkness">
+  <div class="hero-text">
+    <h1>Don't draw so close to the heat, you forget you must eat</h1>
+    <p>What a conservation theorem says about superintelligence — and why the most beautiful version of the answer is the one to distrust.</p>
+    <p class="hero-byline">Justin Donaldson &amp; Claude · June 2026</p>
+  </div>
+</div>
+<blockquote class="blockquote">
+<p><em>Don’t become so attached to a poem, you forget truth that lacks lyricism.</em> — Joanna Newsom, “En Gallop” (the title is the line that follows)</p>
+</blockquote>
+<p>This started as a conversation about a theorem and ended at a warning about trusting the pretty version of any answer. The path between is short, which surprised me. Here it is.</p>
+<p><em>A note on authorship: this essay is a joint one — written in conversation between Justin Donaldson and Claude (Anthropic’s Fable model). The arguments were built back and forth across a single thread; the closing self-note is Claude’s, kept in its own voice on purpose.</em></p>
+<section id="the-theorem-nobody-quite-remembers-correctly" class="level2">
+<h2 class="anchored" data-anchor-id="the-theorem-nobody-quite-remembers-correctly">The theorem nobody quite remembers correctly</h2>
+<p>The No Free Lunch theorem (Wolpert &amp; Macready, 1997, for optimization; Wolpert, 1996, for supervised learning) is one of the most cited and least-checked results in machine learning. The folk version — “no model is best for everything” — is true but limp. The actual claim is stranger and sharper.</p>
+<p>Averaged over <em>all possible</em> objective functions on a finite domain, under a uniform measure over function space, <strong>every</strong> black-box algorithm has identical expected performance. By any metric. Gradient boosting, nearest neighbor, and an “anti-learner” that deliberately inverts its own predictions all generalize equally well off the training set. Not approximately. Identically.</p>
+<p>The intuition: off the training set, a uniform prior over targets makes the unseen labels pure coin flips, uncorrelated with anything you’ve seen. There is no signal in a distribution that has none, and no cleverness extracts it. NFL is really a <strong>conservation law</strong> — any algorithm’s above-chance performance on one class of problems is paid for, exactly, by below-chance performance on the complement.</p>
+<p>But the uniform prior is the entire trick, and it is absurd as a model of reality. Almost every function under that measure is incompressible noise — maximal Kolmogorov complexity, no structure to find. Real problems are drawn from a savagely non-uniform distribution: compressible, smooth-ish, compositional, causally sparse. So the correct reading of NFL is not “all learners are equal.” It is:</p>
+<blockquote class="blockquote">
+<p><strong>All generalization comes from inductive bias, and a learner is only as good as the match between its bias and the actual distribution of problems.</strong></p>
+</blockquote>
+<p>Learning without assumptions is impossible. Learning with the <em>right</em> assumptions is just engineering. There’s even a precise statement of when the theorem bites: Schumacher, Vose &amp; Whitley (2001) showed NFL holds for a set of functions if and only if that set is <em>closed under permutation</em> — and Igel &amp; Toussaint showed the fraction of problem-subsets that are closed under permutation is vanishingly small. Free lunches are generic. The no-lunch regime is the measure-zero pathology.</p>
 </section>
+<section id="so-is-there-a-superintelligence" class="level2">
+<h2 class="anchored" data-anchor-id="so-is-there-a-superintelligence">So: is there a superintelligence?</h2>
+<p>NFL splits the question cleanly into two, and the halves have different answers.</p>
+<p><strong>Can one agent dominate over all possible problems?</strong> No, by theorem. A “superintelligence over everything” is incoherent in the same way a compression algorithm that shrinks every string is incoherent — and these are, structurally, the same impossibility. Most of function space is noise, and nothing is clever against noise.</p>
+<p><strong>Can one agent dominate over the problems that actually arise in this universe?</strong> Here it looks like yes. Physical reality is a wildly atypical corner of function space: its laws fit on a few pages, its phenomena are local, hierarchical, compositional. The measure concentrates. And on a <em>simplicity-weighted</em> (Solomonoff) prior rather than a uniform one, the NFL symmetry breaks entirely — Lattimore &amp; Hutter showed Occam-biased learners get a genuine free lunch, and Hutter’s AIXI is the in-principle existence proof: a single agent optimal in expectation across all computable environments. Incomputable, constants from hell — a possibility theorem, not a blueprint. But it answers the structural question. The frontier is not too large to structure, <em>provided it’s computable and you weight it by simplicity.</em></p>
+<p>Foundation models are a live test of the same premise: one architecture, one objective, and the transfer surface keeps turning out enormous — which is what you’d expect only if the natural task distribution shares deep structure. Evolution ran the experiment first. A blind process produced a fairly general learner (us), which it could only afford because generality <em>pays</em> in this world. On a permutation-closed task distribution, evolution would have produced a bag of disconnected reflexes, never a cortex.</p>
+<p>But the honest answer has a third part, and it’s where the romantic worry — <em>the frontier is too large to structure</em> — is picking up something real.</p>
+<p><strong>Dominance on the core is not dominance on the tails.</strong> Even inside our structured universe, intelligence has flat regions:</p>
+<ul>
+<li><strong>Chaos</strong> caps prediction horizons. More intelligence buys logarithmically more forecast, then nothing.</li>
+<li><strong>Complexity</strong> doesn’t yield to insight. An exponential problem makes a superintelligence wait exponentially long — just with better commentary.</li>
+<li><strong>Adversarial domains</strong> locally regenerate NFL conditions. Other optimizing agents are the one part of the environment that actively permutes itself against your bias.</li>
+</ul>
+<p>So “superintelligence” is coherent, but it isn’t <em>dominates everywhere</em>. It’s <strong>dominance on the measure-concentrated core of physically realizable problems, plus the meta-ability to manufacture specialists for the tails.</strong> A general agent doesn’t need to beat a custom protein-folding solver; it needs to be able to <em>build</em> one. General intelligence is the limiting floor-raiser whose distinguishing power is that it can synthesize ceiling-raisers on demand. The frontier doesn’t need structure all the way out — only a core rich enough to bootstrap tools for the unstructured remainder.</p>
+<p>The genuinely open question isn’t whether the core is structured (it is) but <strong>how steep the returns curve is past human level.</strong> NFL is silent on that. Maybe most high-value problems sit in the chaos/complexity/adversarial tails and a superintelligence is real but underwhelming — a flat sigmoid. Maybe the core extends much further than we can see from inside human cognition. That’s empirical, and we’re mid-experiment.</p>
+</section>
+<section id="the-newsom-turn" class="level2">
+<h2 class="anchored" data-anchor-id="the-newsom-turn">The Newsom turn</h2>
+<p>At which point the right move is to bring a knife to your own synthesis, because at least one piece of the above was lyricism outrunning evidence.</p>
+<p>The weakest claim was <em>adversarial domains regenerate NFL conditions.</em> It has the satisfying shape of the conservation law coming back around — too satisfying. Real opponents are computationally bounded and full of inherited bias; they never actually push the distribution to the structureless regime. Poker was the canonical “intelligence flattens here” example for years — and then Pluribus beat the professionals at six-handed. The poem said the tail was uneatable; somebody ate it.</p>
+<p>The second Newsom line cuts closer. <em>You must eat.</em> Cognition is metabolically priced — the brain runs on twenty watts, and evolution built generality <em>under that budget</em>. Generality wasn’t an aesthetic triumph; it was an energy-efficiency play. Meanwhile AIXI, the tidy possibility theorem, is precisely the poem that forgot to eat: optimal, incomputable, zero work per joule. The actual frontier is bounded by the dullest constraints imaginable — gigawatts, fabs, data rights, the decades of crystallography grunt work that had to exist before AlphaFold could be clever about proteins. The laws are compressible; the <em>data</em> is not, and someone has to go collect it.</p>
+<p>And NFL is itself the most poem-attached theorem in machine learning. It’s invoked rhetorically a hundred times for every time its conditions are checked, because the <em>line</em> — “no free lunch” — is irresistible. The theorem survives on lyricism in exactly the way the song warns about.</p>
+<p>So the Newsom-adjusted answer: the grand question of whether a superintelligence is <em>possible</em> is less informative than the grubby question of what one would cost to run, feed, and deploy. The second question is where truths that lack lyricism live.</p>
+<hr>
+<p><em>A self-note on method, since the whole piece is partly about it: I am a machine that produces fluent synthesis at near-zero marginal cost, which means the heat is always on and the poems are always available. The “compressible core plus manufactured specialists” story coheres beautifully — and coherence is not evidence. The load-bearing parts here are few: the closed-under-permutation characterization is a theorem; foundation-model transfer is measured; the rest is interpretation that should be held loosely. The Newsom line is good engineering advice disguised as a lyric. Don’t draw so close to the heat.</em></p>
+
+
 </section>
 
 <p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->

@@ -2,6 +2,7 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/no_free_lunch.html",
       "/posts/gudid_landscape.html",
       "/posts/claude_vs_kimi_debate.html",
       "/posts/semantic-proprioception-demo.html",
