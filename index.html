@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D.">
 
-<title>About Me – Justin Donaldson, Ph.D.</title>
+<title>Justin Donaldson – Justin Donaldson, Ph.D.</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,15 +35,22 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e40b49ddfdb1e3ec27d2d59da0f0c013.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-bcbb9ad9de3f18a67d45774e680cbe79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-cf2dee4e4f37af70fe58e0de1f9f1708.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-bcbb9ad9de3f18a67d45774e680cbe79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,6 +78,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
 
 <script type="text/javascript">
@@ -80,20 +117,211 @@ gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="style.css">
-<meta property="og:title" content="About Me – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="">
+<link rel="alternate" type="application/rss+xml" title="Justin Donaldson, Ph.D." href="index.xml" data-external="1"><meta property="og:title" content="Justin Donaldson – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D.">
 <meta property="og:image" content="https://www.jjd.io/images/me.jpeg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="About Me – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Justin Donaldson – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D.">
 <meta name="twitter:image" content="https://www.jjd.io/images/me.jpeg">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -116,11 +344,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">About Me</span></a>
+<span class="menu-text">blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
-<span class="menu-text">blog</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">about</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./cv.html"> 
@@ -130,11 +358,6 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/jdonaldson"> <i class="bi bi-github" role="img" aria-label="GitHub">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/omgjjd"> <i class="bi bi-twitter" role="img" aria-label="Twitter">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -151,6 +374,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -158,218 +382,445 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-  <ul>
-  <li><a href="#what-i-know" id="toc-what-i-know" class="nav-link active" data-scroll-target="#what-i-know">What I know</a></li>
-  <li><a href="#curvo-labs-chief-data-scientist" id="toc-curvo-labs-chief-data-scientist" class="nav-link" data-scroll-target="#curvo-labs-chief-data-scientist">Curvo Labs (Chief Data Scientist)</a></li>
-  <li><a href="#previously-hushh.ai-cto" id="toc-previously-hushh.ai-cto" class="nav-link" data-scroll-target="#previously-hushh.ai-cto">Previously: Hushh.ai (CTO)</a></li>
-  <li><a href="#investoradvisor" id="toc-investoradvisor" class="nav-link" data-scroll-target="#investoradvisor">Investor/Advisor</a>
-  <ul class="collapse">
-  <li><a href="#dagworks" id="toc-dagworks" class="nav-link" data-scroll-target="#dagworks">Dagworks</a></li>
-  <li><a href="#pulsespace" id="toc-pulsespace" class="nav-link" data-scroll-target="#pulsespace">PulseSpace</a></li>
-  </ul></li>
-  <li><a href="#previously" id="toc-previously" class="nav-link" data-scroll-target="#previously">Previously</a>
-  <ul class="collapse">
-  <li><a href="#salesforce" id="toc-salesforce" class="nav-link" data-scroll-target="#salesforce">Salesforce</a></li>
-  <li><a href="#bigml" id="toc-bigml" class="nav-link" data-scroll-target="#bigml">BigML</a></li>
-  </ul></li>
-  <li><a href="#lets-connect" id="toc-lets-connect" class="nav-link" data-scroll-target="#lets-connect">Let’s Connect!</a></li>
-  </ul>
-</nav>
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="QWdlbnQ=">Agent <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YmxvZw==">blog <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZUdlbg==">CodeGen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHN0cnVjdHVyZXM=">data structures <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGViYXRl">debate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW1iZWRkaW5ncw==">embeddings <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aW50ZXJwcmV0YWJpbGl0eQ==">interpretability <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aW52ZXN0aW5n">investing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZ3Vpc3RpY3M=">linguistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(5)</span></div><div class="category" data-category="bWVkaWNhbCUyMGRldmljZXM=">medical devices <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV1cm9zeW1ib2xpYw==">neurosymbolic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmxw">nlp <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<div class="quarto-about-jolla">
-  <img src="images/me.jpeg" class="about-image
-  round " style="height: 15em; width: 15em;">
- <header id="title-block-header" class="quarto-title-block default">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About Me</h1>
+<h1 class="title">Justin Donaldson</h1>
 </div>
-<div class="quarto-title-meta">
+
+<div>
+  <div class="description">
+    Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D.
   </div>
-</header><main class="content" id="quarto-document-content">
-
-<p>Hello! I’m Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI Scientist and Engineer with a diverse skill set spanning large language model research, data science, and machine learning. My journey has led me from academia to industry, and back again. I’m always eager to learn something complex, and turn it into something beautiful.</p>
-<section id="what-i-know" class="level2">
-<h2 data-anchor-id="what-i-know">What I know</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/GeorgeEPBox.jpg" class="img-fluid" alt="George Box"> “All models are wrong, but some are useful”<br>
-- <a href="https://en.wikipedia.org/wiki/George_E._P._Box">George Box</a></p>
-</div>
-</div>
-<p>My expertise encompasses model optimization, time series analysis, anomaly detection, and advanced ML/web visualization. I’m well-versed in programming languages like Python, R, and fluent with Docker and core web technologies. Over the years, I’ve had the opportunity to work on diverse and impactful projects with trusted Salesforce partners, crafting custom solutions ranging from advanced customer behavior modeling for banks to anomaly detection models for global enterprises. Make sure to check out my <a href="./cv.html">C.V.</a> for more details.</p>
-<p>My academic research focused on improving user interaction design and enhancing music recommendation systems through data visualization, social behavior analysis, and acoustic features. Notable studies include creating hybrid recommendation systems combining social and musical data, visualizing social network links for better exploratory search, and exploring aesthetic interaction design. My work also involves emotional experience design and the use of visualizations for music discovery. For further details, visit the <a href="./cv.html#publications">publications section</a></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Vladimir_Nabokov_1973.jpg" class="img-fluid" alt="Vladimir Nabokov"> “There is no science without fancy and no art without fact.”<br>
-- <a href="https://en.wikipedia.org/wiki/Vladimir_Nabokov">Vladimir Nabokov</a></p>
-</div>
-</div>
-<p>My patents span multiple areas in technology. They include systems for real-time media consumption visualization, decision tree interaction, and machine learning-based software testing. Other patents focus on improving large dataset task performance, secure predictive modeling, personal music recommendation systems, and error assignment in programming. Additionally, my work includes addressing biases in document retrieval and optimizing search rankings through machine learning techniques. These patents collectively aim to improve user interaction, software performance, and data analysis. Visit the <a href="./cv.html#patents">patents section</a> for more details.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Leonardo_self.jpg" class="img-fluid" alt="Leonardo da Vinci"> “Learning never exhausts the mind.” - <a href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci">Leonardo da Vinci</a></p>
-</div>
-</div>
-<p>I have made notable contributions to education and open-source development. As a co-instructor for UW 410 Advanced Machine Learning, I helped teach advanced machine learning concepts at the <a href="https://www.pce.uw.edu/">University of Washington</a>. I also served on the UW Advisory Board for the School of Professional and Continuing Education. In the open-source space, I developed a Lua target for the <a href="https://haxe.org">Haxe language</a>, which wound up enabling video games such as <a href="https://www.youtube.com/watch?v=uBYORdr_TY8">Pokemon Sword &amp; Shield</a> to run efficiently on the Nintendo Switch. Additionally, I mentored graduate students in data science through <a href="https://grad.ucla.edu/">UCLA</a>’s program and co-hosted a data science competition with <a href="https://www.bdea.org/">Boston Day Academy</a>. More details in the <a href="./cv.html#pro-bono">pro-bono</a> section.</p>
-</section>
-<section id="curvo-labs-chief-data-scientist" class="level1">
-<h1>Curvo Labs (Chief Data Scientist)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/IMG_9382.jpg" class="img-fluid figure-img"></p>
-<figcaption>Curvo Labs Team - Franco Ponticelli (CTO), Justin Donaldson (Chief Data Scientist), Andy Perry (CEO)</figcaption>
-</figure>
-</div>
-<p>I’m currently serving as Chief Data Scientist at Curvo Labs, where I’m leading data science initiatives and developing advanced machine learning solutions. This role allows me to continue pushing the boundaries of AI and data science while working on cutting-edge research and applications alongside CTO <a href="https://github.com/fponticelli">Franco Ponticelli</a> and CEO Andy Perry.</p>
-</section>
-<section id="previously-hushh.ai-cto" class="level1">
-<h1>Previously: Hushh.ai (CTO)</h1>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/hushh_ai.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Hushh.ai Seattle Team</figcaption>
-</figure>
-</div>
-<p>I helped start <a href="https://www.hushh.ai">Hushh.ai</a>, a company I co-founded with <a href="https://www.linkedin.com/in/manishsainani/">Manish Sainani</a> in 2024. At Hushh, we pioneered on-device hybrid LLM search capabilities and nurtured a vibrant R&amp;D culture with a talented team of international interns. You can read more about what we did over at <a href="https://hushh-labs.github.io/hushh-labs-blog/">Hushh Labs</a></p>
-</section>
-<section id="investoradvisor" class="level1">
-<h1>Investor/Advisor</h1>
-<p>Since leaving Salesforce I invest and advise startups through the year. Here’s a few folks and organizations I believe you should be keeping your eye on.</p>
-<section id="dagworks" class="level2">
-<h2 data-anchor-id="dagworks">Dagworks</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/stefan.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Stefan and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/skrawczyk/">Stefan</a> and <a href="https://www.linkedin.com/in/elijahbenizzy/">Elijah</a> when they were just getting started building <a href="https://www.dagworks.io/">Dagworks.io</a>. They had some of the same notions I had on the importance of <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">Directed Acyclic Graphs</a> as a fundamental programming theme. Their decorator-based approach for static methods creates the necessary coupling between imperative graph steps, and overall graph execution order in an especially elegant way. I believe most people will adopt it at some point if they are using Python to manage data. It’s just that good! You can try <a href="https://www.tryhamilton.dev/">Dagworks Hamilton framework online</a>, or check it out <a href="https://github.com/dagworks-inc/hamilton">on Github</a>. You can also follow <a href="https://blog.dagworks.io/">their blog</a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://www.dagworks.io/lineage_view.png" class="img-fluid figure-img"></p>
-<figcaption>Dagworks DAG Example</figcaption>
-</figure>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>(Update: Dagworks has been <a href="https://www.linkedin.com/feed/update/urn:li:activity:7333540416102780928/">acquired by Salesforce</a>, while <a href="https://github.com/apache/hamilton">Hamilton</a> and <a href="https://projects.apache.org/project.html?incubator-burr">Burr</a> have been accepted into the Apache Software Foundation as new projects)</p>
-</div>
-</div>
-</section>
-<section id="pulsespace" class="level2">
-<h2 data-anchor-id="pulsespace">PulseSpace</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/karl.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Karl and I</figcaption>
-</figure>
-</div>
-<p>I met <a href="https://www.linkedin.com/in/thekarlstedman/">Karl Stedman</a> and got a chance to hear about <a href="https://pulsespace.com/">PulseSpace</a>. PulseSpace’s goal is all about providing remote power for satellites. With the growth of the private space industry thanks to SpaceX and Blue Origin, there’s a whole ecosystem of young startups looking to provide service level agreements for orbital infrastructure. PulseSpace is looking to be a sort of “gas station” for satellites that may have malfunctioning or damaged solar panels. Even though I don’t have a background in astrophysics, I think they’re bound to run into all sorts of gnarly software problems that don’t fit easily into conventional industry applications.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/pulsespace.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Pulse Space</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="previously" class="level1">
-<h1>Previously</h1>
-<section id="salesforce" class="level2">
-<h2 data-anchor-id="salesforce">Salesforce</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/grenoble.jpeg" class="img-fluid figure-img"></p>
-<figcaption>The Grenoble Team and I</figcaption>
-</figure>
-</div>
-<p>Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore multiple hats as a Principal Data Scientist and Engineer. I had the privilege to lead early search infrastructure modernization projects like migrating the core search infrastructure to model-trained ranking coefficients, and also developed patented deep learning models for detecting error states in Salesforce’s enormous code base. Under <a href="https://www.linkedin.com/in/scottrickard/">Scott Rickard</a> I co-founded the Search/Service Cloud Datascience team and contributed significantly to the creation of an ML education program for engineers. My contributions also extended to investigating and developing GPT-3 technologies.</p>
-</section>
-<section id="bigml" class="level2">
-<h2 data-anchor-id="bigml">BigML</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/bigml.jpeg" class="img-fluid figure-img"></p>
-<figcaption>BigML Visualization</figcaption>
-</figure>
-</div>
-<p>Earlier in my career, I co-founded BigML and served as its President from 2011 to 2013. There, I spearheaded the development of interactive model and distribution visualizations and took charge of various administrative tasks, setting the foundation for the company’s growth.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg" class="img-fluid" alt="image"> “Architects cannot teach nature anything.”<br>
-- <a href="https://en.wikipedia.org/wiki/Mark_Twain">Mark Twain</a></p>
-</div>
-</div>
-</section>
-</section>
-<section id="lets-connect" class="level1">
-<h1>Let’s Connect!</h1>
-<p>I’m always eager to connect with like-minded professionals and enthusiasts. Feel free to reach out to me via: <a href="mailto:jjd@jjd.io">email</a>, <a href="https://twitter.com/omgjjd">Twitter</a>, <a href="https://www.linkedin.com/in/jjustindonaldson/">LinkedIn</a>, or explore my <a href="./cv.html">CV</a> and <a href="https://www.github.com/jdonaldson">GitHub</a></p>
-<p>Looking forward to connecting with you!</p>
 
 
-</section>
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> 
-  <hr class="about-sep">
-   <div class="about-links">
-  <a href="https://twitter.com/omgjjd" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text">twitter</span>
-  </a>
-  <a href="https://github.com/jdonaldson" class="about-link" rel="" target="">
-    <i class="bi bi-github"></i>
-     <span class="about-link-text">Github</span>
-  </a>
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./about.html"><img src="images/sisters.jpeg" class="img-fluid figure-img"></a></p>
+<figcaption>The Three Sisters Mountains in Sisters, Oregon</figcaption>
+</figure>
+</div>
+</div></div><blockquote class="blockquote">
+<p><em>Ogni parte ad ogni parte splende</em> — “each part to each part shines.”</p>
+</blockquote>
+<p>I’m <strong>Justin Donaldson</strong> — an HCI / ML scientist and engineer. I write here about machine learning, model interpretability, and turning complex things into something you can see. Browse the posts below, or read more <a href="./about.html">about me</a> and my <a href="./cv.html">CV</a>.</p>
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1782589420725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2010">
+<div class="thumbnail"><a href="./posts/swollm-bbh-leaderboard.html" class="no-external">
+
+<img loading="lazy" src="./posts/images/swollm_og.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/swollm-bbh-leaderboard.html" class="no-external">A 1.7B Model That Stops Guessing</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJwcmV0YWJpbGl0eQ=='); return false;">interpretability</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV1cm9zeW1ib2xpYw=='); return false;">neurosymbolic</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/swollm-bbh-leaderboard.html" class="no-external">
+<p>BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then <em>proves</em>, <em>recognizes</em>, or <em>abstains</em>, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/swollm-bbh-leaderboard.html" class="no-external">
+<div class="listing-date">
+Jun 27, 2026
+</div>
+<div class="listing-author">
+Justin Donaldson, Claude (Opus)
+</div>
+</a>
 </div>
 </div>
- <!-- /main -->
+<div class="quarto-post image-right" data-index="1" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1781913600000" data-listing-file-modified-sort="1782589420725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1525">
+<div class="thumbnail"><a href="./posts/osgood-epa-language-model.html" class="no-external">
+
+<img loading="lazy" src="./posts/images/osgood_og.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/osgood-epa-language-model.html" class="no-external">A 1957 Theory of Meaning, Hiding in a Language Model</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJwcmV0YWJpbGl0eQ=='); return false;">interpretability</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGluZ3Vpc3RpY3M='); return false;">linguistics</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/osgood-epa-language-model.html" class="no-external">
+<p>Charles Osgood found that affective meaning collapses to three universal dimensions—Evaluation, Potency, Activity. A small modern language model rediscovers them, keeps them orthogonal, and carries them across languages—without ever being told they exist.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/osgood-epa-language-model.html" class="no-external">
+<div class="listing-date">
+Jun 20, 2026
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="QUklMkNtYWNoaW5lJTIwbGVhcm5pbmclMkNwaGlsb3NvcGh5" data-listing-date-sort="1781395200000" data-listing-file-modified-sort="1782589420725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1619">
+<div class="thumbnail"><a href="./posts/no_free_lunch.html" class="no-external">
+
+<img loading="lazy" src="./posts/images/no_free_lunch_og.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/no_free_lunch.html" class="no-external">Don’t draw so close to the heat, you forget you must eat</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/no_free_lunch.html" class="no-external">
+<p>A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/no_free_lunch.html" class="no-external">
+<div class="listing-date">
+Jun 14, 2026
+</div>
+<div class="listing-author">
+Justin Donaldson, Claude (Fable)
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ3Zpc3VhbGl6YXRpb24lMkNtZWRpY2FsJTIwZGV2aWNlcw==" data-listing-date-sort="1771718400000" data-listing-file-modified-sort="1782589420704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1817">
+<div class="thumbnail"><a href="./posts/gudid_landscape.html" class="no-external">
+
+<img loading="lazy" src="./posts/images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/gudid_landscape.html" class="no-external">Creating a Surgical Energy Map</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWVkaWNhbCUyMGRldmljZXM='); return false;">medical devices</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/gudid_landscape.html" class="no-external">
+<p>An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/gudid_landscape.html" class="no-external">
+<div class="listing-date">
+Feb 22, 2026
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="TExNJTJDQUklMkNkZWJhdGU=" data-listing-date-sort="1769817600000" data-listing-file-modified-sort="1782589420704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
+<div class="thumbnail"><a href="./posts/claude_vs_kimi_debate.html" class="no-external">
+
+<img loading="lazy" src="./posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/claude_vs_kimi_debate.html" class="no-external">Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGViYXRl'); return false;">debate</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/claude_vs_kimi_debate.html" class="no-external">
+<p>I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/claude_vs_kimi_debate.html" class="no-external">
+<div class="listing-date">
+Jan 31, 2026
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ2RhdGElMjBzdHJ1Y3R1cmVz" data-listing-date-sort="1763769600000" data-listing-file-modified-sort="1782589420725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
+<div class="thumbnail"><a href="./posts/semantic-proprioception-demo.html" class="no-external">
+
+<img loading="lazy" src="./posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/semantic-proprioception-demo.html" class="no-external">Semantic Proprioception: Teaching Data to Understand Itself</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHN0cnVjdHVyZXM='); return false;">data structures</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/semantic-proprioception-demo.html" class="no-external">
+<p>How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/semantic-proprioception-demo.html" class="no-external">
+<div class="listing-date">
+Nov 22, 2025
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1782589420723" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="thumbnail"><a href="./posts/intelligence_chases_chaos.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/intelligence_chases_chaos.html" class="no-external">Intelligence Chases Chaos</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/intelligence_chases_chaos.html" class="no-external">
+<p>The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/intelligence_chases_chaos.html" class="no-external">
+<div class="listing-date">
+Feb 3, 2025
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1782589420704" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
+<div class="thumbnail"><a href="./posts/book_bot.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/book_bot.html" class="no-external">Creating an LLM Agent for Books</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW52ZXN0aW5n'); return false;">investing</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnQ='); return false;">Agent</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/book_bot.html" class="no-external">
+<p>Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/book_bot.html" class="no-external">
+<div class="listing-date">
+Dec 16, 2024
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1782589420725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="thumbnail"><a href="./posts/rumpus.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/rumpus.html" class="no-external">Automated Coding with LLMs: Making a Rumpus</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29kZUdlbg=='); return false;">CodeGen</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/rumpus.html" class="no-external">
+<p>LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/rumpus.html" class="no-external">
+<div class="listing-date">
+Jul 22, 2024
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1782589420725" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
+<div class="thumbnail"><a href="./posts/quarto.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/images/quarto.webp"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/quarto.html" class="no-external">Blogging with Quarto</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmxvZw=='); return false;">blog</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/quarto.html" class="no-external">
+<p>Creating my Webpage with Quarto</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/quarto.html" class="no-external">
+<div class="listing-date">
+Apr 15, 2024
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div><p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

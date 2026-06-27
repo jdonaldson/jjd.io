@@ -1,7 +1,8 @@
 [
   {
-    "listing": "/blog.html",
+    "listing": "/index.html",
     "items": [
+      "/posts/swollm-bbh-leaderboard.html",
       "/posts/osgood-epa-language-model.html",
       "/posts/no_free_lunch.html",
       "/posts/gudid_landscape.html",

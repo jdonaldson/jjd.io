@@ -7,10 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Justin Donaldson">
-<meta name="dcterms.date" content="2025-02-03">
-<meta name="description" content="The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.">
+<meta name="author" content="Claude (Opus)">
+<meta name="dcterms.date" content="2026-06-27">
+<meta name="description" content="BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then proves, recognizes, or abstains, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.">
 
-<title>Intelligence Chases Chaos – Justin Donaldson, Ph.D.</title>
+<title>A 1.7B Model That Stops Guessing – Justin Donaldson, Ph.D.</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -90,18 +91,31 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../style.css">
-<meta property="og:title" content="Intelligence Chases Chaos – Justin Donaldson, Ph.D.">
-<meta property="og:description" content="The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.">
-<meta property="og:image" content="https://www.jjd.io/posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg">
+<meta property="og:title" content="A 1.7B Model That Stops Guessing – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then proves, recognizes, or abstains, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.">
+<meta property="og:image" content="https://www.jjd.io/posts/images/swollm_og.png">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
-<meta name="twitter:title" content="Intelligence Chases Chaos – Justin Donaldson, Ph.D.">
-<meta name="twitter:description" content="The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.">
-<meta name="twitter:image" content="https://www.jjd.io/posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg">
+<meta property="og:image:height" content="628">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="A 1.7B Model That Stops Guessing – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then proves, recognizes, or abstains, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/swollm_og.png">
 <meta name="twitter:site" content="@omgjjd">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="628">
+<meta name="twitter:image-width" content="1200">
+<meta name="citation_title" content="A 1.7B Model That Stops Guessing">
+<meta name="citation_author" content="Justin Donaldson">
+<meta name="citation_author" content="Claude (Opus)">
+<meta name="citation_publication_date" content="2026-06-27">
+<meta name="citation_cover_date" content="2026-06-27">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-06-27">
+<meta name="citation_fulltext_html_url" content="https://www.jjd.io/posts/swollm-bbh-leaderboard.html">
+<meta name="citation_language" content="en">
 </head>
 
-<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="floating nav-fixed slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -329,9 +343,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#neural-network-fractals" id="toc-neural-network-fractals" class="nav-link active" data-scroll-target="#neural-network-fractals">Neural Network Fractals</a></li>
-  <li><a href="#the-fractal-shortcut-to-understanding" id="toc-the-fractal-shortcut-to-understanding" class="nav-link" data-scroll-target="#the-fractal-shortcut-to-understanding">The Fractal Shortcut to Understanding</a></li>
-  <li><a href="#ai-as-the-ultimate-chaos-hunter" id="toc-ai-as-the-ultimate-chaos-hunter" class="nav-link" data-scroll-target="#ai-as-the-ultimate-chaos-hunter">AI as the Ultimate Chaos Hunter</a></li>
+  <li><a href="#three-ways-to-answer" id="toc-three-ways-to-answer" class="nav-link active" data-scroll-target="#three-ways-to-answer">Three ways to answer</a></li>
+  <li><a href="#the-honest-accounting" id="toc-the-honest-accounting" class="nav-link" data-scroll-target="#the-honest-accounting">The honest accounting</a></li>
+  <li><a href="#the-walls-werent-all-walls" id="toc-the-walls-werent-all-walls" class="nav-link" data-scroll-target="#the-walls-werent-all-walls">The walls weren’t all walls</a></li>
+  <li><a href="#where-a-1.7b-model-lands" id="toc-where-a-1.7b-model-lands" class="nav-link" data-scroll-target="#where-a-1.7b-model-lands">Where a 1.7B model lands</a></li>
+  <li><a href="#what-this-is-and-isnt" id="toc-what-this-is-and-isnt" class="nav-link" data-scroll-target="#what-this-is-and-isnt">What this is and isn’t</a></li>
   </ul>
 </nav>
 </nav>
@@ -340,20 +356,23 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Intelligence Chases Chaos</h1>
+<h1 class="title">A 1.7B Model That Stops Guessing</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">AI</div>
+    <div class="quarto-category">machine learning</div>
+    <div class="quarto-category">nlp</div>
+    <div class="quarto-category">interpretability</div>
+    <div class="quarto-category">neurosymbolic</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.
+    BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then <em>proves</em>, <em>recognizes</em>, or <em>abstains</em>, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.
   </div>
 </div>
 
@@ -361,16 +380,17 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
              <p>Justin Donaldson </p>
+             <p>Claude (Opus) </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 3, 2025</p>
+      <p class="date">June 27, 2026</p>
     </div>
   </div>
   
@@ -382,51 +402,107 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </header>
 
 
+
+<div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg" class="preview-image img-fluid figure-img"></p>
-<figcaption>Intelligence Chases Chaos</figcaption>
+<p><img src="images/swollm_mascot.png" class="img-fluid figure-img" alt="A muscular cartoon Shiba Inu (the Swole Doge meme) with the word swollm beneath it."></p>
+<figcaption><strong>swollm</strong> — SmolLM2-1.7B with the Turnstyle layer bolted on.</figcaption>
 </figure>
 </div>
-<p>Fractals have an astonishing property: their dimensionality is only a fraction of the space they inhabit. The paths of hurricanes, the spread of wildfires, the beating of the human heart—all of these chaotic systems play out in a space far smaller than their theoretical possibilities.</p>
-<p>One way of better understanding fractal dimensionality is to understand that it’s not a dimension at all, it’s way of understanding how dimensions change through scaling.</p>
-<p>A good way of understanding this phenomenon is to try and measure a coastline.</p>
+</div></div><blockquote class="blockquote">
+<p>A small model doesn’t usually fail because it can’t compute the answer. It fails because it won’t stop guessing long enough to compute it.</p>
+</blockquote>
+<p><a href="https://github.com/suzgunmirac/BIG-Bench-Hard">BIG-Bench Hard</a> (BBH) is a curated set of tasks where, at the time it was assembled, language models did <em>worse</em> than the average human rater: multi-step arithmetic, tracking shuffled objects, Dyck-language bracket closing, date arithmetic, logical deduction over ordered constraints. It was designed to be a wall for models that lean on pattern-matching instead of procedure.</p>
+<p>So a small model should faceplant on it, and <strong>SmolLM2-1.7B</strong> — a genuinely tiny open model by 2026 standards — does. Three-shot prompted, it averages <strong>30.2%</strong> across the 27-task suite. On <code>multistep_arithmetic_two</code> it scores <strong>0.4%</strong>. It is not close.</p>
+<p>Here is the same model, unchanged, wrapped in a neurosymbolic layer I call <strong>Turnstyle</strong> (the wrapped model, affectionately, is “swollm”):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="https://en.wikipedia.org/wiki/Fractal_dimension"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Britain-fractal-coastline-100km.png" class="img-fluid figure-img"></a></p>
-<figcaption>Fractal Coastline</figcaption>
+<p><img src="images/bbh_leaderboard.png" class="img-fluid figure-img" alt="A horizontal bar chart of 27 BIG-Bench Hard tasks sorted by accuracy. Most tasks reach 100 percent, shown as a dark base segment for the bare model plus a colored segment for the neurosymbolic gain. Teal segments mark symbolic solvers, purple segments mark hidden-state probes. Two tasks at the bottom — causal judgement and sports understanding — show only the dark bare-model bar with no gain; movie recommendation and salient translation show a purple recognition gain over their faint baselines."></p>
+<figcaption>Every BBH task. The <strong>dark</strong> segment is what bare 3-shot SmolLM2 already got. The <strong>colored</strong> segment is what the neurosymbolic layer added on top — teal where an exact symbolic solver <em>proved</em> the answer, purple where a hidden-state <em>probe recognized</em> it (including <code>movie_recommendation</code> and <code>salient_translation</code>, which look like dead baseline until you probe them — more below). The two grey bars, <code>causal_judgement</code> and <code>sports_understanding</code>, are the genuine knowledge walls.</figcaption>
 </figure>
 </div>
-<p>As one shrinks the resolution of their measurement of a coastline, the length one measures will change, but the amount of change is typically bounded within a given range.</p>
-<section id="neural-network-fractals" class="level2">
-<h2 class="anchored" data-anchor-id="neural-network-fractals">Neural Network Fractals</h2>
-<p>Neural networks, especially deep learning architectures, actually exhibit fractal-like properties in their information processing and representational spaces. Just as fractals demonstrate non-integer dimensionality by creating complex structures through recursive self-similarity, neural networks generate intricate representations by layering increasingly abstract and self-similar feature transformations.</p>
-<p>Consider convolutional neural networks (CNNs) as an example. As information passes through successive layers, the network progressively extracts features at different scales and levels of abstraction - much like how a fractal reveals different geometric patterns when you zoom in or out. Each layer can be thought of as a kind of “scaling” operation where local patterns are transformed into more global, complex representations. It is a sort of map of the chaos that exists at different levels of abstraction. And, it’s clear that the model is learning some of the same patterns at different levels of abstraction.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Feature-maps-at-different-stages-on-the-network.webp" class="img-fluid figure-img"></p>
-<figcaption>Neural Feature Hierarchy</figcaption>
-</figure>
+<p>The aggregate goes from <strong>30.2% to 92.5%</strong> in-sample — and to a hard-nosed <strong>~89.5%</strong> once every probe is cross-validated and forced to be order-robust (more on both below). Either way it is a roughly <strong>+60-point</strong> swing on the identical 1.7B weights. Eighteen of the twenty-seven tasks land at exactly 100%; twenty-two clear 96%. Nobody fine-tuned anything. The trick is entirely in <em>how the model is asked, and what happens to its answer before it commits to one.</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>The fractal-like behavior emerges most clearly in how neural networks handle high-dimensional data. When processing complex inputs like images or language, networks don’t simply map inputs to outputs linearly. Instead, they create multi-dimensional, non-linear transformation spaces where local similarities and global structures coexist - precisely the kind of space where fractal mathematics becomes compelling.</p>
-<p>Researchers like <a href="https://en.wikipedia.org/wiki/Geoffrey_Hinton">Geoffrey Hinton</a> have even suggested that neural network “feature spaces” might be better understood through fractal geometry than traditional Euclidean approaches. The networks generate representations that are neither purely low-dimensional nor simply high-dimensional, but exist in a kind of fractal in-between state. He gives some of his most recent insight on it <a href="https://arxiv.org/pdf/2102.12627">here</a></p>
-<p>More concretely, techniques like fractal interpolation and fractal compression have direct computational analogues in how neural networks learn and generalize. Both involve recursive strategies for capturing complex patterns at multiple scales of resolution. This holds for images and text in several senses. Transformer models can “hallucinate” parts of an image at any scale, and language models can condense or expand text handily through summary or extrapolation.</p>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Try it yourself.</strong> The bare model and the wrapped model run side by side — each answer with its worked proof — in the <a href="https://huggingface.co/spaces/jdonaldson/turnstyle-demo">live Turnstyle demo on Hugging Face</a>.</p>
+</div>
+</div>
+<section id="three-ways-to-answer" class="level2">
+<h2 class="anchored" data-anchor-id="three-ways-to-answer">Three ways to answer</h2>
+<p>The wrapper’s whole architecture fits in one sentence: <strong>parse the prompt into a typed task, then either prove the answer, recognize it, or admit you can’t.</strong></p>
+<p><strong>Prove it (teal).</strong> A lot of BBH is secretly deterministic. <code>multistep_arithmetic_two</code> is a parenthesized integer expression — you don’t need a 1.7B transformer to “reason” about <code>((6 * -6 * 8) * (-1 * 7 * -6 + -2))</code>, you need an AST and Python. <code>dyck_languages</code> is a bracket stack. <code>tracking_shuffled_objects</code> is replaying a list of swaps. <code>web_of_lies</code> is propagating truth values down a chain. For these, Turnstyle parses the prompt into a structured form, runs an exact solver, and then <strong>biases the model’s generation toward the proven answer</strong> with a logit constraint — so the <em>model</em> still produces the text, but it can no longer wander off the correct token. These are the bars that hit 100%, and they hit it because a proof is a proof.</p>
+<p><strong>Recognize it (purple).</strong> Some tasks aren’t computable from the prompt — they need a judgment the model actually holds but won’t <em>say</em>. <code>snarks</code> (which of two sentences is sarcastic) is the cleanest example: three-shot, SmolLM2 scores <strong>46% — below chance for a binary task.</strong> It has strong, confident, <em>wrong</em> opinions. But the judgment is in there: train a small linear probe on the model’s hidden state at the right layer and read the answer directly off the activation, and it goes to <strong>100% in-sample / 74% cross-validated.</strong> Same for pronoun disambiguation, temporal ordering, humorous-name edits. The model knows; generation was the bottleneck.</p>
+<p><strong>Admit the wall (grey).</strong> Two tasks don’t move at all: <code>causal_judgement</code> and <code>sports_understanding</code>. These are knowledge-loaded — they turn on facts and judgments a 1.7B model trained on a modest corpus may simply not have, and a probe on its hidden state does no better than guessing the majority class. The honest move is to <em>detect that there’s no signal to extract</em> and fall back to the bare model rather than fabricate a solver that overfits 250 examples. The two grey bars are a feature: they’re where the system correctly declines to pretend.</p>
+<p>That triad — <strong>⊢ proved, ⊨ recognized, or abstain</strong> — is the entire idea. The name “Turnstyle” is a pun on the logical turnstile: <code>⊢</code> for <em>syntactically derivable</em> (the symbolic solvers) and <code>⊨</code> for <em>semantically entailed</em> (the probes recognize what the model already represents).</p>
 </section>
-<section id="the-fractal-shortcut-to-understanding" class="level2">
-<h2 class="anchored" data-anchor-id="the-fractal-shortcut-to-understanding">The Fractal Shortcut to Understanding</h2>
-<p>Artificial Intelligence is often accused of being “brute force,” of needing endless data to approximate human intuition. But intelligence—biological or artificial—works because the world isn’t as high-dimensional as it seems. The constraints of physics, economics, and even human behavior force events to unfold along surprisingly low-dimensional manifolds. Chaos, for all its turbulence, is confined to a fractal space. While there may be “<a href="https://en.wikipedia.org/wiki/No_free_lunch_theorem">No Free Lunch</a>” from a pure statistical point of view, we thankfully live in a statistical world that happens to also be <em>chaotic</em>.</p>
-<p>This is why deep learning models, trained on quintessentially chaotic market systems, can predict stock trends better than random guessing. It’s why language models, given enough text, can anticipate our next words with uncanny accuracy. They aren’t solving the problem in full dimensionality—they’re following the fractal contours where reality actually unfolds.</p>
+<section id="the-honest-accounting" class="level2">
+<h2 class="anchored" data-anchor-id="the-honest-accounting">The honest accounting</h2>
+<p>Here’s where I have to slow down, because the headline number is doing two slightly different things at once.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bbh_climb.png" class="img-fluid figure-img" alt="Two panels. Left: a bar chart showing vanilla SmolLM2 at 30.2 percent, swollm in-sample at 92.5 percent, and swollm honest cross-validated at 89.5 percent, with an arrow marking a roughly 60 point gain. Right: a bar chart of task outcomes — 22 solved at or above 96 percent, 3 partial, 2 walls."></p>
+<figcaption>Left: the climb — the bare baseline, the in-sample number (92.5%), and the hard-nosed cross-validated number (~89.5%). Right: where the 27 tasks land — 22 solved, three partial, two walls.</figcaption>
+</figure>
+</div>
+<p>The symbolic tasks (teal) are honest at 100% — a proof generalizes, there’s no in-sample/out-of-sample distinction for arithmetic. But the <strong>probe</strong> tasks (purple) are fit on the BBH examples themselves, and a probe that scores 100% <em>in-sample</em> will score lower on held-out data. When you replace each probe’s in-sample number with its 5-fold cross-validated number, the aggregate settles at about <strong>89.5%</strong>, not 92.5%. That ~3-point gap is the part of the headline that’s borrowed against future data, and I’d rather show you the gap than launder it.</p>
+<p>A second honesty knob: the probes have to be <strong>order-robust.</strong> A multiple-choice probe that reads “which option is the answer” can secretly learn “the answer is usually B.” We test this by permuting the options and re-scoring; an honest probe’s accuracy shouldn’t move. Early versions moved by 15 points. The shipped ones score the options in a position-marginalized way (average over cyclic shifts) so the number you see survives reordering — at the cost of a couple points of raw accuracy. The robust number is the real one.</p>
 </section>
-<section id="ai-as-the-ultimate-chaos-hunter" class="level2">
-<h2 class="anchored" data-anchor-id="ai-as-the-ultimate-chaos-hunter">AI as the Ultimate Chaos Hunter</h2>
-<p>If intelligence is about making sense of complexity, then AI is the ultimate tool for chasing Chaos. Traditional physics tries to model the world with explicit equations, but AI sidesteps that limitation. It doesn’t need the equations or full rules of a system—it learns the shape of Chaos directly from observation. Neural networks extract the latent structure from raw events, distilling their fractal dimensionality into something even smaller: a compressed model of reality that understands the large and the small, and how they can relate.</p>
-<p>This is why AI-driven weather prediction is overtaking classical models. Why AI in finance can detect patterns even seasoned traders miss. And why AI in science is accelerating discoveries faster than human intuition alone ever could.</p>
-<p>Intelligence—ours or artificial—isn’t ultimately about defeating Chaos. It’s about finding its shape in the areas we care about, and learning how to ride its back when necessary. Part of my goal this year is to integrate more fractal consideration of data in my projects this year.</p>
+<section id="the-walls-werent-all-walls" class="level2">
+<h2 class="anchored" data-anchor-id="the-walls-werent-all-walls">The walls weren’t all walls</h2>
+<p>Look at the two tasks sitting just above the walls — <code>movie_recommendation</code> and <code>salient_translation</code>. They almost ended up grey.</p>
+<p>Three-shot, the model <em>generates</em> the right movie about 22% of the time, so for a long while I had both filed under “no representation to extract” — apparent walls. That turned out to be wrong, and wrong in a way that matters. When I trained a recognition probe on them the way I had for snarks, the signal was <em>there</em>: the movie probe recognizes the right answer at ~50% in-sample and <strong>~80% on held-out data</strong>, against that 22% generation. The model could <strong>recognize</strong> the correct movie far better than it could <strong>generate</strong> it — the wall was the same generation bottleneck snarks had, hidden behind a multiple-choice format I hadn’t probed correctly. (<code>salient_translation</code> recovered the same way, 14% → ~42%.)</p>
+<p><code>causal_judgement</code> and <code>sports_understanding</code>, by contrast, stayed grey — their probes score no better than the majority class, which is exactly what a genuine knowledge gap looks like. So what first looked like four walls is really <strong>two walls and two illusions</strong> — and those two recovered tasks are why the honest aggregate lands near <strong>89.5%</strong> rather than the mid-80s.</p>
+<p>The general law underneath: <strong>recognition ≫ generation.</strong> A small model’s <em>answer</em> is a lossy readout of a richer internal state. If you can find the state and read it directly — with a probe, or by routing the question to a solver — you can recover capability the model has but cannot articulate. “Stop guessing” is not a metaphor; it’s the mechanism.</p>
+</section>
+<section id="where-a-1.7b-model-lands" class="level2">
+<h2 class="anchored" data-anchor-id="where-a-1.7b-model-lands">Where a 1.7B model lands</h2>
+<p>It’s worth seeing the placement, with the asterisk attached — against <a href="https://epoch.ai/data/ai-benchmarking-dashboard">Epoch AI’s BBH leaderboard</a> of general models, run with standardized 3-shot chain-of-thought. Plot parameter count against score and swollm doesn’t sit on the curve at all:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bbh_scatter.png" class="img-fluid figure-img" alt="Scatter plot of model parameters on a log x-axis versus BBH accuracy. A cyan star marks swollm at 1.7 billion parameters and 89.5 percent, far above a dashed trend line through the general models that rises from small models near 30 percent to DeepSeek-V3 and Llama-3.1-405B near 85 percent. An orange dashed arrow shows swollm rising 59 points above the bare SmolLM2-1.7B at the same horizontal position."></p>
+<figcaption>Parameters (log scale) against BBH. The general models climb roughly with size (dashed trend); swollm — 1.7B — sits a full head above it, level with models hundreds of times larger. The orange arrow is the +59-point jump from the <em>bare</em> SmolLM2 at the very same size.</figcaption>
+</figure>
+</div>
+<p>A 1.7B model sitting above DeepSeek-V3 and Llama-3.1-405B — and <strong>59 points</strong> above the <em>bare</em> SmolLM2 of identical size. As a flat ranking it tells the same story:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/bbh_field.png" class="img-fluid figure-img" alt="A horizontal bar chart placing swollm on the Epoch AI BBH leaderboard. swollm is highlighted in cyan at 89.5 percent, at the top, a dead heat with Gemini 1.5 Pro at 89.2 and above DeepSeek-V3 at 87.5. Three orange bars at the bottom — Gemma 2B at 35.2, bare SmolLM2-1.7B at 30.2, and Qwen-1.8B at 28.2 — mark the same roughly-2B weight class. A red note warns the comparison is not apples-to-apples."></p>
+<figcaption>swollm (cyan), at its honest ~89.5%, lands at the very top of the field — a statistical dead heat with Gemini 1.5 Pro. The orange bars are SmolLM2’s own ~2B weight class — Qwen-1.8B (28%), Gemma 2B (35%), and the bare SmolLM2 itself (30%) — all in the basement. The violet tick on swollm’s bar is its in-sample upper bound (92.5%).</figcaption>
+</figure>
+</div>
+<p>The honest reading isn’t “a 1.7B model ties Gemini.” It’s the <strong>orange bars</strong>: every other model in SmolLM2’s weight class — Qwen-1.8B, Gemma 2B, and bare SmolLM2 itself — lives at 28–35%, exactly where you’d expect a tiny model on a benchmark built to break tiny models. The neurosymbolic layer is the entire difference between the bottom of that chart and the top of it, on identical-size weights. What the comparison measures is not raw intelligence; it’s <em>how much of a small model’s latent capability is being thrown away by letting it guess.</em></p>
+</section>
+<section id="what-this-is-and-isnt" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-is-and-isnt">What this is and isn’t</h2>
+<p>This is <strong>not</strong> a claim that a 1.7B model beats GPT-scale models on reasoning. The giants run chain-of-thought and answer in free text on tasks Turnstyle hasn’t parsed; the comparison isn’t apples-to-apples and I’m not going to pretend it is. BBH here is a <strong>test harness, not the objective</strong> — it provides ground-truth labels and structural variety to validate tools that are supposed to work <em>beyond</em> BBH. The arithmetic solver, the bracket solver, the polarity probe, the date solver: each is built to generalize past the 250 examples it was checked on, and several are deliberately stripped of their BBH-specific scaffolding and re-tested on the bare capability.</p>
+<p>What it <strong>is</strong>: evidence that a large fraction of “small models can’t reason” is actually “small models can’t <em>commit</em>.” The capability is frequently present — as a computable structure in the prompt, or as a recognizable pattern in the activations — and a thin, cheap, training-free layer that parses, proves, recognizes, or honestly abstains can surface most of it. No new parameters. No fine-tuning. Just refusing to let a 1.7B model guess when it could instead know.</p>
+<p>You can poke at it yourself — the bare model and the wrapped model, side by side, with the worked proof for each answer — on the <a href="https://huggingface.co/spaces/jdonaldson/turnstyle-demo">live demo</a>. Try the arithmetic expression first. Watch the left pane confidently produce a wrong number, and the right pane prove the right one.</p>
+<hr>
+<p><em>Code &amp; data: <a href="https://github.com/jdonaldson/turnstyle">github.com/jdonaldson/turnstyle</a>. The baseline and symbolic per-task numbers come from the swollm 3-shot evaluation (<code>results/v13/bbh_full.json</code>); the <code>movie</code>/<code>salient</code> recognition probes and the ~89.5% honest aggregate are from turnstyle’s native dispatch. Figures regenerate from <code>experiments/blog_bbh_figs.py</code>.</em></p>
 
 
 </section>
 
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+  author = {Donaldson, Justin and (Opus), Claude},
+  title = {A {1.7B} {Model} {That} {Stops} {Guessing}},
+  date = {2026-06-27},
+  url = {https://www.jjd.io/posts/swollm-bbh-leaderboard.html},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Donaldson, Justin, and Claude (Opus). 2026. <span>“A 1.7B Model That
+Stops Guessing.”</span> June 27. <a href="https://www.jjd.io/posts/swollm-bbh-leaderboard.html">https://www.jjd.io/posts/swollm-bbh-leaderboard.html</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

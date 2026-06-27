@@ -105,7 +105,7 @@ body::before {
 
 
 main, .sidebar {
-  background: #ffffff;
+  background: var(--content-bg, #fdf6e3);
   padding: 20px;
 
 }
@@ -144,4 +144,21 @@ main, .sidebar {
   display: inline;
   border-radius: 50%;
   filter: grayscale(100%);
+}
+
+/* Citation / appendix: comfortable left+right padding (was hugging the panel edge) */
+#quarto-appendix.default {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+/* Listing pages (home): move the category cloud to the LEFT margin, so it no
+   longer collides with right-margin figures and reads as left-rail navigation. */
+body:has(.quarto-listing) #quarto-margin-sidebar {
+  grid-column: screen-start-inset / body-content-start;
+  justify-self: end;          /* single-column rail, hugging the content */
+  text-align: left;
+  max-width: 13rem;
+  padding-left: 0.5rem;
+  padding-right: 1.75rem;
 }
