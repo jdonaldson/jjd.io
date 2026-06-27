@@ -7,16 +7,27 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 - **Technology**: Quarto static site generator
 - **Domain**: jjd.io
 - **Hosting**: GitHub Pages (via CNAME file)
-- **Theme**: Sandstone theme with custom CSS
+- **Theme**: Solarized — `theme-light.scss` / `theme-dark.scss` layered over cosmo/darkly,
+  with a native light/dark toggle (`theme: {light, dark}` in `_quarto.yml`) plus custom
+  `style.css`. TOC is the left rail; tips & small images go in the right margin
+  (`::: {.column-margin}` / `.callout-tip`), matching the osgood post.
+
+## Information Architecture (restructured 2026-06-27)
+- **Home = blog listing** (`index.qmd`): the writing is the front door — short hero + post
+  listing. `aliases: [blog.html]` redirects the old blog URL here; `blog.qmd` was retired.
+- **About** (`about.qmd`): the full bio / career narrative (was the old homepage).
+- **CV** (`cv.qmd`): formal CV with `#publications` / `#patents` / `#pro-bono` anchors.
+- Navbar: blog (→ index) · about · cv + social icons.
 
 ## Key Files
-- `_quarto.yml`: Main configuration file
-- `index.qmd`: About/homepage content
+- `_quarto.yml`: Main config (theme toggle, navbar, `toc-location: left`)
+- `index.qmd`: Home — blog listing + hero
+- `about.qmd`: Bio / career narrative
 - `cv.qmd`: Curriculum Vitae page
-- `blog.qmd`: Blog listing page
 - `posts/`: Blog post content (mix of .qmd and .ipynb files)
 - `images/`: Site images and photos
-- `style.css`: Custom styling
+- `theme-light.scss` / `theme-dark.scss`: Solarized themes (palette + callout colors)
+- `style.css`: Custom styling (content background is theme-driven via `--content-bg`)
 
 ## Content Guidelines
 - **Tone**: Professional but approachable, academic background with industry focus
@@ -27,7 +38,9 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 ## Image Management
 - Team photos should include proper attribution
 - Professional headshots and company logos in `/images/`
-- Blog post images in `/posts/images/`
+- Blog post images in `/posts/images/` (now JPEG, converted from PNG for size)
+- Team photos were cropped to focus on faces (originals in Trash if needed)
+- Blog post art images (Midjourney/Norman Rockwell) converted from PNG to JPEG (~30MB savings)
 
 ## Development Notes
 - Uses Quarto's freeze feature for computational content

@@ -7,7 +7,7 @@ author:
 date: "2026-06-14"
 image: images/no_free_lunch_og.jpg
 categories:
-  - ai
+  - AI
   - machine learning
   - philosophy
 ---

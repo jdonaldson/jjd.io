@@ -6,9 +6,11 @@ number-sections: false
 format:
   html:
     toc: true
-    toc-location: right
+    toc-location: left
     page-navigation: true
-    theme: sandstone
+    theme:
+      light: [cosmo, theme-light.scss]
+      dark: [darkly, theme-dark.scss]
     css: style.css
     # page-layout: full
 
@@ -25,18 +27,16 @@ website:
   navbar:
     logo : "images/nav-logo.png"
     left:
-      - index.qmd
       - text: "blog"
-        href: blog.qmd
+        href: index.qmd
+      - text: "about"
+        href: about.qmd
       - text: "cv"
         href: cv.qmd
     right:
       - icon: github
         href: https://github.com/jdonaldson
         aria-label: GitHub
-      - icon: twitter
-        href: https://twitter.com/omgjjd
-        aria-label: Twitter
       - icon: linkedin
         href: https://www.linkedin.com/in/jjustindonaldson/
         aria-label: Linkedin

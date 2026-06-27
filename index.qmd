@@ -1,196 +1,29 @@
-
 ---
-title: "About Me"
-image: "images/me.jpeg"
-about:
-  template: jolla
-  links:
-    - icon: twitter
-      text: twitter
-      href: https://twitter.com/omgjjd
-    - icon: github
-      text: Github
-      href: https://github.com/jdonaldson
-
+title: "Justin Donaldson"
+description: "Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D."
+image: images/me.jpeg
+listing:
+  contents:
+    - "posts/*.qmd"
+    - "posts/*.ipynb"
+  sort: "date desc"
+  type: default
+  categories: true
+  feed: true
+  sort-ui: true
+  filter-ui: true
+aliases:
+  - blog.html
+toc: false
 ---
 
-Hello! I'm Justin Donaldson, a passionate Human-Computer-Interaction/Data/AI
-Scientist and Engineer with a diverse skill set spanning large language model
-research, data science, and machine learning. My journey has led me from
-academia to industry, and back again.  I'm always eager to learn something
-complex, and turn it into something beautiful.
-
-## What I know
-
-::: {.callout-tip}
-![George Box](https://upload.wikimedia.org/wikipedia/commons/a/a2/GeorgeEPBox.jpg)
-"All models are wrong, but some are useful"  
-- [George Box](https://en.wikipedia.org/wiki/George_E._P._Box)
+::: {.column-margin}
+[![The Three Sisters Mountains in Sisters, Oregon](images/sisters.jpeg)](about.qmd)
 :::
 
+> *Ogni parte ad ogni parte splende* — "each part to each part shines."
 
-My expertise encompasses model optimization, time series analysis, anomaly
-detection, and advanced ML/web visualization. I'm well-versed in programming
-languages like Python, R, and fluent with Docker and core web technologies.
-Over the years, I've had the opportunity to work on diverse and impactful
-projects with trusted Salesforce partners, crafting custom solutions ranging
-from advanced customer behavior modeling for banks to anomaly detection models
-for global enterprises.  Make sure to check out my [C.V.](cv.qmd) for more
-details.
-
-My academic research focused on improving user interaction design and
-enhancing music recommendation systems through data visualization, social behavior analysis,
-and acoustic features. Notable studies include creating hybrid recommendation
-systems combining social and musical data, visualizing social network links for
-better exploratory search, and exploring aesthetic interaction design. My work
-also involves emotional experience design and the use of visualizations for
-music discovery. For further details, visit the [publications section](cv.qmd#publications)
-
-::: {.callout-tip}
-![Vladimir Nabokov](https://upload.wikimedia.org/wikipedia/commons/8/87/Vladimir_Nabokov_1973.jpg)
-"There is no science without fancy and no art without fact."  
-- [Vladimir Nabokov](https://en.wikipedia.org/wiki/Vladimir_Nabokov)
-:::
-
-My patents span multiple areas in technology. They include
-systems for real-time media consumption visualization, decision tree
-interaction, and machine learning-based software testing. Other patents focus
-on improving large dataset task performance, secure predictive modeling,
-personal music recommendation systems, and error assignment in programming.
-Additionally, my work includes addressing biases in document retrieval and
-optimizing search rankings through machine learning techniques. These patents
-collectively aim to improve user interaction, software performance, and data
-analysis.  Visit the [patents section](cv.qmd#patents) for more details.
-
-::: {.callout-tip}
-![Leonardo da Vinci](https://upload.wikimedia.org/wikipedia/commons/b/ba/Leonardo_self.jpg)
-"Learning never exhausts the mind."
-- [Leonardo da Vinci](https://en.wikipedia.org/wiki/Leonardo_da_Vinci)
-:::
-
-I have made notable contributions to education and open-source development. As
-a co-instructor for UW 410 Advanced Machine Learning, I helped teach advanced
-machine learning concepts at the [University of
-Washington](https://www.pce.uw.edu/). I also served on the UW Advisory Board
-for the School of Professional and Continuing Education. In the open-source
-space, I developed a Lua target for the [Haxe language](https://haxe.org),
-which wound up enabling video games such as
-[Pokemon Sword & Shield](https://www.youtube.com/watch?v=uBYORdr_TY8) to run
-efficiently on the Nintendo Switch. Additionally, I mentored graduate students
-in data science through [UCLA](https://grad.ucla.edu/)’s program and co-hosted
-a data science competition with [Boston Day Academy](https://www.bdea.org/).
-More details in the [pro-bono](cv.qmd#pro-bono) section.
-
-
-# Curvo Labs (Chief Data Scientist)
-
-![Curvo Labs Team - Franco Ponticelli (CTO), Justin Donaldson (Chief Data Scientist), Andy Perry (CEO)](images/IMG_9382.jpg)
-
-I'm currently serving as Chief Data Scientist at Curvo Labs, where I'm leading
-data science initiatives and developing advanced machine learning solutions.
-This role allows me to continue pushing the boundaries of AI and data science
-while working on cutting-edge research and applications alongside CTO [Franco Ponticelli](https://github.com/fponticelli) and CEO Andy Perry.
-
-# Previously: Hushh.ai (CTO)
-
-![Hushh.ai Seattle Team](images/hushh_ai.jpeg)
-
-I helped start [Hushh.ai](https://www.hushh.ai), a company I co-founded with
-[Manish Sainani](https://www.linkedin.com/in/manishsainani/) in 2024. At Hushh,
-we pioneered on-device hybrid LLM search capabilities and nurtured a
-vibrant R&D culture with a talented team of international interns. You can read
-more about what we did over at [Hushh Labs](https://hushh-labs.github.io/hushh-labs-blog/)
-
-
-# Investor/Advisor
-
-Since leaving Salesforce I invest and advise startups through the year.  Here's
-a few folks and organizations I believe you should be keeping your eye on.
-
-## Dagworks
-![Stefan and I](images/stefan.jpeg)
-
-I met [Stefan](https://www.linkedin.com/in/skrawczyk/) and
-[Elijah](https://www.linkedin.com/in/elijahbenizzy/) when they were just
-getting started building [Dagworks.io](https://www.dagworks.io/).  They had
-some of the same notions I had on the importance of [Directed Acyclic
-Graphs](https://en.wikipedia.org/wiki/Directed_acyclic_graph) as a fundamental
-programming theme.  Their decorator-based approach for static methods creates
-the necessary coupling between imperative graph steps, and overall graph
-execution order in an especially elegant way.  I believe most people will adopt
-it at some point if they are using Python to manage data.  It's just that good!
-You can try [Dagworks Hamilton framework online](https://www.tryhamilton.dev/),
-or check it out [on Github](https://github.com/dagworks-inc/hamilton).  You can
-also follow [their blog](https://blog.dagworks.io/).
-
-
-![Dagworks DAG Example](https://www.dagworks.io/lineage_view.png)
-
-::: {.callout-note}
-(Update: Dagworks has been [acquired by Salesforce](https://www.linkedin.com/feed/update/urn:li:activity:7333540416102780928/), while [Hamilton](https://github.com/apache/hamilton) and [Burr](https://projects.apache.org/project.html?incubator-burr) have been accepted into the Apache Software Foundation as new projects)
-:::
-
-## PulseSpace
-![Karl and I](images/karl.jpeg)
-
-I met [Karl Stedman](https://www.linkedin.com/in/thekarlstedman/) and got a
-chance to hear about [PulseSpace](https://pulsespace.com/).  PulseSpace's goal
-is all about providing remote power for satellites.  With the growth of the
-private space industry thanks to SpaceX and Blue Origin, there's a whole
-ecosystem of young startups looking to provide service level agreements for
-orbital infrastructure.  PulseSpace is looking to be a sort of "gas station"
-for satellites that may have malfunctioning or damaged solar panels.  Even
-though I don't have a background in astrophysics, I think they're bound to run
-into all sorts of gnarly software problems that don't fit easily into
-conventional industry applications.
-
-![Pulse Space](images/pulsespace.jpeg)
-
-# Previously
-
-## Salesforce
-
-![The Grenoble Team and I](images/grenoble.jpeg)
-
-Prior to Hushh.ai, I spent a rewarding decade at Salesforce, where I wore
-multiple hats as a Principal Data Scientist and Engineer. I had the privilege
-to lead early search infrastructure modernization projects like migrating the
-core search infrastructure to model-trained ranking coefficients, and also
-developed patented deep learning models for detecting error states in
-Salesforce's enormous code base. Under [Scott
-Rickard](https://www.linkedin.com/in/scottrickard/) I co-founded the
-Search/Service Cloud Datascience team and contributed significantly to the
-creation of an ML education program for engineers. My contributions also
-extended to investigating and developing GPT-3 technologies.
-
-
-## BigML
-
-![BigML Visualization](images/bigml.jpeg)
-
-Earlier in my career, I co-founded BigML and served as its President from 2011
-to 2013. There, I spearheaded the development of interactive model and
-distribution visualizations and took charge of various administrative tasks,
-setting the foundation for the company's growth.
-
-
-
-::: {.callout-tip}
-![image](https://upload.wikimedia.org/wikipedia/commons/0/0c/Mark_Twain_by_AF_Bradley.jpg)
-"Architects cannot teach nature anything."  
-- [Mark Twain](https://en.wikipedia.org/wiki/Mark_Twain)
-:::
-
-
-# Let's Connect!
-
-I'm always eager to connect with like-minded professionals and enthusiasts.
-Feel free to reach out to me via:
-[email](mailto:jjd@jjd.io),
-[Twitter](https://twitter.com/omgjjd),
-[LinkedIn](https://www.linkedin.com/in/jjustindonaldson/), or explore my
-[CV](cv.qmd) and
-[GitHub](https://www.github.com/jdonaldson)
-
-Looking forward to connecting with you!
-
+I'm **Justin Donaldson** — an HCI / ML scientist and engineer. I write here about
+machine learning, model interpretability, and turning complex things into
+something you can see. Browse the posts below, or read more
+[about me](about.qmd) and my [CV](cv.qmd).
