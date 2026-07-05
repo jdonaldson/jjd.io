@@ -15,7 +15,125 @@
 <link>https://www.jjd.io/</link>
 </image>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Sat, 27 Jun 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 05 Jul 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Meaning Has More Than Three Numbers</title>
+  <dc:creator>Justin Donaldson</dc:creator>
+  <dc:creator>Claude (Fable)</dc:creator>
+  <link>https://www.jjd.io/posts/semantic-frames.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<blockquote class="blockquote">
+<p>Why would meaning stop at three?</p>
+</blockquote>
+<p><a href="osgood-epa-language-model.html">Last month</a> we went looking for Charles Osgood’s 1957 semantic differential inside a small language model, and found it: <strong>Evaluation</strong>, <strong>Potency</strong>, and <strong>Activity</strong>, recovered as three nearly-perpendicular directions in the hidden states of SmolLM2-1.7B, kept separate just as Osgood’s factor analysis insisted.</p>
+<p>That post ended with a tidy result and an untidy question. Osgood’s three factors came from <em>human</em> raters filling out <em>affective</em> scales — good–bad, strong–weak, active–passive. The three-ness of meaning might be a fact about meaning. Or it might be a fact about which scales Osgood printed on his forms.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>What a “frame” is here.</strong> A direction in the model’s activation space, fit by ridge regression from a few labeled words, that turns any word into a signed number: project the word’s hidden state onto the direction, read off the scalar. No fine-tuning, no prompting — a linear read of what’s already there.</p>
+</div></div><p>A language model gives you a way to ask the question Osgood couldn’t: the model doesn’t care which scales you print. So we pointed the same measurement trick — fit a bipolar axis from a handful of labeled words, project everything else onto it — past affect, at everything else we could think of: size, age, shape, color, material, geographic remoteness, numbers, durations.</p>
+<p>Meaning, it turns out, has a lot more than three numbers. But not <em>arbitrarily</em> more — and that’s where it gets interesting.</p>
+<section id="a-panel-not-a-trio" class="level2">
+<h2 class="anchored" data-anchor-id="a-panel-not-a-trio">A panel, not a trio</h2>
+<p>Take a category like <strong>size</strong>, assign a few adjectives an ordinal scalar (<em>tiny</em> = −3 … <em>gigantic</em> = +3), embed each one in the same bland template (“It is a {word} object.”), and ask a ridge regression to predict the scalar from the hidden state — scoring only on held-out words it never saw. If the model keeps a size <em>dimension</em>, the regression finds it. If it doesn’t, cross-validation punishes you.</p>
+<p>It keeps one. It keeps a panel of them:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.jjd.io/posts/images/frames_recoverability.png" class="img-fluid figure-img" alt="Bar chart of held-out cross-validation r for seven adjective-ordering rungs: opinion 0.99, size 0.98, age 0.91, shape 0.93, color 0.28, space 0.89, material 0.80, with peak layers annotated on each bar."></p>
+<figcaption>Seven adjective categories fit as scalar frames in SmolLM2-1.7B. Six are strongly recoverable on held-out words (r 0.79–0.99); color is the interesting failure. Labels show the layer where each frame peaks.</figcaption>
+</figure>
+</div>
+<p>Beyond the adjectives, the same recipe recovers <strong>number</strong> (log-scaled numeric magnitude, r ≈ 0.95 — the strongest frame we’ve measured) and <strong>duration</strong> (log-seconds, r ≈ 0.91), each peaking in the earliest layers.</p>
+<p>Recoverable-one-at-a-time could still mean tangled-together. The sharper claim is about the <em>angles between</em> the frames — Osgood’s independence claim, generalized. Fit every frame’s direction in one shared, standardized activation space and take pairwise cosines:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.jjd.io/posts/images/frames_orthogonality.png" class="img-fluid figure-img" alt="Seven-by-seven heatmap of absolute cosine similarity between frame directions, with a bright diagonal of 1.0 and off-diagonal values from 0.00 to 0.12; the mean off-diagonal is 0.04."></p>
+<figcaption>The pairwise |cosine| matrix between frame directions at layer 8. The panel is near-diagonal: the frames are independent dials.</figcaption>
+</figure>
+</div>
+<p>Mean off-diagonal |cos| = 0.04, max 0.12. The dials are orthogonal — a word’s <em>size</em> reading tells you nothing about its <em>age</em> reading, its <em>opinion</em> reading nothing about its <em>material</em> reading. The frames compose into one joint coordinate system: measure a word once, get a vector of independent semantic coordinates.</p>
+<p>And the largest off-diagonal cells are not noise; they’re the most interesting numbers in the matrix. We’ll come back to both.</p>
+</section>
+<section id="magnitude-is-not-one-thing" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="magnitude-is-not-one-thing">Magnitude is not one thing</h2>
+<p>There’s a respectable hypothesis in cognitive science — <strong>A Theory Of Magnitude</strong> (ATOM) — that the brain runs number, physical size, and duration through one generalized magnitude system. “Big number,” “big object,” and “long time” would all be the same <em>big</em>, underneath.</p>
+<p>The model votes no. Abstract number, physical size, and duration each recover as their own axis (0.95 / 0.73 / 0.91 — this size frame is log-<em>metres</em> over object nouns, a different instrument from the adjective rung above) — and the pairwise cosines between them are 0.01–0.08. All under 0.09. Three separate dials, no shared magnitude axis. The refutation replicates in Qwen2.5-1.5B and Phi-4-mini, so it’s not a SmolLM2 quirk.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Scope, honestly: this is a <em>shared-linear-axis</em> null for these lexical items in these models — a fact about what next-token training builds, not a finding about human cognition. Though it does make you wonder.</p>
+</div></div><p>The hedge worth keeping: the magnitude trio’s cosines (0.03–0.08) run slightly above the truly-unrelated pairs (~0.00–0.02) — a whisper of shared <em>extent</em>, but a whisper under 0.09 is still a refutation of “one system.” The same whisper is the first of those large matrix cells: among the adjective rungs, the least-orthogonal pairs are size·age·space at 0.10–0.12, the trio with an “extent” flavor. Extent leaks a little across dials everywhere it appears; it just never amounts to a shared axis.</p>
+</section>
+<section id="the-panel-has-a-membership-list" class="level2">
+<h2 class="anchored" data-anchor-id="the-panel-has-a-membership-list">The panel has a membership list</h2>
+<p>Here’s the part that made us sit up. The frames that recover well aren’t a random grab-bag. They’re the rungs of the <strong>English adjective-ordering hierarchy</strong>:</p>
+<blockquote class="blockquote">
+<p>opinion &gt; size &gt; age &gt; shape &gt; color &gt; origin &gt; material</p>
+</blockquote>
+<p>— the linguistic universal that makes “a lovely big old round grey French wooden box” sound unremarkable and any other order sound faintly wrong. Native speakers apply it flawlessly and can’t state it. It shows up, with variations, across many languages.</p>
+<p>Every rung of that hierarchy is a recoverable, mutually-orthogonal scalar frame in the model (six of seven at r 0.79–0.99; color the exception). The instrument panel isn’t an arbitrary collection we happened to try — it’s (largely) the same set of dimensions a known grammatical universal sorts adjectives by. Osgood’s Evaluation, for what it’s worth, is the <em>opinion</em> rung — the one grammar puts first, and the one his affective scales were built to catch.</p>
+</section>
+<section id="rung-order-looks-like-layer-order" class="level2">
+<h2 class="anchored" data-anchor-id="rung-order-looks-like-layer-order">Rung order looks like layer order</h2>
+<p>One more pattern, flagged at exactly the confidence it deserves. Each frame peaks at some layer — and the early rungs of the hierarchy (opinion, size, age, shape) peak in the <em>earliest</em> layers (L1–4), while the late rungs (color, origin, material) peak <em>deep</em> in the stack (L17–18):</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.jjd.io/posts/images/frames_depth.png" class="img-fluid figure-img" alt="Scatter plot of adjective-ordering position (1 through 7) against the layer of peak recoverability, showing opinion, size, age and shape clustered at layers 1 through 4 and color, space and material at layers 17 and 18, with a dashed upward trend line."></p>
+<figcaption>Peak-recoverability layer against position in the canonical adjective order. Early rungs are computed early, late rungs late.</figcaption>
+</figure>
+</div>
+<p>The adjective-ordering sequence tracks the depth at which the model computes each property. It’s seven points and it’s correlational — space and material might peak late because they’re more relational, not because of ordering per se — so this is a suggestion, not a result. But it’s a lovely suggestion: the order grammar wants adjectives spoken in mirrors the order the network builds them in.</p>
+</section>
+<section id="the-dials-that-dont-work" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-dials-that-dont-work">The dials that don’t work</h2>
+<p>Three negatives, because a panel with no broken gauges is a panel nobody tested.</p>
+<p><strong>Color is weak everywhere.</strong> As an ordering rung (lightness over sixteen color words) it manages r = 0.28 — the lone failure. And here’s the second of those large matrix cells: opinion·color at 0.12. That’s the <em>blue = sad, rosy = optimistic</em> family of idioms leaking affect into color terms. The model’s color–affect association is idiom, not perceptual geometry — which is exactly what you’d expect from a system that reads text and has never seen anything.</p>
+<p><strong>“Material” was the wrong scalar.</strong> Our first material frame (a hardness gradient: <em>fluffy</em> → <em>metallic</em>) recovered at only 0.73–0.80. Auditing it showed the model encodes material primarily as <strong>naturalness</strong> — natural ↔︎ synthetic — which recovers at 0.93 and is the most orthogonal frame in the family. The dial existed; we’d labeled it wrong. Measurement instruments fail in informative ways.</p>
+<p><strong>Purpose isn’t a dial at all.</strong> The hierarchy’s last rung (<em>cooking</em>, <em>racing</em>, <em>sleeping</em> — purpose adjectives) resists every scalar we tried. It behaves categorically, not ordinally. Some meaning is coordinates; some is discrete structure; a good instrument panel knows which gauges it doesn’t have.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>A measurement bug worth stealing.</strong> Foreign words tokenize into several subwords, and the meaning assembles at the <em>last</em> one. Reading the first subword — a natural default — understated every cross-lingual number we had: affect transfer jumped from 0.47 to 0.91, color from 0.34 to 0.72, when we switched to last-subword readout. If you probe multilingual text, read the last subword.</p>
+</div></div><p>And one methodological footnote that changed our numbers twice: cross-lingual frames live <strong>mid-stack</strong>. Within English, lexical frames peak early; but the version of a frame that transfers across languages (an English-fit axis correctly poling Spanish, French, German words) peaks around layers 11–16 — the model’s shared concept space, past the surface of any one language. The early peaks are English lexicon; the middle of the network is where <em>meaning</em>, in the transferable sense, lives.</p>
+</section>
+<section id="what-an-instrument-panel-is-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-an-instrument-panel-is-for">What an instrument panel is for</h2>
+<p>None of this stays decorative. Two working examples from the same project:</p>
+<p><strong>Adjective ordering itself.</strong> Given the frames, you can classify any adjective to its rung by geometry alone and sort by the canonical order — which took our solver for the BBH <em>hyperbaton</em> task (choose the correctly-ordered adjective string) from 85% to <strong>95%</strong>, replacing a coarser one-axis heuristic. The model’s own geometry knows why “big old red barn” sounds right.</p>
+<p><strong>Questions with no column to sort by.</strong> “Which is biggest: an ant, a whale, a mouse?” has no table behind it — but the size frame <em>synthesizes</em> the missing column: project each option, rank, answer. That’s a capability a symbolic system can’t fake (there’s nothing to <code>ORDER BY</code>) and a plain language model answers unreliably; a measured dial does it deterministically.</p>
+<p>The whole panel — eight frames, fit words, directions, calibration metadata — serializes to a <strong>174 KB file</strong> that ships with the library and loads automatically. Meaning-as-coordinates is not a metaphor here; it’s a small binary artifact.</p>
+</section>
+<section id="three-numbers-were-the-corner-of-the-panel" class="level2">
+<h2 class="anchored" data-anchor-id="three-numbers-were-the-corner-of-the-panel">Three numbers were the corner of the panel</h2>
+<p>Osgood was right about more than he could measure. Meaning <em>does</em> compress onto a small set of independent bipolar dimensions — he found the three his affective scales could see, and they’re real, orthogonal, and cross-lingual in the model too. But the panel is bigger: the grammar’s own adjective hierarchy, plus number and time, each its own orthogonal dial, jointly a compact coordinate system for what words mean — sitting inside a 1.7B-parameter model that was only ever asked to guess the next token.</p>
+<p>What’s still open: a real treatment of <em>purpose</em> (categorical, not scalar), a color story that isn’t idiom leakage, whether the depth-order correlation survives more careful controls, and the same panel fit on other model families. The dials also turn out to <em>turn</em> — steering along a frame direction causally shifts what the model generates — but measurement and control deserve separate posts, and this one was about reading the gauges.</p>
+<hr>
+<p><em>Experiments and code: <a href="https://github.com/jdonaldson/turnstyle">turnstyle</a> (<code>experiments/ordering_frames.py</code>, <code>frame_family_matrix.py</code>, <code>time_frame.py</code>, <code>size_frame.py</code>, <code>material_investigate.py</code>, <code>atom_crossmodel.py</code>; the shipped panel is <code>src/turnstyle/frame_library.py</code>). Figures regenerated from a fresh run, 2026-07-05 (<code>experiments/results/ordering_frames.json</code>). Model: SmolLM2-1.7B-Instruct; ATOM replication also on Qwen2.5-1.5B-Instruct and Phi-4-mini-instruct.</em></p>
+
+
+</section>
+
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+  author = {Donaldson, Justin and (Fable), Claude},
+  title = {Meaning {Has} {More} {Than} {Three} {Numbers}},
+  date = {2026-07-05},
+  url = {https://www.jjd.io/posts/semantic-frames.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+Donaldson, Justin, and Claude (Fable). 2026. <span>“Meaning Has More
+Than Three Numbers.”</span> July 5. <a href="https://www.jjd.io/posts/semantic-frames.html">https://www.jjd.io/posts/semantic-frames.html</a>.
+</div></div></section></div> ]]></description>
+  <category>machine learning</category>
+  <category>interpretability</category>
+  <category>nlp</category>
+  <category>linguistics</category>
+  <guid>https://www.jjd.io/posts/semantic-frames.html</guid>
+  <pubDate>Sun, 05 Jul 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://www.jjd.io/posts/images/frames_og.png" medium="image" type="image/png" height="75" width="144"/>
+</item>
 <item>
   <title>A 1.7B Model That Stops Guessing</title>
   <dc:creator>Justin Donaldson</dc:creator>
