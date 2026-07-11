@@ -6,6 +6,8 @@ author:
   - Claude (Opus)
 date: "2026-06-27"
 image: images/swollm_og.png
+title-block-banner: "images/swollm_og.png"
+title-block-banner-color: white
 categories:
   - machine learning
   - nlp

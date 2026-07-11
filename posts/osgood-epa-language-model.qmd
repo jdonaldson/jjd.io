@@ -4,6 +4,8 @@ description: "Charles Osgood found that affective meaning collapses to three uni
 author: "Justin Donaldson"
 date: "2026-06-20"
 image: "images/osgood_og.png"
+title-block-banner: "images/osgood_og.png"
+title-block-banner-color: white
 categories:
   - machine learning
   - interpretability
@@ -52,11 +54,11 @@ Here is the picture—place every pole word at its (Evaluation, Potency, Activit
 *Each word positioned by its three Osgood projections. Drag to rotate, scroll to zoom. Words of a given factor stretch out along **that factor's arm** and stay near zero on the other two — three orthogonal spokes.*
 :::
 
-Rotate it and the three groups separate into near-perpendicular arms: Evaluation runs along one axis, Potency along another, Activity along the third, each clustering near zero on the others. You are looking at Osgood's independent-factors claim rendered as geometry. Put numbers on it and the cosine between the Evaluation and Potency directions is **0.00**, Evaluation–Activity **0.10**, Potency–Activity **0.21**. The model has, on its own, carved meaning into three nearly-orthogonal affective axes.
+You are looking at Osgood's independent-factors claim rendered as geometry: Evaluation along one arm, Potency along another, Activity along the third, each near zero on the others. Put numbers on it and the cosine between the Evaluation and Potency directions is **0.00**, Evaluation–Activity **0.10**, Potency–Activity **0.21**. The model has, on its own, carved meaning into three nearly-orthogonal affective axes.
 
-## But the three axes are not equal citizens
+## The three axes are not equal citizens
 
-That clean story has a wrinkle, and it is worth being honest about it. The three factors are *not* encoded with equal fidelity.
+That answers the first of our three questions: yes, independent. The other two—do the axes *generalize* to words they never saw, and do they *cross languages*?—both earn a yes, but not an even one. The three factors are *not* encoded with equal fidelity.
 
 ![Pole-sign accuracy for each factor, on held-out English words and on unseen Spanish/French/German words. Evaluation is crisp; Activity is solid; Potency is the rough one.](images/osgood_quality.png)
 
@@ -80,7 +82,7 @@ It captures E–P–A too. fastText recovers Evaluation at **0.90**, Potency and
 
 ![Static and contextual embeddings recover E–P–A about equally well *in English*. The difference is the orange bars—cross-lingual transfer—which a monolingual static embedding cannot have at all.](images/osgood_static_vs_llm.png)
 
-So what does the language model actually add? One thing, and it's the thing a static embedding can never have: **the axes cross languages.** fastText's English space and its Spanish space are unrelated coordinate systems—there is no "fit in English, read in Spanish." The contextual model has a single shared space, so an Evaluation direction learned from English pole words reads *bueno* and *malo*, *gut* and *schlecht*, at 0.6–0.9. The orange bars above have no gray counterpart, because a monolingual embedding has nothing to put there.
+So what does the language model actually add? One thing—but it's the thing a static embedding can never have: **the axes cross languages.** That transfer we kept measuring along the way—0.6–0.9 reading from English into Spanish, French, and German—has no static counterpart at all. fastText's English space and its Spanish space are unrelated coordinate systems; there is no "fit in English, read in Spanish." The contextual model has a single shared space, so an Evaluation direction learned from English pole words also reads *bueno*, *bon*, and *gut*. The orange bars above have no gray counterpart, because a monolingual embedding has nothing to put there.
 
 That is the honest shape of the result. The model didn't *invent* Osgood's factors—distributional semantics already carries them. What it contributes is a **universal** version: one affective coordinate system that survives the jump between languages.
 
@@ -98,11 +100,11 @@ Push the Potency axis instead and the *theme* shifts rather than the mood—gene
 
 It would be easy to over-read this, so let me keep the claims sized correctly. This is **one** small model. The cross-lingual evidence rests on hand-built word lists across four languages I happen to read. Potency is genuinely rough. And this is *connotative affect*—the easy, emotionally-laden corner of meaning—not the hard compositional stuff.
 
-But within those bounds, the finding is clean and, I think, a little wonderful: a network trained only to predict text reconstructs a sixty-year-old, cross-culturally-validated theory of affective meaning—three factors, near-orthogonal, semantic enough to survive translation—as a low-dimensional coordinate system you can read off its activations and steer with. Osgood ran his study with paper questionnaires across the globe to triangulate the shape of meaning. The model triangulated the same shape from the shape of language itself.
+But within those bounds, the finding is clean and, I think, a little wonderful: a network trained only to predict text reconstructs a seventy-year-old, cross-culturally-validated theory of affective meaning—three factors, near-orthogonal, and (unlike a plain word embedding) semantic enough to survive translation—as a low-dimensional coordinate system you can read off its activations and steer with. Osgood ran his study with paper questionnaires across the globe to triangulate the shape of meaning. The model triangulated the same shape from the shape of language itself.
 
 ## What's next: EPA-modulated embeddings
 
-The cross-lingual version isn't only something that *emerges* inside big models — you can build it on purpose. Put the same E–P–A "head" on top of an aligned multilingual encoder (we prototyped it with [BGE-M3](https://huggingface.co/BAAI/bge-m3)) and the affective axes transfer cleanly out of the box: Evaluation, Potency, and Activity all land at **0.9–1.0** reading from English into Spanish, French, and German, with no alignment step — and it even cleans up Potency, the factor the smaller model found rough.
+The cross-lingual version isn't only something that *emerges* inside a next-token model — you can build it on purpose. Take the same recipe—the three bipolar directions, fit from pole words—as a small linear *head*, and drop it on a multilingual encoder built for cross-lingual retrieval (we prototyped it with [BGE-M3](https://huggingface.co/BAAI/bge-m3)). The affective axes transfer cleanly out of the box: Evaluation, Potency, and Activity all land at **0.9–1.0** reading from English into Spanish, French, and German, with no alignment step—and it even cleans up Potency, the factor the smaller model found rough.
 
 That's the seed of something we're going to pursue: **EPA-modulated embeddings** — vectors that carry an explicit, interpretable, cross-lingual affective basis you can read off *and* steer along. We're going to look at releasing them built with exactly this technique. More soon.
 

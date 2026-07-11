@@ -48,6 +48,15 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 - Site builds to `_site/` directory
 - Google Analytics tracking enabled
 
+## Title Banners (site-wide convention, 2026-07-10)
+- Every post with an `image:` also sets `title-block-banner: "<same image path>"` and
+  `title-block-banner-color: white` — the post's OG image becomes the title background.
+- The darkening gradient overlay + white text/shadow CSS is **global** in `style.css`
+  (`.quarto-title-banner` rules, `::before` overlay) — image-agnostic, do not inline
+  per-post styles. Tune crop via `background-position` there if a banner clips badly.
+- Posts without an `image:` (book_bot, intelligence_chases_chaos, perchance_to_dream,
+  quarto, rumpus) fall back to the plain title block; give them an image to opt in.
+
 ## Social Sharing / Open Graph
 - `site-url` in `_quarto.yml` must be `https://` — LinkedIn and other crawlers reject `http://` OG image URLs
 - Every blog post should have an `image:` field in frontmatter for social preview cards

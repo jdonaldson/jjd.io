@@ -6,6 +6,8 @@ author:
   - Claude (Fable)
 date: "2026-06-14"
 image: images/no_free_lunch_og.jpg
+title-block-banner: "images/no_free_lunch_og.jpg"
+title-block-banner-color: white
 categories:
   - AI
   - machine learning

@@ -4,6 +4,8 @@ description: "An AI read 34,000 FDA energy-device descriptions and drew a map. T
 author: "Justin Donaldson"
 date: "2026-02-22"
 image: "images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png"
+title-block-banner: "images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png"
+title-block-banner-color: white
 categories:
   - machine learning
   - embeddings
