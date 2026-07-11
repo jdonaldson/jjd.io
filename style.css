@@ -162,3 +162,33 @@ body:has(.quarto-listing) #quarto-margin-sidebar {
   padding-left: 0.5rem;
   padding-right: 1.75rem;
 }
+
+/* Post title banners: the post's OG image sits behind the title block, with a
+   dark gradient overlay so the white title text stays legible on any photo.
+   Posts opt in via frontmatter: title-block-banner: <image> (+ banner-color white).
+   Image-agnostic — the overlay is a ::before layer, Quarto supplies the image. */
+.quarto-title-banner {
+  position: relative;
+  background-size: cover !important;
+  background-position: center 30% !important;
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+.quarto-title-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(25, 18, 8, 0.45), rgba(25, 18, 8, 0.65));
+  pointer-events: none;
+}
+.quarto-title-banner > * {
+  position: relative;
+  z-index: 1;
+}
+.quarto-title-banner .quarto-title .title,
+.quarto-title-banner .quarto-title .subtitle,
+.quarto-title-banner .quarto-title .description,
+.quarto-title-banner .quarto-categories .quarto-category {
+  color: #fff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}

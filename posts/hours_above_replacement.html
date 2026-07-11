@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2026-07-10">
+<meta name="description" content="Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity, supply risk, and analyst attention in one currency, quality-adjusted hours, using baseball’s replacement-level trick.">
+
+<title>Hours Above Replacement – Justin Donaldson, Ph.D.</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-0a6b7249c26820e032cb0bd839ff02b1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-bcbb9ad9de3f18a67d45774e680cbe79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-cf2dee4e4f37af70fe58e0de1f9f1708.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-bcbb9ad9de3f18a67d45774e680cbe79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(images/har_og_wide.jpg);
+background-size: cover;
+      }
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Hours Above Replacement – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity, supply risk, and analyst attention in one currency, quality-adjusted hours, using baseball’s replacement-level trick.">
+<meta property="og:image" content="https://www.jjd.io/posts/images/har_og_wide.jpg">
+<meta property="og:site_name" content="Justin Donaldson, Ph.D.">
+<meta name="twitter:title" content="Hours Above Replacement – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity, supply risk, and analyst attention in one currency, quality-adjusted hours, using baseball’s replacement-level trick.">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/har_og_wide.jpg">
+<meta name="twitter:site" content="@omgjjd">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="floating nav-fixed slimcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Justin Donaldson, Ph.D.</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">about</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">cv</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jdonaldson"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jjustindonaldson/"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.discogs.com/user/omgjjd"> <i class="bi bi-vinyl-fill" role="img" aria-label="Discogs">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Hours Above Replacement</h1>
+            <p class="subtitle lead">A WAR metric for hospital supply chains</p>
+                  <div>
+        <div class="description">
+          Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity, supply risk, and analyst attention in one currency, quality-adjusted hours, using baseball’s replacement-level trick.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">health economics</div>
+                <div class="quarto-category">supply chain</div>
+                <div class="quarto-category">data science</div>
+                <div class="quarto-category">metrics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Justin Donaldson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 10, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-move-borrowed-from-baseball" id="toc-the-move-borrowed-from-baseball" class="nav-link active" data-scroll-target="#the-move-borrowed-from-baseball">The move borrowed from baseball</a></li>
+  <li><a href="#the-unit-hours-of-life" id="toc-the-unit-hours-of-life" class="nav-link" data-scroll-target="#the-unit-hours-of-life">The unit: hours of life</a></li>
+  <li><a href="#the-definition" id="toc-the-definition" class="nav-link" data-scroll-target="#the-definition">The definition</a>
+  <ul class="collapse">
+  <li><a href="#the-savings-channel" id="toc-the-savings-channel" class="nav-link" data-scroll-target="#the-savings-channel">The savings channel</a></li>
+  <li><a href="#the-risk-channel" id="toc-the-risk-channel" class="nav-link" data-scroll-target="#the-risk-channel">The risk channel</a></li>
+  </ul></li>
+  <li><a href="#the-graph-you-mostly-dont-build" id="toc-the-graph-you-mostly-dont-build" class="nav-link" data-scroll-target="#the-graph-you-mostly-dont-build">The graph you mostly don’t build</a></li>
+  <li><a href="#reading-the-number-rank-by-the-sum-act-by-the-ratio" id="toc-reading-the-number-rank-by-the-sum-act-by-the-ratio" class="nav-link" data-scroll-target="#reading-the-number-rank-by-the-sum-act-by-the-ratio">Reading the number: rank by the sum, act by the ratio</a></li>
+  <li><a href="#the-leaderboard-what-tops-har-right-now" id="toc-the-leaderboard-what-tops-har-right-now" class="nav-link" data-scroll-target="#the-leaderboard-what-tops-har-right-now">The leaderboard: what tops HAR right now</a>
+  <ul class="collapse">
+  <li><a href="#the-har-map" id="toc-the-har-map" class="nav-link" data-scroll-target="#the-har-map">The HAR map</a></li>
+  </ul></li>
+  <li><a href="#closing-the-loop-the-analysts-are-in-the-metric-too" id="toc-closing-the-loop-the-analysts-are-in-the-metric-too" class="nav-link" data-scroll-target="#closing-the-loop-the-analysts-are-in-the-metric-too">Closing the loop: the analysts are in the metric too</a></li>
+  <li><a href="#the-gate" id="toc-the-gate" class="nav-link" data-scroll-target="#the-gate">The gate</a></li>
+  <li><a href="#what-happens-when-everyone-plays-moneyball" id="toc-what-happens-when-everyone-plays-moneyball" class="nav-link" data-scroll-target="#what-happens-when-everyone-plays-moneyball">What happens when everyone plays Moneyball?</a></li>
+  <li><a href="#what-id-tell-you-to-steal" id="toc-what-id-tell-you-to-steal" class="nav-link" data-scroll-target="#what-id-tell-you-to-steal">What I’d tell you to steal</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
+
+
+
+
+
+
+<p>In 2017, Hurricane Maria knocked out three Baxter plants in Puerto Rico, and hospitals across the US suddenly couldn’t get saline bags. Nurses went back to pushing drugs by syringe. In 2022, a COVID lockdown in Shanghai shut a single GE plant and hospitals started rationing contrast media — triaging which patients got CT scans. In 2024 it was blood culture bottles.</p>
+<p>None of these products would top a spend report. A saline bag costs about a dollar. If you rank a hospital’s supply chain by dollars — which is how essentially all procurement analytics works — the products that can actually stop care sit far down the list, invisible until the week they’re unavailable.</p>
+<p>I work on supply chain analytics for hospitals, and this is the prioritization problem we live inside: <strong>materiality</strong> (spend and volume) is measured to the penny, while <strong>criticality</strong> (what happens to patients if this product vanishes) is tracked in adjectives. When the two argue, the one denominated in dollars wins every time — not because it matters more, but because it has units.</p>
+<p>This post describes a metric we designed to fix that: <strong>HAR — Hours Above Replacement</strong>. It puts savings opportunity, supply risk, and even the cost of analyst attention into one currency, so prioritization becomes a gradient you can walk instead of a meeting you have to hold. Full disclosure up front: this is a framework we’ve committed to paper and are now beginning to compute. I’m writing it up because I think the design is interesting independent of our implementation, and because writing it down publicly is a good way to have it shot at.</p>
+<section id="the-move-borrowed-from-baseball" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-move-borrowed-from-baseball">The move borrowed from baseball</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/har_ruth_homeplate_1923.jpg" class="img-fluid figure-img"></p>
+<figcaption>Babe Ruth crosses home plate after hitting the first home run in Yankee Stadium history, April 18, 1923. <em>(Public domain, via Wikimedia Commons.)</em></figcaption>
+</figure>
+</div>
+<p>Sports analytics solved a version of this problem twenty years ago. Baseball’s WAR — Wins Above Replacement — collapses hitting, fielding, and baserunning into a single number by asking one disciplined question: <em>how many wins does this player add compared to a freely available replacement</em> — the player you could call up from Triple-A tomorrow for the league minimum?</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — the lineage.</strong> <a href="https://en.wikipedia.org/wiki/Bill_James">Bill James</a> coined <a href="https://en.wikipedia.org/wiki/Sabermetrics"><em>sabermetrics</em></a> and started publishing his samizdat <em>Baseball Abstracts</em> in 1977. The replacement-level idea was later formalized by Keith Woolner’s <a href="https://en.wikipedia.org/wiki/Value_over_replacement_player">VORP</a> (Value Over Replacement Player) at Baseball Prospectus, and <a href="https://en.wikipedia.org/wiki/Wins_above_replacement">“wins above replacement”</a> is now the lingua franca of every front office.</p>
+</div></div><p>The baseline is the entire trick. Measuring against <strong>zero</strong> inflates everything (every starter looks priceless). Measuring against <strong>average</strong> punishes solid contributors unfairly. Measuring against <strong>replacement level</strong> asks the decision-relevant counterfactual: what do I lose if this specific thing disappears and the slot gets filled from the open market?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/har_providence_grays_1914.jpg" class="img-fluid figure-img"></p>
+<figcaption>The 1914 Providence Grays. The large fellow in the middle of the back row is Babe Ruth, who spent that August and September as — quite literally — a freely available minor-league replacement. Replacement level is a baseline, not a destiny. <em>(Public domain, via Wikimedia Commons.)</em></figcaption>
+</figure>
+</div>
+<p>Products in a supply chain have exactly this structure:</p>
+<ul>
+<li>The <strong>savings</strong> question: you’re paying $14 for a device your peers get for $9. The replacement for your <em>price</em> is the price a competent buyer gets without special leverage. Value lost = the gap.</li>
+<li>The <strong>risk</strong> question: what happens if the product itself becomes unavailable and the slot must be filled from whatever the market has left?</li>
+</ul>
+<p>And here’s the observation that makes the risk side tractable: <strong>replacement level moves.</strong> A saline bag has a deep substitute pool in normal times — its value above replacement is essentially zero, which is <em>why it’s cheap</em>. When the pool collapses (a hurricane, a lockdown, a recall), the same product’s value above replacement explodes without the product changing at all. <strong>Criticality is not a property of a product; it’s exposure to replacement-level collapse.</strong> The risk term isn’t a second metric bolted on — it’s the same value-over-replacement quantity, evaluated under a stressed market state.</p>
+</section>
+<section id="the-unit-hours-of-life" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-unit-hours-of-life">The unit: hours of life</h2>
+<p>WAR works because wins are the currency of baseball. What’s the currency of a hospital supply chain? Not dollars — dollars are the <em>input</em>. The output is patient health.</p>
+<p>Health economics has a standard unit for this: the <strong>QALY</strong>, a quality-adjusted life year — one year in full health. It’s the unit bodies like ICER and NICE use to evaluate whether drugs are worth their price, and the mainstream US benchmark values one QALY at around $100,000. A year has 8,766 hours, so:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — where the QALY comes from.</strong> The <a href="https://en.wikipedia.org/wiki/Quality-adjusted_life_year">QALY</a> was pulled into mainstream medical decision-making by <a href="https://en.wikipedia.org/wiki/Milton_Weinstein">Milton Weinstein</a> and William Stason’s 1977 <em>New England Journal of Medicine</em> paper, “Foundations of cost-effectiveness analysis for health and medical practices” — still the citation that launched a thousand cost-per-QALY tables.</p>
+</div></div><p><span class="math display">\[
+\frac{\$100{,}000 \text{ per QALY}}{8{,}766 \text{ hours per year}} \;\approx\; \$11.40 \text{ per quality-adjusted hour}
+\]</span></p>
+<p>That exchange rate — call it <em>v</em> — is what lets dollars and clinical risk share a scale. An hour of quality-adjusted life is worth about eleven dollars and change, and now a $2M savings opportunity and a supply-disruption scenario can be compared as quantities instead of as a spreadsheet arguing with an anecdote.</p>
+<p>You should immediately distrust this, so let me name the two honest problems with it.</p>
+<p><strong>First, the number isn’t settled.</strong> There are two different justifications for a dollars↔︎health exchange rate, and they disagree by 3–5×. The <em>supply-side</em> story (Claxton and colleagues, the logic behind the UK NHS threshold of roughly £13k/QALY) says: dollars a health system saves get reinvested and <em>produce</em> health at the system’s marginal rate. The <em>demand-side</em> story (ICER’s $100k–150k/QALY, value-of-statistical-life estimates that work out to roughly $50/hour) says: this is what society is <em>willing to pay</em> for health. For procurement savings, the supply-side story is the causally correct one — money a hospital doesn’t spend on devices is money it can spend on care.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — Claxton and ICER.</strong> <a href="https://en.wikipedia.org/wiki/Karl_Claxton">Karl Claxton</a> is a health economist at the University of York; Claxton et al.&nbsp;2015 (<em>Health Technology Assessment</em>) empirically estimated the NHS’s marginal productivity at ~£13,000 per QALY — the “supply-side” threshold. <a href="https://en.wikipedia.org/wiki/Institute_for_Clinical_and_Economic_Review">ICER</a>, the Institute for Clinical and Economic Review, is the closest thing the US has to <a href="https://en.wikipedia.org/wiki/National_Institute_for_Health_and_Care_Excellence">NICE</a>: an independent body whose $100k–150k/QALY benchmarks anchor American drug-price debates.</p>
+</div></div><p><strong>Second, and more subtly, the two sides of the metric don’t cross the exchange rate symmetrically.</strong> The risk term is <em>born in hours</em> — patient hours are directly what’s at stake in a shortage; no valuation step happens at all. The savings term is born in dollars and only becomes hours <em>through</em> v. So v is really a <strong>weighting knob between the two channels, not a shared unit conversion</strong>, and the sum is strictly coherent only under the supply-side reading. The framework survives this as long as it’s said out loud: we headline at $100k/QALY, carry a sensitivity band from $50k to $150k, and report how conclusions move across the band.</p>
+<p>One phrasing rule we treat as mandatory: externally, dollar figures are “<em>valued at</em> the standard cost-effectiveness threshold.” Never “lives saved.” The first is defensible health economics; the second is a marketing claim the metric can’t survive.</p>
+</section>
+<section id="the-definition" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="the-definition">The definition</h2>
+<p><span class="math display">\[
+\mathrm{HAR}(p) = \mathrm{HAR}_{\mathrm{savings}}(p) + \mathrm{HAR}_{\mathrm{risk}}(p)
+\qquad \text{[quality-adjusted hours per year]}
+\]</span></p>
+<p><span class="math display">\[
+\mathrm{risk\_share}(p) = \frac{\mathrm{HAR}_{\mathrm{risk}}}{\mathrm{HAR}}
+\qquad \text{[always carried alongside]}
+\]</span></p>
+<p>If WAR is the analogy, HAR_savings is the batting statistic — well-measured, high-resolution, computed from millions of observed transactions. HAR_risk is the fielding statistic — noisier, coarser, and the reason the composite exists at all. Baseball fans will remember the “WAR wars”: arguments where decimal-point precision in batting lent false credibility to much fuzzier fielding estimates. We’ll come back to that failure mode, because it’s the one this metric has to actively defend against.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — the WAR wars.</strong> The canonical episode is the 2012 AL MVP race: <a href="https://en.wikipedia.org/wiki/Miguel_Cabrera">Miguel Cabrera</a> won the Triple Crown; <a href="https://en.wikipedia.org/wiki/Mike_Trout">Mike Trout</a> posted ~10 <a href="https://en.wikipedia.org/wiki/Wins_above_replacement">WAR</a>, much of it from defense and baserunning — the fuzzy components. The argument was never really about the players; it was about how much precision the fielding numbers deserved.</p>
+</div></div><p>A technical note worth making explicit, because it’s the kind of thing that looks like hand-waving until you write it down. “One concept, two market states” cashes out as a probability-weighted expectation:</p>
+<p><span class="math display">\[
+E[\mathrm{VOR}] = (1-p) \times \mathrm{VOR}_{\mathrm{normal}} + p \times \mathrm{VOR}_{\mathrm{stressed}}
+\]</span></p>
+<p>where p is the annual probability of a supply disruption and VOR is value over replacement. Expand it and you get <span class="math inline">\(\mathrm{HAR}_{\mathrm{savings}} + \mathrm{HAR}_{\mathrm{risk}} - p \times \mathrm{HAR}_{\mathrm{savings}}\)</span>. With disruption probabilities in the 10⁻²–10⁻³ per year range, that cross-term is under 1%, so the simple additive form is the expectation to first order. The approximation has a stated failure mode: for a category in <em>chronic</em> shortage, p isn’t small, the additive form overstates HAR, and you use the full expectation. Knowing exactly when your formula is wrong is most of what makes it a formula.</p>
+<section id="the-savings-channel" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="the-savings-channel">The savings channel</h3>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="images/har_ruth_1920.jpg" class="img-fluid"> Babe Ruth, 1920. The savings channel is the batting statistic: high-resolution, obsessively measured, and where all the headlines come from. <em>(Photo: Irwin, La Broad &amp; Pudlin. Public domain, via Wikimedia Commons.)</em></p>
+</div></div><p><span class="math display">\[
+\mathrm{HAR}_{\mathrm{savings}}(p) =
+\frac{\displaystyle\sum_{\text{facilities } f}
+\max\!\big(0,\ \mathrm{price}_f - \mathrm{price}_{\mathrm{repl}}(\mathrm{cohort}_f)\big)
+\times \mathrm{qty}_f \times \mathrm{achievability}}
+{v \ \ (\approx \$11.40/\text{hour})}
+\]</span></p>
+<p>This is the familiar benchmark-savings calculation — what a facility pays above a reference price, times volume — re-denominated in hours. It’s deliberately backward compatible: zero out the risk term and HAR collapses to a sharpened version of the spend-materiality analysis procurement teams already run. But three definitional choices carry the sharpening, and each one exists because the naive version produces numbers that negotiations can’t deliver:</p>
+<p><strong>1. Replacement price is the cohort <em>median</em>, not the best price.</strong> Benchmarking every hospital against the single best price in the dataset is measuring against the All-Star, not the waiver wire. Replacement level is what a competent buyer gets <em>without special leverage</em> — the median. The best-quartile number can ride along as a labeled stretch goal, but the headline is the median, because the headline should be deliverable.</p>
+<p><strong>2. Replacement level is conditional on who you are.</strong> Contract tiers explain a large share of price variance for high-end devices; a 25-bed rural hospital cannot get the mega-health-system price, and pretending it can doesn’t create recoverable hours — it creates a fake number. So the replacement price is computed within cohort: class of trade, size, and — critically for pharmacy — account type, because US drug pricing programs like 340B create legitimate multi-tier pricing that looks like dispersion if you ignore it. Unit-of-measure normalization is mandatory for the same reason: an each-versus-case slip creates a phantom 12× “opportunity” that will happily sit at the top of your queue burning analyst time.</p>
+<p><strong>3. An achievability haircut.</strong> Not every dollar of measured excess is capturable — switching friction, physician preference, bundled contracts. The haircut can be crude (one number per category family, estimated from your own history of identified-versus-realized savings), but it must exist, or HAR_savings is an upper bound and should be labeled as one.</p>
+<p>None of these is exotic. Each is just the replacement-level discipline applied to a place where the naive calculation flatters itself.</p>
+<p><strong>A worked example.</strong> A mid-size hospital implants 300 primary knees a year at $5,000 per implant construct. The cohort median — what hospitals its size pay without special leverage — is $4,200. The excess is $800 × 300 = $240,000 a year. Its own capture history says about half of identified implant savings survive negotiation (achievability 0.5), so $120,000. Divide by v:</p>
+<p><span class="math display">\[
+\frac{\$800 \times 300 \times 0.5}{\$11.40/\text{hour}} \;\approx\; 10{,}500 \text{ hours/year} \;\sim\; 10^4
+\]</span></p>
+<p>One product line, one hospital, and the number is already more than a full year of healthy life annually — <em>valued at</em> the standard threshold, remember, not produced. This is the well-measured channel: every input except the achievability haircut comes straight out of transaction data.</p>
+</section>
+<section id="the-risk-channel" class="level3 page-columns page-full">
+<h3 class="anchored" data-anchor-id="the-risk-channel">The risk channel</h3>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><img src="images/har_bosox_outfield.jpg" class="img-fluid"> Boston’s “Golden Outfield” — Duffy Lewis, Tris Speaker, and Harry Hooper, c.&nbsp;1912. Everyone agreed the fielding was extraordinary; nobody could say by how much. Fielding is the noisy channel, in baseball and in supply chains. <em>(Public domain, via Wikimedia Commons.)</em></p>
+</div></div><p><span class="math display">\[
+\mathrm{HAR}_{\mathrm{risk}}(p) =
+P(\text{replacement-pool shrink})
+\times \text{downstream hours at stake}
+\times P(\text{no viable path around } p)
+\]</span></p>
+<p>Three terms, in descending order of measurability:</p>
+<p><strong>Volume</strong> is exact — transaction data tells you precisely how many uses of a product occur per year.</p>
+<p><strong>P(disruption)</strong> is estimable at order-of-magnitude resolution from public data: the FDA’s device shortage list (a CARES Act disclosure requirement) and openFDA recall feeds give base rates per product family.</p>
+<p><strong>Downstream hours at stake</strong> is the hard one, and log-resolution is the honest resolution. The question that matters is “is this a 10-hour product or a 10,000-hour product?” — and order-of-magnitude separation carries almost all of the prioritization value. Device classification systems (FDA device class, GMDN categories) tell you whether something is implantable or life-sustaining; published QALY estimates exist for major procedure families (joint replacement, cardiac devices, stents, dialysis). That’s enough to place products in the right decade, and the right decade is enough.</p>
+<p>So HAR_risk gets published as a range — 10³–10⁵ hours/year — and differences smaller than the error bars are noise by declaration. This is the anti-“WAR wars” guardrail: never let the four-significant-figure precision of the savings channel lend its credibility to the risk channel. They share a unit, not an error bar.</p>
+<p>Two structural warnings that took real review to surface:</p>
+<p><strong>Don’t multiply the probabilities as if they’re independent.</strong> P(disruption) and P(no substitute) are positively correlated — single-source products have the most fragile supply chains, and disruptions are exactly what shrink substitute pools. Independence understates tail risk for precisely the scariest products. Where a family is single-source, estimate the joint probability directly (shortage base rates <em>conditional on</em> single-source status); where you can’t, cap the joint term at the smaller of the two instead of taking their product.</p>
+<p><strong>A worked example.</strong> Same hospital, iodinated contrast media — the product behind the 2022 rationing. The hospital runs about 20,000 contrast-enhanced scans a year. Working the three terms in log bins: a 2022-scale disruption for this product family has a base rate around 10⁻² per year; given an event, triage protocols defer roughly a quarter of scans for two months (~800 deferred studies), at an expected late-or-missed-diagnosis harm of 10–100 quality-adjusted hours per deferred study — the genuinely fuzzy term; and with two major suppliers, the no-viable-path probability is near 0.5. Multiplying through:</p>
+<p><span class="math display">\[
+10^{-2} \times \big(800 \times 10\text{–}100\ \text{h}\big) \times 0.5
+\;\approx\; 10^2\text{–}10^3 \text{ expected hours/year}
+\]</span></p>
+<p>Now look at what the number <em>does</em>. As an annualized expectation it sits below the knee-implant savings figure — a naive reading says contrast media matters less than knee prices. But the year the event actually lands, the realized loss at this hospital is <span class="math inline">\(10^4\)</span>–<span class="math inline">\(10^5\)</span> hours — and it lands at every hospital simultaneously, because a supply shock is a correlated event, not an idiosyncratic one. Risk that doesn’t diversify across facilities is exactly the kind a system-level ranking has to carry even when each facility’s expectation looks small. Keep that in mind for the leaderboard below.</p>
+<p><strong>Criticality is a network property, and it doesn’t sum.</strong> A contrast agent’s hours-at-stake aren’t its own — they’re inherited from every imaging-guided procedure downstream of it. Complement edges (consumed-by, required-for) propagate risk upstream; substitute edges shunt it away. And because a procedure needing five inputs assigns each input the <em>full</em> procedure-hours conditional on being the binding failure, you cannot total the HAR_risk column into a portfolio number. “What breaks if <em>this</em> disappears” is the right per-product question; the column is not a partition of anything. Someone will try to sum it anyway. This paragraph exists for them.</p>
+</section>
+</section>
+<section id="the-graph-you-mostly-dont-build" class="level2">
+<h2 class="anchored" data-anchor-id="the-graph-you-mostly-dont-build">The graph you mostly don’t build</h2>
+<p>That network framing implies a dependency graph — products, procedures, substitutes, edges everywhere. The reflex is to go build it. The discipline is not to.</p>
+<p>An edge earns indexing only if resolving it could change a decision. The value-bearing region — high downstream hours × concentrated supply × real decision leverage — is small by construction, and spend gives you a free <em>upper bound</em> on any unbuilt region: the hours at stake behind a choke point can’t exceed what the volume flowing through it implies. So you rank unexplored regions by bounded potential, expand best-first, and stop when the queue head no longer justifies the effort. An unindexed region isn’t a gap; it’s a <em>conclusion</em> — “bounded value too low” — and you record the bound so the skip is defensible and re-queueable when spend shifts or a vendor exits.</p>
+<p>One trap here is genuinely nasty, and it’s the motivating examples that fall into it. If your cheap proxy for “hours at stake” is regulatory device class, you will prune saline, contrast media, and blood culture bottles <em>before their edges are ever built</em> — they’re low-class commodity products whose criticality is invisible until you know what they gate, and knowing what they gate requires the edges you just declined to build. A pruning bound is only sound if it never underestimates, and device class is not that bound: it rates a product’s own regulatory risk, not the procedure-hours downstream of it. The fix is a carve-out: high-volume, low-class consumables get a worst-case gating assumption — assume they gate procedures until one hop of evidence (kit bills-of-materials, co-purchase patterns) says otherwise. They bypass the pruning and always get seeded.</p>
+<p>The KPI for the graph has to be value-weighted for the same reason: not “% of catalog with edges” — that recreates exhaustive indexing, the thing we’re avoiding — but “% of at-risk hours with resolved choke-point status.”</p>
+</section>
+<section id="reading-the-number-rank-by-the-sum-act-by-the-ratio" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="reading-the-number-rank-by-the-sum-act-by-the-ratio">Reading the number: rank by the sum, act by the ratio</h2>
+<p>Procurement strategy has a classic 2×2, the Kraljic matrix: leverage items, strategic items, bottlenecks, routine buys. It’s taught everywhere and quantified almost nowhere. HAR recovers it as a scalar and a ratio:</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — Kraljic.</strong> Peter Kraljic was a McKinsey director whose 1983 <em>Harvard Business Review</em> article, “Purchasing Must Become Supply Management,” gave procurement its most durable framework: the <a href="https://en.wikipedia.org/wiki/Kraljic_matrix">Kraljic matrix</a>, classifying items by profit impact × supply risk. Forty years later it’s still taught from the same 2×2 — usually filled in by workshop vote rather than by data.</p>
+</div></div><table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>risk_share</th>
+<th>Posture</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>≈ 0 (savings-dominated)</td>
+<td>Leverage: negotiate hard, commoditize</td>
+</tr>
+<tr class="even">
+<td>≈ 1 (risk-dominated)</td>
+<td>Secure supply: dual-source, hold inventory, contract for continuity — and stop squeezing</td>
+</tr>
+<tr class="odd">
+<td>both channels large</td>
+<td>Strategic: the metric flags it; judgment settles it</td>
+</tr>
+</tbody>
+</table>
+<p>The sum orders the portfolio — and it’s robust for ordering, because a mis-estimated 10³ never displaces a real 10⁶. The ratio picks the action. And it makes a sentence possible that procurement decks could never say before: <em>“this category’s supply risk is worth ten times its savings opportunity, so we’re buying continuity, not discounts.”</em> That’s a quantitative claim with an audit trail.</p>
+<p>There’s a pleasing self-diagnostic hiding in the sensitivity band, too. Remember that v moves only the savings channel. So a category whose posture <em>flips</em> somewhere across the $50k–$150k band is, by construction, a category where the two channels are comparable — which is exactly the definition of the strategic quadrant. What first looks like the metric’s embarrassing instability is actually its detector for the cases that deserve human judgment. The arithmetic flags them; it doesn’t settle them.</p>
+<p>One more dimension matters before anyone acts on a ranking: <strong>persistence.</strong> HAR is a flow — hours per year, importance <em>now</em>. Interventions are investments, and the two channels age differently. A negotiated saving is a capturable stock: locked for the contract’s duration, gone after. Risk mitigation is a recurring expense: it persists only while maintained. So the intervention decision uses <code>E[ΔHAR] × persistence (years) ÷ effort</code>, with persistence defaulting to remaining contract term — and labeled as the assumption it is, because prices drift back, renegotiations reset clocks, and contracts auto-renew. A $1M/year saving locked for three years is worth roughly three of a one-year fix; a queue that ignores persistence systematically misprices interventions across the channels.</p>
+</section>
+<section id="the-leaderboard-what-tops-har-right-now" class="level2">
+<h2 class="anchored" data-anchor-id="the-leaderboard-what-tops-har-right-now">The leaderboard: what tops HAR right now</h2>
+<p>So what does the ranking actually look like? Below is an illustrative national-scale leaderboard — ten product families, annual US figures, built <strong>entirely from public anchors</strong>: the FDA device and drug shortage lists, published QALY-per-procedure literature, and the public history of supply events. No proprietary transaction data — a real implementation computes this per health system from its own purchases, and the numbers land wherever they land. Everything is a log bin, per the risk channel’s own honesty rule: trust the decades, not the digits.</p>
+<table class="caption-top table">
+<caption>Illustrative, order-of-magnitude, US national scale. Sorted by total HAR.</caption>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 30%">
+<col style="width: 18%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">#</th>
+<th>Product family</th>
+<th style="text-align: right;">HAR<sub>savings</sub> (h/yr)</th>
+<th style="text-align: right;">HAR<sub>risk</sub> (h/yr)</th>
+<th style="text-align: right;">risk_share</th>
+<th>Posture</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td>Hip &amp; knee implants</td>
+<td style="text-align: right;">10⁸</td>
+<td style="text-align: right;">10⁴·⁵</td>
+<td style="text-align: right;">≈ 0</td>
+<td>Negotiate</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">2</td>
+<td>Stents &amp; cardiac rhythm devices</td>
+<td style="text-align: right;">10⁷·⁵</td>
+<td style="text-align: right;">10⁵·⁵</td>
+<td style="text-align: right;">0.01</td>
+<td>Negotiate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">3</td>
+<td>IV saline &amp; solutions</td>
+<td style="text-align: right;">10⁵·⁹</td>
+<td style="text-align: right;">10⁷·³</td>
+<td style="text-align: right;">0.96</td>
+<td>Secure supply</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">4</td>
+<td>Iodinated contrast media</td>
+<td style="text-align: right;">10⁶·¹</td>
+<td style="text-align: right;">10⁷·¹</td>
+<td style="text-align: right;">0.91</td>
+<td>Secure supply</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td>Platinum chemotherapies</td>
+<td style="text-align: right;">10⁴·⁵</td>
+<td style="text-align: right;">10⁷</td>
+<td style="text-align: right;">≈ 1</td>
+<td>Secure supply</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td>Exam &amp; surgical gloves</td>
+<td style="text-align: right;">10⁶·⁸</td>
+<td style="text-align: right;">10⁵·²</td>
+<td style="text-align: right;">0.02</td>
+<td>Negotiate</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">7</td>
+<td>Blood culture bottles</td>
+<td style="text-align: right;">10⁵</td>
+<td style="text-align: right;">10⁶·⁸</td>
+<td style="text-align: right;">0.98</td>
+<td>Secure supply</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">8</td>
+<td>Dialysis consumables</td>
+<td style="text-align: right;">10⁶·³</td>
+<td style="text-align: right;">10⁶·⁵</td>
+<td style="text-align: right;">0.61</td>
+<td><strong>Strategic</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">9</td>
+<td>Infusion pumps &amp; sets</td>
+<td style="text-align: right;">10⁶·⁵</td>
+<td style="text-align: right;">10⁶·²</td>
+<td style="text-align: right;">0.33</td>
+<td><strong>Strategic</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td>Heparin</td>
+<td style="text-align: right;">10⁵·⁵</td>
+<td style="text-align: right;">10⁶·⁵</td>
+<td style="text-align: right;">0.91</td>
+<td>Secure supply</td>
+</tr>
+</tbody>
+</table>
+<p>Read the ranking against the spend report it replaces. A spend-only ordering keeps rows 1, 2, and 6 and buries the rest — saline, platinum chemo, and blood culture bottles live in the bottom half of any dollar ranking, when they appear at all. Here they sit at #3, #5, and #7, carried entirely by the risk channel. That interleaving <em>is</em> the metric’s contribution: rows the spend report agrees with, rows it can’t see, on one scale. (It’s also, not coincidentally, the gate question from the roadmap answered in the affirmative for the illustrative case — the risk term moves ranks. Whether it moves ranks <em>in our measured data</em> is what the real computation has to establish.)</p>
+<p>And “right now” is doing real work in the section title: the risk channel updates with the shortage lists. Blood culture bottles were on nobody’s 2023 map; the 2024 disruption put them on this one. A HAR leaderboard is a current-events document with a denominator — which is precisely what a criticality metric should be, and what a static Kraljic workshop poster is not.</p>
+<section id="the-har-map" class="level3">
+<h3 class="anchored" data-anchor-id="the-har-map">The HAR map</h3>
+<p>The same ten families as a picture — this is the action map from the previous section made literal. Savings-hours across, risk-hours up, both log-scaled; the diagonal bands are risk_share, so <strong>height above the dashed line is lopsidedness toward risk</strong>, and the band a product lands in is its posture. Hover for each family’s numbers.</p>
+<style>
+.har-map { --hm-ink:#073642; --hm-muted:#657b83; --hm-grid:#e4dcc3; --hm-ring:#fdf6e3;
+           --hm-c1:#2a78d6; --hm-c2:#1baf7a; --hm-c3:#c98500;
+           --hm-b1:rgba(42,120,214,0.08); --hm-b2:rgba(27,175,122,0.08); --hm-b3:rgba(201,133,0,0.07); }
+.quarto-dark .har-map, [data-bs-theme="dark"] .har-map {
+  --hm-ink:#eee8d5; --hm-muted:#93a1a1; --hm-grid:#0f4a5a; --hm-ring:#073642;
+  --hm-c1:#3987e5; --hm-c2:#199e70; --hm-c3:#c98500;
+  --hm-b1:rgba(57,135,229,0.16); --hm-b2:rgba(25,158,112,0.16); --hm-b3:rgba(201,133,0,0.14); }
+.har-map text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.har-map .pt:hover circle { stroke-width: 3; }
+</style>
+<svg class="har-map" viewbox="0 0 780 600" role="img" aria-label="HAR map: savings hours versus risk hours for ten product families" style="max-width:100%;height:auto;">
+<polygon points="74.0,407.1 512.0,30.0 74.0,30.0" fill="var(--hm-b2)"></polygon> <polygon points="201.0,542.0 758.0,542.0 758.0,62.5" fill="var(--hm-b1)"></polygon> <polygon points="74.0,542.0 201.0,542.0 758.0,62.5 758.0,30.0 512.0,30.0 74.0,407.1" fill="var(--hm-b3)"></polygon> <line x1="222.7" y1="30" x2="222.7" y2="542" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="371.4" y1="30" x2="371.4" y2="542" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="520.1" y1="30" x2="520.1" y2="542" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="668.8" y1="30" x2="668.8" y2="542" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="74" y1="529.2" x2="758" y2="529.2" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="74" y1="401.2" x2="758" y2="401.2" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="74" y1="273.2" x2="758" y2="273.2" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="74" y1="145.2" x2="758" y2="145.2" stroke="var(--hm-grid)" stroke-width="1"></line> <line x1="74" y1="542" x2="758" y2="542" stroke="var(--hm-muted)" stroke-width="1.5"></line> <line x1="74" y1="30" x2="74" y2="542" stroke="var(--hm-muted)" stroke-width="1.5"></line> <text x="74.0" y="564" text-anchor="middle" font-size="12" fill="var(--hm-muted)">10⁴</text> <text x="222.7" y="564" text-anchor="middle" font-size="12" fill="var(--hm-muted)">10⁵</text> <text x="371.4" y="564" text-anchor="middle" font-size="12" fill="var(--hm-muted)">10⁶</text> <text x="520.1" y="564" text-anchor="middle" font-size="12" fill="var(--hm-muted)">10⁷</text> <text x="668.8" y="564" text-anchor="middle" font-size="12" fill="var(--hm-muted)">10⁸</text> <text x="64" y="533.2" text-anchor="end" font-size="12" fill="var(--hm-muted)">10⁴</text> <text x="64" y="405.2" text-anchor="end" font-size="12" fill="var(--hm-muted)">10⁵</text> <text x="64" y="277.2" text-anchor="end" font-size="12" fill="var(--hm-muted)">10⁶</text> <text x="64" y="149.2" text-anchor="end" font-size="12" fill="var(--hm-muted)">10⁷</text> <text x="416" y="586" text-anchor="middle" font-size="13" fill="var(--hm-ink)">HAR<tspan baseline-shift="sub" font-size="10">savings</tspan> (quality-adjusted hours / year) →</text> <text x="20" y="286" text-anchor="middle" font-size="13" fill="var(--hm-ink)" transform="rotate(-90 20 286)">HAR<tspan baseline-shift="sub" font-size="10">risk</tspan> (quality-adjusted hours / year) →</text> <line x1="74.0" y1="529.2" x2="653.9" y2="30.0" stroke="var(--hm-muted)" stroke-width="1" stroke-dasharray="5 5" opacity="0.7"></line> <text x="200.4" y="394.8" font-size="11" fill="var(--hm-muted)" transform="rotate(-40 200.4 394.8)">risk_share = 0.5</text> <circle cx="91.84347826086959" cy="49.04000000000008" r="5" fill="var(--hm-c2)"></circle><text x="104.84347826086959" y="53.04000000000008" text-anchor="start" font-size="12" font-weight="600" fill="var(--hm-ink)">SECURE SUPPLY — risk-dominated</text> <circle cx="743.1304347826087" cy="514.96" r="5" fill="var(--hm-c1)"></circle><text x="730.1304347826087" y="518.96" text-anchor="end" font-size="12" font-weight="600" fill="var(--hm-ink)">NEGOTIATE — savings-dominated</text> <circle cx="743.1304347826087" cy="49.04000000000008" r="5" fill="var(--hm-c3)"></circle><text x="730.1304347826087" y="53.04000000000008" text-anchor="end" font-size="12" font-weight="600" fill="var(--hm-ink)">STRATEGIC — judgment call</text> <g class="pt">
+<title>
+Hip &amp; knee implants HAR_savings ≈ 10^8 h/yr · HAR_risk ≈ 10^4.5 h/yr risk_share ≈ 0.00 huge spend, notorious price dispersion; deep multi-vendor pool
+</title>
+<circle cx="668.8" cy="465.2" r="6" fill="var(--hm-c1)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="657.8" y="469.2" text-anchor="end" font-size="12" fill="var(--hm-ink)">Hip &amp; knee implants</text></g> <g class="pt">
+<title>
+Stents &amp; cardiac rhythm HAR_savings ≈ 10^7.5 h/yr · HAR_risk ≈ 10^5.5 h/yr risk_share ≈ 0.01 high-dollar devices, contract-tier dispersion; several vendors
+</title>
+<circle cx="594.4" cy="337.2" r="6" fill="var(--hm-c1)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="583.4" y="341.2" text-anchor="end" font-size="12" fill="var(--hm-ink)">Stents &amp; cardiac rhythm</text></g> <g class="pt">
+<title>
+Exam &amp; surgical gloves HAR_savings ≈ 10^6.8 h/yr · HAR_risk ≈ 10^5.2 h/yr risk_share ≈ 0.02 commodity volume; deep pool outside pandemic conditions
+</title>
+<circle cx="490.3" cy="375.6" r="6" fill="var(--hm-c1)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="501.3" y="379.6" text-anchor="start" font-size="12" fill="var(--hm-ink)">Exam &amp; surgical gloves</text></g> <g class="pt">
+<title>
+IV saline &amp; solutions HAR_savings ≈ 10^5.9 h/yr · HAR_risk ≈ 10^7.3 h/yr risk_share ≈ 0.96 2017 Baxter/Hurricane Maria shortage; gates most inpatient care
+</title>
+<circle cx="356.5" cy="106.8" r="6" fill="var(--hm-c2)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="345.5" y="107.8" text-anchor="end" font-size="12" fill="var(--hm-ink)">IV saline &amp; solutions</text></g> <g class="pt">
+<title>
+Iodinated contrast media HAR_savings ≈ 10^6.1 h/yr · HAR_risk ≈ 10^7.1 h/yr risk_share ≈ 0.91 2022 Shanghai lockdown shortage; gates CT-guided diagnosis
+</title>
+<circle cx="386.3" cy="132.4" r="6" fill="var(--hm-c2)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="397.3" y="142.4" text-anchor="start" font-size="12" fill="var(--hm-ink)">Iodinated contrast media</text></g> <g class="pt">
+<title>
+Blood culture bottles HAR_savings ≈ 10^5 h/yr · HAR_risk ≈ 10^6.8 h/yr risk_share ≈ 0.98 2024 supplier disruption; gates sepsis diagnosis
+</title>
+<circle cx="222.7" cy="170.8" r="6" fill="var(--hm-c2)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="233.7" y="164.8" text-anchor="start" font-size="12" fill="var(--hm-ink)">Blood culture bottles</text></g> <g class="pt">
+<title>
+Platinum chemotherapies HAR_savings ≈ 10^4.5 h/yr · HAR_risk ≈ 10^7 h/yr risk_share ≈ 1.00 2023 cisplatin/carboplatin shortage; curative-intent, few substitutes
+</title>
+<circle cx="148.3" cy="145.2" r="6" fill="var(--hm-c2)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="159.3" y="149.2" text-anchor="start" font-size="12" fill="var(--hm-ink)">Platinum chemotherapies</text></g> <g class="pt">
+<title>
+Heparin HAR_savings ≈ 10^5.5 h/yr · HAR_risk ≈ 10^6.5 h/yr risk_share ≈ 0.91 single raw-material origin; 2008 contamination crisis
+</title>
+<circle cx="297.0" cy="209.2" r="6" fill="var(--hm-c2)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="286.0" y="213.2" text-anchor="end" font-size="12" fill="var(--hm-ink)">Heparin</text></g> <g class="pt">
+<title>
+Dialysis consumables HAR_savings ≈ 10^6.3 h/yr · HAR_risk ≈ 10^6.5 h/yr risk_share ≈ 0.61 life-sustaining recurring therapy; concentrated supply
+</title>
+<circle cx="416.0" cy="209.2" r="6" fill="var(--hm-c3)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="405.0" y="205.2" text-anchor="end" font-size="12" fill="var(--hm-ink)">Dialysis consumables</text></g> <g class="pt">
+<title>
+Infusion pumps &amp; sets HAR_savings ≈ 10^6.5 h/yr · HAR_risk ≈ 10^6.2 h/yr risk_share ≈ 0.33 2022 pump/set shortages; moderate dispersion, moderate fragility
+</title>
+<circle cx="445.7" cy="247.6" r="6" fill="var(--hm-c3)" stroke="var(--hm-ring)" stroke-width="2"></circle><text x="456.7" y="255.6" text-anchor="start" font-size="12" fill="var(--hm-ink)">Infusion pumps &amp; sets</text></g>
+</svg>
+<p><em>The HAR map. Illustrative log-bin estimates from public anchors; axes in quality-adjusted hours per year. The negotiate band (lower right) is where procurement already lives; the secure-supply band (upper left) is what a spend ranking can’t see; and the strategic band between them is where the sensitivity-band flip detector earns its keep. Regenerate with <code>posts/_har_map_gen.py</code>.</em></p>
+</section>
+</section>
+<section id="closing-the-loop-the-analysts-are-in-the-metric-too" class="level2">
+<h2 class="anchored" data-anchor-id="closing-the-loop-the-analysts-are-in-the-metric-too">Closing the loop: the analysts are in the metric too</h2>
+<p>Here’s the part I find most satisfying. Analyst review time converts through the same exchange rate. At a loaded cost around $100/hour and v ≈ $11.40/hour:</p>
+<p><span class="math display">\[
+1 \text{ analyst hour} \;\approx\; 9 \text{ quality-adjusted health-hours}
+\]</span></p>
+<p>That’s a break-even. A review task is worth doing only if it’s expected to move about ten HAR-hours per analyst-hour spent. Which turns review-queue prioritization into:</p>
+<p><span class="math display">\[
+\mathrm{queue\_score} =
+\frac{E[\Delta\mathrm{HAR} \mid \text{review}]
+\times P(\text{action} \mid \text{review})
+\times \text{persistence (years)}}
+{\text{expected analyst-hours to review}}
+\]</span></p>
+<p><code>P(action | review)</code> — the probability a review actually changes anything — turns out to be the cheapest input in the whole framework: it’s estimable per queue type from the change logs of past review batches, which most teams are already keeping without realizing they’re logging a parameter. (Two accounting rules, both scars from review: the achievability haircut is applied once, inside HAR_savings — applying it again in queue_score squares it. And persistence isn’t optional garnish; without it the units of the score literally don’t resolve to the dimensionless ratio the break-even applies to.)</p>
+<p>You work down the queue and stop at the line. Everything below it is <strong>declined, not backlog</strong> — a deliberate judgment that those items aren’t worth their hours, recorded with the bound that justified declining. The success metric flips accordingly: not “% of queue reviewed” (which rewards padding the queue) but “% of available HAR captured at positive marginal return.”</p>
+<p>And once every work item is scored in the same currency, the queue stops being just for review tasks. A quarterly plan becomes one ranked list across three kinds of work: <strong>capture</strong> (reviews, negotiation support — linear in hours), <strong>generator repair</strong> (a schema or pipeline fix that moves an entire defect class at once — valued at the class, not the observed symptom, with near-permanent persistence; when the affected class is big, this quietly tops the queue), and <strong>measurement repair</strong> (fixes to HAR’s own inputs — these deliver no health directly, they <em>re-price the queue</em>, and their value is the misallocation they prevent: one unit-of-measure slip can fabricate a phantom eight-figure opportunity and burn the real hours spent chasing it). The three types denominate honestly in the same hours, but a plan should show the mix — a portfolio that’s 100% measurement repair is polishing the instrument and never playing it.</p>
+<p>This is the health-economics logic applied recursively: the analyst team is itself a health-producing intervention, funded until its marginal hour produces less than it costs. I don’t know a cleaner way to answer “how big should this team be?”</p>
+</section>
+<section id="the-gate" class="level2">
+<h2 class="anchored" data-anchor-id="the-gate">The gate</h2>
+<p>Everything above is design. Here’s the discipline that governs whether it gets built.</p>
+<p>The expensive parts of HAR are all in the risk channel — shortage base rates, hours anchors, the dependency graph. The cheap part, HAR_savings plus a crude three-tier risk column on the top 25 categories, is a few hours of work on data we already have. So the first computation is a falsification test: <strong>does the risk term ever move a rank?</strong> If HAR’s ordering merely reproduces the spend ordering at category grain, the risk channel adds no signal at that grain, and every downstream investment — graph, edges, base rates — is unjustified. Stop, keep the sharpened savings metric (it improves the existing deliverable on its own), and retest at finer grain before spending more.</p>
+<p>Two subtleties even in the cheap version, both inherited from traps above: the risk tiers must be assigned by asking <em>what does this product gate downstream</em> — not by device class, or saline gets tiered low and the gate is rigged against the motivating examples. And any category in active shortage needs the full state expectation rather than the additive form, or the arithmetic is invalid exactly where risk matters most.</p>
+<p>Running the falsification test before the build isn’t caution; it’s the same expected-value-of-information logic the metric applies to everything else, applied to itself.</p>
+</section>
+<section id="what-happens-when-everyone-plays-moneyball" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="what-happens-when-everyone-plays-moneyball">What happens when everyone plays Moneyball?</h2>
+<p>A fair question to ask of any metric: what breaks if the whole industry adopts it? Baseball already ran this experiment. When only Oakland used analytics, the inefficiency was an edge; twenty years later every front office has a quant department and the edge is gone — the market <em>learned the metric</em>. Something analogous happens to HAR at industry scale, and it’s worth walking through, because the failure modes are specific — and one of the outcomes is genuinely good.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — Moneyball.</strong> Michael Lewis’s <a href="https://en.wikipedia.org/wiki/Moneyball:_The_Art_of_Winning_an_Unfair_Game"><em>Moneyball</em></a> (2003): the 2002 A’s exploit the market’s mispricing of on-base percentage. Within a decade OBP was priced correctly league-wide and the edge was gone.</p>
+</div></div><p>The unifying observation is that HAR, like most analytics, is designed from the point of view of a <strong>price-taker</strong> — one buyer measuring a market it doesn’t move. Adopted industry-wide, buyers become <strong>price-makers</strong>, and the data the metric was calibrated on describes a world that no longer exists. Economists call this the Lucas critique, and it lands on each channel differently.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — the Lucas critique.</strong> <a href="https://en.wikipedia.org/wiki/Robert_Lucas_Jr.">Robert Lucas</a>, “Econometric Policy Evaluation: A Critique” (1976): models calibrated on historical behavior break when policy changes the incentives that generated the history — the <a href="https://en.wikipedia.org/wiki/Lucas_critique">Lucas critique</a>. It applies to every metric that becomes a policy.</p>
+</div></div><p><strong>The savings channel eats itself — gracefully.</strong> HAR_savings is measured against the cohort median. If everyone negotiates toward the median, the median falls, dispersion collapses, and HAR_savings → 0 across the industry. That’s not chaos; it’s the metric retiring its own savings channel once prices are efficient — the Moneyball ending. Every queue then becomes risk-dominated, which is arguably the correct end state: attention migrates from price transfers (zero-sum between buyer and supplier) to resilience (positive-sum).</p>
+<p><strong>Margin compression feeds the fragility the other channel measures.</strong> This is the serious one. Universally squeezing leverage-quadrant items toward replacement price is <em>the mechanism that created the fragile markets in this post’s opening paragraphs</em>. Saline was a dollar because everyone squeezed; thin-margin manufacturers underinvested and exited; the pool concentrated; a hurricane finished the job. HAR contains its own correction — risk_share ≈ 1 says <em>stop squeezing</em> — but the risk channel runs on lagging inputs (shortage lists record past disruptions; concentration indices describe current structure). The compression happens now; the warning arrives after the marginal supplier has already left. At scale, the metric prices fragility after it exists, not while it’s being manufactured.</p>
+<p><strong>Shared risk signals synchronize the panic.</strong> If every buyer reads the same public shortage data and follows the same secure-supply posture, then when disruption probability spikes, everyone stockpiles simultaneously — a bank run with a dashboard. Supply chain researchers know the amplification mechanism as the bullwhip effect, and a thousand HAR implementations flashing risk_share ≈ 1 during a shortage is a formalized, correlated version of it. The fix has to live in the metric: <em>buying insurance before the flood</em> (funding dual capacity, which adds supply) is stabilizing; <em>buying sandbags during it</em> (hoarding inventory, which is zero-sum in a crisis) is not. The secure-supply posture should damp, not amplify, when p is already elevated.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — the <a href="https://en.wikipedia.org/wiki/Bullwhip_effect">bullwhip effect</a>.</strong> Named inside Procter &amp; Gamble and formalized by Hau Lee, Padmanabhan, and Whang in “The Bullwhip Effect in Supply Chains” (<em>Sloan Management Review</em>, 1997): small demand fluctuations amplify as they propagate up a supply chain, because every tier over-orders in self-defense. Correlated stockpiling is the same physics with better software.</p>
+</div></div><p><strong>Monoculture turns idiosyncratic blind spots into correlated ones.</strong> The declined-with-bounds list is one of the framework’s best features for a single adopter and its most dangerous property at scale: if everyone uses the same pruning bound and the same public edge sources, everyone declines the <em>same</em> unindexed regions, and the next saline-class surprise hits the entire industry at once. Finance learned this with Value-at-Risk: a shared risk model plus a shared trigger converts individual gaps into systemic ones. Diversity of prioritization schemes is itself a hedge, and universal adoption removes it. Keeping idiosyncratic, private inputs in the bound isn’t a data-quality compromise — it’s herd immunity.</p>
+<p><strong>Vendors will Goodhart it — and the metric publishes the payoff.</strong> Suppliers already game benchmarks (bundles, unit-of-measure games, cohort-fragmenting contract terms); that just intensifies. The novel exposure is on the risk side: HAR tells vendors, in writing, that a product with risk_share ≈ 1 stops getting squeezed and starts earning continuity premiums. A vendor who engineers away substitutability — proprietary consumables, closed systems, kit lock-in — moves themselves into the quadrant where the buyer’s own framework says to pay them more. And a published utility function is a negotiating gift: if every buyer values hours at $100k/QALY, suppliers of risk-dominated products can price toward the health value rather than cost-plus. Being legible cuts both ways.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Aside — <a href="https://en.wikipedia.org/wiki/Goodhart%27s_law">Goodhart’s law</a>.</strong> <a href="https://en.wikipedia.org/wiki/Charles_Goodhart">Charles Goodhart</a>, then at the Bank of England, observed in 1975 that any statistical regularity collapses once used for control. The version everyone quotes — “when a measure becomes a target, it ceases to be a good measure” — is actually anthropologist <a href="https://en.wikipedia.org/wiki/Marilyn_Strathern">Marilyn Strathern</a>‘s 1997 paraphrase. Both careers’ worth of evidence applies here.</p>
+</div></div><p><strong>And one quiet ethical externality.</strong> QALY-weighted hours inherit the standard QALY criticisms: interventions for elderly, disabled, or palliative populations mechanically produce fewer quality-adjusted hours. One buyer using that as an attention heuristic is a judgment call. An industry using it is an allocation policy nobody voted on — the same categories fall below the attention line <em>everywhere</em>. If HAR spreads, that deserves a deliberate answer, not an inherited default.</p>
+<p>Against all of that, the stabilizing case — and I think it wins on net. Today, criticality is unpriced, so the market systematically underinvests in it: nobody pays extra for the reliable saline plant, so nobody builds one. A world where every hospital’s framework says “pay continuity premiums on risk-dominated categories” is a world with a revenue stream for redundant capacity — which is the fix shortage-policy people have been asking for for a decade, arrived at through procurement math instead of regulation. Universal adoption doesn’t cause chaos so much as it <em>forces the metric to grow up</em>: base rates treated as endogenous, an anti-run rule in the secure-supply posture, capacity-funding preferred over hoarding, and some deliberate diversity in what everyone declines to look at.</p>
+</section>
+<section id="what-id-tell-you-to-steal" class="level2">
+<h2 class="anchored" data-anchor-id="what-id-tell-you-to-steal">What I’d tell you to steal</h2>
+<p>If you run analytics anywhere that “strategic importance” keeps losing arguments to “measured dollars,” the transferable moves are:</p>
+<ol type="1">
+<li><strong>Denominate everything in the outcome unit</strong>, even coarsely. A shared unit turns meetings into arithmetic — and the places where the arithmetic is genuinely unstable turn out to be the places that deserved a meeting.</li>
+<li><strong>Measure against replacement, not zero.</strong> The decision-relevant counterfactual is “this vanishes and the market fills the slot.”</li>
+<li><strong>Let the two channels keep different error bars.</strong> Shared unit ≠ shared precision. Publish ranges for the fuzzy channel; ban decimal arguments there.</li>
+<li><strong>Put your own labor inside the metric.</strong> A break-even ratio for attention is the difference between a prioritization framework and a to-do list.</li>
+<li><strong>Falsify cheap before building expensive.</strong> The first computation should be the one that can tell you to stop.</li>
+<li><strong>Ask what breaks when everyone adopts it.</strong> A metric good enough to spread will eventually be the market it was calibrated on. Design for the price-maker case before you’re in it.</li>
+</ol>
+<p>The saline bag is still a dollar. What it was never worth is a dollar’s worth of attention.</p>
+<hr>
+<p><em>HAR is joint design work with my colleagues at Curvo, where we build supply chain analytics for hospitals. All dollar-to-health conversions in this post are valuations at the standard cost-effectiveness threshold, with stated sensitivity — not claims about health produced.</em></p>
+
+
+</section>
+
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.jjd\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

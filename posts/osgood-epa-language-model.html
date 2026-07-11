@@ -87,6 +87,24 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 </script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(images/osgood_og.png);
+background-size: cover;
+      }
+</style>
 
 
 <link rel="stylesheet" href="../style.css">
@@ -278,7 +296,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -334,7 +352,46 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">A 1957 Theory of Meaning, Hiding in a Language Model</h1>
+                  <div>
+        <div class="description">
+          Charles Osgood found that affective meaning collapses to three universal dimensions—Evaluation, Potency, Activity. A small modern language model rediscovers them, keeps them orthogonal, and carries them across languages—without ever being told they exist.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">machine learning</div>
+                <div class="quarto-category">interpretability</div>
+                <div class="quarto-category">nlp</div>
+                <div class="quarto-category">linguistics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Justin Donaldson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">June 20, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <nav id="TOC" role="doc-toc" class="toc-active">
@@ -343,7 +400,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
   <ul>
   <li><a href="#how-to-ask-a-network-what-it-thinks-strong-means" id="toc-how-to-ask-a-network-what-it-thinks-strong-means" class="nav-link active" data-scroll-target="#how-to-ask-a-network-what-it-thinks-strong-means">How to ask a network what it thinks “strong” means</a></li>
   <li><a href="#the-three-factors-come-out-orthogonal" id="toc-the-three-factors-come-out-orthogonal" class="nav-link" data-scroll-target="#the-three-factors-come-out-orthogonal">The three factors come out orthogonal</a></li>
-  <li><a href="#but-the-three-axes-are-not-equal-citizens" id="toc-but-the-three-axes-are-not-equal-citizens" class="nav-link" data-scroll-target="#but-the-three-axes-are-not-equal-citizens">But the three axes are not equal citizens</a></li>
+  <li><a href="#the-three-axes-are-not-equal-citizens" id="toc-the-three-axes-are-not-equal-citizens" class="nav-link" data-scroll-target="#the-three-axes-are-not-equal-citizens">The three axes are not equal citizens</a></li>
   <li><a href="#the-structure-is-stable-and-it-lives-in-the-middle-of-the-network" id="toc-the-structure-is-stable-and-it-lives-in-the-middle-of-the-network" class="nav-link" data-scroll-target="#the-structure-is-stable-and-it-lives-in-the-middle-of-the-network">The structure is stable, and it lives in the middle of the network</a></li>
   <li><a href="#but-dont-ordinary-word-embeddings-already-do-this" id="toc-but-dont-ordinary-word-embeddings-already-do-this" class="nav-link" data-scroll-target="#but-dont-ordinary-word-embeddings-already-do-this">But don’t ordinary word embeddings already do this?</a></li>
   <li><a href="#the-axes-arent-just-readabletheyre-a-steering-wheel" id="toc-the-axes-arent-just-readabletheyre-a-steering-wheel" class="nav-link" data-scroll-target="#the-axes-arent-just-readabletheyre-a-steering-wheel">The axes aren’t just readable—they’re a steering wheel</a></li>
@@ -357,49 +414,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content quarto-banner-title-block page-columns page-full" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">A 1957 Theory of Meaning, Hiding in a Language Model</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">machine learning</div>
-    <div class="quarto-category">interpretability</div>
-    <div class="quarto-category">nlp</div>
-    <div class="quarto-category">linguistics</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    Charles Osgood found that affective meaning collapses to three universal dimensions—Evaluation, Potency, Activity. A small modern language model rediscovers them, keeps them orthogonal, and carries them across languages—without ever being told they exist.
-  </div>
-</div>
 
 
-<div class="quarto-title-meta">
-
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Justin Donaldson </p>
-          </div>
-  </div>
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 20, 2026</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <blockquote class="blockquote">
@@ -438,11 +457,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <div class="text-center">
 <p><em>Each word positioned by its three Osgood projections. Drag to rotate, scroll to zoom. Words of a given factor stretch out along <strong>that factor’s arm</strong> and stay near zero on the other two — three orthogonal spokes.</em></p>
 </div>
-<p>Rotate it and the three groups separate into near-perpendicular arms: Evaluation runs along one axis, Potency along another, Activity along the third, each clustering near zero on the others. You are looking at Osgood’s independent-factors claim rendered as geometry. Put numbers on it and the cosine between the Evaluation and Potency directions is <strong>0.00</strong>, Evaluation–Activity <strong>0.10</strong>, Potency–Activity <strong>0.21</strong>. The model has, on its own, carved meaning into three nearly-orthogonal affective axes.</p>
+<p>You are looking at Osgood’s independent-factors claim rendered as geometry: Evaluation along one arm, Potency along another, Activity along the third, each near zero on the others. Put numbers on it and the cosine between the Evaluation and Potency directions is <strong>0.00</strong>, Evaluation–Activity <strong>0.10</strong>, Potency–Activity <strong>0.21</strong>. The model has, on its own, carved meaning into three nearly-orthogonal affective axes.</p>
 </section>
-<section id="but-the-three-axes-are-not-equal-citizens" class="level2">
-<h2 class="anchored" data-anchor-id="but-the-three-axes-are-not-equal-citizens">But the three axes are not equal citizens</h2>
-<p>That clean story has a wrinkle, and it is worth being honest about it. The three factors are <em>not</em> encoded with equal fidelity.</p>
+<section id="the-three-axes-are-not-equal-citizens" class="level2">
+<h2 class="anchored" data-anchor-id="the-three-axes-are-not-equal-citizens">The three axes are not equal citizens</h2>
+<p>That answers the first of our three questions: yes, independent. The other two—do the axes <em>generalize</em> to words they never saw, and do they <em>cross languages</em>?—both earn a yes, but not an even one. The three factors are <em>not</em> encoded with equal fidelity.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/osgood_quality.png" class="img-fluid figure-img"></p>
@@ -473,7 +492,7 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <figcaption>Static and contextual embeddings recover E–P–A about equally well <em>in English</em>. The difference is the orange bars—cross-lingual transfer—which a monolingual static embedding cannot have at all.</figcaption>
 </figure>
 </div>
-<p>So what does the language model actually add? One thing, and it’s the thing a static embedding can never have: <strong>the axes cross languages.</strong> fastText’s English space and its Spanish space are unrelated coordinate systems—there is no “fit in English, read in Spanish.” The contextual model has a single shared space, so an Evaluation direction learned from English pole words reads <em>bueno</em> and <em>malo</em>, <em>gut</em> and <em>schlecht</em>, at 0.6–0.9. The orange bars above have no gray counterpart, because a monolingual embedding has nothing to put there.</p>
+<p>So what does the language model actually add? One thing—but it’s the thing a static embedding can never have: <strong>the axes cross languages.</strong> That transfer we kept measuring along the way—0.6–0.9 reading from English into Spanish, French, and German—has no static counterpart at all. fastText’s English space and its Spanish space are unrelated coordinate systems; there is no “fit in English, read in Spanish.” The contextual model has a single shared space, so an Evaluation direction learned from English pole words also reads <em>bueno</em>, <em>bon</em>, and <em>gut</em>. The orange bars above have no gray counterpart, because a monolingual embedding has nothing to put there.</p>
 <p>That is the honest shape of the result. The model didn’t <em>invent</em> Osgood’s factors—distributional semantics already carries them. What it contributes is a <strong>universal</strong> version: one affective coordinate system that survives the jump between languages.</p>
 </section>
 <section id="the-axes-arent-just-readabletheyre-a-steering-wheel" class="level2">
@@ -488,11 +507,11 @@ gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
 <section id="what-to-make-of-it" class="level2">
 <h2 class="anchored" data-anchor-id="what-to-make-of-it">What to make of it</h2>
 <p>It would be easy to over-read this, so let me keep the claims sized correctly. This is <strong>one</strong> small model. The cross-lingual evidence rests on hand-built word lists across four languages I happen to read. Potency is genuinely rough. And this is <em>connotative affect</em>—the easy, emotionally-laden corner of meaning—not the hard compositional stuff.</p>
-<p>But within those bounds, the finding is clean and, I think, a little wonderful: a network trained only to predict text reconstructs a sixty-year-old, cross-culturally-validated theory of affective meaning—three factors, near-orthogonal, semantic enough to survive translation—as a low-dimensional coordinate system you can read off its activations and steer with. Osgood ran his study with paper questionnaires across the globe to triangulate the shape of meaning. The model triangulated the same shape from the shape of language itself.</p>
+<p>But within those bounds, the finding is clean and, I think, a little wonderful: a network trained only to predict text reconstructs a seventy-year-old, cross-culturally-validated theory of affective meaning—three factors, near-orthogonal, and (unlike a plain word embedding) semantic enough to survive translation—as a low-dimensional coordinate system you can read off its activations and steer with. Osgood ran his study with paper questionnaires across the globe to triangulate the shape of meaning. The model triangulated the same shape from the shape of language itself.</p>
 </section>
 <section id="whats-next-epa-modulated-embeddings" class="level2">
 <h2 class="anchored" data-anchor-id="whats-next-epa-modulated-embeddings">What’s next: EPA-modulated embeddings</h2>
-<p>The cross-lingual version isn’t only something that <em>emerges</em> inside big models — you can build it on purpose. Put the same E–P–A “head” on top of an aligned multilingual encoder (we prototyped it with <a href="https://huggingface.co/BAAI/bge-m3">BGE-M3</a>) and the affective axes transfer cleanly out of the box: Evaluation, Potency, and Activity all land at <strong>0.9–1.0</strong> reading from English into Spanish, French, and German, with no alignment step — and it even cleans up Potency, the factor the smaller model found rough.</p>
+<p>The cross-lingual version isn’t only something that <em>emerges</em> inside a next-token model — you can build it on purpose. Take the same recipe—the three bipolar directions, fit from pole words—as a small linear <em>head</em>, and drop it on a multilingual encoder built for cross-lingual retrieval (we prototyped it with <a href="https://huggingface.co/BAAI/bge-m3">BGE-M3</a>). The affective axes transfer cleanly out of the box: Evaluation, Potency, and Activity all land at <strong>0.9–1.0</strong> reading from English into Spanish, French, and German, with no alignment step—and it even cleans up Potency, the factor the smaller model found rough.</p>
 <p>That’s the seed of something we’re going to pursue: <strong>EPA-modulated embeddings</strong> — vectors that carry an explicit, interpretable, cross-lingual affective basis you can read off <em>and</em> steer along. We’re going to look at releasing them built with exactly this technique. More soon.</p>
 <hr>
 <p><em>Methods and code are part of <a href="https://github.com/jdonaldson/turnstyle">turnstyle</a>; the figures here are computed from cached SmolLM2-1.7B activations over a four-language E–P–A pole-word lexicon. The broader idea—reading and writing meaning along verified, theory-grounded axes—I’ve been calling a “semantic frame.”</em></p>
