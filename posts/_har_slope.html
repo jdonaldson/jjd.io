@@ -1,0 +1,96 @@
+<style>
+.har-slope { --hs-ink:#073642; --hs-muted:#657b83; --hs-grid:#e4dcc3; --hs-ring:#fdf6e3;
+             --hs-c1:#2a78d6; --hs-c2:#1baf7a; --hs-c3:#c98500; }
+.quarto-dark .har-slope, [data-bs-theme="dark"] .har-slope {
+  --hs-ink:#eee8d5; --hs-muted:#93a1a1; --hs-grid:#0f4a5a; --hs-ring:#073642;
+  --hs-c1:#3987e5; --hs-c2:#199e70; --hs-c3:#c98500; }
+.har-slope text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.har-slope .row { opacity: 0.9; }
+.har-slope .row:hover { opacity: 1; }
+.har-slope .row:hover line { stroke-width: 3.5; }
+</style>
+
+<svg class="har-slope" viewBox="0 0 820 560" role="img" aria-label="Slopegraph: product families re-ranked from spend order to HAR order" style="max-width:100%;height:auto;">
+<text x="262" y="40" text-anchor="end" font-size="13" font-weight="700" fill="var(--hs-ink)">RANKED BY SPEND</text>
+<text x="262" y="56" text-anchor="end" font-size="11" fill="var(--hs-muted)">what procurement sees</text>
+<text x="558" y="40" text-anchor="start" font-size="13" font-weight="700" fill="var(--hs-ink)">RANKED BY HAR</text>
+<text x="558" y="56" text-anchor="start" font-size="11" fill="var(--hs-muted)">what HAR surfaces</text>
+<line x1="262" y1="68" x2="262" y2="540" stroke="var(--hs-grid)" stroke-width="1"/>
+<line x1="558" y1="68" x2="558" y2="540" stroke="var(--hs-grid)" stroke-width="1"/>
+<g class="row"><title>Hip & knee implants: spend #1 → HAR #1</title>
+<line x1="262" y1="74.0" x2="558" y2="74.0" stroke="var(--hs-c1)" stroke-width="2"/>
+<circle cx="262" cy="74.0" r="5" fill="var(--hs-c1)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="74.0" r="5" fill="var(--hs-c1)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="78.0" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">1. Hip & knee implants</text>
+<text x="572" y="78.0" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">1. Hip & knee implants</text>
+</g>
+<g class="row"><title>Stents & cardiac rhythm devices: spend #2 → HAR #2</title>
+<line x1="262" y1="125.1" x2="558" y2="125.1" stroke="var(--hs-c1)" stroke-width="2"/>
+<circle cx="262" cy="125.1" r="5" fill="var(--hs-c1)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="125.1" r="5" fill="var(--hs-c1)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="129.1" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">2. Stents & cardiac rhythm devices</text>
+<text x="572" y="129.1" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">2. Stents & cardiac rhythm devices</text>
+</g>
+<g class="row"><title>Exam & surgical gloves: spend #3 → HAR #6</title>
+<line x1="262" y1="176.2" x2="558" y2="329.6" stroke="var(--hs-c1)" stroke-width="2"/>
+<circle cx="262" cy="176.2" r="5" fill="var(--hs-c1)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="329.6" r="5" fill="var(--hs-c1)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="180.2" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">3. Exam & surgical gloves</text>
+<text x="572" y="333.6" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">6. Exam & surgical gloves</text>
+</g>
+<g class="row"><title>Infusion pumps & sets: spend #4 → HAR #9</title>
+<line x1="262" y1="227.3" x2="558" y2="482.9" stroke="var(--hs-c3)" stroke-width="2"/>
+<circle cx="262" cy="227.3" r="5" fill="var(--hs-c3)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="482.9" r="5" fill="var(--hs-c3)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="231.3" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">4. Infusion pumps & sets</text>
+<text x="572" y="486.9" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">9. Infusion pumps & sets</text>
+</g>
+<g class="row"><title>Dialysis consumables: spend #5 → HAR #8</title>
+<line x1="262" y1="278.4" x2="558" y2="431.8" stroke="var(--hs-c3)" stroke-width="2"/>
+<circle cx="262" cy="278.4" r="5" fill="var(--hs-c3)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="431.8" r="5" fill="var(--hs-c3)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="282.4" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">5. Dialysis consumables</text>
+<text x="572" y="435.8" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">8. Dialysis consumables</text>
+</g>
+<g class="row"><title>Iodinated contrast media: spend #6 → HAR #4</title>
+<line x1="262" y1="329.6" x2="558" y2="227.3" stroke="var(--hs-c2)" stroke-width="2"/>
+<circle cx="262" cy="329.6" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="227.3" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="333.6" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">6. Iodinated contrast media</text>
+<text x="572" y="231.3" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">4. Iodinated contrast media</text>
+</g>
+<g class="row"><title>IV saline & solutions: spend #7 → HAR #3</title>
+<line x1="262" y1="380.7" x2="558" y2="176.2" stroke="var(--hs-c2)" stroke-width="2"/>
+<circle cx="262" cy="380.7" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="176.2" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="384.7" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">7. IV saline & solutions</text>
+<text x="572" y="180.2" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">3. IV saline & solutions</text>
+</g>
+<g class="row"><title>Heparin: spend #8 → HAR #10</title>
+<line x1="262" y1="431.8" x2="558" y2="534.0" stroke="var(--hs-c2)" stroke-width="2"/>
+<circle cx="262" cy="431.8" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="534.0" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="435.8" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">8. Heparin</text>
+<text x="572" y="538.0" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">10. Heparin</text>
+</g>
+<g class="row"><title>Blood culture bottles: spend #9 → HAR #7</title>
+<line x1="262" y1="482.9" x2="558" y2="380.7" stroke="var(--hs-c2)" stroke-width="2"/>
+<circle cx="262" cy="482.9" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="380.7" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="486.9" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">9. Blood culture bottles</text>
+<text x="572" y="384.7" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">7. Blood culture bottles</text>
+</g>
+<g class="row"><title>Platinum chemotherapies: spend #10 → HAR #5</title>
+<line x1="262" y1="534.0" x2="558" y2="278.4" stroke="var(--hs-c2)" stroke-width="2"/>
+<circle cx="262" cy="534.0" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<circle cx="558" cy="278.4" r="5" fill="var(--hs-c2)" stroke="var(--hs-ring)" stroke-width="1.5"/>
+<text x="248" y="538.0" text-anchor="end" font-size="12.5" fill="var(--hs-ink)">10. Platinum chemotherapies</text>
+<text x="572" y="282.4" text-anchor="start" font-size="12.5" fill="var(--hs-ink)">5. Platinum chemotherapies</text>
+</g>
+<circle cx="256" cy="552" r="5" fill="var(--hs-c2)"/>
+<text x="265" y="556" font-size="11.5" fill="var(--hs-muted)">risk-dominated</text>
+<circle cx="382.4" cy="552" r="5" fill="var(--hs-c1)"/>
+<text x="391.4" y="556" font-size="11.5" fill="var(--hs-muted)">savings-dominated</text>
+<circle cx="528.5999999999999" cy="552" r="5" fill="var(--hs-c3)"/>
+<text x="537.5999999999999" y="556" font-size="11.5" fill="var(--hs-muted)">strategic</text>
+</svg>
