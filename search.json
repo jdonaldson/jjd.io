@@ -329,6 +329,20 @@
     "text": "What this is and isn’t\nThis is not a claim that a 1.7B model beats GPT-scale models on reasoning. The giants run chain-of-thought and answer in free text on tasks Turnstyle hasn’t parsed; the comparison isn’t apples-to-apples and I’m not going to pretend it is. BBH here is a test harness, not the objective — it provides ground-truth labels and structural variety to validate tools that are supposed to work beyond BBH. The arithmetic solver, the bracket solver, the polarity probe, the date solver: each is built to generalize past the 250 examples it was checked on, and several are deliberately stripped of their BBH-specific scaffolding and re-tested on the bare capability.\nWhat it is: evidence that a large fraction of “small models can’t reason” is actually “small models can’t commit.” The capability is frequently present — as a computable structure in the prompt, or as a recognizable pattern in the activations — and a thin, cheap, training-free layer that parses, proves, recognizes, or honestly abstains can surface most of it. No new parameters. No fine-tuning. Just refusing to let a 1.7B model guess when it could instead know.\nYou can poke at it yourself — the bare model and the wrapped model, side by side, with the worked proof for each answer — on the live demo. Try the arithmetic expression first. Watch the left pane confidently produce a wrong number, and the right pane prove the right one.\n\nCode & data: github.com/jdonaldson/turnstyle. The baseline and symbolic per-task numbers come from the swollm 3-shot evaluation (results/v13/bbh_full.json); the movie/salient recognition probes and the ~89.5% honest aggregate are from turnstyle’s native dispatch. Figures regenerate from experiments/blog_bbh_figs.py."
   },
   {
+    "objectID": "viz/index.html",
+    "href": "viz/index.html",
+    "title": "visualizations",
+    "section": "",
+    "text": "Interactive experiments that don’t fit in a blog post. Each one is a single self-contained page — no build step, no dependencies, everything runs in your browser.\n© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers."
+  },
+  {
+    "objectID": "viz/index.html#murmur-emergence-on-a-compute-envelope",
+    "href": "viz/index.html#murmur-emergence-on-a-compute-envelope",
+    "title": "visualizations",
+    "section": "MURMUR ✦ — emergence on a compute envelope",
+    "text": "MURMUR ✦ — emergence on a compute envelope\nA flocking lab with one hard constraint: a fixed compute budget, split between how many agents flock and how much each one perceives. Trade minds for bodies and watch where order lives — the phase readout tracks whether the swarm is in chaos, flocking, or frozen crystal, and a click drops a jammer into the field.\nOpen fullscreen →"
+  },
+  {
     "objectID": "cv.html",
     "href": "cv.html",
     "title": "Curriculum Vitae",
