@@ -29,6 +29,8 @@ website:
     left:
       - text: "blog"
         href: index.qmd
+      - text: "viz"
+        href: viz/index.qmd
       - text: "about"
         href: about.qmd
       - text: "cv"
@@ -51,3 +53,4 @@ execute:
 
 resources:
   - CNAME
+  - viz/*.html

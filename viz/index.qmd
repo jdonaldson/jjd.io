@@ -1,0 +1,18 @@
+---
+title: "visualizations"
+toc: false
+---
+
+Interactive experiments that don't fit in a blog post. Each one is a single self-contained page — no build step, no dependencies, everything runs in your browser.
+
+## MURMUR ✦ — emergence on a compute envelope
+
+A flocking lab with one hard constraint: a fixed compute budget, split between *how many* agents flock and *how much* each one perceives. Trade minds for bodies and watch where order lives — the phase readout tracks whether the swarm is in chaos, flocking, or frozen crystal, and a click drops a jammer into the field.
+
+[**Open fullscreen →**](murmur.html){target="_blank"}
+
+```{=html}
+<iframe src="murmur.html" title="MURMUR — emergence on a compute envelope"
+        style="width:100%; aspect-ratio:16/10; border:1px solid rgba(128,128,128,0.35); border-radius:12px;"
+        loading="lazy"></iframe>
+```
