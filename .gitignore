@@ -9,7 +9,14 @@ _extensions
 
 .DS_Store
 _site
+_slides
 site_libs
 .ipynb_checkpoints/
 
 **/*.quarto_ipynb
+
+.resume/
+
+# large public datasets (FEMA NRI, OpenFEMA) — never commit
+NRI_Table_CensusTracts.zip
+data/climate/
