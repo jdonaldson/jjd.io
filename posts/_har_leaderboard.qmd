@@ -1,0 +1,14 @@
+| # | Product family | HAR~savings~ (h/yr) | HAR~risk~ (h/yr) | risk_share | Posture |
+|--:|---|---:|---:|---:|---|
+| 1 | Hip & knee implants | 10⁸ | 10⁴·⁵ | ≈ 0 | Negotiate |
+| 2 | Stents & cardiac rhythm devices | 10⁷·⁵ | 10⁵·⁵ | 0.01 | Negotiate |
+| 3 | IV saline & solutions | 10⁵·⁹ | 10⁷·³ | 0.96 | Secure supply |
+| 4 | Iodinated contrast media | 10⁶·¹ | 10⁷·¹ | 0.91 | Secure supply |
+| 5 | Platinum chemotherapies | 10⁴·⁵ | 10⁷ | ≈ 1 | Secure supply |
+| 6 | Exam & surgical gloves | 10⁶·⁸ | 10⁵·² | 0.02 | Negotiate |
+| 7 | Blood culture bottles | 10⁵ | 10⁶·⁸ | 0.98 | Secure supply |
+| 8 | Dialysis consumables | 10⁶·³ | 10⁶·⁵ | 0.61 | **Strategic** |
+| 9 | Infusion pumps & sets | 10⁶·⁵ | 10⁶·² | 0.33 | **Strategic** |
+| 10 | Heparin | 10⁵·⁵ | 10⁶·⁵ | 0.91 | Secure supply |
+
+: Illustrative, order-of-magnitude, US national scale. Sorted by total HAR. {tbl-colwidths="[4,30,18,17,13,18]"}

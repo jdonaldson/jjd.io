@@ -1,0 +1,116 @@
+/*-- scss:defaults --*/
+
+// Curvo Brand Guidelines v1.0 (March 2026) — token source: work/reference.md
+$curvo-dark-gray: #333B42;
+$curvo-primary-blue: #00ACFF;
+$curvo-midnight: #162E63;
+$curvo-blue: #2164C4;
+$curvo-light-blue: #69C6FF;
+$curvo-orange: #ED7845;
+$curvo-yellow: #FFC534;
+$curvo-newspaper: #FCF7F4;
+$curvo-slate: #5B6976;
+$curvo-light-gray: #D9DDE0;
+
+$font-family-sans-serif: "Poppins", -apple-system, "Segoe UI", sans-serif;
+$presentation-heading-font: "Poppins", sans-serif;
+$presentation-heading-color: $curvo-midnight;
+$presentation-heading-font-weight: 600; // Poppins SemiBold, per guidelines p20
+$presentation-font-size-root: 30px;
+$presentation-h2-font-size: 1.35em;
+
+$body-bg: $curvo-newspaper;
+$body-color: $curvo-dark-gray;
+$link-color: $curvo-blue;
+$code-color: $curvo-midnight;
+
+/*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Serif:ital,wght@0,300;0,400&display=swap');
+
+.reveal .slides {
+  text-align: left;
+}
+
+// Body copy = Poppins Medium per guidelines p20
+.reveal p, .reveal li {
+  font-weight: 500;
+}
+.reveal strong { font-weight: 600; color: $curvo-midnight; }
+
+// Eyebrow kicker above headlines
+.reveal .eyebrow {
+  display: block;
+  font-size: 0.5em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $curvo-blue;
+  margin-bottom: 0.4em;
+}
+
+// Roboto Serif Light = secondary accent (guidelines p20) → blockquotes
+.reveal blockquote {
+  font-family: "Roboto Serif", Georgia, serif;
+  font-weight: 300;
+  font-size: 1.05em;
+  color: $curvo-midnight;
+  border-left: 4px solid $curvo-primary-blue;
+  padding: 0.3em 0 0.3em 0.7em;
+  margin: 0.6em 0;
+  background: none;
+  box-shadow: none;
+}
+
+// Tables
+.reveal table {
+  font-size: 0.72em;
+  border-collapse: collapse;
+}
+.reveal table th {
+  border-bottom: 2px solid $curvo-blue;
+  color: $curvo-slate;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 0.05em;
+}
+.reveal table td { border-bottom: 1px solid $curvo-light-gray; }
+
+// Dark (midnight) slides — revealjs auto-adds .has-dark-background
+.reveal .slide.has-dark-background,
+.reveal .has-dark-background {
+  h1, h2, h3, strong { color: #fff; }
+  p, li { color: rgba(234, 241, 255, 0.92); }
+  blockquote { color: #fff; border-left-color: $curvo-primary-blue; }
+  .eyebrow { color: $curvo-light-blue; }
+  // let explicit inline accent colors win over the white-strong rule
+  span[style*="color"], span[style*="color"] strong { color: inherit; }
+}
+
+// Title slide
+#title-slide {
+  text-align: left;
+  .title {
+    color: $curvo-midnight;
+    font-weight: 700;
+    font-size: 2.2em;
+    border-bottom: 4px solid $curvo-primary-blue;
+    padding-bottom: 0.2em;
+    display: inline-block;
+  }
+  .subtitle { color: $curvo-slate; font-size: 1.1em; margin-top: 0.8em; }
+  .quarto-title-author-name, .date { color: $curvo-slate; font-size: 0.65em; }
+}
+
+// Closing slide: center the quote block
+.reveal .closing {
+  p, blockquote { margin-top: 0.8em; }
+}
+
+// Footer + slide numbers
+.reveal .footer { color: $curvo-slate; font-size: 16px; }
+.reveal .slide-number { color: $curvo-slate; font-size: 14px; }
+
+// Math sizing
+.reveal .MathJax { font-size: 0.95em !important; }

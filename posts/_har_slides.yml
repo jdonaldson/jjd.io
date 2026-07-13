@@ -1,0 +1,18 @@
+# Slide-render config for hours_above_replacement.qmd (revealjs only).
+# The site build never reads this file (underscore prefix = ignored by project render).
+# Render via `make slides` from the repo root.
+subtitle: "One metric for savings opportunity and supply risk — in quality-adjusted hours"
+format:
+  revealjs:
+    theme: [default, _curvo_slides.scss]
+    width: 1280
+    height: 720
+    margin: 0.08
+    center: false
+    transition: none
+    slide-number: c/t
+    footer: "curvo · Better Starts Here"
+    embed-resources: true
+    toc: false
+    title-block-banner: false
+    image: ""
