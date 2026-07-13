@@ -26,5 +26,6 @@ toc: false
 I'm **Justin Donaldson** — an HCI / ML scientist and engineer. I write here about
 machine learning, model interpretability, and turning complex things into
 something you can see. Browse the posts below, explore the live
-[visualizations](viz/index.qmd) — including [STARLINGS](viz/boids.html), a 3D
-murmuration in WebAssembly — or read more [about me](about.qmd) and my [CV](cv.qmd).
+[visualizations](viz/index.qmd) — including
+[MURMURATION](https://jdonaldson.github.io/murmuration/), 40,000 starlings in
+WebAssembly — or read more [about me](about.qmd) and my [CV](cv.qmd).

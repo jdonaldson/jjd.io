@@ -5,19 +5,19 @@ toc: false
 
 Interactive experiments that don't fit in a blog post. Each one is a single self-contained page — no build step, no dependencies, everything runs in your browser. The previews below are live, running a lightweight fraction of the full simulation — click one to open the real thing.
 
-## STARLINGS ✦ — 3D murmuration
+## MURMURATION ✦ — 40,000 starlings over a hillside
 
-Actual birds: seven-neighbor topological flocking in three dimensions, a Rust simulation compiled to WebAssembly, drawn as the silhouettes you'd see at dusk. A falcon works the flock — the folds and waves are the flock answering it. Drag to orbit, scroll to zoom.
+Actual birds: seven-neighbor topological flocking in three dimensions, a Rust simulation compiled to WebAssembly — 40,000 of them, rendered over terrain at dusk, with a falcon working the flock. The live preview below is the light build: the same engine, a hundred-odd silhouettes, one self-contained page. Click through for the full flock.
 
 ```{=html}
-<a href="boids.html" target="_blank" aria-label="Open STARLINGS fullscreen" style="display:block; text-decoration:none;">
-<iframe src="boids.html?lite" title="STARLINGS — live preview"
+<a href="https://jdonaldson.github.io/murmuration/" target="_blank" aria-label="Open MURMURATION" style="display:block; text-decoration:none;">
+<iframe src="boids.html?lite" title="MURMURATION — live preview (light build)"
         style="width:100%; aspect-ratio:16/9; border:1px solid rgba(128,128,128,0.35); border-radius:12px; pointer-events:none;"
         loading="lazy" tabindex="-1"></iframe>
 </a>
 ```
 
-[**Open fullscreen →**](boids.html){target="_blank"}
+[**Open MURMURATION — the full 40,000 →**](https://jdonaldson.github.io/murmuration/){target="_blank"} · [light build](boids.html){target="_blank"}
 
 ## MURMUR ✦ — emergence on a compute envelope
 
