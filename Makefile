@@ -1,12 +1,15 @@
 # jjd.io build helpers
 
 # Curvo-branded slide deck rendered from the HAR post's revealjs-conditional
-# content. The site build (GitHub Actions `quarto render`) never re-renders this;
-# slide config lives in posts/_har_slides.yml + posts/_curvo_slides.scss.
-# Renders self-contained to _slides/, then copies the deck to a committed path
-# (posts/hours_above_replacement-slides.html) that CI publishes verbatim via the
-# `resources:` glob in _quarto.yml — that committed copy is what the post links to.
-# Re-run `make slides` and commit the result whenever the deck content changes.
+# content; slide config lives in posts/_har_slides.yml + posts/_curvo_slides.scss.
+# Renders self-contained to _slides/, then copies the deck to
+# posts/hours_above_replacement-slides.html, which _quarto.yml's `resources:`
+# glob publishes verbatim — that copy is what the post links to.
+#
+# The deck output is gitignored, NOT committed: CI (.github/workflows/main.yml)
+# runs this target on a cache miss, keyed on a hash of the deck's inputs, so it
+# only re-renders when the content actually changes. Run `make slides` locally to
+# preview; no need to commit the result.
 .PHONY: slides
 slides:
 	quarto render posts/hours_above_replacement.qmd --to revealjs \

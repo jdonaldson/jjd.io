@@ -29,6 +29,20 @@ jobs:
         run: |
           sudo python3 -m pip install WeasyPrint
 
+      # HAR revealjs deck: generated (5.4MB, self-contained), not committed.
+      # Cache it keyed on a hash of every input that changes the deck, so it only
+      # re-renders when one of those inputs actually changes (avoids straining CI).
+      - name: Cache HAR slide deck
+        id: har-slides-cache
+        uses: actions/cache@v4
+        with:
+          path: posts/hours_above_replacement-slides.html
+          key: har-slides-${{ hashFiles('posts/hours_above_replacement.qmd', 'posts/_har_*', 'posts/_curvo_slides.scss', 'posts/images/curvo_arcs.svg', 'posts/images/curvo_logo_w.png', 'Makefile') }}
+
+      - name: Render HAR slide deck (on cache miss)
+        if: steps.har-slides-cache.outputs.cache-hit != 'true'
+        run: make slides
+
       # add software dependencies here and any libraries
 
       # From https://github.com/actions/setup-python
