@@ -2,6 +2,12 @@
 # The site build never reads this file (underscore prefix = ignored by project render).
 # Render via `make slides` from the repo root.
 subtitle: "One metric for savings opportunity and supply risk — in quality-adjusted hours"
+title-slide-attributes:
+  data-background-color: "#162E63"
+  data-background-image: images/curvo_arcs.svg
+  data-background-size: 42%
+  data-background-position: right -12% center
+  data-background-opacity: "0.9"
 format:
   revealjs:
     theme: [default, _curvo_slides.scss]

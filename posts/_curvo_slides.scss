@@ -1,6 +1,7 @@
 /*-- scss:defaults --*/
 
-// Curvo Brand Guidelines v1.0 (March 2026) — token source: work/reference.md
+// Curvo Brand Guidelines v1.0 (March 2026) — tokens: work/reference.md,
+// graphic language: brand_assets/Curvo Brand Guidelines.pdf pp. 13–26.
 $curvo-dark-gray: #333B42;
 $curvo-primary-blue: #00ACFF;
 $curvo-midnight: #162E63;
@@ -8,6 +9,7 @@ $curvo-blue: #2164C4;
 $curvo-light-blue: #69C6FF;
 $curvo-orange: #ED7845;
 $curvo-yellow: #FFC534;
+$curvo-lime: #66DE68;
 $curvo-newspaper: #FCF7F4;
 $curvo-slate: #5B6976;
 $curvo-light-gray: #D9DDE0;
@@ -15,9 +17,9 @@ $curvo-light-gray: #D9DDE0;
 $font-family-sans-serif: "Poppins", -apple-system, "Segoe UI", sans-serif;
 $presentation-heading-font: "Poppins", sans-serif;
 $presentation-heading-color: $curvo-midnight;
-$presentation-heading-font-weight: 600; // Poppins SemiBold, per guidelines p20
-$presentation-font-size-root: 30px;
-$presentation-h2-font-size: 1.35em;
+$presentation-heading-font-weight: 600; // Poppins SemiBold (guidelines p20)
+$presentation-font-size-root: 29px;
+$presentation-h2-font-size: 1.28em;
 
 $body-bg: $curvo-newspaper;
 $body-color: $curvo-dark-gray;
@@ -28,32 +30,47 @@ $code-color: $curvo-midnight;
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto+Serif:ital,wght@0,300;0,400&display=swap');
 
-.reveal .slides {
-  text-align: left;
-}
+.reveal .slides { text-align: left; }
 
-// Body copy = Poppins Medium per guidelines p20
-.reveal p, .reveal li {
-  font-weight: 500;
-}
+// Body copy = Poppins Medium (guidelines p20)
+.reveal p, .reveal li { font-weight: 500; }
 .reveal strong { font-weight: 600; color: $curvo-midnight; }
 
-// Eyebrow kicker above headlines
-.reveal .eyebrow {
+// ── Headline system: eyebrow kicker + underline bar ──────────────────
+.reveal h2 {
+  margin-bottom: 0.55em;
+}
+.reveal h2 .eyebrow {
   display: block;
-  font-size: 0.5em;
+  font-size: 0.42em;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: $curvo-blue;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.55em;
+}
+.reveal h2::after {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 4px;
+  border-radius: 2px;
+  background: $curvo-primary-blue;
+  margin-top: 0.28em;
 }
 
-// Roboto Serif Light = secondary accent (guidelines p20) → blockquotes
+// Timeline years
+.reveal .tl-year strong {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: $curvo-blue;
+}
+
+// ── Roboto Serif Light = secondary accent (guidelines p20) ────────────
 .reveal blockquote {
   font-family: "Roboto Serif", Georgia, serif;
   font-weight: 300;
-  font-size: 1.05em;
+  font-size: 1.02em;
   color: $curvo-midnight;
   border-left: 4px solid $curvo-primary-blue;
   padding: 0.3em 0 0.3em 0.7em;
@@ -62,11 +79,67 @@ $code-color: $curvo-midnight;
   box-shadow: none;
 }
 
-// Tables
-.reveal table {
-  font-size: 0.72em;
-  border-collapse: collapse;
+// ── Panels (cards) ────────────────────────────────────────────────────
+.reveal .panel {
+  background: #fff;
+  border: 1px solid $curvo-light-gray;
+  border-top: 5px solid $curvo-slate;
+  border-radius: 10px;
+  padding: 0.5em 0.7em;
+  margin: 0 0 0.55em 0;
+  font-size: 0.82em;
+  line-height: 1.4;
 }
+.reveal .panel p { margin: 0 0 0.35em 0; }
+.reveal .panel p:last-child { margin-bottom: 0; }
+.reveal .panel.accent-blue   { border-top-color: $curvo-blue; }
+.reveal .panel.accent-orange { border-top-color: $curvo-orange; }
+.reveal .panel.accent-yellow { border-top-color: $curvo-yellow; }
+.reveal .panel.accent-lime   { border-top-color: $curvo-lime; }
+.reveal .panel.accent-gray   { border-top-color: $curvo-light-gray; }
+
+// ── Worked-example / callout boxes ───────────────────────────────────
+.reveal .exbox {
+  background: #fff;
+  border: 1px solid $curvo-light-gray;
+  border-left: 6px solid $curvo-blue;
+  border-radius: 8px;
+  padding: 0.45em 0.8em;
+  margin-top: 0.6em;
+  font-size: 0.9em;
+}
+.reveal .exbox.risk { border-left-color: $curvo-orange; }
+.reveal .exbox.deep { border-left-color: $curvo-midnight; }
+.reveal .exbox p { margin: 0; }
+.reveal .exbox .exbox-label {
+  display: block;
+  font-size: 0.58em;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: $curvo-slate;
+  margin-bottom: 0.3em;
+}
+
+// ── Posture pills ─────────────────────────────────────────────────────
+.reveal .pill {
+  display: inline-block;
+  padding: 0.06em 0.65em;
+  border-radius: 999px;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+.reveal .pill-blue   { background: $curvo-blue; }
+.reveal .pill-orange { background: $curvo-orange; }
+.reveal .pill-yellow { background: $curvo-yellow; color: $curvo-midnight; }
+
+// ── Ordered-list markers in brand blue ────────────────────────────────
+.reveal .slides ol > li::marker { color: $curvo-blue; font-weight: 700; }
+
+// ── Tables ────────────────────────────────────────────────────────────
+.reveal table { font-size: 0.72em; border-collapse: collapse; }
 .reveal table th {
   border-bottom: 2px solid $curvo-blue;
   color: $curvo-slate;
@@ -77,40 +150,75 @@ $code-color: $curvo-midnight;
 }
 .reveal table td { border-bottom: 1px solid $curvo-light-gray; }
 
-// Dark (midnight) slides — revealjs auto-adds .has-dark-background
+// ── Dark (midnight) slides — reveal adds .has-dark-background ─────────
 .reveal .slide.has-dark-background,
 .reveal .has-dark-background {
   h1, h2, h3, strong { color: #fff; }
   p, li { color: rgba(234, 241, 255, 0.92); }
   blockquote { color: #fff; border-left-color: $curvo-primary-blue; }
-  .eyebrow { color: $curvo-light-blue; }
-  // let explicit inline accent colors win over the white-strong rule
+  h2 .eyebrow { color: $curvo-light-blue; }
   span[style*="color"], span[style*="color"] strong { color: inherit; }
+  .panel {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.16);
+    border-top-width: 5px;
+  }
+  .panel.accent-blue   { border-top-color: $curvo-light-blue; }
+  ol > li::marker { color: $curvo-light-blue; }
 }
 
-// Title slide
+// ── Inverse (orange) slides — reveal treats #ED7845 as "light" ────────
+.reveal .slide.inverse {
+  h1, h2, h3, strong, p, li { color: #fff; }
+  h2 .eyebrow { color: $curvo-midnight; }
+  h2::after { background: #fff; }
+  ol > li::marker { color: #fff; }
+}
+
+// ── Title slide ───────────────────────────────────────────────────────
 #title-slide {
   text-align: left;
+  &::before {
+    content: "Curvo Labs · Supply Chain Analytics";
+    display: block;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.5em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $curvo-light-blue;
+    margin-bottom: 1.2em;
+  }
   .title {
-    color: $curvo-midnight;
+    color: #fff;
     font-weight: 700;
-    font-size: 2.2em;
-    border-bottom: 4px solid $curvo-primary-blue;
-    padding-bottom: 0.2em;
+    font-size: 2.4em;
+    line-height: 1.08;
+    border-bottom: 5px solid $curvo-primary-blue;
+    padding-bottom: 0.18em;
     display: inline-block;
   }
-  .subtitle { color: $curvo-slate; font-size: 1.1em; margin-top: 0.8em; }
-  .quarto-title-author-name, .date { color: $curvo-slate; font-size: 0.65em; }
+  .subtitle {
+    font-family: "Roboto Serif", Georgia, serif;
+    font-weight: 300;
+    color: rgba(234, 241, 255, 0.9);
+    font-size: 1.05em;
+    margin-top: 0.9em;
+    max-width: 22em;
+  }
+  .quarto-title-author-name, .date {
+    color: rgba(234, 241, 255, 0.6);
+    font-size: 0.6em;
+  }
 }
 
-// Closing slide: center the quote block
-.reveal .closing {
-  p, blockquote { margin-top: 0.8em; }
-}
+// ── Closing slide ─────────────────────────────────────────────────────
+.reveal .closing h2::after { display: none; }
+.reveal .closing blockquote { font-size: 1.12em; margin-top: 0.9em; max-width: 24em; }
+.reveal .closing p { max-width: 30em; }
+.reveal .closing img { margin: 0 0 0.4em 0; }
 
-// Footer + slide numbers
+// ── Chrome ────────────────────────────────────────────────────────────
 .reveal .footer { color: $curvo-slate; font-size: 16px; }
 .reveal .slide-number { color: $curvo-slate; font-size: 14px; }
-
-// Math sizing
 .reveal .MathJax { font-size: 0.95em !important; }

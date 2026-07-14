@@ -30,6 +30,10 @@ I work on supply chain analytics for hospitals, and this is the prioritization p
 
 This post describes a metric we designed to fix that: **HAR — Hours Above Replacement**. It puts savings opportunity and supply risk into one currency, so prioritization becomes a gradient you can walk instead of a meeting you have to hold. Full disclosure up front: this is a framework we've committed to paper and are now beginning to compute. I'm writing it up because I think the design is interesting independent of our implementation, and because writing it down publicly is a good way to have it shot at.
 
+::: {.column-margin}
+**Prefer slides?** There's a [talk version of this post](hours_above_replacement-slides.html){target="_blank"} — the same argument as a Curvo-branded deck.
+:::
+
 ## The move borrowed from baseball
 
 ![Babe Ruth crosses home plate after hitting the first home run in Yankee Stadium history, April 18, 1923. *(Public domain, via Wikimedia Commons.)*](images/har_ruth_homeplate_1923.jpg)
@@ -289,46 +293,64 @@ I wrote this up to have it shot at. If you work in procurement, health economics
 
 :::::: {.content-visible when-format="revealjs"}
 
-## None of these would top a spend report. {.problem}
+## [The Problem]{.eyebrow} None of these would top a spend report.
 
-[The Problem]{.eyebrow}
+[**2017**]{.tl-year} — Hurricane Maria knocks out three Baxter plants in Puerto Rico — ~50% of US small-volume saline bags. Nurses go back to pushing drugs by syringe.
 
-**2017** — Hurricane Maria knocks out three Baxter plants in Puerto Rico — ~50% of US small-volume saline bags. Nurses go back to pushing drugs by syringe.
+[**2022**]{.tl-year} — A COVID lockdown shuts a single GE plant in Shanghai. Hospitals ration contrast media — triaging which patients get CT scans.
 
-**2022** — A COVID lockdown shuts a single GE plant in Shanghai. Hospitals ration contrast media — triaging which patients get CT scans.
-
-**2024** — A national shortage of blood culture bottles (CDC HAN-00512).
+[**2024**]{.tl-year} — A national shortage of blood culture bottles (CDC HAN-00512).
 
 > Materiality is measured to the penny. Criticality is tracked in adjectives. When the two argue, dollars win every time — not because they matter more, but because they have units.
 
-## Value is measured against replacement — not zero, not average.
-
-[The Replacement-Level Baseline]{.eyebrow}
+## [The Replacement-Level Baseline]{.eyebrow} Value is measured against replacement.
 
 > What happens if this specific thing vanishes and the slot is filled from the open market?
 
-- **Measure vs. zero** — inflates everything; every product looks priceless.
-- **Measure vs. average** — punishes solid performers, rewards mediocrity.
-- **Measure vs. replacement ✓** — the decision-relevant counterfactual: what do I lose, given the freely available alternative?
+::::: {.columns}
+:::: {.column width="32%"}
+::: {.panel .accent-gray}
+**Measure vs. zero**
 
-## Criticality isn't a property of a product. It's exposure to replacement-level collapse. {background-color="#162E63"}
+Inflates everything — every product looks priceless.
+:::
+::::
+:::: {.column width="32%"}
+::: {.panel .accent-gray}
+**Measure vs. average**
 
-:::: {.columns}
-::: {.column width="48%"}
+Punishes solid performers, rewards mediocrity.
+:::
+::::
+:::: {.column width="32%"}
+::: {.panel .accent-blue}
+**Measure vs. replacement ✓**
+
+The decision-relevant counterfactual: what do I lose, given the freely available alternative?
+:::
+::::
+:::::
+
+## [The Key Insight]{.eyebrow} Criticality isn't a property of a product. It's exposure to replacement-level collapse. {background-color="#162E63" background-image="images/curvo_arcs.svg" background-size="34%" background-position="right -10% bottom -35%" background-opacity="0.25"}
+
+::::: {.columns}
+:::: {.column width="48%"}
+::: {.panel}
 **Normal market**
 
 Saline has a deep substitute pool. Its value above replacement is ~zero — which is exactly why it's cheap.
 :::
-::: {.column width="48%"}
+::::
+:::: {.column width="48%"}
+::: {.panel .accent-orange}
 [**Stressed market**]{style="color:#ED7845"}
 
 A hurricane, a lockdown, a recall. The pool collapses and the *same product's* value above replacement explodes — without the product changing at all.
 :::
 ::::
+:::::
 
-## Not dollars. Dollars are the input.
-
-[The Currency]{.eyebrow}
+## [The Currency]{.eyebrow} Not dollars. Dollars are the input.
 
 The output of a hospital supply chain is patient health. Health economics already has a unit for it: the **QALY** — a quality-adjusted life year.
 
@@ -338,24 +360,27 @@ $$
 
 That exchange rate — call it *v* — is what lets a \$2M savings opportunity and a supply-disruption scenario be compared as quantities, not argued as a spreadsheet vs. an anecdote.
 
-## Two honest problems with the exchange rate. {.smaller}
+## [Before You Trust This Number]{.eyebrow} Two honest problems with the exchange rate. {.smaller}
 
-[Before You Trust This Number]{.eyebrow}
-
-:::: {.columns}
-::: {.column width="48%"}
+::::: {.columns}
+:::: {.column width="48%"}
+::: {.panel}
 **1. It isn't settled.** Supply-side (~£13k/QALY, NHS marginal productivity) vs. demand-side (\$100–150k/QALY, willingness-to-pay) disagree 3–5×. For procurement savings, supply-side is causally correct.
 :::
-::: {.column width="48%"}
+::::
+:::: {.column width="48%"}
+::: {.panel}
 **2. It crosses asymmetrically.** Risk is *born in hours* — no valuation step. Savings is born in dollars and only becomes hours *through v*. So v is a weighting knob between channels, not a shared unit conversion.
 :::
 ::::
+:::::
 
-**Mandatory phrasing rule** — externally, dollars are *"valued at the standard cost-effectiveness threshold."* Never ~~"lives saved."~~
+::: {.exbox .deep}
+[Mandatory phrasing rule]{.exbox-label}
+Externally, dollars are *"valued at the standard cost-effectiveness threshold."* Never ~~"lives saved."~~
+:::
 
-## HAR = savings + risk, in one currency.
-
-[The Metric]{.eyebrow}
+## [The Metric]{.eyebrow} HAR = savings + risk, in one currency.
 
 $$
 \mathrm{HAR}(p) = \mathrm{HAR}_{\mathrm{savings}}(p) + \mathrm{HAR}_{\mathrm{risk}}(p)
@@ -363,25 +388,37 @@ $$
 \mathrm{risk\_share} = \frac{\mathrm{HAR}_{\mathrm{risk}}}{\mathrm{HAR}}
 $$
 
-- **HAR_savings — the money channel.** Well-measured, high-resolution, computed from millions of observed transactions.
-- **HAR_risk — the clinical channel.** Noisier, log-resolution — and the reason the composite exists at all.
+::::: {.columns}
+:::: {.column width="48%"}
+::: {.panel .accent-blue}
+**HAR_savings — the money channel**
+
+Well-measured, high-resolution, computed from millions of observed transactions.
+:::
+::::
+:::: {.column width="48%"}
+::: {.panel .accent-orange}
+**HAR_risk — the clinical channel**
+
+Noisier, log-resolution — and the reason the composite exists at all.
+:::
+::::
+:::::
 
 The guardrail: never let the savings channel's four-significant-figure precision lend its credibility to the risk channel. *They share a unit, not an error bar.*
 
-## Savings: three rules keep the naive version honest.
-
-[Channel 1 — Savings]{.eyebrow}
+## [Channel 1 — Savings]{.eyebrow} Three rules keep the naive version honest.
 
 1. Replacement price is the cohort **median**, not the best price — what a competent buyer gets without special leverage.
 2. Replacement level is **conditional on who you are** — class of trade, size, 340B account type.
 3. An **achievability haircut** — not every dollar of measured excess is capturable.
 
-**Worked example — knee implants:**
+::: {.exbox}
+[Worked example — knee implants]{.exbox-label}
 $300/\text{yr} \times (\$5{,}000 - \$4{,}200) \times 0.5 \div \$11.40/\text{h} \approx \mathbf{10{,}500\ \text{hours/year}}$
+:::
 
-## Risk: three terms, in descending order of measurability.
-
-[Channel 2 — Risk]{.eyebrow}
+## [Channel 2 — Risk]{.eyebrow} Three terms, in descending order of measurability.
 
 $$
 \mathrm{HAR}_{\mathrm{risk}}(p) = P(\text{pool shrink}) \times \text{downstream hours at stake} \times P(\text{no viable path})
@@ -391,39 +428,38 @@ $$
 2. **P(disruption)** — order-of-magnitude, from FDA shortage lists and recall feeds.
 3. **Downstream hours at stake** — the hard one. Log-resolution is the honest resolution.
 
-**Worked example — contrast media:** 20,000 scans/yr, log-bin terms multiplied through ≈ **10²–10³ expected h/yr** — but the year it lands: 10⁴–10⁵ realized hours, at every hospital simultaneously.
+::: {.exbox .risk}
+[Worked example — contrast media]{.exbox-label}
+20,000 scans/yr, log-bin terms multiplied through ≈ **10²–10³ expected h/yr** — but the year it lands: 10⁴–10⁵ realized hours, at every hospital simultaneously.
+:::
 
-## Criticality is a network property. It doesn't sum. {background-color="#162E63"}
+## [The Graph You Mostly Don't Build]{.eyebrow} Criticality is a network property. It doesn't sum. {background-color="#162E63" background-image="images/curvo_arcs.svg" background-size="34%" background-position="right -10% bottom -35%" background-opacity="0.25"}
 
 Hours-at-stake aren't owned by a product — they're inherited from every procedure downstream of it. Complement edges propagate risk upstream; substitutes shunt it away.
 
 Build an edge only where resolving it could change a decision.
 
+::: {.panel .accent-yellow}
 **Carve-out:** high-volume, low-class consumables (saline, contrast, blood culture bottles) are assumed to gate procedures until proven otherwise — or the cheapest proxy prunes exactly the motivating examples first.
+:::
 
-## Rank by the sum. Act by the ratio.
-
-[Reading The Number]{.eyebrow}
+## [Reading The Number]{.eyebrow} Rank by the sum. Act by the ratio.
 
 HAR recovers the Kraljic matrix — taught everywhere, quantified almost nowhere — as a scalar and a ratio.
 
 | risk_share | Posture |
 |---|---|
-| ≈ 0 (savings-dominated) | **Negotiate** hard, commoditize |
-| ≈ 1 (risk-dominated) | **Secure supply** — dual-source, hold inventory, stop squeezing |
-| both channels large | **Strategic** — the metric flags it, judgment settles it |
+| ≈ 0 (savings-dominated) | [Negotiate]{.pill .pill-blue} hard, commoditize |
+| ≈ 1 (risk-dominated) | [Secure supply]{.pill .pill-orange} — dual-source, hold inventory, stop squeezing |
+| both channels large | [Strategic]{.pill .pill-yellow} — the metric flags it, judgment settles it |
 
 > "This category's supply risk is worth ten times its savings opportunity, so we're buying continuity, not discounts."
 
-## An illustrative national leaderboard. {.smaller}
-
-[What Tops HAR Right Now]{.eyebrow}
+## [What Tops HAR Right Now]{.eyebrow} An illustrative national leaderboard. {.smaller}
 
 {{< include _har_leaderboard.qmd >}}
 
-## Our own hours live on the same scale.
-
-[Closing The Loop]{.eyebrow}
+## [Closing The Loop]{.eyebrow} Our own hours live on the same scale.
 
 At ~\$100/hour loaded cost and v ≈ \$11.40/hour, **one analyst hour costs ≈ 9 health-hours** — every review task must move ~10 HAR-hours per analyst-hour to be worth doing.
 
@@ -433,30 +469,41 @@ $$
 
 Items below the line are **correctly declined, not backlog**. Data-quality queues, enrichment targeting, and classification training data are all prioritized by the HAR at stake.
 
-## Falsify cheap before building expensive.
-
-[The Discipline]{.eyebrow}
+## [The Discipline]{.eyebrow} Falsify cheap before building expensive.
 
 The expensive parts of HAR are all in the risk channel — shortage base rates, hours anchors, the dependency graph. The cheap part is a few hours of work on data we already have.
 
-**First computation = a falsification test: does the risk term ever move a rank?**
+::: {.exbox .deep}
+[First computation = a falsification test]{.exbox-label}
+**Does the risk term ever move a rank?**
+:::
 
 If not — stop. Keep the sharpened savings metric (it improves the existing deliverable on its own) and retest at finer grain before spending more.
 
-## What breaks when everyone adopts it? {background-color="#162E63" .smaller}
+## [Adoption At Industry Scale]{.eyebrow} What breaks when everyone adopts it? {background-color="#162E63" background-image="images/curvo_arcs.svg" background-size="34%" background-position="right -10% bottom -35%" background-opacity="0.18" .smaller}
 
-[Adoption At Industry Scale]{.eyebrow}
-
-- [**Savings eats itself (good).**]{style="color:#66DE68"} Median falls as everyone negotiates toward it; attention shifts from price transfers to resilience.
-- [**Margin compression feeds fragility.**]{style="color:#ED7845"} Universal squeezing is what made saline fragile — and the risk channel warns on lagging data.
-- **Correlated stockpiling.** Everyone reads the same shortage data → a bank run with a dashboard. Shared inputs mean shared blind spots.
-- [**Vendors Goodhart it.**]{style="color:#FFC534"} risk_share ≈ 1 tells suppliers, in writing, to start charging continuity premiums.
+::::: {.columns}
+:::: {.column width="48%"}
+::: {.panel .accent-lime}
+[**Savings eats itself (good).**]{style="color:#66DE68"} Median falls as everyone negotiates toward it; attention shifts from price transfers to resilience.
+:::
+::: {.panel}
+**Correlated stockpiling.** Everyone reads the same shortage data → a bank run with a dashboard. Shared inputs mean shared blind spots.
+:::
+::::
+:::: {.column width="48%"}
+::: {.panel .accent-orange}
+[**Margin compression feeds fragility.**]{style="color:#ED7845"} Universal squeezing is what made saline fragile — and the risk channel warns on lagging data.
+:::
+::: {.panel .accent-yellow}
+[**Vendors Goodhart it.**]{style="color:#FFC534"} risk_share ≈ 1 tells suppliers, in writing, to start charging continuity premiums.
+:::
+::::
+:::::
 
 Net: the stabilizing case wins — pricing fragility creates a revenue stream for redundant capacity.
 
-## Five rules the framework lives by.
-
-[Design Rules]{.eyebrow}
+## [Design Rules]{.eyebrow} Five rules the framework lives by. {background-color="#ED7845" background-image="images/curvo_arcs.svg" background-size="34%" background-position="right -10% bottom -35%" background-opacity="0.3" .inverse}
 
 1. **Denominate everything in the outcome unit**, even coarsely.
 2. **Measure against replacement, not zero.**
@@ -464,9 +511,9 @@ Net: the stabilizing case wins — pricing fragility creates a revenue stream fo
 4. **Falsify cheap before building expensive.**
 5. **Ask what breaks when everyone adopts it.** Design for the price-maker case before you're in it.
 
-## {background-color="#162E63" .closing}
+## {background-color="#162E63" background-image="images/curvo_arcs.svg" background-size="36%" background-position="right -14% bottom -40%" background-opacity="0.55" .closing}
 
-![](images/curvo_logo_w.png){width="220" .nostretch}
+![](images/curvo_logo_w.png){width="240" .nostretch}
 
 > The saline bag is still a dollar — a thin margin, a spot near the bottom of every spend report ever printed, invisible until the week it's unavailable. **Now the hours behind it have units.**
 

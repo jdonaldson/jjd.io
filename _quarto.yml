@@ -54,3 +54,4 @@ execute:
 resources:
   - CNAME
   - viz/*.html
+  - posts/hours_above_replacement-slides.html
