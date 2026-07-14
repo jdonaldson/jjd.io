@@ -57,6 +57,20 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 - Posts without an `image:` (book_bot, intelligence_chases_chaos, perchance_to_dream,
   quarto, rumpus) fall back to the plain title block; give them an image to opt in.
 
+## Viz Section (added 2026-07-13)
+- `viz/` hosts standalone interactive pages; `viz/index.qmd` is the landing page (navbar: blog · viz · about · cv)
+- Raw HTML pages are copied verbatim via the `resources: viz/*.html` glob in `_quarto.yml` (Quarto only renders .qmd/.ipynb)
+- Pages must be self-contained (inline JS/CSS; wasm as base64) and carry their own `<!DOCTYPE html>` skeleton with charset + viewport meta
+- Convention: each viz supports a `?lite` URL param — fraction of full complexity, UI hidden, name centered — used as the live preview iframe on viz/index (iframe is pointer-events:none, wrapped in an anchor to the full page)
+- MURMURATION (40k boids, deck.gl) is canonical at https://jdonaldson.github.io/murmuration/ (repo jdonaldson/murmuration, main branch); jjd.io's `viz/boids.html` is the self-contained light rebuild that powers its preview card
+
+## Slide Decks (revealjs from a post; HAR pattern, 2026-07-13)
+- A post can carry a talk version: split content with `::::::  {.content-hidden when-format="revealjs"}` (article) and `{.content-visible when-format="revealjs"}` (deck) in the same .qmd
+- `make slides` renders self-contained to `_slides/` then copies to `posts/<slug>-slides.html`; `_quarto.yml`'s `resources:` glob publishes that copy verbatim; the post links to it
+- The `-slides.html` output is **gitignored, not committed**. CI (`.github/workflows/main.yml`) renders it on a cache miss via `actions/cache` keyed on `hashFiles()` of every deck input (qmd, `_har_*`/config, curvo scss, embedded arcs.svg + logo, Makefile) — only re-renders when an input changes
+- Deck config: `posts/_har_slides.yml` (revealjs opts) + `posts/_curvo_slides.scss` (Curvo theme). Section-break slides use `background-image=images/curvo_arcs.svg`
+- `curvo_arcs.svg` gotcha: artwork extends past a naive `0 0 1200 1200` viewBox (outer C-arc bulges to x≈-108, top leads to x≈1278) — viewBox must be `-128 92 1426 1024` to avoid edge-clipping
+
 ## Social Sharing / Open Graph
 - `site-url` in `_quarto.yml` must be `https://` — LinkedIn and other crawlers reject `http://` OG image URLs
 - Every blog post should have an `image:` field in frontmatter for social preview cards
