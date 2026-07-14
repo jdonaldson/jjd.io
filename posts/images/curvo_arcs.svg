@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-128 92 1426 1024">
+  <!-- Curvo logomark-derived linework (Brand Guidelines v1.0, "Graphic Elements"):
+       nested C-arcs with dot-terminated line ends, staggered lengths. -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M 1260 130 H 380 A 470 470 0 0 0 380 1070 H 1040" stroke="#00ACFF" stroke-width="36"/>
+    <path d="M 1260 220 H 380 A 380 380 0 0 0 380 980 H 880"  stroke="#2164C4" stroke-width="36"/>
+    <path d="M 1260 310 H 380 A 290 290 0 0 0 380 890 H 1140" stroke="#FFFFFF" stroke-width="36"/>
+    <path d="M 1260 400 H 380 A 200 200 0 0 0 380 800 H 760"  stroke="#ED7845" stroke-width="36"/>
+  </g>
+  <g>
+    <circle cx="1040" cy="1070" r="26" fill="#00ACFF"/>
+    <circle cx="880"  cy="980"  r="26" fill="#2164C4"/>
+    <circle cx="1140" cy="890"  r="26" fill="#FFFFFF"/>
+    <circle cx="760"  cy="800"  r="26" fill="#ED7845"/>
+  </g>
+</svg>
