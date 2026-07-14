@@ -340,7 +340,7 @@
     "href": "viz/index.html#gudid-energy-map-34000-surgical-devices-mapped-by-language",
     "title": "visualizations",
     "section": "GUDID Energy Map ✦ — 34,000 surgical devices, mapped by language",
-    "text": "GUDID Energy Map ✦ — 34,000 surgical devices, mapped by language\nAn AI read 34,000 FDA electrosurgical device descriptions and drew a map: Curvo’s language model embedded each one, UMAP projected them to 3D, and the clusters that emerged — bipolar forceps by surgeon eponym, laparoscopic instruments in the center, footswitches on their own island — were never imposed by a taxonomy. Drag to rotate, scroll to zoom, hover any point for its device description, or hit Start Tour for a narrated walkthrough. The companion post explains what it found.\n\n\n\nOpen the GUDID Energy Map → · companion post"
+    "text": "GUDID Energy Map ✦ — 34,000 surgical devices, mapped by language\nAn AI read 34,000 FDA electrosurgical device descriptions and drew a map: Curvo’s language model embedded each one, UMAP projected them to 3D, and the clusters that emerged — bipolar forceps by surgeon eponym, laparoscopic instruments in the center, footswitches on their own island — were never imposed by a taxonomy. The narrated flythrough below is the quickest tour; the interactive map itself is a heavier WebGL page, linked separately.\n\nOpen the interactive map → · companion post"
   },
   {
     "objectID": "viz/index.html#murmuration-40000-starlings-over-a-hillside",
