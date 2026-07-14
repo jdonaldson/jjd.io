@@ -365,7 +365,8 @@
 
   // advances st one step with perception cap K and angular noise; returns Vicsek order parameter
   function flockStep(st, K, noise) {
-    const N = st.N, W = st.W, H = st.H, cell = PERCEPT_R;
+    const R = st.R || PERCEPT_R, R2 = R*R, SEP_R2 = (SEP_FRAC*R)*(SEP_FRAC*R);
+    const N = st.N, W = st.W, H = st.H, cell = R;
     const jam = st.jam, jamOn = !!(jam && jam.rj2 > 0);
     const cols = Math.max(1, Math.ceil(W/cell)), rows = Math.max(1, Math.ceil(H/cell)), ncell = cols*rows;
     if (!st.gridHead || st.gridHead.length !== ncell) st.gridHead = new Int32Array(ncell);
@@ -473,6 +474,7 @@
     spark.width = spark.clientWidth*sr; spark.height = spark.clientHeight*sr;
     sctx.setTransform(sr,0,0,sr,0,0);
     L.W = W; L.H = H;
+    if (N > 0) deriveRadius();   // density (hence perception radius) depends on window area
   }
 
   function derive() {
@@ -481,8 +483,21 @@
     N = Math.max(24, Math.min(6500, Math.round(budget / K)));
     noise = P.noise * NOISE_MAX;
   }
+  // Live view fills the whole window, so raw N/area density (and thus the number of
+  // neighbours actually within reach) swings wildly with window size and budget — at
+  // the sparse "ordered" presets it drops to ~1 neighbour and the flock can't couple,
+  // so it never reproduced the phase map. Scale the perception radius to hold the
+  // expected available-neighbour pool near the sweep's target (~PERCEPT_NBR), clamped
+  // so it can't collapse below the base radius or grow into global (transition-erasing)
+  // coupling. The headless sweep leaves st.R unset → keeps its own fixed-density design.
+  const R_MIN = PERCEPT_R, R_MAX = 120, PERCEPT_NBR = 18;
+  function deriveRadius() {
+    const r = Math.sqrt(PERCEPT_NBR * W * H / (Math.max(1, N) * Math.PI));
+    L.R = Math.max(R_MIN, Math.min(R_MAX, r));
+  }
   function rebuild(reseed) {
     derive();
+    deriveRadius();
     if (reseed || L.N !== N) seed(L, N, W, H);
     else { L.W = W; L.H = H; }
     updateHUD();
@@ -519,10 +534,11 @@
     }
     if (focus >= 0 && focus < L.N) {
       const fx = L.px[focus], fy = L.py[focus];
+      const pr = L.R || PERCEPT_R, pr2 = pr*pr;   // inspection ring must match the live perception radius
       ctx.strokeStyle = TH.accent; ctx.globalAlpha = 0.55; ctx.lineWidth = 1;
-      ctx.beginPath(); ctx.arc(fx, fy, PERCEPT_R, 0, Math.PI*2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(fx, fy, pr, 0, Math.PI*2); ctx.stroke();
       const cand = [];
-      for (let j = 0; j < L.N; j++) { if (j===focus) continue; const dx=L.px[j]-fx, dy=L.py[j]-fy, d2=dx*dx+dy*dy; if (d2<R2) cand.push([d2,j]); }
+      for (let j = 0; j < L.N; j++) { if (j===focus) continue; const dx=L.px[j]-fx, dy=L.py[j]-fy, d2=dx*dx+dy*dy; if (d2<pr2) cand.push([d2,j]); }
       cand.sort((a,b)=>a[0]-b[0]);
       const lim = Math.min(K, cand.length); ctx.globalAlpha = 0.5;
       for (let s = 0; s < lim; s++) { const j = cand[s][1]; ctx.beginPath(); ctx.moveTo(fx,fy); ctx.lineTo(L.px[j],L.py[j]); ctx.stroke(); }
