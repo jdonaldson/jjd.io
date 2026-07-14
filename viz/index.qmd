@@ -3,7 +3,21 @@ title: "visualizations"
 toc: false
 ---
 
-Interactive experiments that don't fit in a blog post. Each one is a single self-contained page — no build step, no dependencies, everything runs in your browser. The previews below are live, running a lightweight fraction of the full simulation — click one to open the real thing.
+Interactive experiments that don't fit in a blog post — flocking sims, embedding maps, things best understood by dragging them around. The previews below are live; click one to open the full version.
+
+## GUDID Energy Map ✦ — 34,000 surgical devices, mapped by language
+
+An AI read 34,000 FDA electrosurgical device descriptions and drew a map: Curvo's language model embedded each one, UMAP projected them to 3D, and the clusters that emerged — bipolar forceps by surgeon eponym, laparoscopic instruments in the center, footswitches on their own island — were never imposed by a taxonomy. Drag to rotate, scroll to zoom, hover any point for its device description, or hit **Start Tour** for a narrated walkthrough. The [companion post](../posts/gudid_landscape.html) explains what it found.
+
+```{=html}
+<a href="https://jdonaldson.github.io/gudid-energy-landscape/" target="_blank" aria-label="Open the GUDID Energy Map" style="display:block; text-decoration:none;">
+<iframe src="https://jdonaldson.github.io/gudid-energy-landscape/" title="GUDID Energy Map — interactive device landscape"
+        style="width:100%; aspect-ratio:16/9; border:1px solid rgba(128,128,128,0.35); border-radius:12px; pointer-events:none;"
+        loading="lazy" tabindex="-1"></iframe>
+</a>
+```
+
+[**Open the GUDID Energy Map →**](https://jdonaldson.github.io/gudid-energy-landscape/){target="_blank"} · [companion post](../posts/gudid_landscape.html)
 
 ## MURMURATION ✦ — 40,000 starlings over a hillside
 
