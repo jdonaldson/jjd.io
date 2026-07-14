@@ -464,7 +464,10 @@ window.Quarto = {
 <p>None of these products would top a spend report. A saline bag costs about a dollar. If you rank a hospital’s supply chain by dollars — which is how essentially all procurement analytics works — the products that can actually stop care sit far down the list, invisible until the week they’re unavailable.</p>
 <p>I work on supply chain analytics for hospitals, and this is the prioritization problem we live inside: <strong>materiality</strong> (spend and volume) is measured to the penny, while <strong>criticality</strong> (what happens to patients if this product vanishes) is tracked in adjectives. When the two argue, the one denominated in dollars wins every time — not because it matters more, but because it has units.</p>
 <p>This post describes a metric we designed to fix that: <strong>HAR — Hours Above Replacement</strong>. It puts savings opportunity and supply risk into one currency, so prioritization becomes a gradient you can walk instead of a meeting you have to hold. Full disclosure up front: this is a framework we’ve committed to paper and are now beginning to compute. I’m writing it up because I think the design is interesting independent of our implementation, and because writing it down publicly is a good way to have it shot at.</p>
-<section id="the-move-borrowed-from-baseball" class="level2 page-columns page-full">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><strong>Prefer slides?</strong> There’s a <a href="hours_above_replacement-slides.html" target="_blank">talk version of this post</a> — the same argument as a Curvo-branded deck.</p>
+</div></div><section id="the-move-borrowed-from-baseball" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="the-move-borrowed-from-baseball">The move borrowed from baseball</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
