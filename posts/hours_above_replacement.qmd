@@ -48,11 +48,6 @@ The baseline is the entire trick. Measuring against **zero** inflates everything
 
 ![The 1914 Providence Grays. The large fellow in the middle of the back row is Babe Ruth, who spent that August and September as — quite literally — a freely available minor-league replacement. Replacement level is a baseline, not a destiny. *(Public domain, via Wikimedia Commons.)*](images/har_providence_grays_1914.jpg)
 
-::: {.column-margin}
-![](images/har_carey_stealing_1925.jpg)
-[Max Carey](https://en.wikipedia.org/wiki/Max_Carey) stealing second, 1925 World Series. Baserunning is WAR's third channel — and efficiency, not volume, is what it rewards. A steal is worth ~+0.2 runs, a caught stealing ~−0.4, which puts the break-even near a **70% success rate**: run below it and you *subtract* runs no matter how many bags you take — the same replacement-level bar the out-cost sets. Carey went **51-for-53 (96%)** in 1922, the most efficient qualified season on record; over his career [Baseball-Reference](https://www.baseball-reference.com/players/c/careyma01.shtml) credits his baserunning at **+96 runs**, nearly his **+118** with the bat, worth close to 10 of his **55.7 career WAR**. Volume without efficiency (738 steals, 9th all-time) is a spend report. *(Photo: Library of Congress / National Photo Company. Public domain.)*
-:::
-
 Products in a supply chain have exactly this structure:
 
 - The **savings** question: you're paying $14 for a device your peers get for $9. The replacement for your *price* is the price a competent buyer gets without special leverage. Value lost = the gap.
@@ -280,7 +275,8 @@ If you run analytics anywhere that "strategic importance" keeps losing arguments
 2. **Measure against replacement, not zero.** The decision-relevant counterfactual is "this vanishes and the market fills the slot."
 
 ::: {.column-margin}
-Fittingly, the best thief in this post already knew the rule. Max Carey stole 738 bases not by running more than everyone else, but by only running when the odds cleared the break-even — **+96 career baserunning runs**, nearly his **+118** with the bat. The move worth stealing isn't the stolen base. It's the discipline of measuring against replacement before you go.
+![](images/har_carey_stealing_1925.jpg)
+[Max Carey](https://en.wikipedia.org/wiki/Max_Carey) stealing second, 1925 World Series. Fittingly, the best thief in this post already knew the rule. A steal is worth ~+0.2 runs, a caught stealing ~−0.4 — a break-even near a **70% success rate**, the same replacement-level bar the out-cost sets. Carey stole 738 bases not by running more than everyone else, but by only running when the odds cleared it: **51-for-53 (96%)** in 1922, and **+96 career baserunning runs** ([Baseball-Reference](https://www.baseball-reference.com/players/c/careyma01.shtml)), nearly his **+118** with the bat. The move worth stealing isn't the stolen base. It's the discipline of measuring against replacement before you go. *(Photo: Library of Congress / National Photo Company. Public domain.)*
 :::
 3. **Let the two channels keep different error bars.** Shared unit ≠ shared precision. Publish ranges for the fuzzy channel; ban decimal arguments there.
 4. **Falsify cheap before building expensive.** The first computation should be the one that can tell you to stop.
