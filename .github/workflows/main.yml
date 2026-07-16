@@ -83,6 +83,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # this secret is always available for github actions
 
+      # Cloudflare fronts jjd.io with a 4h cache and keys on the URL, so reusing
+      # an image filename serves stale bytes until the TTL expires. Purge the CF
+      # cache after every deploy. The sleep lets the GitHub Pages CDN serve the
+      # new gh-pages commit first, so CF doesn't immediately re-cache old content.
+      - name: Purge Cloudflare cache
+        run: |
+          echo "Waiting for GitHub Pages CDN to propagate the new deploy..."
+          sleep 90
+          resp=$(curl -sS -X POST \
+            "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"purge_everything":true}')
+          echo "$resp"
+          echo "$resp" | grep -q '"success":true' || { echo "::error::Cloudflare purge failed"; exit 1; }
+
       # - name: Publish to confluence
       #   uses: quarto-dev/quarto-actions/publish@v2
       #   with:
