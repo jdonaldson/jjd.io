@@ -46,6 +46,11 @@ Sports analytics solved a version of this problem twenty years ago. Baseball's W
 
 The baseline is the entire trick. Measuring against **zero** inflates everything (every starter looks priceless). Measuring against **average** punishes solid contributors unfairly. Measuring against **replacement level** asks the decision-relevant counterfactual: what do I lose if this specific thing disappears and the slot gets filled from the open market?
 
+::: {.column-margin}
+![](images/har_carey_stealing_1925.jpg)
+[Max Carey](https://en.wikipedia.org/wiki/Max_Carey) stealing second, 1925 World Series. Baserunning is WAR's third channel — and efficiency, not volume, is what it rewards. A steal is worth ~+0.2 runs, a caught stealing ~−0.4, which puts the break-even near a **70% success rate**: run below it and you *subtract* runs no matter how many bags you take — the same replacement-level bar the out-cost sets. Carey went **51-for-53 (96%)** in 1922, the most efficient qualified season on record; over his career [Baseball-Reference](https://www.baseball-reference.com/players/c/careyma01.shtml) credits his baserunning at **+96 runs**, nearly his **+118** with the bat, worth close to 10 of his **55.7 career WAR**. Volume without efficiency (738 steals, 9th all-time) is a spend report. *(Photo: Library of Congress / National Photo Company. Public domain.)*
+:::
+
 ![The 1914 Providence Grays. The large fellow in the middle of the back row is Babe Ruth, who spent that August and September as — quite literally — a freely available minor-league replacement. Replacement level is a baseline, not a destiny. *(Public domain, via Wikimedia Commons.)*](images/har_providence_grays_1914.jpg)
 
 Products in a supply chain have exactly this structure:
@@ -273,6 +278,10 @@ If you run analytics anywhere that "strategic importance" keeps losing arguments
 
 1. **Denominate everything in the outcome unit**, even coarsely. A shared unit turns meetings into arithmetic — and the places where the arithmetic is genuinely unstable turn out to be the places that deserved a meeting.
 2. **Measure against replacement, not zero.** The decision-relevant counterfactual is "this vanishes and the market fills the slot."
+
+::: {.column-margin}
+Fittingly, the best thief in this post already knew the rule. Max Carey stole 738 bases not by running more than everyone else, but by only running when the odds cleared the break-even — **+96 career baserunning runs**, nearly his **+118** with the bat. The move worth stealing isn't the stolen base. It's the discipline of measuring against replacement before you go.
+:::
 3. **Let the two channels keep different error bars.** Shared unit ≠ shared precision. Publish ranges for the fuzzy channel; ban decimal arguments there.
 4. **Falsify cheap before building expensive.** The first computation should be the one that can tell you to stop.
 5. **Ask what breaks when everyone adopts it.** A metric good enough to spread will eventually be the market it was calibrated on. Design for the price-maker case before you're in it.
