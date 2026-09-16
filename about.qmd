@@ -89,7 +89,7 @@ More details in the [pro-bono](cv.qmd#pro-bono) section.
 I'm currently serving as Chief Data Scientist at Curvo Labs, where I'm leading
 data science initiatives and developing advanced machine learning solutions.
 This role allows me to continue pushing the boundaries of AI and data science
-while working on cutting-edge research and applications alongside CTO [Franco Ponticelli](https://github.com/fponticelli) and CEO Andy Perry.
+while working on cutting-edge research and applications alongside CTO [Franco Ponticelli](https://github.com/fponticelli) and CEO [Andy Perry](https://www.linkedin.com/in/perryandy/).
 
 # Previously: Hushh.ai (CTO)
 
