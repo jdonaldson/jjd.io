@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Justin Donaldson">
+<meta name="author" content="Claude (Opus)">
+<meta name="dcterms.date" content="2026-07-11">
+<meta name="description" content="My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that knows sarcasm but won’t say it — is a problem an NTU lab has been attacking for two decades from the opposite direction. So I cross-examined my hidden-state probe against their SenticNet lexicon and scored the 2×2. The errors are near-independent, the cheap symbolic witness is honestly weak — and that’s exactly what makes the follow-up experiment worth someone in Singapore running.">
+
+<title>Two Witnesses for Sarcasm – Justin Donaldson, Ph.D.</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-25d69b73cebb36be7b2ed5d875268302.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-4deb83902e98f7fb7d8e95ac3c9bc1b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-25d69b73cebb36be7b2ed5d875268302.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(images/two_witnesses_og.png);
+background-size: cover;
+      }
+</style>
+
+
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="Two Witnesses for Sarcasm – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that knows sarcasm but won’t say it — is a problem an NTU lab has been attacking for two decades from the opposite direction. So I cross-examined my hidden-state probe against their SenticNet lexicon and scored the 2×2. The errors are near-independent, the cheap symbolic witness is honestly weak — and that’s exactly what makes the follow-up experiment worth someone in Singapore running.">
+<meta property="og:image" content="https://www.jjd.io/posts/images/two_witnesses_og.png">
+<meta property="og:site_name" content="Justin Donaldson, Ph.D.">
+<meta property="og:image:height" content="624">
+<meta property="og:image:width" content="1200">
+<meta name="twitter:title" content="Two Witnesses for Sarcasm – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that knows sarcasm but won’t say it — is a problem an NTU lab has been attacking for two decades from the opposite direction. So I cross-examined my hidden-state probe against their SenticNet lexicon and scored the 2×2. The errors are near-independent, the cheap symbolic witness is honestly weak — and that’s exactly what makes the follow-up experiment worth someone in Singapore running.">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/two_witnesses_og.png">
+<meta name="twitter:site" content="@omgjjd">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="624">
+<meta name="twitter:image-width" content="1200">
+<meta name="citation_title" content="Two Witnesses for Sarcasm">
+<meta name="citation_author" content="Justin Donaldson">
+<meta name="citation_author" content="Claude (Opus)">
+<meta name="citation_publication_date" content="2026-07-11">
+<meta name="citation_cover_date" content="2026-07-11">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-07-11">
+<meta name="citation_fulltext_html_url" content="https://www.jjd.io/posts/two-witnesses-for-sarcasm.html">
+<meta name="citation_language" content="en">
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Justin Donaldson, Ph.D.</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../viz/index.html"> 
+<span class="menu-text">viz</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">about</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">cv</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jdonaldson"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jjustindonaldson/"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.discogs.com/user/omgjjd"> <i class="bi bi-vinyl-fill" role="img" aria-label="Discogs">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Two Witnesses for Sarcasm</h1>
+                  <div>
+        <div class="description">
+          My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that <em>knows</em> sarcasm but won’t <em>say</em> it — is a problem an NTU lab has been attacking for two decades from the opposite direction. So I cross-examined my hidden-state probe against their SenticNet lexicon and scored the 2×2. The errors are near-independent, the cheap symbolic witness is honestly weak — and that’s exactly what makes the follow-up experiment worth someone in Singapore running.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">machine learning</div>
+                <div class="quarto-category">nlp</div>
+                <div class="quarto-category">interpretability</div>
+                <div class="quarto-category">neurosymbolic</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+               <p>Justin Donaldson </p>
+               <p>Claude (Opus) </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 11, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-proposal" id="toc-the-proposal" class="nav-link active" data-scroll-target="#the-proposal">The proposal</a></li>
+  <li><a href="#the-first-table" id="toc-the-first-table" class="nav-link" data-scroll-target="#the-first-table">The first table</a></li>
+  <li><a href="#the-collision-that-motivates-it" id="toc-the-collision-that-motivates-it" class="nav-link" data-scroll-target="#the-collision-that-motivates-it">The collision that motivates it</a></li>
+  <li><a href="#confidence-as-architecture" id="toc-confidence-as-architecture" class="nav-link" data-scroll-target="#confidence-as-architecture">Confidence as architecture</a></li>
+  <li><a href="#what-this-buys-turnstyle" id="toc-what-this-buys-turnstyle" class="nav-link" data-scroll-target="#what-this-buys-turnstyle">What this buys Turnstyle</a></li>
+  <li><a href="#why-singapore-specifically" id="toc-why-singapore-specifically" class="nav-link" data-scroll-target="#why-singapore-specifically">Why Singapore, specifically</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+
+<blockquote class="blockquote">
+<p>When two independent witnesses agree, you can trust the verdict. When they disagree, you’ve found the interesting data. Right now Turnstyle calls only one witness.</p>
+</blockquote>
+<p>A funny thing happened after I published <a href="../posts/swollm-bbh-leaderboard.html">A 1.7B Model That Stops Guessing</a>: the analytics lit up with readers from Singapore. Enough of them, consistently enough, that I got curious and went looking for what the neurosymbolic scene there is actually working on.</p>
+<p>What I found was better than a coincidence. The flagship weird result in that post — a small model that scores <em>below chance</em> generating sarcasm judgments while a linear probe reads the correct judgment straight off its hidden states — is a problem that <a href="https://dr.ntu.edu.sg/entities/person/Erik-Cambria">Erik Cambria’s group at NTU</a> has been attacking for twenty years from exactly the opposite direction. They extract affective judgments from <strong>symbolic commonsense knowledge</strong>; I extracted one from <strong>neural activations</strong>. Same target. Disjoint evidence.</p>
+<p>That’s not a rivalry. That’s a two-witness protocol waiting to be run. So I ran the first round. Protocol first, table second, background after.</p>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The proposal</h2>
+<p><strong>Run both witnesses on the same sarcasm inputs and score their agreement — then use disagreement, not just low confidence, as the abstention trigger.</strong></p>
+<p>Concretely, on <code>snarks</code> (the BBH task: which of two sentences is sarcastic) or any comparable sarcasm set:</p>
+<ol type="1">
+<li><strong>Witness ⊨ (neural)</strong>: my Turnstyle probe — a linear readout on SmolLM2-1.7B’s hidden states, position-marginalized so it can’t cheat on option order. On <code>snarks</code> it scores 100% in-sample, <strong>74% cross-validated</strong>, against a generation baseline of 46%.</li>
+<li><strong>Witness ⊢ (symbolic)</strong>: a SenticNet-style pipeline — parse the sentence into conceptual primitives and score the affective incongruity symbolically. This is the move at the core of <a href="https://link.springer.com/chapter/10.1007/978-3-031-76827-9_11">SenticNet 8</a> (Cambria, Zhang, Mao, Chen at NTU, with Kenneth Kwok at A*STAR IHPC): normalize text down to language-agnostic primitives like <code>BUY(x)</code>, then classify from the primitives rather than the surface form. Their group has a dedicated multimodal sarcasm system, <a href="https://doi.org/10.1016/j.inffus.2023.101921">KnowleNet</a>, built on the same knowledge base.</li>
+<li><strong>Score the 2×2</strong>: both right, both wrong, and the two disagreement cells. The disagreement cells are the payload — they tell you what each kind of evidence sees that the other can’t.</li>
+<li><strong>Route by agreement</strong>: emit an answer when the witnesses concur; abstain (or escalate) when they split.</li>
+</ol>
+<p>Why this isn’t trivial: the two witnesses should have <em>uncorrelated failure modes</em>. A probe fails when the model’s representation is genuinely empty — it can’t read what isn’t written. A knowledge base fails when the sentence’s irony lives outside its concept inventory — novel slang, compositional twists, cultural references minted last month. Neither failure predicts the other, which is precisely what you want in a second witness.</p>
+<p>The experiment is deliberately modest — nobody trains anything bigger than a linear probe — so instead of asking you to imagine the table, here it is.</p>
+</section>
+<section id="the-first-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-first-table">The first table</h2>
+<p>My ⊨ witness is the shipped Turnstyle probe, re-run with per-example held-out predictions (same 5-fold split as before; it reproduces at exactly <strong>74.0%</strong> [Wilson 95% CI 67.1–79.9]). My ⊢ witness is deliberately the <em>cheapest honest one I could build</em>: <a href="https://sentic.net/downloads/">SenticNet 9’s</a> polarity lexicon (~293k concepts), scoring each option by the span between its most positive and most negative matched concept — sarcasm as praise-shaped words in blame-shaped company. Pre-registered, fit on nothing, roughly forty lines of Python. I want to be precise that this is a lexicon-based <em>approximation</em> of the symbolic approach, not Cambria’s conceptual-primitive pipeline — that distinction ends up mattering, in an instructive way.</p>
+<p>On the 177 usable snarks examples:</p>
+<div id="tbl-twobytwo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-twobytwo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The 2×2, on the n=80 examples where both witnesses committed. The symbolic witness returned a tie — no polarity incongruity detected in either option — on the other 97 (55%).
+</figcaption>
+<div aria-describedby="tbl-twobytwo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">symbolic ✓</th>
+<th style="text-align: right;">symbolic ✗</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>probe ✓</strong></td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td><strong>probe ✗</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Four findings, with the confidence intervals doing the disciplining:</p>
+<p><strong>1. The errors are near-independent.</strong> The witnesses’ error correlation is φ = +0.01 [−0.21, +0.23]. Underpowered at n=80, but the point estimate sits almost exactly on the independence the protocol assumes. The premise survives its first contact with data.</p>
+<p><strong>2. The cheap symbolic witness is honestly weak.</strong> Where it commits, it scores <strong>53.8%</strong> [42.9–64.3] — a CI that contains the coin flip. And it’s mute on more than half the examples: BBH snark is compositional and culturally current, and a bare polarity lexicon often finds no incongruity to score. This is, notably, the <em>argument</em> for Cambria’s actual program — the conceptual-primitive normalization that SenticNet 8 layers on top of the lexicon exists precisely because raw lexicon matching is too sparse.</p>
+<p><strong>3. When the witnesses disagree, trust the probe — decisively.</strong> On the 38 disagreements, the probe is right 73.7% [58.0–85.0] and the lexicon 26.3% [15.0–42.0] — the one comparison in this table where the intervals don’t overlap.</p>
+<p><strong>4. But the lexicon catches real probe failures.</strong> The probe-✗/symbolic-✓ cell has ten examples, and they’re not noise — they’re exactly the pattern the lexicon hunts: <em>“He’s such <strong>great</strong> relationship material when he’s <strong>drunk</strong>”</em>, <em>“Violence is a <strong>perfect</strong> way to unleash your frustrations.”</em> On one of them the probe’s option probabilities were literally tied (0.70 vs 0.70) — no signal in the hidden state — while the polarity span called it cleanly. Agreement-gated accuracy comes out at 78.6% [64.1–88.3] on 52% coverage: directionally above the probe’s 74%, underpowered to declare, and reported here so someone can beat it.</p>
+<p>One field note from actually running this: the distributed <code>senticnet.py</code> is not loadable Python — emoticon concepts like <code>:'-)</code> carry unescaped quotes — so you’ll need a tolerant line parser rather than an import. Happy to share the loader; it’s in the <a href="https://github.com/jdonaldson/turnstyle/blob/main/experiments/two_witnesses.py">experiment script</a> along with the per-example rows.</p>
+</section>
+<section id="the-collision-that-motivates-it" class="level2">
+<h2 class="anchored" data-anchor-id="the-collision-that-motivates-it">The collision that motivates it</h2>
+<p>In the last post, <code>snarks</code> was the cleanest demonstration of the “recognize it” pathway: three-shot SmolLM2 scores <strong>46% — below chance on a binary task</strong>. It holds strong, confident, wrong opinions. But the correct judgment is <em>in there</em>: probe the right layer and it surfaces. My conclusion was that generation, not knowledge, was the bottleneck.</p>
+<p>Cambria’s program reaches a structurally similar conclusion from the symbolic side. The SenticNet 8 paper — echoing <a href="https://doi.org/10.1016/j.inffus.2023.101861">Kocoń et al.’s</a> “jack of all trades, master of none” — shows a specialized neurosymbolic model beating ChatGPT on affective tasks: 88.80 vs 85.51 accuracy on sentiment polarity, 99.34 vs 92.71 on suicidal-ideation detection. The framing they and I share, arrived at independently: <em>unconstrained generation is the weak link, and structure — a solver, a probe, a primitive — is how you route around it.</em> Neither of us is anti-LLM. We’re anti-guessing.</p>
+<p>There’s even a shared honesty aesthetic. My post carried an “honest accounting” section (the cross-validation haircut from 92.5% to ~89.5%); their paper carries a limitations section flagging that the ChatGPT comparison ran on only 497/362/509 test examples because the API had to be queried by hand. Both are the same instinct: show the gap rather than launder it.</p>
+</section>
+<section id="confidence-as-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-as-architecture">Confidence as architecture</h2>
+<p>The deepest overlap isn’t sarcasm — it’s what each system does when it <em>doesn’t</em> know.</p>
+<p>Turnstyle’s grey pathway exists because two BBH tasks (<code>causal_judgement</code>, <code>sports_understanding</code>) showed no recoverable signal in the hidden states, and the honest move was to detect that and decline rather than fabricate a solver. SenticNet 8 makes the mirror-image commitment. Their definition of trustworthy, verbatim:</p>
+<blockquote class="blockquote">
+<p>“trustworthy (because classification outputs always come with a confidence score)”</p>
+</blockquote>
+<p>Same principle, two implementations: <strong>never emit an answer you can’t price.</strong> The two-witness protocol upgrades both. A single witness prices its answer against its own training distribution — which is exactly the thing that shifts under you. Two independent witnesses price each other. Agreement is cheap calibration; disagreement is a principled abstention trigger that doesn’t require either witness to know its own blind spots.</p>
+</section>
+<section id="what-this-buys-turnstyle" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-buys-turnstyle">What this buys Turnstyle</h2>
+<p>This is where the modest experiment has non-modest implications for the architecture.</p>
+<p><strong>It attacks the cross-validation haircut.</strong> The 3-point gap between Turnstyle’s in-sample (92.5%) and honest (~89.5%) aggregate lives entirely in the purple pathway — probes fit on BBH examples, borrowing accuracy against future data. A symbolic witness is <em>task-external</em> ground truth: SenticNet’s primitives weren’t fit on BBH at all. Every probe prediction corroborated by an independent symbolic witness is a prediction whose in-sample number you can trust more. The haircut shrinks not by better fitting but by better <em>witnessing</em>.</p>
+<p><strong>It turns “recognize” into “corroborate.”</strong> The turnstile pun in the name was always ⊢ (syntactically derivable — the solvers) versus ⊨ (semantically entailed — the probes). The purple pathway currently has only ⊨. Affective primitives give it a ⊢ leg: sarcasm as a <em>derivation</em> over incongruity between literal and connoted polarity, not just a pattern in activation space. Tasks where both legs stand are solved in a stronger sense than tasks where one does.</p>
+<p><strong>It sharpens the wall-detector.</strong> The grey pathway currently fires when a probe can’t beat majority-class. That’s a one-witness test, and it can’t distinguish “no signal in the representation” from “signal my probe family can’t express.” Witness disagreement is a finer instrument: probe-yes/symbolic-no localizes knowledge the concept inventory lacks; probe-no/symbolic-yes localizes judgments the model never internalized. The two walls in the last post were diagnosed with one witness. I’d like to re-diagnose them with two.</p>
+<p><strong>It’s a path off the BBH scaffolding.</strong> The fair criticism of the last post is that everything was demonstrated inside one benchmark’s format. A knowledge-base witness doesn’t care about BBH’s multiple-choice scaffolding — it scores raw sentences. Pairing the witnesses forces the probes toward the bare capability, which is where this was always headed.</p>
+</section>
+<section id="why-singapore-specifically" class="level2">
+<h2 class="anchored" data-anchor-id="why-singapore-specifically">Why Singapore, specifically</h2>
+<p>Because the pieces are disproportionately there, and recently in one room. NTU hosts the <a href="https://sentic.net/">SenticNet</a> program and its active line — <a href="https://aclanthology.org/2024.findings-acl.289/">SenticVec at ACL Findings 2024</a>, SenticNet 9 in IEEE TCSS — with A*STAR collaboration and Singapore MOE funding. The LLM-plus-symbolic-solver lineage that Turnstyle’s teal pathway descends from — <a href="https://arxiv.org/abs/2305.12295">Logic-LM</a> and <a href="https://aclanthology.org/2023.emnlp-main.313/">LINC</a> — premiered at EMNLP 2023 <em>in Singapore</em>. And AAAI-26 just came through the island this January with neurosymbolic threads running through the program. The field keeps routing through the place; my analytics suggest some of you routed through here.</p>
+<p>So, to the readers who showed up, the invitation is now concrete and falsifiable: <strong>beat my ⊢ witness.</strong> My symbolic leg is a forty-line polarity-span heuristic and it performs like one. Your conceptual-primitive pipeline is the obvious upgrade — swap it in, and I’d predict three things move: the 55% mute rate collapses, the disagreement asymmetry narrows or flips, and the agreement-gated number stops being underpowered. If instead the full pipeline <em>doesn’t</em> beat a bare lexicon on compositional snark, that’s a finding about where symbolic sarcasm detection actually lives, and worth knowing too. Either way the per-example rows are public, the probe checkpoints and Turnstyle harness are open — the wrapped model runs live in the <a href="https://huggingface.co/spaces/jdonaldson/turnstyle-demo">Hugging Face demo</a> — and my inbox is open. I’d genuinely rather be corrected from Singapore than agreed with from anywhere else.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Grounding note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Claims about SenticNet 8 (architecture, Table 3 numbers, the confidence-score quote, evaluation sizes) come from a full read of <a href="https://link.springer.com/chapter/10.1007/978-3-031-76827-9_11">the HCII 2024 paper</a>; Turnstyle numbers come from <a href="../posts/swollm-bbh-leaderboard.html">the previous post</a> and carry all its caveats. The experiment in this post uses the SenticNet 9 knowledge base under its non-commercial license; per its terms, please cite Cambria et al., “SenticNet 9: Generative Commonsense for Emotion AI via Conceptual Primitive Discovery and Time Shift Mechanism,” <em>IEEE Trans. Computational Social Systems</em> (2026), and Susanto et al., “The Hourglass Model Revisited,” <em>IEEE Intelligent Systems</em> 35(5) (2020). KnowleNet is cited from Information Fusion 100 (2023). All confidence intervals are Wilson 95%. I have no affiliation with NTU, A*STAR, or the SenticNet project — this is an outside read, one cheap experiment, and an open invitation; I’ll happily correct any mischaracterization of their work.</p>
+</div>
+</div>
+
+
+</section>
+
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+  author = {Donaldson, Justin and (Opus), Claude},
+  title = {Two {Witnesses} for {Sarcasm}},
+  date = {2026-07-11},
+  url = {https://www.jjd.io/posts/two-witnesses-for-sarcasm.html},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Donaldson, Justin, and Claude (Opus). 2026. <span>“Two Witnesses for
+Sarcasm.”</span> July 11. <a href="https://www.jjd.io/posts/two-witnesses-for-sarcasm.html">https://www.jjd.io/posts/two-witnesses-for-sarcasm.html</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.jjd\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

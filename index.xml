@@ -469,6 +469,141 @@ Infusion pumps &amp; sets HAR_savings ≈ 10^6.5 h/yr · HAR_risk ≈ 10^6.2 h/y
   <media:content url="https://www.jjd.io/posts/images/har_og_wide.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>Two Witnesses for Sarcasm</title>
+  <dc:creator>Justin Donaldson</dc:creator>
+  <dc:creator>Claude (Opus)</dc:creator>
+  <link>https://www.jjd.io/posts/two-witnesses-for-sarcasm.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<blockquote class="blockquote">
+<p>When two independent witnesses agree, you can trust the verdict. When they disagree, you’ve found the interesting data. Right now Turnstyle calls only one witness.</p>
+</blockquote>
+<p>A funny thing happened after I published <a href="../posts/swollm-bbh-leaderboard.html">A 1.7B Model That Stops Guessing</a>: the analytics lit up with readers from Singapore. Enough of them, consistently enough, that I got curious and went looking for what the neurosymbolic scene there is actually working on.</p>
+<p>What I found was better than a coincidence. The flagship weird result in that post — a small model that scores <em>below chance</em> generating sarcasm judgments while a linear probe reads the correct judgment straight off its hidden states — is a problem that <a href="https://dr.ntu.edu.sg/entities/person/Erik-Cambria">Erik Cambria’s group at NTU</a> has been attacking for twenty years from exactly the opposite direction. They extract affective judgments from <strong>symbolic commonsense knowledge</strong>; I extracted one from <strong>neural activations</strong>. Same target. Disjoint evidence.</p>
+<p>That’s not a rivalry. That’s a two-witness protocol waiting to be run. So I ran the first round. Protocol first, table second, background after.</p>
+<section id="the-proposal" class="level2">
+<h2 class="anchored" data-anchor-id="the-proposal">The proposal</h2>
+<p><strong>Run both witnesses on the same sarcasm inputs and score their agreement — then use disagreement, not just low confidence, as the abstention trigger.</strong></p>
+<p>Concretely, on <code>snarks</code> (the BBH task: which of two sentences is sarcastic) or any comparable sarcasm set:</p>
+<ol type="1">
+<li><strong>Witness ⊨ (neural)</strong>: my Turnstyle probe — a linear readout on SmolLM2-1.7B’s hidden states, position-marginalized so it can’t cheat on option order. On <code>snarks</code> it scores 100% in-sample, <strong>74% cross-validated</strong>, against a generation baseline of 46%.</li>
+<li><strong>Witness ⊢ (symbolic)</strong>: a SenticNet-style pipeline — parse the sentence into conceptual primitives and score the affective incongruity symbolically. This is the move at the core of <a href="https://link.springer.com/chapter/10.1007/978-3-031-76827-9_11">SenticNet 8</a> (Cambria, Zhang, Mao, Chen at NTU, with Kenneth Kwok at A*STAR IHPC): normalize text down to language-agnostic primitives like <code>BUY(x)</code>, then classify from the primitives rather than the surface form. Their group has a dedicated multimodal sarcasm system, <a href="https://doi.org/10.1016/j.inffus.2023.101921">KnowleNet</a>, built on the same knowledge base.</li>
+<li><strong>Score the 2×2</strong>: both right, both wrong, and the two disagreement cells. The disagreement cells are the payload — they tell you what each kind of evidence sees that the other can’t.</li>
+<li><strong>Route by agreement</strong>: emit an answer when the witnesses concur; abstain (or escalate) when they split.</li>
+</ol>
+<p>Why this isn’t trivial: the two witnesses should have <em>uncorrelated failure modes</em>. A probe fails when the model’s representation is genuinely empty — it can’t read what isn’t written. A knowledge base fails when the sentence’s irony lives outside its concept inventory — novel slang, compositional twists, cultural references minted last month. Neither failure predicts the other, which is precisely what you want in a second witness.</p>
+<p>The experiment is deliberately modest — nobody trains anything bigger than a linear probe — so instead of asking you to imagine the table, here it is.</p>
+</section>
+<section id="the-first-table" class="level2">
+<h2 class="anchored" data-anchor-id="the-first-table">The first table</h2>
+<p>My ⊨ witness is the shipped Turnstyle probe, re-run with per-example held-out predictions (same 5-fold split as before; it reproduces at exactly <strong>74.0%</strong> [Wilson 95% CI 67.1–79.9]). My ⊢ witness is deliberately the <em>cheapest honest one I could build</em>: <a href="https://sentic.net/downloads/">SenticNet 9’s</a> polarity lexicon (~293k concepts), scoring each option by the span between its most positive and most negative matched concept — sarcasm as praise-shaped words in blame-shaped company. Pre-registered, fit on nothing, roughly forty lines of Python. I want to be precise that this is a lexicon-based <em>approximation</em> of the symbolic approach, not Cambria’s conceptual-primitive pipeline — that distinction ends up mattering, in an instructive way.</p>
+<p>On the 177 usable snarks examples:</p>
+<div id="tbl-twobytwo" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-twobytwo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: The 2×2, on the n=80 examples where both witnesses committed. The symbolic witness returned a tie — no polarity incongruity detected in either option — on the other 97 (55%).
+</figcaption>
+<div aria-describedby="tbl-twobytwo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">symbolic ✓</th>
+<th style="text-align: right;">symbolic ✗</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>probe ✓</strong></td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td><strong>probe ✗</strong></td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>Four findings, with the confidence intervals doing the disciplining:</p>
+<p><strong>1. The errors are near-independent.</strong> The witnesses’ error correlation is φ = +0.01 [−0.21, +0.23]. Underpowered at n=80, but the point estimate sits almost exactly on the independence the protocol assumes. The premise survives its first contact with data.</p>
+<p><strong>2. The cheap symbolic witness is honestly weak.</strong> Where it commits, it scores <strong>53.8%</strong> [42.9–64.3] — a CI that contains the coin flip. And it’s mute on more than half the examples: BBH snark is compositional and culturally current, and a bare polarity lexicon often finds no incongruity to score. This is, notably, the <em>argument</em> for Cambria’s actual program — the conceptual-primitive normalization that SenticNet 8 layers on top of the lexicon exists precisely because raw lexicon matching is too sparse.</p>
+<p><strong>3. When the witnesses disagree, trust the probe — decisively.</strong> On the 38 disagreements, the probe is right 73.7% [58.0–85.0] and the lexicon 26.3% [15.0–42.0] — the one comparison in this table where the intervals don’t overlap.</p>
+<p><strong>4. But the lexicon catches real probe failures.</strong> The probe-✗/symbolic-✓ cell has ten examples, and they’re not noise — they’re exactly the pattern the lexicon hunts: <em>“He’s such <strong>great</strong> relationship material when he’s <strong>drunk</strong>”</em>, <em>“Violence is a <strong>perfect</strong> way to unleash your frustrations.”</em> On one of them the probe’s option probabilities were literally tied (0.70 vs 0.70) — no signal in the hidden state — while the polarity span called it cleanly. Agreement-gated accuracy comes out at 78.6% [64.1–88.3] on 52% coverage: directionally above the probe’s 74%, underpowered to declare, and reported here so someone can beat it.</p>
+<p>One field note from actually running this: the distributed <code>senticnet.py</code> is not loadable Python — emoticon concepts like <code>:'-)</code> carry unescaped quotes — so you’ll need a tolerant line parser rather than an import. Happy to share the loader; it’s in the <a href="https://github.com/jdonaldson/turnstyle/blob/main/experiments/two_witnesses.py">experiment script</a> along with the per-example rows.</p>
+</section>
+<section id="the-collision-that-motivates-it" class="level2">
+<h2 class="anchored" data-anchor-id="the-collision-that-motivates-it">The collision that motivates it</h2>
+<p>In the last post, <code>snarks</code> was the cleanest demonstration of the “recognize it” pathway: three-shot SmolLM2 scores <strong>46% — below chance on a binary task</strong>. It holds strong, confident, wrong opinions. But the correct judgment is <em>in there</em>: probe the right layer and it surfaces. My conclusion was that generation, not knowledge, was the bottleneck.</p>
+<p>Cambria’s program reaches a structurally similar conclusion from the symbolic side. The SenticNet 8 paper — echoing <a href="https://doi.org/10.1016/j.inffus.2023.101861">Kocoń et al.’s</a> “jack of all trades, master of none” — shows a specialized neurosymbolic model beating ChatGPT on affective tasks: 88.80 vs 85.51 accuracy on sentiment polarity, 99.34 vs 92.71 on suicidal-ideation detection. The framing they and I share, arrived at independently: <em>unconstrained generation is the weak link, and structure — a solver, a probe, a primitive — is how you route around it.</em> Neither of us is anti-LLM. We’re anti-guessing.</p>
+<p>There’s even a shared honesty aesthetic. My post carried an “honest accounting” section (the cross-validation haircut from 92.5% to ~89.5%); their paper carries a limitations section flagging that the ChatGPT comparison ran on only 497/362/509 test examples because the API had to be queried by hand. Both are the same instinct: show the gap rather than launder it.</p>
+</section>
+<section id="confidence-as-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-as-architecture">Confidence as architecture</h2>
+<p>The deepest overlap isn’t sarcasm — it’s what each system does when it <em>doesn’t</em> know.</p>
+<p>Turnstyle’s grey pathway exists because two BBH tasks (<code>causal_judgement</code>, <code>sports_understanding</code>) showed no recoverable signal in the hidden states, and the honest move was to detect that and decline rather than fabricate a solver. SenticNet 8 makes the mirror-image commitment. Their definition of trustworthy, verbatim:</p>
+<blockquote class="blockquote">
+<p>“trustworthy (because classification outputs always come with a confidence score)”</p>
+</blockquote>
+<p>Same principle, two implementations: <strong>never emit an answer you can’t price.</strong> The two-witness protocol upgrades both. A single witness prices its answer against its own training distribution — which is exactly the thing that shifts under you. Two independent witnesses price each other. Agreement is cheap calibration; disagreement is a principled abstention trigger that doesn’t require either witness to know its own blind spots.</p>
+</section>
+<section id="what-this-buys-turnstyle" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-buys-turnstyle">What this buys Turnstyle</h2>
+<p>This is where the modest experiment has non-modest implications for the architecture.</p>
+<p><strong>It attacks the cross-validation haircut.</strong> The 3-point gap between Turnstyle’s in-sample (92.5%) and honest (~89.5%) aggregate lives entirely in the purple pathway — probes fit on BBH examples, borrowing accuracy against future data. A symbolic witness is <em>task-external</em> ground truth: SenticNet’s primitives weren’t fit on BBH at all. Every probe prediction corroborated by an independent symbolic witness is a prediction whose in-sample number you can trust more. The haircut shrinks not by better fitting but by better <em>witnessing</em>.</p>
+<p><strong>It turns “recognize” into “corroborate.”</strong> The turnstile pun in the name was always ⊢ (syntactically derivable — the solvers) versus ⊨ (semantically entailed — the probes). The purple pathway currently has only ⊨. Affective primitives give it a ⊢ leg: sarcasm as a <em>derivation</em> over incongruity between literal and connoted polarity, not just a pattern in activation space. Tasks where both legs stand are solved in a stronger sense than tasks where one does.</p>
+<p><strong>It sharpens the wall-detector.</strong> The grey pathway currently fires when a probe can’t beat majority-class. That’s a one-witness test, and it can’t distinguish “no signal in the representation” from “signal my probe family can’t express.” Witness disagreement is a finer instrument: probe-yes/symbolic-no localizes knowledge the concept inventory lacks; probe-no/symbolic-yes localizes judgments the model never internalized. The two walls in the last post were diagnosed with one witness. I’d like to re-diagnose them with two.</p>
+<p><strong>It’s a path off the BBH scaffolding.</strong> The fair criticism of the last post is that everything was demonstrated inside one benchmark’s format. A knowledge-base witness doesn’t care about BBH’s multiple-choice scaffolding — it scores raw sentences. Pairing the witnesses forces the probes toward the bare capability, which is where this was always headed.</p>
+</section>
+<section id="why-singapore-specifically" class="level2">
+<h2 class="anchored" data-anchor-id="why-singapore-specifically">Why Singapore, specifically</h2>
+<p>Because the pieces are disproportionately there, and recently in one room. NTU hosts the <a href="https://sentic.net/">SenticNet</a> program and its active line — <a href="https://aclanthology.org/2024.findings-acl.289/">SenticVec at ACL Findings 2024</a>, SenticNet 9 in IEEE TCSS — with A*STAR collaboration and Singapore MOE funding. The LLM-plus-symbolic-solver lineage that Turnstyle’s teal pathway descends from — <a href="https://arxiv.org/abs/2305.12295">Logic-LM</a> and <a href="https://aclanthology.org/2023.emnlp-main.313/">LINC</a> — premiered at EMNLP 2023 <em>in Singapore</em>. And AAAI-26 just came through the island this January with neurosymbolic threads running through the program. The field keeps routing through the place; my analytics suggest some of you routed through here.</p>
+<p>So, to the readers who showed up, the invitation is now concrete and falsifiable: <strong>beat my ⊢ witness.</strong> My symbolic leg is a forty-line polarity-span heuristic and it performs like one. Your conceptual-primitive pipeline is the obvious upgrade — swap it in, and I’d predict three things move: the 55% mute rate collapses, the disagreement asymmetry narrows or flips, and the agreement-gated number stops being underpowered. If instead the full pipeline <em>doesn’t</em> beat a bare lexicon on compositional snark, that’s a finding about where symbolic sarcasm detection actually lives, and worth knowing too. Either way the per-example rows are public, the probe checkpoints and Turnstyle harness are open — the wrapped model runs live in the <a href="https://huggingface.co/spaces/jdonaldson/turnstyle-demo">Hugging Face demo</a> — and my inbox is open. I’d genuinely rather be corrected from Singapore than agreed with from anywhere else.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Grounding note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Claims about SenticNet 8 (architecture, Table 3 numbers, the confidence-score quote, evaluation sizes) come from a full read of <a href="https://link.springer.com/chapter/10.1007/978-3-031-76827-9_11">the HCII 2024 paper</a>; Turnstyle numbers come from <a href="../posts/swollm-bbh-leaderboard.html">the previous post</a> and carry all its caveats. The experiment in this post uses the SenticNet 9 knowledge base under its non-commercial license; per its terms, please cite Cambria et al., “SenticNet 9: Generative Commonsense for Emotion AI via Conceptual Primitive Discovery and Time Shift Mechanism,” <em>IEEE Trans. Computational Social Systems</em> (2026), and Susanto et al., “The Hourglass Model Revisited,” <em>IEEE Intelligent Systems</em> 35(5) (2020). KnowleNet is cited from Information Fusion 100 (2023). All confidence intervals are Wilson 95%. I have no affiliation with NTU, A*STAR, or the SenticNet project — this is an outside read, one cheap experiment, and an open invitation; I’ll happily correct any mischaracterization of their work.</p>
+</div>
+</div>
+
+
+</section>
+
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+  author = {Donaldson, Justin and (Opus), Claude},
+  title = {Two {Witnesses} for {Sarcasm}},
+  date = {2026-07-11},
+  url = {https://www.jjd.io/posts/two-witnesses-for-sarcasm.html},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+Donaldson, Justin, and Claude (Opus). 2026. <span>“Two Witnesses for
+Sarcasm.”</span> July 11. <a href="https://www.jjd.io/posts/two-witnesses-for-sarcasm.html">https://www.jjd.io/posts/two-witnesses-for-sarcasm.html</a>.
+</div></div></section></div> ]]></description>
+  <category>machine learning</category>
+  <category>nlp</category>
+  <category>interpretability</category>
+  <category>neurosymbolic</category>
+  <guid>https://www.jjd.io/posts/two-witnesses-for-sarcasm.html</guid>
+  <pubDate>Sat, 11 Jul 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://www.jjd.io/posts/images/two_witnesses_og.png" medium="image" type="image/png" height="75" width="144"/>
+</item>
+<item>
   <title>Meaning Has More Than Three Numbers</title>
   <dc:creator>Justin Donaldson</dc:creator>
   <dc:creator>Claude (Fable)</dc:creator>
