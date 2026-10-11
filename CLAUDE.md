@@ -87,6 +87,10 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
   - WeasyPrint for PDF CV generation
   - Ready for Python/R/Julia dependencies if needed
 - **Domain**: Deploys to jjd.io via CNAME file
+- **Cloudflare fronts the site with a ~4h edge cache keyed on URL.** There is no purge step
+  (the one added 2026-07-16 failed every run for lack of a zone-ID secret and was removed
+  2026-10-10). So: a changed image gets a **new filename**; never overwrite an image in place
+  and expect it to show within the TTL.
 
 ## Maintenance Tasks
 - Update CV with new roles, publications, patents
