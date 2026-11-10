@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.11.9">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Justin Donaldson">
+<meta name="dcterms.date" content="2026-11-10">
+<meta name="description" content="One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move. Going the other way was more interesting. Put dyf’s resolution dial on top of an e-means codebook and you get a clustering that never has to be told k, and on MNIST it agrees with the digits at 0.83 where dyf as shipped gets 0.45. The uncomfortable part is what that says about my own tree.">
+
+<title>A Resolution Dial for e-means – Justin Donaldson, Ph.D.</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/nav-logo.jpeg" rel="icon" type="image/jpeg">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-df247f3675f3daf71429e5dab0b3a16a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-J1DD0F3VY9', { 'anonymize_ip': true});
+</script>
+<style>
+
+      .quarto-title-block .quarto-title-banner h1,
+      .quarto-title-block .quarto-title-banner h2,
+      .quarto-title-block .quarto-title-banner h3,
+      .quarto-title-block .quarto-title-banner h4,
+      .quarto-title-block .quarto-title-banner h5,
+      .quarto-title-block .quarto-title-banner h6
+      {
+        color: white;
+      }
+
+      .quarto-title-block .quarto-title-banner {
+        color: white;
+background-image: url(images/lens_on_codebook_centroid_graph_centred_banner.jpg);
+background-size: cover;
+      }
+</style>
+
+
+<link rel="stylesheet" href="../style.css">
+<meta property="og:title" content="A Resolution Dial for e-means – Justin Donaldson, Ph.D.">
+<meta property="og:description" content="One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move. Going the other way was more interesting. Put dyf’s resolution dial on top of an e-means codebook and you get a clustering that never has to be told k, and on MNIST it agrees with the digits at 0.83 where dyf as shipped gets 0.45. The uncomfortable part is what that says about my own tree.">
+<meta property="og:image" content="https://www.jjd.io/posts/images/lens_on_codebook_mnist_three_panels_og.png">
+<meta property="og:site_name" content="Justin Donaldson, Ph.D.">
+<meta property="og:image:height" content="942">
+<meta property="og:image:width" content="1800">
+<meta name="twitter:title" content="A Resolution Dial for e-means – Justin Donaldson, Ph.D.">
+<meta name="twitter:description" content="One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move. Going the other way was more interesting. Put dyf’s resolution dial on top of an e-means codebook and you get a clustering that never has to be told k, and on MNIST it agrees with the digits at 0.83 where dyf as shipped gets 0.45. The uncomfortable part is what that says about my own tree.">
+<meta name="twitter:image" content="https://www.jjd.io/posts/images/lens_on_codebook_mnist_three_panels_og.png">
+<meta name="twitter:site" content="@omgjjd">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="citation_title" content="A Resolution Dial for e-means">
+<meta name="citation_author" content="Justin Donaldson">
+<meta name="citation_publication_date" content="2026-11-10">
+<meta name="citation_cover_date" content="2026-11-10">
+<meta name="citation_year" content="2026">
+<meta name="citation_online_date" content="2026-11-10">
+<meta name="citation_fulltext_html_url" content="https://www.jjd.io/posts/a-resolution-dial-for-e-means.html">
+<meta name="citation_language" content="en">
+</head>
+
+<body class="floating nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
+        setTimeout(() => {
+          window.scrollTo(0, scrollY);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo light-content">
+    <img src="../images/nav-logo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Justin Donaldson, Ph.D.</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../viz/index.html"> 
+<span class="menu-text">viz</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">about</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">cv</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/jdonaldson"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/jjustindonaldson/"> <i class="bi bi-linkedin" role="img" aria-label="Linkedin">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.discogs.com/user/omgjjd"> <i class="bi bi-vinyl-fill" role="img" aria-label="Discogs">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
+</div>
+            <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">A Resolution Dial for e-means</h1>
+                  <div>
+        <div class="description">
+          One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move. Going the other way was more interesting. Put dyf’s resolution dial on top of an e-means codebook and you get a clustering that never has to be told k, and on MNIST it agrees with the digits at 0.83 where dyf as shipped gets 0.45. The uncomfortable part is what that says about my own tree.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">machine learning</div>
+                <div class="quarto-category">clustering</div>
+                <div class="quarto-category">embeddings</div>
+                <div class="quarto-category">dyf</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Justin Donaldson </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 10, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Section">
+    <nav id="TOC" role="doc-toc" aria-labelledby="toc-title" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-dyf-does-in-five-steps" id="toc-what-dyf-does-in-five-steps" class="nav-link active" data-scroll-target="#what-dyf-does-in-five-steps">What dyf does, in five steps</a></li>
+  <li><a href="#experiment-1-e-means-against-k-means-told-k" id="toc-experiment-1-e-means-against-k-means-told-k" class="nav-link" data-scroll-target="#experiment-1-e-means-against-k-means-told-k">Experiment 1: e-means against k-means, told k</a></li>
+  <li><a href="#experiment-2-e-means-inside-dyf" id="toc-experiment-2-e-means-inside-dyf" class="nav-link" data-scroll-target="#experiment-2-e-means-inside-dyf">Experiment 2: e-means inside dyf</a></li>
+  <li><a href="#experiment-3-turn-it-around" id="toc-experiment-3-turn-it-around" class="nav-link" data-scroll-target="#experiment-3-turn-it-around">Experiment 3: turn it around</a></li>
+  <li><a href="#experiment-4-the-same-thing-without-the-re-cut" id="toc-experiment-4-the-same-thing-without-the-re-cut" class="nav-link" data-scroll-target="#experiment-4-the-same-thing-without-the-re-cut">Experiment 4: the same thing without the re-cut</a></li>
+  <li><a href="#what-i-am-taking-from-this" id="toc-what-i-am-taking-from-this" class="nav-link" data-scroll-target="#what-i-am-taking-from-this">What I am taking from this</a></li>
+  <li><a href="#honest-accounting" id="toc-honest-accounting" class="nav-link" data-scroll-target="#honest-accounting">Honest accounting</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content" tabindex="-1">
+
+
+
+
+
+
+<blockquote class="blockquote">
+<p>A faster k-means still has to be told k. A dial that reads every k off one fit does not care where its cells came from.</p>
+</blockquote>
+<p>Last week Swann Bessa, Pierre-Emmanuel Mazaré, Gergely Szilvasy, Hugo Touvron, David Picard, Matthijs Douze and Hervé Jégou published <a href="https://arxiv.org/abs/2611.09501"><em>e-means: outperforming k-means (in one-tenth the epochs)</em></a>, developed at Meta FAIR, with a <a href="https://e-means.github.io/">project page</a> and <a href="https://github.com/facebookresearch/faiss/tree/main/contrib/e_means">code in faiss</a>. It is mini-batch k-means with an exponential moving average, batch size and step set by scaling laws, and a rule that revives dead clusters. The abstract’s claim is that it beats the loss Lloyd’s algorithm reaches in 25 epochs after 1.4 to 2.6 epochs, at scales up to 16 million clusters.</p>
+<p>One of the authors asked me a fair question: what does it do for <a href="https://dyf.io">dyf</a>?</p>
+<p>I ran four experiments to answer. The first two say “nothing”. The last two turned the question around and found something I did not expect, mostly about my own code.</p>
+<section id="what-dyf-does-in-five-steps" class="level2">
+<h2 class="anchored" data-anchor-id="what-dyf-does-in-five-steps">What dyf does, in five steps</h2>
+<p>dyf groups embeddings so that you can change the level of detail after the fit. The <a href="https://dyf.io">homepage</a> walks through it; the short version:</p>
+<ol type="1">
+<li>Cut the data into a few thousand small <strong>cells</strong> with a shallow tree of hyperplanes.</li>
+<li>Take each cell’s centre and link it to its ten nearest cell centres.</li>
+<li>Run Louvain community detection on that graph at a <strong>resolution</strong> you choose. Low resolution gives a handful of groups, high resolution gives hundreds.</li>
+<li>Carry each cell’s group to its points.</li>
+<li><strong>Re-cut</strong>: move every point to its nearest group centre, for up to five rounds.</li>
+</ol>
+<p>Steps 1 and 2 happen once. Changing the resolution repeats only 3 to 5, which takes a few hundredths of a second. That is the dial. About fifty labelled examples are enough to pick the right setting, and that is the score I use throughout: the adjusted Rand index (ARI, agreement with human labels, 1.0 is perfect) at the level fifty random labels choose.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why fifty labels and not “the best k”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every method here gets the same fifty labels, drawn 200 times. A method that only looks good at a level you could not have found does not get credit for it.</p>
+</div>
+</div>
+</section>
+<section id="experiment-1-e-means-against-k-means-told-k" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-1-e-means-against-k-means-told-k">Experiment 1: e-means against k-means, told k</h2>
+<p>Before touching dyf I ran e-means the way it is meant to be run, against k-means on three intent datasets and up to six embedding models each (16 settings), at the true number of intents (64 to 150), ten seeds each.</p>
+<ul>
+<li>e-means beat Lloyd from the same random start by <strong>+0.014</strong> ARI.</li>
+<li>A k-means++ start beat a random start by <strong>+0.036</strong>.</li>
+<li>e-means given the k-means++ start reached a lower loss in 16 of 16 settings, by 0.07% to 0.52%, and moved ARI by <strong>+0.005</strong>.</li>
+</ul>
+<p>At a hundred or so centroids the starting point matters about two and a half times more than the optimiser, and a loss that is half a percent lower does not show up in the labels. This is not the paper’s regime, and it is not a criticism of the paper.</p>
+</section>
+<section id="experiment-2-e-means-inside-dyf" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-2-e-means-inside-dyf">Experiment 2: e-means inside dyf</h2>
+<p>dyf has exactly one k-means-shaped step: the re-cut. So I swapped it. Same tree, same graph, same Louvain groups, and then one of five things in step 5, on eight datasets and seven resolutions (70 dataset-layer-resolution cells):</p>
+<div id="tbl-recut" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-recut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Swapping dyf’s last step, at dyf’s number of groups.
+</figcaption>
+<div aria-describedby="tbl-recut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Replacement for the re-cut</th>
+<th style="text-align: right;">Mean ARI change vs dyf as shipped</th>
+<th style="text-align: right;">Cells above +0.02</th>
+<th style="text-align: right;">Cells below −0.02</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e-means, started from dyf’s groups</td>
+<td style="text-align: right;">−0.002</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>dyf’s own loop, run to convergence</td>
+<td style="text-align: right;">−0.003</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td>e-means, own random start</td>
+<td style="text-align: right;">−0.010</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td>k-means++</td>
+<td style="text-align: right;">−0.014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td>no re-cut</td>
+<td style="text-align: right;">−0.033</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>e-means did what it promises. In five passes it reached a tighter solution than my loop did when run to convergence. The groups did not get better for it, and on MNIST, Fashion-MNIST and AG News they got slightly worse, as they did for every arm that optimised harder. It also took 0.13 to 1.8 seconds where the shipped loop takes 0.02 to 0.5, because dyf arrives at that step with few groups and a start that is already close.</p>
+<p>So the answer to the question as asked is: no measurable effect. If the post ended here it would be a short one.</p>
+</section>
+<section id="experiment-3-turn-it-around" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-3-turn-it-around">Experiment 3: turn it around</h2>
+<p>e-means is built for thousands of centroids. dyf’s step 1 makes thousands of cells. Nothing in steps 2 to 5 cares whether a cell came from a tree.</p>
+<p>So I kept the dial and replaced the cells. Each arm gets exactly as many cells as dyf’s tree produced for that dataset (roughly 900 to 3,500), then the identical graph, Louvain sweep over 16 resolutions, and re-cut:</p>
+<ul>
+<li><strong>dyf tree</strong>: the shipped cells.</li>
+<li><strong>e-means</strong>: a flat codebook, five passes.</li>
+<li><strong>Lloyd</strong>: a flat codebook, 25 iterations, to tell whether a gain belongs to e-means or to any k-means.</li>
+<li><strong>random centres</strong>: random data points as centres, one assignment pass, no optimisation at all.</li>
+</ul>
+<p>With the re-cut on, across ten dataset-and-label-layer pairs and three seeds, the three flat arms beat the tree by about the same small amount: <strong>+0.009</strong> for e-means, <strong>+0.009</strong> for Lloyd, <strong>+0.011</strong> for random centres. The dial transfers. An e-means codebook gets every level of detail from one fit, at the same cost per level as dyf.</p>
+<p>It is also not about e-means. Random centres do just as well, which should make anyone suspicious, and it made me look at what the re-cut was doing.</p>
+</section>
+<section id="experiment-4-the-same-thing-without-the-re-cut" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-4-the-same-thing-without-the-re-cut">Experiment 4: the same thing without the re-cut</h2>
+<p>Read at the best level in the sweep, the flat arms were far ahead of the tree <em>before</em> the re-cut, and the re-cut was erasing the difference. That was an after-the-fact reading at a level nobody could have picked, so I registered the honest version before running it again: the fifty-label pick with the re-cut off, on three fresh seeds, compared with dyf exactly as it ships.</p>
+<div id="fig-dotplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lens_on_codebook_ten_layers_dotplot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Each row is one dataset and one set of human labels. The line joins dyf as shipped to e-means cells with the dial.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-registered" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-registered-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: The registered outcome: the level fifty labels pick, re-cut off, three fresh seeds.
+</figcaption>
+<div aria-describedby="tbl-registered-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cells, re-cut off</th>
+<th style="text-align: right;">Mean ARI change vs dyf as shipped</th>
+<th style="text-align: right;">Above +0.02</th>
+<th style="text-align: right;">Below −0.02</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e-means</td>
+<td style="text-align: right;"><strong>+0.059</strong></td>
+<td style="text-align: right;">6 of 10</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>Lloyd, 25 iterations</td>
+<td style="text-align: right;">+0.050</td>
+<td style="text-align: right;">5 of 10</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>random centres</td>
+<td style="text-align: right;">+0.026</td>
+<td style="text-align: right;">4 of 10</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td>dyf’s own tree</td>
+<td style="text-align: right;">−0.063</td>
+<td style="text-align: right;">2 of 10</td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The bar I set was “above +0.02 on a majority of the ten”. e-means clears it with six. Three things stand out.</p>
+<p><strong>MNIST is the home court, and e-means runs up the score there.</strong> dyf as shipped agrees with the ten digits at 0.45. e-means cells with the dial reach <strong>0.83</strong>, at eleven groups, without being told there are ten digits. K-means told ten gets about 0.40 on the same embedding.</p>
+<div id="fig-mnist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/lens_on_codebook_mnist_three_panels_og.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: One seed. Each panel is drawn at the level fifty labels pick most often.
+</figcaption>
+</figure>
+</div>
+<p><strong>Without the re-cut, the optimiser finally matters.</strong> e-means is ahead of Lloyd, and both are well ahead of random centres. Purer cells make better groups once nothing downstream is smoothing them over. e-means also makes those cells in about a third of Lloyd’s time: 5.7 seconds against 19.0 on AG News (128,000 points, 3,500 cells), 1.8 against 7.8 on MNIST.</p>
+<p><strong>The re-cut is a crutch for my tree.</strong> Take the re-cut away from dyf’s own cells and it loses on eight of ten. Take it away from e-means cells and it wins on six. The re-cut has been repairing weak cells, and on image data it damages good ones: with it on, the same e-means cells score 0.46 on MNIST.</p>
+</section>
+<section id="what-i-am-taking-from-this" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-am-taking-from-this">What I am taking from this</h2>
+<p>For e-means, there is a clustering method sitting one short step away from the codebook: build the centroid graph, run Louvain, and read any level you want. No k, one fit, and a refocus that costs a tenth of a second on 70,000 points.</p>
+<p>For dyf, the tree is the weak part of the grouping, and I had not seen it because the re-cut was covering for it. That does not retire the tree. It is what makes the search index, the frozen partition I use for drift, and the warm-start refits that keep group ids stable over time, and none of those were tested here. It does mean the cells and the re-cut are both back on the table, and that a tree on top with small codebooks inside each branch is worth a proper test.</p>
+<p>And the tree keeps one clear win. On AG News, four broad topics over 128,000 headlines, dyf as shipped beats e-means cells by 0.10. It has beaten every alternative cell-maker I have tried there. Coarse structure in text seems to be where hyperplane cells earn their keep.</p>
+</section>
+<section id="honest-accounting" class="level2">
+<h2 class="anchored" data-anchor-id="honest-accounting">Honest accounting</h2>
+<ul>
+<li><strong>MNIST carries the average.</strong> Without it the e-means gain over shipped dyf is +0.023 across the other nine, with five above +0.02 and two below. The direction holds on all four image layers and is mixed on text.</li>
+<li><strong>The fourth experiment was registered after I had seen its outline.</strong> The outcome and the bar were fixed before the rerun, and the rerun used seeds the first run never touched, but I knew which way it was likely to go.</li>
+<li><strong>This is an old recipe.</strong> Over-segment with k-means, then merge the pieces with a graph method: people have done versions of this for a long time. Graph clustering directly on all 70,000 MNIST points does a little better still in my earlier runs (about 0.89). What is new here is small: that e-means makes the over-segmentation cheap, and that a resolution sweep plus fifty labels makes “how many groups” a setting and not a refit.</li>
+<li><strong>It still needs fifty labels.</strong> At the default resolution the flat cells and the tree are indistinguishable on average.</li>
+<li><strong>Scale.</strong> I used the NumPy reference implementation of e-means at 900 to 3,500 centroids on 10,000 to 128,000 points. The paper is about codebooks a thousand times larger. Timings are from one laptop.</li>
+<li><strong>The graph is the slow part.</strong> Linking the cell centres takes longer than making the cells with the tree on every dataset (5.1 seconds against 0.9 on AG News). That is my bottleneck, not his.</li>
+</ul>
+<p>The scripts, per-seed results and run logs are in the <a href="https://github.com/jdonaldson/dyf/tree/main/benchmarks/intent_bench_2026_11">dyf repository</a>. If you work on e-means and want to try the dial on a codebook at your scale, the three steps after the codebook are about forty lines, and I would like to know whether MNIST’s 0.83 is a curiosity or the start of something.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Swann Bessa, Pierre-Emmanuel Mazaré, Gergely Szilvasy, Hugo Touvron, David Picard, Matthijs Douze and Hervé Jégou. <em>e-means: outperforming k-means (in one-tenth the epochs)</em>. arXiv:2611.09501 [cs.LG], 6 November 2026. <a href="https://arxiv.org/abs/2611.09501" class="uri">https://arxiv.org/abs/2611.09501</a>. Project page: <a href="https://e-means.github.io/" class="uri">https://e-means.github.io/</a>. Code: <a href="https://github.com/facebookresearch/faiss/tree/main/contrib/e_means"><code>faiss/contrib/e_means</code></a>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">bessa2026emeansoutperformingkmeansin</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span>         = {e-means: outperforming k-means (in one-tenth the epochs)},</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span>        = {Swann Bessa and Pierre-Emmanuel Mazaré and Gergely Szilvasy and Hugo Touvron and David Picard and Matthijs Douze and Hervé Jégou},</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span>          = {2026},</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">eprint</span>        = {2611.09501},</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">archivePrefix</span> = {arXiv},</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">primaryClass</span>  = {cs.LG},</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span>           = {https://arxiv.org/abs/2611.09501}</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Grounding note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Claims about e-means (what it is, the scale it targets, the comparison with 25 epochs of Lloyd) are from the <a href="https://arxiv.org/abs/2611.09501">arXiv abstract</a>, the <a href="https://e-means.github.io/">project page</a> and the reference implementation in <code>faiss/contrib/e_means</code>; I ran the NumPy version (<code>NumpyEmeans</code>) with its default five epochs and spherical mode. The method, the name and every idea in it are the authors’; the only thing added here is dyf’s graph-and-Louvain step on top of their codebook. All agreement numbers are adjusted Rand index against the datasets’ own labels on L2-normalised embeddings: MiniLM for the five text sets, CLIP for CIFAR-100, and a 50-component PCA of the pixels for MNIST and Fashion-MNIST. Stochastic arms are means over three or five seeds as stated; the tree and graph in Experiment 2 are a single seed. The 0.40 for k-means on MNIST and the 0.89 for graph clustering on points come from earlier dyf benchmark runs on the same embedding, not from this post’s scripts. I have no affiliation with Meta, and I will gladly correct anything I have got wrong about their work.</p>
+</div>
+</div>
+
+
+</section>
+
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{donaldson2026,
+  author = {Donaldson, Justin},
+  title = {A {Resolution} {Dial} for e-Means},
+  date = {2026-11-10},
+  url = {https://www.jjd.io/posts/a-resolution-dial-for-e-means.html},
+  langid = {en}
+}
+</code></pre><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Donaldson, Justin. 2026. <span>“A Resolution Dial for e-Means.”</span>
+November 10. <a href="https://www.jjd.io/posts/a-resolution-dial-for-e-means.html">https://www.jjd.io/posts/a-resolution-dial-for-e-means.html</a>.
+</div></div></section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/www\.jjd\.io");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+          if (!link.classList.contains('no-external-icon')) {
+          }
+        }
+      }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
+          if (lineIds.length > 0) {
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            placeBand(gutterDiv, el, lastEl);
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

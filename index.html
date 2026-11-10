@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.19">
+<meta name="generator" content="quarto-1.11.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -42,18 +42,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/scrollable-regions/scrollable-regions.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b626d73c4c936ccc3cb08be7d45d1df6.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-25d69b73cebb36be7b2ed5d875268302.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-4deb83902e98f7fb7d8e95ac3c9bc1b1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-25d69b73cebb36be7b2ed5d875268302.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-df247f3675f3daf71429e5dab0b3a16a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -103,12 +104,6 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
   </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-J1DD0F3VY9"></script>
 
@@ -155,6 +150,8 @@ window.Quarto = {
 <meta property="og:description" content="Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D.">
 <meta property="og:image" content="https://www.jjd.io/images/me.jpeg">
 <meta property="og:site_name" content="Justin Donaldson, Ph.D.">
+<meta property="og:image:height" content="815">
+<meta property="og:image:width" content="815">
 <meta name="twitter:title" content="Justin Donaldson – Justin Donaldson, Ph.D.">
 <meta name="twitter:description" content="Writing on machine learning, model interpretability, and data visualization — by Justin Donaldson, Ph.D.">
 <meta name="twitter:image" content="https://www.jjd.io/images/me.jpeg">
@@ -162,7 +159,7 @@ window.Quarto = {
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="floating nav-fixed quarto-light"><a id="quarto-skip-link" class="visually-hidden-focusable" href="#quarto-document-content">Skip to main content</a><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -185,6 +182,7 @@ window.Quarto = {
       for (let i=0; i < toggles.length; i++) {
         const toggle = toggles[i];
         if (toggle) {
+          toggle.setAttribute("aria-checked", alternate ? "true" : "false");
           if (alternate) {
             toggle.classList.add("alternate");
           } else {
@@ -214,13 +212,19 @@ window.Quarto = {
       manageTransitions('#quarto-margin-sidebar .nav-link', true);
       // Switch the toggles
       setColorSchemeToggle(alternate)
-      // Hack to workaround the fact that safari doesn't
-      // properly recolor the scrollbar when toggling (#1455)
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455).
+    // Not run on load: stylesheets are set before first paint there, and
+    // scrolling would undo the scroll to a URL fragment (#14973).
+    // The one pixel nudge keeps the reader where they were.
+    const refreshSafariScrollbar = () => {
       if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
         manageTransitions("body", false);
-        window.scrollTo(0, 1);
+        const scrollY = window.scrollY;
+        window.scrollTo(0, scrollY > 0 ? scrollY - 1 : 1);
         setTimeout(() => {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, scrollY);
           manageTransitions("body", true);
         }, 40);
       }
@@ -314,6 +318,7 @@ window.Quarto = {
       // Read the current dark / light value
       let toAlternate = !hasAlternateSentinel();
       toggleColorMode(toAlternate);
+      refreshSafariScrollbar();
       setStyleSentinel(toAlternate);
       toggleGiscusIfUsed(toAlternate, darkModeDefault);
       window.dispatchEvent(new Event('resize'));
@@ -328,7 +333,7 @@ window.Quarto = {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark" aria-label="Site">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
@@ -339,8 +344,7 @@ window.Quarto = {
     <span class="navbar-title">Justin Donaldson, Ph.D.</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -381,23 +385,24 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
-  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <button type="button" role="switch" aria-checked="false" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode" aria-label="Toggle dark mode"><i class="bi"></i></button>
 </div>
+            <div id="quarto-search" class="" title="Search"></div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto" aria-label="Section">
     
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(13)</span></div><div class="category" data-category="QWdlbnQ=">Agent <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YmxvZw==">blog <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZUdlbg==">CodeGen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHNjaWVuY2U=">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHN0cnVjdHVyZXM=">data structures <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGViYXRl">debate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW1iZWRkaW5ncw==">embeddings <span class="quarto-category-count">(2)</span></div><div class="category" data-category="aGVhbHRoJTIwZWNvbm9taWNz">health economics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJwcmV0YWJpbGl0eQ==">interpretability <span class="quarto-category-count">(4)</span></div><div class="category" data-category="aW52ZXN0aW5n">investing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZ3Vpc3RpY3M=">linguistics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(7)</span></div><div class="category" data-category="bWVkaWNhbCUyMGRldmljZXM=">medical devices <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0cmljcw==">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV1cm9zeW1ib2xpYw==">neurosymbolic <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bmxw">nlp <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VwcGx5JTIwY2hhaW4=">supply chain <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(14)</span></div><div class="category" data-category="QWdlbnQ=">Agent <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(4)</span></div><div class="category" data-category="YmxvZw==">blog <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2x1c3RlcmluZw==">clustering <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29kZUdlbg==">CodeGen <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHNjaWVuY2U=">data science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGF0YSUyMHN0cnVjdHVyZXM=">data structures <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZGViYXRl">debate <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZHlm">dyf <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZW1iZWRkaW5ncw==">embeddings <span class="quarto-category-count">(3)</span></div><div class="category" data-category="aGVhbHRoJTIwZWNvbm9taWNz">health economics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW50ZXJwcmV0YWJpbGl0eQ==">interpretability <span class="quarto-category-count">(4)</span></div><div class="category" data-category="aW52ZXN0aW5n">investing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bGluZ3Vpc3RpY3M=">linguistics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TExN">LLM <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(8)</span></div><div class="category" data-category="bWVkaWNhbCUyMGRldmljZXM=">medical devices <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWV0cmljcw==">metrics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV1cm9zeW1ib2xpYw==">neurosymbolic <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bmxw">nlp <span class="quarto-category-count">(4)</span></div><div class="category" data-category="cGhpbG9zb3BoeQ==">philosophy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3VwcGx5JTIwY2hhaW4=">supply chain <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dmlzdWFsaXphdGlvbg==">visualization <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content" tabindex="-1">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -467,18 +472,56 @@ window.Quarto = {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="aGVhbHRoJTIwZWNvbm9taWNzJTJDc3VwcGx5JTIwY2hhaW4lMkNkYXRhJTIwc2NpZW5jZSUyQ21ldHJpY3M=" data-listing-date-sort="1783814400000" data-listing-file-modified-sort="1791685740522" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6330">
-<div class="thumbnail"><a href="./posts/hours_above_replacement.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDY2x1c3RlcmluZyUyQ2VtYmVkZGluZ3MlMkNkeWY=" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2077">
+<div class="thumbnail"><a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">
+
+<img loading="lazy" src="./posts/images/lens_on_codebook_mnist_three_panels_og.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">A Resolution Dial for e-means</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2x1c3RlcmluZw=='); return false;">clustering</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZHlm'); return false;">dyf</div>
+
+</div>
+<div class="listing-description">
+<a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">
+<p>One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move. Going the other way was more interesting. Put dyf’s resolution dial on top of an e-means codebook and you get a clustering that never has to be told k, and on MNIST it agrees with the digits at 0.83 where dyf as shipped gets 0.45. The uncomfortable part is what that says about my own tree.</p>
+</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">
+<div class="listing-date">
+Nov 10, 2026
+</div>
+<div class="listing-author">
+Justin Donaldson
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="aGVhbHRoJTIwZWNvbm9taWNzJTJDc3VwcGx5JTIwY2hhaW4lMkNkYXRhJTIwc2NpZW5jZSUyQ21ldHJpY3M=" data-listing-date-sort="1783814400000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6330">
+<div class="thumbnail"><a href="./posts/hours_above_replacement.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/har_og_wide.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/hours_above_replacement.html" class="no-external">Hours Above Replacement</a>
+<a href="./posts/hours_above_replacement.html" class="no-external-icon">Hours Above Replacement</a>
 </h3>
 <div class="listing-subtitle">
-<a href="./posts/hours_above_replacement.html" class="no-external">A WAR metric for hospital supply chains</a>
+<a href="./posts/hours_above_replacement.html" class="no-external-icon">A WAR metric for hospital supply chains</a>
 </div>
 <div class="listing-categories">
 
@@ -491,12 +534,14 @@ window.Quarto = {
 <div class="listing-category" onclick="window.quartoListingCategory('bWV0cmljcw=='); return false;">metrics</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/hours_above_replacement.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/hours_above_replacement.html" class="no-external-icon">
 <p>Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity and supply risk in one currency, quality-adjusted hours, using baseball’s replacement-level trick.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/hours_above_replacement.html" class="no-external">
+<a href="./posts/hours_above_replacement.html" class="no-external-icon">
 <div class="listing-date">
 Jul 12, 2026
 </div>
@@ -506,19 +551,16 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1783728000000" data-listing-file-modified-sort="1791685740555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1928">
-<div class="thumbnail"><a href="./posts/two-witnesses-for-sarcasm.html" class="no-external">
+<div class="quarto-post image-right" data-index="2" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1783728000000" data-listing-file-modified-sort="1794337421859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1928">
+<div class="thumbnail"><a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/two_witnesses_og.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external">Two Witnesses for Sarcasm</a>
+<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">Two Witnesses for Sarcasm</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
@@ -530,12 +572,14 @@ Justin Donaldson
 <div class="listing-category" onclick="window.quartoListingCategory('bmV1cm9zeW1ib2xpYw=='); return false;">neurosymbolic</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/two-witnesses-for-sarcasm.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">
 <p>My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that <em>knows</em> sarcasm but won’t <em>say</em> it — is a problem an NTU lab has been attacking for two decades from the opposite direction. So I cross-examined my hidden-state probe against their SenticNet lexicon and scored the 2×2. The errors are near-independent, the cheap symbolic witness is honestly weak — and that’s exactly what makes the follow-up experiment worth someone in Singapore running.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external">
+<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">
 <div class="listing-date">
 Jul 11, 2026
 </div>
@@ -545,19 +589,16 @@ Justin Donaldson, Claude (Opus)
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1783209600000" data-listing-file-modified-sort="1791685740555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2225">
-<div class="thumbnail"><a href="./posts/semantic-frames.html" class="no-external">
+<div class="quarto-post image-right" data-index="3" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1783209600000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2225">
+<div class="thumbnail"><a href="./posts/semantic-frames.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/frames_og.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/semantic-frames.html" class="no-external">Meaning Has More Than Three Numbers</a>
+<a href="./posts/semantic-frames.html" class="no-external-icon">Meaning Has More Than Three Numbers</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/semantic-frames.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
@@ -569,12 +610,14 @@ Justin Donaldson, Claude (Opus)
 <div class="listing-category" onclick="window.quartoListingCategory('bGluZ3Vpc3RpY3M='); return false;">linguistics</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/semantic-frames.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/semantic-frames.html" class="no-external-icon">
 <p>Charles Osgood measured meaning with three bipolar scales. Point the same trick past affect and a small language model turns out to keep a whole instrument panel of orthogonal semantic dials — and the panel’s membership is a linguistic universal: the adjective-ordering hierarchy.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/semantic-frames.html" class="no-external">
+<a href="./posts/semantic-frames.html" class="no-external-icon">
 <div class="listing-date">
 Jul 5, 2026
 </div>
@@ -584,19 +627,16 @@ Justin Donaldson, Claude (Fable)
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1791685740555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2010">
-<div class="thumbnail"><a href="./posts/swollm-bbh-leaderboard.html" class="no-external">
+<div class="quarto-post image-right" data-index="4" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1794337421859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2010">
+<div class="thumbnail"><a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/swollm_og.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/swollm-bbh-leaderboard.html" class="no-external">A 1.7B Model That Stops Guessing</a>
+<a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">A 1.7B Model That Stops Guessing</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/swollm-bbh-leaderboard.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
@@ -608,12 +648,14 @@ Justin Donaldson, Claude (Fable)
 <div class="listing-category" onclick="window.quartoListingCategory('bmV1cm9zeW1ib2xpYw=='); return false;">neurosymbolic</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/swollm-bbh-leaderboard.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">
 <p>BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then <em>proves</em>, <em>recognizes</em>, or <em>abstains</em>, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/swollm-bbh-leaderboard.html" class="no-external">
+<a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">
 <div class="listing-date">
 Jun 27, 2026
 </div>
@@ -623,19 +665,16 @@ Justin Donaldson, Claude (Opus)
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1781913600000" data-listing-file-modified-sort="1791685740554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1568">
-<div class="thumbnail"><a href="./posts/osgood-epa-language-model.html" class="no-external">
+<div class="quarto-post image-right" data-index="5" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1781913600000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1568">
+<div class="thumbnail"><a href="./posts/osgood-epa-language-model.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/osgood_og.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/osgood-epa-language-model.html" class="no-external">A 1957 Theory of Meaning, Hiding in a Language Model</a>
+<a href="./posts/osgood-epa-language-model.html" class="no-external-icon">A 1957 Theory of Meaning, Hiding in a Language Model</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/osgood-epa-language-model.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
@@ -647,12 +686,14 @@ Justin Donaldson, Claude (Opus)
 <div class="listing-category" onclick="window.quartoListingCategory('bGluZ3Vpc3RpY3M='); return false;">linguistics</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/osgood-epa-language-model.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/osgood-epa-language-model.html" class="no-external-icon">
 <p>Charles Osgood found that affective meaning collapses to three universal dimensions—Evaluation, Potency, Activity. A small modern language model rediscovers them, keeps them orthogonal, and carries them across languages—without ever being told they exist.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/osgood-epa-language-model.html" class="no-external">
+<a href="./posts/osgood-epa-language-model.html" class="no-external-icon">
 <div class="listing-date">
 Jun 20, 2026
 </div>
@@ -662,19 +703,16 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="QUklMkNtYWNoaW5lJTIwbGVhcm5pbmclMkNwaGlsb3NvcGh5" data-listing-date-sort="1781395200000" data-listing-file-modified-sort="1791685740554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1619">
-<div class="thumbnail"><a href="./posts/no_free_lunch.html" class="no-external">
+<div class="quarto-post image-right" data-index="6" data-categories="QUklMkNtYWNoaW5lJTIwbGVhcm5pbmclMkNwaGlsb3NvcGh5" data-listing-date-sort="1781395200000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1619">
+<div class="thumbnail"><a href="./posts/no_free_lunch.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/no_free_lunch_og.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/no_free_lunch.html" class="no-external">Don’t draw so close to the heat, you forget you must eat</a>
+<a href="./posts/no_free_lunch.html" class="no-external-icon">Don’t draw so close to the heat, you forget you must eat</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/no_free_lunch.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
@@ -684,12 +722,14 @@ Justin Donaldson
 <div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/no_free_lunch.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/no_free_lunch.html" class="no-external-icon">
 <p>A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/no_free_lunch.html" class="no-external">
+<a href="./posts/no_free_lunch.html" class="no-external-icon">
 <div class="listing-date">
 Jun 14, 2026
 </div>
@@ -699,19 +739,16 @@ Justin Donaldson, Claude (Fable)
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ3Zpc3VhbGl6YXRpb24lMkNtZWRpY2FsJTIwZGV2aWNlcw==" data-listing-date-sort="1771718400000" data-listing-file-modified-sort="1791685740521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1817">
-<div class="thumbnail"><a href="./posts/gudid_landscape.html" class="no-external">
+<div class="quarto-post image-right" data-index="7" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ3Zpc3VhbGl6YXRpb24lMkNtZWRpY2FsJTIwZGV2aWNlcw==" data-listing-date-sort="1771718400000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1817">
+<div class="thumbnail"><a href="./posts/gudid_landscape.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/gudid_landscape.html" class="no-external">Creating a Surgical Energy Map</a>
+<a href="./posts/gudid_landscape.html" class="no-external-icon">Creating a Surgical Energy Map</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/gudid_landscape.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
@@ -723,12 +760,14 @@ Justin Donaldson, Claude (Fable)
 <div class="listing-category" onclick="window.quartoListingCategory('bWVkaWNhbCUyMGRldmljZXM='); return false;">medical devices</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/gudid_landscape.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/gudid_landscape.html" class="no-external-icon">
 <p>An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/gudid_landscape.html" class="no-external">
+<a href="./posts/gudid_landscape.html" class="no-external-icon">
 <div class="listing-date">
 Feb 22, 2026
 </div>
@@ -738,19 +777,16 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="TExNJTJDQUklMkNkZWJhdGU=" data-listing-date-sort="1769817600000" data-listing-file-modified-sort="1791685740521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
-<div class="thumbnail"><a href="./posts/claude_vs_kimi_debate.html" class="no-external">
+<div class="quarto-post image-right" data-index="8" data-categories="TExNJTJDQUklMkNkZWJhdGU=" data-listing-date-sort="1769817600000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
+<div class="thumbnail"><a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/claude_vs_kimi_debate.html" class="no-external">Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5</a>
+<a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/claude_vs_kimi_debate.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
@@ -760,12 +796,14 @@ Justin Donaldson
 <div class="listing-category" onclick="window.quartoListingCategory('ZGViYXRl'); return false;">debate</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/claude_vs_kimi_debate.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">
 <p>I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/claude_vs_kimi_debate.html" class="no-external">
+<a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">
 <div class="listing-date">
 Jan 31, 2026
 </div>
@@ -775,19 +813,16 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ2RhdGElMjBzdHJ1Y3R1cmVz" data-listing-date-sort="1763769600000" data-listing-file-modified-sort="1791685740555" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
-<div class="thumbnail"><a href="./posts/semantic-proprioception-demo.html" class="no-external">
+<div class="quarto-post image-right" data-index="9" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ2RhdGElMjBzdHJ1Y3R1cmVz" data-listing-date-sort="1763769600000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
+<div class="thumbnail"><a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">
 
 <img loading="lazy" src="./posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" class="thumbnail-image">
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external">Semantic Proprioception: Teaching Data to Understand Itself</a>
+<a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">Semantic Proprioception: Teaching Data to Understand Itself</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
@@ -797,12 +832,14 @@ Justin Donaldson
 <div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHN0cnVjdHVyZXM='); return false;">data structures</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/semantic-proprioception-demo.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">
 <p>How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external">
+<a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">
 <div class="listing-date">
 Nov 22, 2025
 </div>
@@ -812,30 +849,29 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1791685740552" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail"><a href="./posts/intelligence_chases_chaos.html" class="no-external">
+<div class="quarto-post image-right" data-index="10" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1794337421856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="thumbnail"><a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">Intelligence Chases Chaos</a>
+<a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">Intelligence Chases Chaos</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/intelligence_chases_chaos.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">
 <p>The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external">
+<a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">
 <div class="listing-date">
 Feb 3, 2025
 </div>
@@ -845,19 +881,16 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1791685740521" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
-<div class="thumbnail"><a href="./posts/book_bot.html" class="no-external">
+<div class="quarto-post image-right" data-index="11" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
+<div class="thumbnail"><a href="./posts/book_bot.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/book_bot.html" class="no-external">Creating an LLM Agent for Books</a>
+<a href="./posts/book_bot.html" class="no-external-icon">Creating an LLM Agent for Books</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/book_bot.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
@@ -867,12 +900,14 @@ Justin Donaldson
 <div class="listing-category" onclick="window.quartoListingCategory('QWdlbnQ='); return false;">Agent</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/book_bot.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/book_bot.html" class="no-external-icon">
 <p>Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/book_bot.html" class="no-external">
+<a href="./posts/book_bot.html" class="no-external-icon">
 <div class="listing-date">
 Dec 16, 2024
 </div>
@@ -882,19 +917,16 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1791685740554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="695">
-<div class="thumbnail"><a href="./posts/rumpus.html" class="no-external">
+<div class="quarto-post image-right" data-index="12" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="695">
+<div class="thumbnail"><a href="./posts/rumpus.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.jpg"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/rumpus.html" class="no-external">Automated Coding with LLMs: Making a Rumpus</a>
+<a href="./posts/rumpus.html" class="no-external-icon">Automated Coding with LLMs: Making a Rumpus</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/rumpus.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
@@ -902,12 +934,14 @@ Justin Donaldson
 <div class="listing-category" onclick="window.quartoListingCategory('Q29kZUdlbg=='); return false;">CodeGen</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/rumpus.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/rumpus.html" class="no-external-icon">
 <p>LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/rumpus.html" class="no-external">
+<a href="./posts/rumpus.html" class="no-external-icon">
 <div class="listing-date">
 Jul 22, 2024
 </div>
@@ -917,30 +951,29 @@ Justin Donaldson
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1791685740554" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
-<div class="thumbnail"><a href="./posts/quarto.html" class="no-external">
+<div class="quarto-post image-right" data-index="13" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
+<div class="thumbnail"><a href="./posts/quarto.html" class="no-external-icon">
 
 <p class="card-img-top"><img loading='lazy' src="posts/images/quarto.webp"  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/quarto.html" class="no-external">Blogging with Quarto</a>
+<a href="./posts/quarto.html" class="no-external-icon">Blogging with Quarto</a>
 </h3>
-<div class="listing-subtitle">
-<a href="./posts/quarto.html" class="no-external"></a>
-</div>
 <div class="listing-categories">
 
 <div class="listing-category" onclick="window.quartoListingCategory('YmxvZw=='); return false;">blog</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/quarto.html" class="no-external">
+<div class="listing-description">
+<a href="./posts/quarto.html" class="no-external-icon">
 <p>Creating my Webpage with Quarto</p>
-</a></div>
+</a>
+</div>
 </div>
 <div class="metadata">
-<a href="./posts/quarto.html" class="no-external">
+<a href="./posts/quarto.html" class="no-external-icon">
 <div class="listing-date">
 Apr 15, 2024
 </div>
@@ -957,15 +990,50 @@ Justin Donaldson
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-      const a = window.document.createElement('a');
-      a.classList.add('top-right');
-      a.classList.add('quarto-color-scheme-toggle');
-      a.href = "";
-      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const toggle = window.document.createElement('button');
+      toggle.type = "button";
+      toggle.setAttribute("role", "switch");
+      toggle.setAttribute("aria-checked", "false");
+      toggle.classList.add('top-right');
+      toggle.classList.add('quarto-color-scheme-toggle');
+      toggle.setAttribute("aria-label", "Toggle dark mode");
+      toggle.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
       const i = window.document.createElement("i");
       i.classList.add('bi');
-      a.appendChild(i);
-      window.document.body.appendChild(a);
+      toggle.appendChild(i);
+      // Put the toggle in a landmark of its own, so that landmark navigation
+      // can reach it.
+      //
+      // The container is always a fresh direct child of body, and the toggle is
+      // never moved into page furniture that the theme or the author controls.
+      // The toggle is positioned against the page, so any ancestor that
+      // establishes a containing block captures it: a positioned element or a
+      // grid for position: absolute, and transform, filter, will-change or
+      // contain for position: fixed. A direct child of body has none of these
+      // to inherit, and the shift when one appears is silent and visual.
+      //
+      // ARIA says a document should have at most one banner, and axe reports a
+      // duplicate whether or not the banners carry distinct labels. So use a
+      // header when the page has no banner yet, and a named region otherwise.
+      //
+      // A header is a banner wherever it sits, unless it is inside sectioning
+      // content, so this cannot just look at the children of body: a custom
+      // page layout wraps the title block header in a plain div. An explicit
+      // role="banner" always counts.
+      const sectioning = 'article, aside, main, nav, section, [role="article"], [role="complementary"], [role="main"], [role="navigation"], [role="region"]';
+      const hasBanner = Array.from(
+        window.document.querySelectorAll('header:not([role]), [role="banner"]')
+      ).some(function(el) {
+        return el.hasAttribute("role") || el.closest(sectioning) === null;
+      });
+      const container = window.document.createElement(hasBanner ? "div" : "header");
+      if (hasBanner) {
+        container.setAttribute("role", "region");
+        container.setAttribute("aria-label", "Toggle dark mode");
+      }
+      container.classList.add('quarto-color-scheme-toggle-container');
+      container.appendChild(toggle);
+      window.document.body.appendChild(container);
     }
     setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
@@ -1044,7 +1112,8 @@ Justin Donaldson
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
       // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      window.quartoDecorateExternalLinks = function (root) {
+     var links = (root || window.document).querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
       for (var i=0; i<links.length; i++) {
         const link = links[i];
         if (!isInternal(link.href)) {
@@ -1053,8 +1122,69 @@ Justin Donaldson
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+          if (!link.classList.contains('no-external-icon')) {
+          }
         }
       }
+      };
+      window.quartoDecorateExternalLinks(window.document);
+    // Esc closes the popup (WCAG 1.4.13) and focus leaving both trigger and
+    // popup closes it (WCAG 2.4.11); tippy handles neither for interactive popups.
+    const hideOnEscAndFocusOut = {
+      name: 'hideOnEscAndFocusOut',
+      defaultValue: true,
+      fn(instance) {
+        const dismiss = () => {
+          // A show scheduled by the trigger delay would otherwise reopen it
+          instance.clearDelayTimeouts();
+          instance.hide();
+        };
+        const onKeyDown = (event) => {
+          if (event.key !== 'Escape') {
+            return;
+          }
+          // Keep Esc from also reaching page handlers (e.g. reveal.js overview),
+          // except an open reveal.js slide menu, which Esc should close too.
+          // The menu handles keys only when its keyboard option is on.
+          const menuHandlesEsc = window.Reveal?.getPlugin?.('menu')?.isOpen() &&
+            window.Reveal.getConfig().menu?.keyboard !== false;
+          if (!menuHandlesEsc) {
+            event.stopPropagation();
+          }
+          if (instance.popper.contains(window.document.activeElement)) {
+            // Disabled while refocusing so the focus trigger does not reopen it
+            instance.disable();
+            instance.reference.focus();
+            instance.enable();
+          }
+          dismiss();
+        };
+        const onFocusOut = (event) => {
+          const target = event.relatedTarget;
+          if (target && !instance.reference.contains(target) &&
+              !instance.popper.contains(target)) {
+            dismiss();
+          }
+        };
+        // On the trigger too: a click trigger (code-annotations: select) has no
+        // blur handling. Attached for the instance's lifetime so leaving the
+        // trigger also cancels a show still pending on the trigger delay.
+        instance.reference.addEventListener('focusout', onFocusOut);
+        return {
+          onShow() {
+            window.document.addEventListener('keydown', onKeyDown, true);
+            instance.popper.addEventListener('focusout', onFocusOut);
+          },
+          onHide() {
+            window.document.removeEventListener('keydown', onKeyDown, true);
+            instance.popper.removeEventListener('focusout', onFocusOut);
+          },
+          onDestroy() {
+            instance.reference.removeEventListener('focusout', onFocusOut);
+          },
+        };
+      },
+    };
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
       const config = {
         allowHTML: true,
@@ -1068,6 +1198,7 @@ Justin Donaldson
         interactiveBorder: 10,
         theme: 'quarto',
         placement: 'bottom-start',
+        plugins: [hideOnEscAndFocusOut],
       };
       if (contentFn) {
         config.content = contentFn;
@@ -1230,44 +1361,54 @@ Justin Donaldson
           const lineIds = lines.map((line) => {
             return targetCell + "-" + line;
           })
-          let top = null;
-          let height = null;
-          let parent = null;
+          // Each band is positioned against its own containing block, which is
+          // not the offsetParent of the lines, so place it from client rects.
+          const placeBand = (band, firstEl, lastEl, codeBlock) => {
+            const container = band.offsetParent;
+            if (container === null) {
+              return;
+            }
+            const containerRect = container.getBoundingClientRect();
+            // Reveal.js scales slides with a transform, so convert client
+            // pixels back to the CSS pixels of the container.
+            const scale = containerRect.height / container.offsetHeight || 1;
+            const firstRect = firstEl.getBoundingClientRect();
+            const lastRect = lastEl.getBoundingClientRect();
+            const top = (firstRect.top - containerRect.top) / scale - container.clientTop + container.scrollTop;
+            const height = (lastRect.bottom - firstRect.top) / scale;
+            band.style.top = top - 2 + "px";
+            band.style.height = height + 4 + "px";
+            if (codeBlock) {
+              // Without the copy button wrapper, the containing block is wider
+              // than the code block, so span the code block explicitly.
+              const blockRect = codeBlock.getBoundingClientRect();
+              band.style.left = (blockRect.left - containerRect.left) / scale - container.clientLeft + container.scrollLeft + "px";
+              band.style.width = blockRect.width / scale + "px";
+            }
+          };
           if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
+            const el = window.document.getElementById(lineIds[0]);
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const parent = el.parentElement.parentElement;
+            // cook up a div (if necessary) and position it
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
             }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
+            placeBand(div, el, lastEl, parent.closest("div.sourceCode") || parent);
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
             }
+            placeBand(gutterDiv, el, lastEl);
             selectedAnnoteEl = annoteEl;
           }
         };
@@ -1365,6 +1506,9 @@ Justin Donaldson
       }
     }
   });
+  </script>
+  <script type="application/javascript">
+  window.quartoScrollableRegionsLabels = {"code":"Scrollable code","output":"Scrollable output"};
   </script>
 </div> <!-- /content -->
 

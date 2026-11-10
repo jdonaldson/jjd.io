@@ -13,9 +13,302 @@
 <url>https://www.jjd.io/images/me.jpeg</url>
 <title>Justin Donaldson, Ph.D.</title>
 <link>https://www.jjd.io/</link>
+<height>144</height>
+<width>144</width>
 </image>
-<generator>quarto-1.10.19</generator>
-<lastBuildDate>Sun, 12 Jul 2026 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.11.9</generator>
+<lastBuildDate>Tue, 10 Nov 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>A Resolution Dial for e-means</title>
+  <dc:creator>Justin Donaldson</dc:creator>
+  <link>https://www.jjd.io/posts/a-resolution-dial-for-e-means.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+<blockquote class="blockquote">
+<p>A faster k-means still has to be told k. A dial that reads every k off one fit does not care where its cells came from.</p>
+</blockquote>
+<p>Last week Swann Bessa, Pierre-Emmanuel Mazaré, Gergely Szilvasy, Hugo Touvron, David Picard, Matthijs Douze and Hervé Jégou published <a href="https://arxiv.org/abs/2611.09501"><em>e-means: outperforming k-means (in one-tenth the epochs)</em></a>, developed at Meta FAIR, with a <a href="https://e-means.github.io/">project page</a> and <a href="https://github.com/facebookresearch/faiss/tree/main/contrib/e_means">code in faiss</a>. It is mini-batch k-means with an exponential moving average, batch size and step set by scaling laws, and a rule that revives dead clusters. The abstract’s claim is that it beats the loss Lloyd’s algorithm reaches in 25 epochs after 1.4 to 2.6 epochs, at scales up to 16 million clusters.</p>
+<p>One of the authors asked me a fair question: what does it do for <a href="https://dyf.io">dyf</a>?</p>
+<p>I ran four experiments to answer. The first two say “nothing”. The last two turned the question around and found something I did not expect, mostly about my own code.</p>
+<section id="what-dyf-does-in-five-steps" class="level2">
+<h2 class="anchored" data-anchor-id="what-dyf-does-in-five-steps">What dyf does, in five steps</h2>
+<p>dyf groups embeddings so that you can change the level of detail after the fit. The <a href="https://dyf.io">homepage</a> walks through it; the short version:</p>
+<ol type="1">
+<li>Cut the data into a few thousand small <strong>cells</strong> with a shallow tree of hyperplanes.</li>
+<li>Take each cell’s centre and link it to its ten nearest cell centres.</li>
+<li>Run Louvain community detection on that graph at a <strong>resolution</strong> you choose. Low resolution gives a handful of groups, high resolution gives hundreds.</li>
+<li>Carry each cell’s group to its points.</li>
+<li><strong>Re-cut</strong>: move every point to its nearest group centre, for up to five rounds.</li>
+</ol>
+<p>Steps 1 and 2 happen once. Changing the resolution repeats only 3 to 5, which takes a few hundredths of a second. That is the dial. About fifty labelled examples are enough to pick the right setting, and that is the score I use throughout: the adjusted Rand index (ARI, agreement with human labels, 1.0 is perfect) at the level fifty random labels choose.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Why fifty labels and not “the best k”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every method here gets the same fifty labels, drawn 200 times. A method that only looks good at a level you could not have found does not get credit for it.</p>
+</div>
+</div>
+</section>
+<section id="experiment-1-e-means-against-k-means-told-k" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-1-e-means-against-k-means-told-k">Experiment 1: e-means against k-means, told k</h2>
+<p>Before touching dyf I ran e-means the way it is meant to be run, against k-means on three intent datasets and up to six embedding models each (16 settings), at the true number of intents (64 to 150), ten seeds each.</p>
+<ul>
+<li>e-means beat Lloyd from the same random start by <strong>+0.014</strong> ARI.</li>
+<li>A k-means++ start beat a random start by <strong>+0.036</strong>.</li>
+<li>e-means given the k-means++ start reached a lower loss in 16 of 16 settings, by 0.07% to 0.52%, and moved ARI by <strong>+0.005</strong>.</li>
+</ul>
+<p>At a hundred or so centroids the starting point matters about two and a half times more than the optimiser, and a loss that is half a percent lower does not show up in the labels. This is not the paper’s regime, and it is not a criticism of the paper.</p>
+</section>
+<section id="experiment-2-e-means-inside-dyf" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-2-e-means-inside-dyf">Experiment 2: e-means inside dyf</h2>
+<p>dyf has exactly one k-means-shaped step: the re-cut. So I swapped it. Same tree, same graph, same Louvain groups, and then one of five things in step 5, on eight datasets and seven resolutions (70 dataset-layer-resolution cells):</p>
+<div id="tbl-recut" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-recut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Swapping dyf’s last step, at dyf’s number of groups.
+</figcaption>
+<div aria-describedby="tbl-recut-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Replacement for the re-cut</th>
+<th style="text-align: right;">Mean ARI change vs dyf as shipped</th>
+<th style="text-align: right;">Cells above +0.02</th>
+<th style="text-align: right;">Cells below −0.02</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e-means, started from dyf’s groups</td>
+<td style="text-align: right;">−0.002</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td>dyf’s own loop, run to convergence</td>
+<td style="text-align: right;">−0.003</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td>e-means, own random start</td>
+<td style="text-align: right;">−0.010</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td>k-means++</td>
+<td style="text-align: right;">−0.014</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td>no re-cut</td>
+<td style="text-align: right;">−0.033</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">41</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>e-means did what it promises. In five passes it reached a tighter solution than my loop did when run to convergence. The groups did not get better for it, and on MNIST, Fashion-MNIST and AG News they got slightly worse, as they did for every arm that optimised harder. It also took 0.13 to 1.8 seconds where the shipped loop takes 0.02 to 0.5, because dyf arrives at that step with few groups and a start that is already close.</p>
+<p>So the answer to the question as asked is: no measurable effect. If the post ended here it would be a short one.</p>
+</section>
+<section id="experiment-3-turn-it-around" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-3-turn-it-around">Experiment 3: turn it around</h2>
+<p>e-means is built for thousands of centroids. dyf’s step 1 makes thousands of cells. Nothing in steps 2 to 5 cares whether a cell came from a tree.</p>
+<p>So I kept the dial and replaced the cells. Each arm gets exactly as many cells as dyf’s tree produced for that dataset (roughly 900 to 3,500), then the identical graph, Louvain sweep over 16 resolutions, and re-cut:</p>
+<ul>
+<li><strong>dyf tree</strong>: the shipped cells.</li>
+<li><strong>e-means</strong>: a flat codebook, five passes.</li>
+<li><strong>Lloyd</strong>: a flat codebook, 25 iterations, to tell whether a gain belongs to e-means or to any k-means.</li>
+<li><strong>random centres</strong>: random data points as centres, one assignment pass, no optimisation at all.</li>
+</ul>
+<p>With the re-cut on, across ten dataset-and-label-layer pairs and three seeds, the three flat arms beat the tree by about the same small amount: <strong>+0.009</strong> for e-means, <strong>+0.009</strong> for Lloyd, <strong>+0.011</strong> for random centres. The dial transfers. An e-means codebook gets every level of detail from one fit, at the same cost per level as dyf.</p>
+<p>It is also not about e-means. Random centres do just as well, which should make anyone suspicious, and it made me look at what the re-cut was doing.</p>
+</section>
+<section id="experiment-4-the-same-thing-without-the-re-cut" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-4-the-same-thing-without-the-re-cut">Experiment 4: the same thing without the re-cut</h2>
+<p>Read at the best level in the sweep, the flat arms were far ahead of the tree <em>before</em> the re-cut, and the re-cut was erasing the difference. That was an after-the-fact reading at a level nobody could have picked, so I registered the honest version before running it again: the fifty-label pick with the re-cut off, on three fresh seeds, compared with dyf exactly as it ships.</p>
+<div id="fig-dotplot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://www.jjd.io/posts/images/lens_on_codebook_ten_layers_dotplot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dotplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Each row is one dataset and one set of human labels. The line joins dyf as shipped to e-means cells with the dial.
+</figcaption>
+</figure>
+</div>
+<div id="tbl-registered" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-registered-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: The registered outcome: the level fifty labels pick, re-cut off, three fresh seeds.
+</figcaption>
+<div aria-describedby="tbl-registered-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 26%">
+<col style="width: 26%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cells, re-cut off</th>
+<th style="text-align: right;">Mean ARI change vs dyf as shipped</th>
+<th style="text-align: right;">Above +0.02</th>
+<th style="text-align: right;">Below −0.02</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>e-means</td>
+<td style="text-align: right;"><strong>+0.059</strong></td>
+<td style="text-align: right;">6 of 10</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td>Lloyd, 25 iterations</td>
+<td style="text-align: right;">+0.050</td>
+<td style="text-align: right;">5 of 10</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td>random centres</td>
+<td style="text-align: right;">+0.026</td>
+<td style="text-align: right;">4 of 10</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td>dyf’s own tree</td>
+<td style="text-align: right;">−0.063</td>
+<td style="text-align: right;">2 of 10</td>
+<td style="text-align: right;">8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</figure>
+</div>
+<p>The bar I set was “above +0.02 on a majority of the ten”. e-means clears it with six. Three things stand out.</p>
+<p><strong>MNIST is the home court, and e-means runs up the score there.</strong> dyf as shipped agrees with the ten digits at 0.45. e-means cells with the dial reach <strong>0.83</strong>, at eleven groups, without being told there are ten digits. K-means told ten gets about 0.40 on the same embedding.</p>
+<div id="fig-mnist" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="https://www.jjd.io/posts/images/lens_on_codebook_mnist_three_panels_og.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mnist-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: One seed. Each panel is drawn at the level fifty labels pick most often.
+</figcaption>
+</figure>
+</div>
+<p><strong>Without the re-cut, the optimiser finally matters.</strong> e-means is ahead of Lloyd, and both are well ahead of random centres. Purer cells make better groups once nothing downstream is smoothing them over. e-means also makes those cells in about a third of Lloyd’s time: 5.7 seconds against 19.0 on AG News (128,000 points, 3,500 cells), 1.8 against 7.8 on MNIST.</p>
+<p><strong>The re-cut is a crutch for my tree.</strong> Take the re-cut away from dyf’s own cells and it loses on eight of ten. Take it away from e-means cells and it wins on six. The re-cut has been repairing weak cells, and on image data it damages good ones: with it on, the same e-means cells score 0.46 on MNIST.</p>
+</section>
+<section id="what-i-am-taking-from-this" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-am-taking-from-this">What I am taking from this</h2>
+<p>For e-means, there is a clustering method sitting one short step away from the codebook: build the centroid graph, run Louvain, and read any level you want. No k, one fit, and a refocus that costs a tenth of a second on 70,000 points.</p>
+<p>For dyf, the tree is the weak part of the grouping, and I had not seen it because the re-cut was covering for it. That does not retire the tree. It is what makes the search index, the frozen partition I use for drift, and the warm-start refits that keep group ids stable over time, and none of those were tested here. It does mean the cells and the re-cut are both back on the table, and that a tree on top with small codebooks inside each branch is worth a proper test.</p>
+<p>And the tree keeps one clear win. On AG News, four broad topics over 128,000 headlines, dyf as shipped beats e-means cells by 0.10. It has beaten every alternative cell-maker I have tried there. Coarse structure in text seems to be where hyperplane cells earn their keep.</p>
+</section>
+<section id="honest-accounting" class="level2">
+<h2 class="anchored" data-anchor-id="honest-accounting">Honest accounting</h2>
+<ul>
+<li><strong>MNIST carries the average.</strong> Without it the e-means gain over shipped dyf is +0.023 across the other nine, with five above +0.02 and two below. The direction holds on all four image layers and is mixed on text.</li>
+<li><strong>The fourth experiment was registered after I had seen its outline.</strong> The outcome and the bar were fixed before the rerun, and the rerun used seeds the first run never touched, but I knew which way it was likely to go.</li>
+<li><strong>This is an old recipe.</strong> Over-segment with k-means, then merge the pieces with a graph method: people have done versions of this for a long time. Graph clustering directly on all 70,000 MNIST points does a little better still in my earlier runs (about 0.89). What is new here is small: that e-means makes the over-segmentation cheap, and that a resolution sweep plus fifty labels makes “how many groups” a setting and not a refit.</li>
+<li><strong>It still needs fifty labels.</strong> At the default resolution the flat cells and the tree are indistinguishable on average.</li>
+<li><strong>Scale.</strong> I used the NumPy reference implementation of e-means at 900 to 3,500 centroids on 10,000 to 128,000 points. The paper is about codebooks a thousand times larger. Timings are from one laptop.</li>
+<li><strong>The graph is the slow part.</strong> Linking the cell centres takes longer than making the cells with the tree on every dataset (5.1 seconds against 0.9 on AG News). That is my bottleneck, not his.</li>
+</ul>
+<p>The scripts, per-seed results and run logs are in the <a href="https://github.com/jdonaldson/dyf/tree/main/benchmarks/intent_bench_2026_11">dyf repository</a>. If you work on e-means and want to try the dial on a codebook at your scale, the three steps after the codebook are about forty lines, and I would like to know whether MNIST’s 0.83 is a curiosity or the start of something.</p>
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<p>Swann Bessa, Pierre-Emmanuel Mazaré, Gergely Szilvasy, Hugo Touvron, David Picard, Matthijs Douze and Hervé Jégou. <em>e-means: outperforming k-means (in one-tenth the epochs)</em>. arXiv:2611.09501 [cs.LG], 6 November 2026. <a href="https://arxiv.org/abs/2611.09501" class="uri">https://arxiv.org/abs/2611.09501</a>. Project page: <a href="https://e-means.github.io/" class="uri">https://e-means.github.io/</a>. Code: <a href="https://github.com/facebookresearch/faiss/tree/main/contrib/e_means"><code>faiss/contrib/e_means</code></a>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb1-1"><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">@misc</span>{<span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">bessa2026emeansoutperformingkmeansin</span>,</span>
+<span id="cb1-2">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">title</span>         = {e-means: outperforming k-means (in one-tenth the epochs)},</span>
+<span id="cb1-3">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">author</span>        = {Swann Bessa and Pierre-Emmanuel Mazaré and Gergely Szilvasy and Hugo Touvron and David Picard and Matthijs Douze and Hervé Jégou},</span>
+<span id="cb1-4">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">year</span>          = {2026},</span>
+<span id="cb1-5">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">eprint</span>        = {2611.09501},</span>
+<span id="cb1-6">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">archivePrefix</span> = {arXiv},</span>
+<span id="cb1-7">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">primaryClass</span>  = {cs.LG},</span>
+<span id="cb1-8">  <span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">url</span>           = {https://arxiv.org/abs/2611.09501}</span>
+<span id="cb1-9">}</span></code></pre></div></div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Grounding note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Claims about e-means (what it is, the scale it targets, the comparison with 25 epochs of Lloyd) are from the <a href="https://arxiv.org/abs/2611.09501">arXiv abstract</a>, the <a href="https://e-means.github.io/">project page</a> and the reference implementation in <code>faiss/contrib/e_means</code>; I ran the NumPy version (<code>NumpyEmeans</code>) with its default five epochs and spherical mode. The method, the name and every idea in it are the authors’; the only thing added here is dyf’s graph-and-Louvain step on top of their codebook. All agreement numbers are adjusted Rand index against the datasets’ own labels on L2-normalised embeddings: MiniLM for the five text sets, CLIP for CIFAR-100, and a 50-component PCA of the pixels for MNIST and Fashion-MNIST. Stochastic arms are means over three or five seeds as stated; the tree and graph in Experiment 2 are a single seed. The 0.40 for k-means on MNIST and the 0.89 for graph clustering on points come from earlier dyf benchmark runs on the same embedding, not from this post’s scripts. I have no affiliation with Meta, and I will gladly correct anything I have got wrong about their work.</p>
+</div>
+</div>
+
+
+</section>
+
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{donaldson2026,
+  author = {Donaldson, Justin},
+  title = {A {Resolution} {Dial} for e-Means},
+  date = {2026-11-10},
+  url = {https://www.jjd.io/posts/a-resolution-dial-for-e-means.html},
+  langid = {en}
+}
+</code></pre></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+Donaldson, Justin. 2026. <span>“A Resolution Dial for e-Means.”</span>
+November 10. <a href="https://www.jjd.io/posts/a-resolution-dial-for-e-means.html">https://www.jjd.io/posts/a-resolution-dial-for-e-means.html</a>.
+</div></div></section></div> ]]></description>
+  <category>machine learning</category>
+  <category>clustering</category>
+  <category>embeddings</category>
+  <category>dyf</category>
+  <guid>https://www.jjd.io/posts/a-resolution-dial-for-e-means.html</guid>
+  <pubDate>Tue, 10 Nov 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://www.jjd.io/posts/images/lens_on_codebook_mnist_three_panels_og.png" medium="image" type="image/png" height="75" width="144"/>
+</item>
 <item>
   <title>Hours Above Replacement</title>
   <dc:creator>Justin Donaldson</dc:creator>
@@ -466,7 +759,7 @@ Infusion pumps &amp; sets HAR_savings ≈ 10^6.5 h/yr · HAR_risk ≈ 10^6.2 h/y
   <category>metrics</category>
   <guid>https://www.jjd.io/posts/hours_above_replacement.html</guid>
   <pubDate>Sun, 12 Jul 2026 00:00:00 GMT</pubDate>
-  <media:content url="https://www.jjd.io/posts/images/har_og_wide.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.jjd.io/posts/images/har_og_wide.jpg" medium="image" type="image/jpeg" height="75" width="144"/>
 </item>
 <item>
   <title>Two Witnesses for Sarcasm</title>
@@ -584,14 +877,14 @@ Table&nbsp;1: The 2×2, on the n=80 examples where both witnesses committed. The
 
 </section>
 
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{donaldson2026,
   author = {Donaldson, Justin and (Opus), Claude},
   title = {Two {Witnesses} for {Sarcasm}},
   date = {2026-07-11},
   url = {https://www.jjd.io/posts/two-witnesses-for-sarcasm.html},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+</code></pre></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
 Donaldson, Justin, and Claude (Opus). 2026. <span>“Two Witnesses for
 Sarcasm.”</span> July 11. <a href="https://www.jjd.io/posts/two-witnesses-for-sarcasm.html">https://www.jjd.io/posts/two-witnesses-for-sarcasm.html</a>.
 </div></div></section></div> ]]></description>
@@ -704,14 +997,14 @@ Sarcasm.”</span> July 11. <a href="https://www.jjd.io/posts/two-witnesses-for-
 
 </section>
 
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{donaldson2026,
   author = {Donaldson, Justin and (Fable), Claude},
   title = {Meaning {Has} {More} {Than} {Three} {Numbers}},
   date = {2026-07-05},
   url = {https://www.jjd.io/posts/semantic-frames.html},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+</code></pre></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
 Donaldson, Justin, and Claude (Fable). 2026. <span>“Meaning Has More
 Than Three Numbers.”</span> July 5. <a href="https://www.jjd.io/posts/semantic-frames.html">https://www.jjd.io/posts/semantic-frames.html</a>.
 </div></div></section></div> ]]></description>
@@ -825,14 +1118,14 @@ Tip
 
 </section>
 
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{donaldson2026,
   author = {Donaldson, Justin and (Opus), Claude},
   title = {A {1.7B} {Model} {That} {Stops} {Guessing}},
   date = {2026-06-27},
   url = {https://www.jjd.io/posts/swollm-bbh-leaderboard.html},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+</code></pre></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
 Donaldson, Justin, and Claude (Opus). 2026. <span>“A 1.7B Model That
 Stops Guessing.”</span> June 27. <a href="https://www.jjd.io/posts/swollm-bbh-leaderboard.html">https://www.jjd.io/posts/swollm-bbh-leaderboard.html</a>.
 </div></div></section></div> ]]></description>
@@ -953,7 +1246,7 @@ Stops Guessing.”</span> June 27. <a href="https://www.jjd.io/posts/swollm-bbh-
 
 </section>
 
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{donaldson2026,
+<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p><div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><div class="code-copy-outer-scaffold"><pre class="sourceCode quarto-appendix-bibtex code-with-copy"><code class="sourceCode bibtex">@online{donaldson2026,
   author = {Donaldson, Justin},
   title = {A 1957 {Theory} of {Meaning,} {Hiding} in a {Language}
     {Model}},
@@ -961,7 +1254,7 @@ Stops Guessing.”</span> June 27. <a href="https://www.jjd.io/posts/swollm-bbh-
   url = {https://www.jjd.io/posts/osgood-epa-language-model.html},
   langid = {en}
 }
-</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
+</code></pre></div><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-donaldson2026" class="csl-entry quarto-appendix-citeas">
 Donaldson, Justin. 2026. <span>“A 1957 Theory of Meaning, Hiding in a
 Language Model.”</span> June 20. <a href="https://www.jjd.io/posts/osgood-epa-language-model.html">https://www.jjd.io/posts/osgood-epa-language-model.html</a>.
 </div></div></section></div> ]]></description>
@@ -1080,7 +1373,7 @@ header#title-block-header { display: none; }
   <category>philosophy</category>
   <guid>https://www.jjd.io/posts/no_free_lunch.html</guid>
   <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-  <media:content url="https://www.jjd.io/posts/images/no_free_lunch_og.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.jjd.io/posts/images/no_free_lunch_og.jpg" medium="image" type="image/jpeg" height="76" width="144"/>
 </item>
 <item>
   <title>Creating a Surgical Energy Map</title>
@@ -1456,7 +1749,7 @@ header#title-block-header { display: none; }
   <category>debate</category>
   <guid>https://www.jjd.io/posts/claude_vs_kimi_debate.html</guid>
   <pubDate>Sat, 31 Jan 2026 00:00:00 GMT</pubDate>
-  <media:content url="https://www.jjd.io/posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.jjd.io/posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg" medium="image" type="image/jpeg" height="144" width="144"/>
 </item>
 <item>
   <title>Semantic Proprioception: Teaching Data to Understand Itself</title>
@@ -1720,7 +2013,7 @@ font-style: inherit;"># Bucket 132 contains 16 items</span></span></code></pre><
   <category>data structures</category>
   <guid>https://www.jjd.io/posts/semantic-proprioception-demo.html</guid>
   <pubDate>Sat, 22 Nov 2025 00:00:00 GMT</pubDate>
-  <media:content url="https://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://www.jjd.io/posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" medium="image" type="image/jpeg" height="144" width="144"/>
 </item>
 <item>
   <title>Intelligence Chases Chaos</title>
@@ -2150,6 +2443,7 @@ font-style: inherit;">"__main__"</span>:</span>
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
+
 <pre class="mermaid mermaid-js">flowchart LR
   A[Hard edge] --&gt; B(Round edge)
   B --&gt; C{Decision}
