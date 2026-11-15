@@ -47,14 +47,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6703cc634c3fad2dcbf32914043d3ccc.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-f6cffb695cf1ebb7f1f5564e60f87b84.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-6703cc634c3fad2dcbf32914043d3ccc.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-df247f3675f3daf71429e5dab0b3a16a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-98c6a89b6ed1657ea28c21a489657cca.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-7f1e3230fde6ce5761457138ab435461.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-98c6a89b6ed1657ea28c21a489657cca.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -921,7 +921,29 @@ Infusion pumps &amp; sets HAR_savings ≈ 10^6.5 h/yr · HAR_risk ≈ 10^6.2 h/y
 
 </section>
 
-<p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<p><i>© Copyright 2026 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<script>
+// Lab-notebook layout helpers (see style.css).
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Banner posts: move the description off the image and set it as a dek
+  //    under the title meta, so the banner only carries title + subtitle.
+  var desc = document.querySelector(".quarto-title-banner .description");
+  var header = document.getElementById("title-block-header");
+  if (desc && header) {
+    var dek = document.createElement("p");
+    dek.className = "nb-dek column-body";
+    dek.textContent = desc.textContent.trim();
+    var meta = header.querySelector(".quarto-title-meta");
+    if (meta) { meta.before(dek); } else { header.appendChild(dek); }
+  }
+
+  // 2. Closing ledger sections get a quieter, report-like treatment.
+  var ledger = /^(honest accounting|grounding note|notes|reference|references|sources)\b/i;
+  document.querySelectorAll("main section.level2 > h2").forEach(function (h) {
+    if (ledger.test(h.textContent.trim())) { h.parentElement.classList.add("nb-ledger"); }
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

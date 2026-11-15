@@ -47,14 +47,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-447e42e69aaa9833c0ba1b986f430b20.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-6703cc634c3fad2dcbf32914043d3ccc.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-f6cffb695cf1ebb7f1f5564e60f87b84.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-6703cc634c3fad2dcbf32914043d3ccc.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-df247f3675f3daf71429e5dab0b3a16a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-f4c2305df7415457458b0cfa9fd0fa42.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-98c6a89b6ed1657ea28c21a489657cca.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7f1e3230fde6ce5761457138ab435461.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-98c6a89b6ed1657ea28c21a489657cca.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,9 +92,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-subtitle','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -433,7 +433,7 @@ window.Quarto = {
 <div class="no-row-height column-margin column-container"><div class="">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="./about.html"><img src="images/sisters.jpeg" class="img-fluid figure-img"></a></p>
+<p><a href="./about.html"><img src="images/sisters.jpeg" class="nb-square img-fluid figure-img"></a></p>
 <figcaption>The Three Sisters Mountains in Sisters, Oregon</figcaption>
 </figure>
 </div>
@@ -445,7 +445,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
@@ -461,9 +461,6 @@ window.Quarto = {
       <option value="listing-date-sort" data-direction="desc">
         Date - Newest
       </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
     </select>
   </div>
     <div class="input-group input-group-sm quarto-listing-filter">
@@ -471,521 +468,321 @@ window.Quarto = {
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDY2x1c3RlcmluZyUyQ2VtYmVkZGluZ3MlMkNkeWY=" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2077">
-<div class="thumbnail"><a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/lens_on_codebook_mnist_three_panels_og.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">A Resolution Dial for e-means</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y2x1c3RlcmluZw=='); return false;">clustering</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZHlm'); return false;">dyf</div>
-
+<div class="list grid quarto-listing-cols-2">
+<div class="g-col-1" data-index="0" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDY2x1c3RlcmluZyUyQ2VtYmVkZGluZ3MlMkNkeWY=" data-listing-date-sort="1794268800000" data-listing-file-modified-sort="1794707139029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2077">
+<a href="./posts/a-resolution-dial-for-e-means.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/lens_on_codebook_mnist_three_panels_og.png" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A Resolution Dial for e-means
+</h5>
+<div class="card-text listing-description">
+<p>One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move.…</p>
 </div>
-<div class="listing-description">
-<a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">
-<p>One of the e-means authors asked what their algorithm does for dyf. Inside dyf, nothing: I swapped it into the one k-means-shaped step and the groups did not move. Going the other way was more interesting. Put dyf’s resolution dial on top of an e-means codebook and you get a clustering that never has to be told k, and on MNIST it agrees with the digits at 0.83 where dyf as shipped gets 0.45. The uncomfortable part is what that says about my own tree.</p>
-</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/a-resolution-dial-for-e-means.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Nov 10, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="aGVhbHRoJTIwZWNvbm9taWNzJTJDc3VwcGx5JTIwY2hhaW4lMkNkYXRhJTIwc2NpZW5jZSUyQ21ldHJpY3M=" data-listing-date-sort="1783814400000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6330">
-<div class="thumbnail"><a href="./posts/hours_above_replacement.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/har_og_wide.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/hours_above_replacement.html" class="no-external-icon">Hours Above Replacement</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/hours_above_replacement.html" class="no-external-icon">A WAR metric for hospital supply chains</a>
+</div></a>
 </div>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('aGVhbHRoJTIwZWNvbm9taWNz'); return false;">health economics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('c3VwcGx5JTIwY2hhaW4='); return false;">supply chain</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHNjaWVuY2U='); return false;">data science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWV0cmljcw=='); return false;">metrics</div>
-
+<div class="g-col-1" data-index="1" data-categories="aGVhbHRoJTIwZWNvbm9taWNzJTJDc3VwcGx5JTIwY2hhaW4lMkNkYXRhJTIwc2NpZW5jZSUyQ21ldHJpY3M=" data-listing-date-sort="1783814400000" data-listing-file-modified-sort="1794707139029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="32" data-listing-word-count-sort="6330">
+<a href="./posts/hours_above_replacement.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/har_og_wide.jpg" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Hours Above Replacement
+</h5>
+<div class="card-subtitle listing-subtitle">
+A WAR metric for hospital supply chains
 </div>
-<div class="listing-description">
-<a href="./posts/hours_above_replacement.html" class="no-external-icon">
-<p>Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity and supply risk in one currency, quality-adjusted hours, using baseball’s replacement-level trick.</p>
-</a>
+<div class="card-text listing-description">
+<p>Hospital procurement measures spend to the penny and criticality in adjectives — so the dollars win every argument. HAR puts savings opportunity and supply risk in one…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/hours_above_replacement.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jul 12, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1783728000000" data-listing-file-modified-sort="1794337421859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1928">
-<div class="thumbnail"><a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/two_witnesses_og.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">Two Witnesses for Sarcasm</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJwcmV0YWJpbGl0eQ=='); return false;">interpretability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV1cm9zeW1ib2xpYw=='); return false;">neurosymbolic</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">
-<p>My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that <em>knows</em> sarcasm but won’t <em>say</em> it — is a problem an NTU lab has been attacking for two decades from the opposite direction. So I cross-examined my hidden-state probe against their SenticNet lexicon and scored the 2×2. The errors are near-independent, the cheap symbolic witness is honestly weak — and that’s exactly what makes the follow-up experiment worth someone in Singapore running.</p>
-</a>
+<div class="g-col-1" data-index="2" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1783728000000" data-listing-file-modified-sort="1794707139058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1928">
+<a href="./posts/two-witnesses-for-sarcasm.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/two_witnesses_og.png" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Two Witnesses for Sarcasm
+</h5>
+<div class="card-text listing-description">
+<p>My analytics say Singapore is reading, so I read back. It turns out the strangest result in my last post — a 1.7B model that <em>knows</em> sarcasm but won’t <em>say</em> it — is a…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/two-witnesses-for-sarcasm.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jul 11, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson, Claude (Opus)
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1783209600000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2225">
-<div class="thumbnail"><a href="./posts/semantic-frames.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/frames_og.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/semantic-frames.html" class="no-external-icon">Meaning Has More Than Three Numbers</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJwcmV0YWJpbGl0eQ=='); return false;">interpretability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGluZ3Vpc3RpY3M='); return false;">linguistics</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/semantic-frames.html" class="no-external-icon">
-<p>Charles Osgood measured meaning with three bipolar scales. Point the same trick past affect and a small language model turns out to keep a whole instrument panel of orthogonal semantic dials — and the panel’s membership is a linguistic universal: the adjective-ordering hierarchy.</p>
-</a>
+<div class="g-col-1" data-index="3" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1783209600000" data-listing-file-modified-sort="1794707139057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2225">
+<a href="./posts/semantic-frames.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/frames_og.png" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Meaning Has More Than Three Numbers
+</h5>
+<div class="card-text listing-description">
+<p>Charles Osgood measured meaning with three bipolar scales. Point the same trick past affect and a small language model turns out to keep a whole instrument panel of…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/semantic-frames.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jul 5, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson, Claude (Fable)
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1794337421859" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2010">
-<div class="thumbnail"><a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/swollm_og.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">A 1.7B Model That Stops Guessing</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJwcmV0YWJpbGl0eQ=='); return false;">interpretability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmV1cm9zeW1ib2xpYw=='); return false;">neurosymbolic</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">
-<p>BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then <em>proves</em>, <em>recognizes</em>, or <em>abstains</em>, and the same model reaches ~90%. Here is the per-task leaderboard, and an honest accounting of what’s real.</p>
-</a>
+<div class="g-col-1" data-index="4" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDbmxwJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25ldXJvc3ltYm9saWM=" data-listing-date-sort="1782518400000" data-listing-file-modified-sort="1794707139058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2010">
+<a href="./posts/swollm-bbh-leaderboard.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/swollm_og.png" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A 1.7B Model That Stops Guessing
+</h5>
+<div class="card-text listing-description">
+<p>BIG-Bench Hard was built to be hard for small models — vanilla SmolLM2-1.7B scores 30%. Bolt on a neurosymbolic layer that parses the prompt and then <em>proves</em>…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/swollm-bbh-leaderboard.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jun 27, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson, Claude (Opus)
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1781913600000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1568">
-<div class="thumbnail"><a href="./posts/osgood-epa-language-model.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/osgood_og.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/osgood-epa-language-model.html" class="no-external-icon">A 1957 Theory of Meaning, Hiding in a Language Model</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW50ZXJwcmV0YWJpbGl0eQ=='); return false;">interpretability</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bmxw'); return false;">nlp</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bGluZ3Vpc3RpY3M='); return false;">linguistics</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/osgood-epa-language-model.html" class="no-external-icon">
-<p>Charles Osgood found that affective meaning collapses to three universal dimensions—Evaluation, Potency, Activity. A small modern language model rediscovers them, keeps them orthogonal, and carries them across languages—without ever being told they exist.</p>
-</a>
+<div class="g-col-1" data-index="5" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDaW50ZXJwcmV0YWJpbGl0eSUyQ25scCUyQ2xpbmd1aXN0aWNz" data-listing-date-sort="1781913600000" data-listing-file-modified-sort="1794707139057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1568">
+<a href="./posts/osgood-epa-language-model.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/osgood_og.png" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+A 1957 Theory of Meaning, Hiding in a Language Model
+</h5>
+<div class="card-text listing-description">
+<p>Charles Osgood found that affective meaning collapses to three universal dimensions—Evaluation, Potency, Activity. A small modern language model rediscovers them, keeps…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/osgood-epa-language-model.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jun 20, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="QUklMkNtYWNoaW5lJTIwbGVhcm5pbmclMkNwaGlsb3NvcGh5" data-listing-date-sort="1781395200000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1619">
-<div class="thumbnail"><a href="./posts/no_free_lunch.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/no_free_lunch_og.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/no_free_lunch.html" class="no-external-icon">Don’t draw so close to the heat, you forget you must eat</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('cGhpbG9zb3BoeQ=='); return false;">philosophy</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/no_free_lunch.html" class="no-external-icon">
-<p>A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about superintelligence, and why the most beautiful version of any answer is the one to distrust.</p>
-</a>
+<div class="g-col-1" data-index="6" data-categories="QUklMkNtYWNoaW5lJTIwbGVhcm5pbmclMkNwaGlsb3NvcGh5" data-listing-date-sort="1781395200000" data-listing-file-modified-sort="1794707139057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1619">
+<a href="./posts/no_free_lunch.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/no_free_lunch_og.jpg" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Don’t draw so close to the heat, you forget you must eat
+</h5>
+<div class="card-text listing-description">
+<p>A conservation theorem in machine learning — No Free Lunch — says no learner beats another averaged over all problems. What that does and doesn’t imply about…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/no_free_lunch.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jun 14, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson, Claude (Fable)
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ3Zpc3VhbGl6YXRpb24lMkNtZWRpY2FsJTIwZGV2aWNlcw==" data-listing-date-sort="1771718400000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1817">
-<div class="thumbnail"><a href="./posts/gudid_landscape.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/gudid_landscape.html" class="no-external-icon">Creating a Surgical Energy Map</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dmlzdWFsaXphdGlvbg=='); return false;">visualization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWVkaWNhbCUyMGRldmljZXM='); return false;">medical devices</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/gudid_landscape.html" class="no-external-icon">
-<p>An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the center, and tiny Yasargil variants get their own neighborhoods. Here’s what it found.</p>
-</a>
+<div class="g-col-1" data-index="7" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ3Zpc3VhbGl6YXRpb24lMkNtZWRpY2FsJTIwZGV2aWNlcw==" data-listing-date-sort="1771718400000" data-listing-file-modified-sort="1794707139029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1817">
+<a href="./posts/gudid_landscape.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/omgjjd_Norman_Rockwell_style_illustration_scientist_examining_a_1434222c-fe9e-423b-8e08-3fd811099467.png" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Creating a Surgical Energy Map
+</h5>
+<div class="card-text listing-description">
+<p>An AI read 34,000 FDA energy-device descriptions and drew a map. The map makes sense — branded forceps families cluster by eponym, laparoscopic instruments dominate the…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/gudid_landscape.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Feb 22, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="TExNJTJDQUklMkNkZWJhdGU=" data-listing-date-sort="1769817600000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
-<div class="thumbnail"><a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGViYXRl'); return false;">debate</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">
-<p>I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE architecture. It lost.</p>
-</a>
+<div class="g-col-1" data-index="8" data-categories="TExNJTJDQUklMkNkZWJhdGU=" data-listing-date-sort="1769817600000" data-listing-file-modified-sort="1794707139029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2083">
+<a href="./posts/claude_vs_kimi_debate.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/omgjjd_two_robots_in_greek_robes_debating_each_other_in_a_forum_1e7c8e6a-f060-454c-8ecb-4279ee18a99b.jpg" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Dense vs MoE: Claude Opus 4.5 vs Kimi K2.5
+</h5>
+<div class="card-text listing-description">
+<p>I had two frontier AI models debate whether dense transformers or Mixture-of-Experts architectures are better for production deployment. K2.5 defended its own MoE…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/claude_vs_kimi_debate.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jan 31, 2026
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ2RhdGElMjBzdHJ1Y3R1cmVz" data-listing-date-sort="1763769600000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
-<div class="thumbnail"><a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">
-
-<img loading="lazy" src="./posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">Semantic Proprioception: Teaching Data to Understand Itself</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">machine learning</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZW1iZWRkaW5ncw=='); return false;">embeddings</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YSUyMHN0cnVjdHVyZXM='); return false;">data structures</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">
-<p>How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic awareness.</p>
-</a>
+<div class="g-col-1" data-index="9" data-categories="bWFjaGluZSUyMGxlYXJuaW5nJTJDZW1iZWRkaW5ncyUyQ2RhdGElMjBzdHJ1Y3R1cmVz" data-listing-date-sort="1763769600000" data-listing-file-modified-sort="1794707139058" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1150">
+<a href="./posts/semantic-proprioception-demo.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./posts/images/omgjjd_semantic_proprioception_0e96acb5-c893-4f1a-9674-b4c5229112f2.jpg" class="thumbnail-image card-img" style="height: 220px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Semantic Proprioception: Teaching Data to Understand Itself
+</h5>
+<div class="card-text listing-description">
+<p>How LSH density analysis reveals hidden structure in text collections—from customer support tickets to academic papers—using Krapivin hash tables for O(1) semantic…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/semantic-proprioception-demo.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Nov 22, 2025
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1794337421856" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
-<div class="thumbnail"><a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">
-
-<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">Intelligence Chases Chaos</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">
-<p>The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows the invisible hand of nonlinear dynamics. The deeper we look, the more we see how Chaos—capital C—dominates reality. But here’s the twist: Chaos isn’t infinite. It’s structured. And that structure is fractal.</p>
-</a>
+<div class="g-col-1" data-index="10" data-categories="QUk=" data-listing-date-sort="1738540800000" data-listing-file-modified-sort="1794707139056" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<a href="./posts/intelligence_chases_chaos.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_intelligence_chases_chaos_9298f497-9a52-4a8f-9ae8-f871339009c6.jpg" style="height: 220px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Intelligence Chases Chaos
+</h5>
+<div class="card-text listing-description">
+<p>The world we experience is an illusion of order draped over a seething ocean of chaos. Every gust of wind, every market fluctuation, every flicker of thought follows…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/intelligence_chases_chaos.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Feb 3, 2025
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1794337421825" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
-<div class="thumbnail"><a href="./posts/book_bot.html" class="no-external-icon">
-
-<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/book_bot.html" class="no-external-icon">Creating an LLM Agent for Books</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('aW52ZXN0aW5n'); return false;">investing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnQ='); return false;">Agent</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/book_bot.html" class="no-external-icon">
-<p>Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into specific books can provide a stable question and answer platform against a static source of ideas.</p>
-</a>
+<div class="g-col-1" data-index="11" data-categories="QUklMkNpbnZlc3RpbmclMkNBZ2VudA==" data-listing-date-sort="1734307200000" data-listing-file-modified-sort="1794707139029" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="567">
+<a href="./posts/book_bot.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_robot_understands_books._norman_rockwell_a37ffa0a-493b-4acf-adb2-63372ab29d08.jpg" style="height: 220px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Creating an LLM Agent for Books
+</h5>
+<div class="card-text listing-description">
+<p>Paper books are often seen as a dinosaur in the era of Generative AI. However, they serve as a vital ‘ground truth’ for human generated content, and AI interfaces into…</p>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/book_bot.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Dec 16, 2024
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="695">
-<div class="thumbnail"><a href="./posts/rumpus.html" class="no-external-icon">
-
-<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/rumpus.html" class="no-external-icon">Automated Coding with LLMs: Making a Rumpus</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TExN'); return false;">LLM</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29kZUdlbg=='); return false;">CodeGen</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/rumpus.html" class="no-external-icon">
+<div class="g-col-1" data-index="12" data-categories="TExNJTJDQ29kZUdlbg==" data-listing-date-sort="1721606400000" data-listing-file-modified-sort="1794707139057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="695">
+<a href="./posts/rumpus.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/images/omgjjd_norman_rockwell_a_desk_covered_in_post-it_notes_3ae54c55-a3b4-46ed-b447-3075b1ef8683.jpg" style="height: 220px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Automated Coding with LLMs: Making a Rumpus
+</h5>
+<div class="card-text listing-description">
 <p>LLMs have been useful for suggesting small changes to code bases, but can turn frustrating when trying to develop programs holistically.</p>
-</a>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/rumpus.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Jul 22, 2024
 </div>
-<div class="listing-author">
-Justin Donaldson
-</div>
-</a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1794337421858" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
-<div class="thumbnail"><a href="./posts/quarto.html" class="no-external-icon">
-
-<p class="card-img-top"><img loading='lazy' src="posts/images/quarto.webp"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/quarto.html" class="no-external-icon">Blogging with Quarto</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('YmxvZw=='); return false;">blog</div>
-
+</div></a>
 </div>
-<div class="listing-description">
-<a href="./posts/quarto.html" class="no-external-icon">
+<div class="g-col-1" data-index="13" data-categories="YmxvZw==" data-listing-date-sort="1713139200000" data-listing-file-modified-sort="1794707139057" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="633">
+<a href="./posts/quarto.html" class="quarto-grid-link no-external-icon">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/images/quarto.webp" style="height: 220px;"  class="thumbnail-image card-img"/></p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Blogging with Quarto
+</h5>
+<div class="card-text listing-description">
 <p>Creating my Webpage with Quarto</p>
-</a>
 </div>
-</div>
-<div class="metadata">
-<a href="./posts/quarto.html" class="no-external-icon">
+<div class="card-attribution card-text-small end">
 <div class="listing-date">
 Apr 15, 2024
 </div>
-<div class="listing-author">
-Justin Donaldson
 </div>
-</a>
 </div>
+</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
-</div><p><i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+</div><p><i>© Copyright 2026 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i></p></main> <!-- /main -->
+<script>
+// Lab-notebook layout helpers (see style.css).
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Banner posts: move the description off the image and set it as a dek
+  //    under the title meta, so the banner only carries title + subtitle.
+  var desc = document.querySelector(".quarto-title-banner .description");
+  var header = document.getElementById("title-block-header");
+  if (desc && header) {
+    var dek = document.createElement("p");
+    dek.className = "nb-dek column-body";
+    dek.textContent = desc.textContent.trim();
+    var meta = header.querySelector(".quarto-title-meta");
+    if (meta) { meta.before(dek); } else { header.appendChild(dek); }
+  }
+
+  // 2. Closing ledger sections get a quieter, report-like treatment.
+  var ledger = /^(honest accounting|grounding note|notes|reference|references|sources)\b/i;
+  document.querySelectorAll("main section.level2 > h2").forEach(function (h) {
+    if (ledger.test(h.textContent.trim())) { h.parentElement.classList.add("nb-ledger"); }
+  });
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
