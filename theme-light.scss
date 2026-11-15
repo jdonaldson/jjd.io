@@ -1,96 +1,65 @@
 /*-- scss:defaults --*/
-// Solarized — light. Palette: https://ethanschoonover.com/solarized/
-$base03: #002b36; $base02: #073642; $base01: #586e75; $base00: #657b83;
-$base0:  #839496; $base1:  #93a1a1; $base2:  #eee8d5; $base3:  #fdf6e3;
-$yellow: #b58900; $orange: #cb4b16; $red:    #dc322f; $magenta:#d33682;
-$violet: #6c71c4; $blue:   #268bd2; $cyan:   #2aa198; $green:  #859900;
+// Lab notebook — light. One paper ground, warm ink, one accent.
+// Shared structure lives in style.css and reads the --nb-* variables set below.
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&display=swap');
 
-// Bootstrap / Quarto surface
-$body-bg:        $base2;   // page (slightly darker than content for depth)
-$body-color:     $base02;  // body text — darker than canonical solarized for web readability
-$primary:        $blue;
-$secondary:      $cyan;
-$link-color:     $blue;
-$link-hover-color: $cyan;
-$headings-color: $base02;
-$border-color:   $base1;
+$paper:   #fbf8f1;
+$paper-2: #f3eee3;   // code, table header, callout wash
+$ink:     #24221f;
+$ink-2:   #5f5a52;   // muted text: captions, sidenotes, meta
+$rule:    #ddd5c6;
+$accent:  #1d5c8a;   // links
+$accent-2:#b4532a;   // hover, active TOC
 
-// code
-$code-color:     $magenta;
-$code-bg:        $base3;
-$pre-bg:         $base3;
+$font-family-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+$font-family-sans-serif: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+$font-family-base: $font-family-serif;
+$headings-font-family: $font-family-serif;
+$headings-font-weight: 600;
+$font-size-root: 18px;
+$line-height-base: 1.6;
 
-// navbar — solarized signature dark bar in both modes
-$navbar-bg:      $base02;
-$navbar-fg:      $base2;
-$navbar-hl:      $cyan;
+$body-bg: $paper;
+$body-color: $ink;
+$headings-color: $ink;
+$primary: $accent;
+$secondary: $ink-2;
+$link-color: $accent;
+$link-hover-color: $accent-2;
+$border-color: $rule;
+$text-muted: $ink-2;
 
-// tables / cards / callouts
-$card-bg:            $base3;
-$card-border-color:  $base1;
-$table-border-color: $base1;
-$blockquote-footer-color: $base01;
-// muted text tiers — darker than canonical solarized so they stay readable
-$text-muted:           $base01;
-$figure-caption-color: $base01;
-$table-group-separator-color: $base1;
+$code-color: #8a3b5c;
+$code-bg: $paper-2;
+$pre-bg: $paper-2;
 
-// callouts → solarized accents
-$callout-color-note:      $blue;
-$callout-color-tip:       $green;
-$callout-color-important: $red;
-$callout-color-warning:   $yellow;
-$callout-color-caution:   $orange;
+$navbar-bg: $paper;
+$navbar-fg: $ink;
+$navbar-hl: $accent-2;
+
+$card-bg: $paper;
+$card-border-color: $rule;
+$table-border-color: $rule;
+$figure-caption-color: $ink-2;
+
+$callout-color-note: $accent;
+$callout-color-tip: #4f7a3a;
+$callout-color-important: #a33a2b;
+$callout-color-warning: #a8760f;
+$callout-color-caution: $accent-2;
 
 /*-- scss:rules --*/
-:root { --content-bg: #{$base3}; --rule: #{$base1}; --muted: #{$base00}; }
-
-// solarized callout coloring (explicit so it survives the bootswatch base)
-.callout.callout-style-default { border-left-width: 4px; border-radius: 6px; }
-.callout-tip       { border-left-color: $green  !important; }
-.callout-tip       > .callout-header { background: rgba($green, 0.14)  !important; }
-.callout-note      { border-left-color: $blue   !important; }
-.callout-note      > .callout-header { background: rgba($blue, 0.14)   !important; }
-.callout-important { border-left-color: $red    !important; }
-.callout-important > .callout-header { background: rgba($red, 0.14)    !important; }
-.callout-warning   { border-left-color: $yellow !important; }
-.callout-warning   > .callout-header { background: rgba($yellow, 0.16) !important; }
-.callout-caution   { border-left-color: $orange !important; }
-.callout-caution   > .callout-header { background: rgba($orange, 0.14) !important; }
-.callout-tip, .callout-note, .callout-important,
-.callout-warning, .callout-caution { background: $base3; }
-
-// margin notes (right rail) — readable muted tone (not the washed-out base00)
-.column-margin, aside, .margin-aside { color: $base01; font-size: 0.88em; }
-
-// figure captions & generic muted text were the faint offenders — pin them readable
-figcaption, .figure-caption, .quarto-figure figcaption,
-.text-muted, .quarto-title-meta, .listing-subtitle,
-blockquote { color: $base01 !important; }
-.figure-caption, figcaption { font-size: 0.86em; }
-
-.navbar { border-bottom: 2px solid $base01; }
-.navbar .navbar-brand, .navbar .nav-link { color: $base2 !important; }
-.navbar .nav-link:hover { color: $cyan !important; }
-
-a { text-underline-offset: 2px; }
-a:hover { color: $cyan; }
-
-blockquote {
-  border-left: 4px solid $cyan;
-  color: $base00;
-  background: rgba($cyan, 0.06);
-  padding: 0.4em 1em;
-  border-radius: 4px;
+:root {
+  --nb-paper: #{$paper};
+  --nb-paper-2: #{$paper-2};
+  --nb-ink: #{$ink};
+  --nb-ink-2: #{$ink-2};
+  --nb-rule: #{$rule};
+  --nb-accent: #{$accent};
+  --nb-accent-2: #{$accent-2};
+  --nb-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --nb-sans: "Source Sans 3", "Helvetica Neue", Arial, sans-serif;
+  --nb-mono: "JetBrains Mono", "SFMono-Regular", Menlo, monospace;
+  --nb-img-shadow: none;
 }
-
-div.sourceCode, pre {
-  background: $base3 !important;
-  border: 1px solid $base1;
-  border-radius: 6px;
-}
-
-.toc-active, #TOC a.active { color: $cyan !important; border-left-color: $cyan !important; }
-
-// dark/light toggle button — keep it legible on the dark navbar
-.quarto-color-scheme-toggle .bi::before { color: $base2; }

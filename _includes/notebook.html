@@ -1,0 +1,22 @@
+<script>
+// Lab-notebook layout helpers (see style.css).
+document.addEventListener("DOMContentLoaded", function () {
+  // 1. Banner posts: move the description off the image and set it as a dek
+  //    under the title meta, so the banner only carries title + subtitle.
+  var desc = document.querySelector(".quarto-title-banner .description");
+  var header = document.getElementById("title-block-header");
+  if (desc && header) {
+    var dek = document.createElement("p");
+    dek.className = "nb-dek column-body";
+    dek.textContent = desc.textContent.trim();
+    var meta = header.querySelector(".quarto-title-meta");
+    if (meta) { meta.before(dek); } else { header.appendChild(dek); }
+  }
+
+  // 2. Closing ledger sections get a quieter, report-like treatment.
+  var ledger = /^(honest accounting|grounding note|notes|reference|references|sources)\b/i;
+  document.querySelectorAll("main section.level2 > h2").forEach(function (h) {
+    if (ledger.test(h.textContent.trim())) { h.parentElement.classList.add("nb-ledger"); }
+  });
+});
+</script>

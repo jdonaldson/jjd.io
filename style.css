@@ -1,142 +1,218 @@
-
 /* ==========================================================================
-   HTML5 display definitions
+   jjd.io — lab notebook layout
+   Colours and fonts come from the --nb-* variables in theme-light.scss /
+   theme-dark.scss, so every rule here works in both modes.
    ========================================================================== */
 
-/**
- * Correct `block` display not defined in IE 8/9.
- */
+/* ---------- Ground: one flat paper colour, no panels, no texture ---------- */
+body { background: var(--nb-paper); }
+main, .sidebar, #quarto-margin-sidebar { background: transparent; }
+main { padding-top: 0.5rem; }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-nav,
-section,
-summary {
-	display: block;
-}
-
-#copyright {
-  font:italic
-}
-
-.navbar-logo {
-	padding-right: 0px;
-	margin-right: 4px;
-	clip-path: circle(50% at center);
-}
-
-/**
- * Correct `inline-block` display not defined in IE 8/9.
- */
-
-audio,
-canvas,
-video {
-	display: inline-block;
-}
-
-/**
- * Prevent modern browsers from displaying `audio` without controls.
- * Remove excess height in iOS 5 devices.
- */
-
-audio:not([controls]) {
-	display: none;
-	height: 0;
-}
-
-/**
- * Address `[hidden]` styling not present in IE 8/9.
- * Hide the `template` element in IE, Safari, and Firefox < 22.
- */
-
-[hidden],
-template {
-	display: none;
-}
-
-/* ==========================================================================
-   Base
-   ========================================================================== */
-
-/**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- */
-
-html {
-	font-family: sans-serif;
-	/* 1 */
-	-ms-text-size-adjust: 100%;
-	/* 2 */
-	-webkit-text-size-adjust: 100%;
-	/* 2 */
-}
-
-/**
- * Remove default margin.
- */
-
+/* ---------- Type ---------- */
 body {
-	margin: 0;
+  font-family: var(--nb-serif);
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  hanging-punctuation: first;
+}
+main p, main li { hyphens: auto; -webkit-hyphens: auto; }
+
+h1, h2, h3, h4, .title { font-family: var(--nb-serif); letter-spacing: -0.01em; }
+main h2 {
+  font-size: 1.45rem;
+  margin-top: 2.6rem;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+main h3 { font-size: 1.15rem; margin-top: 1.8rem; font-style: italic; font-weight: 600; }
+
+a { text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:hover { color: var(--nb-accent-2); }
+
+/* UI chrome is sans; the writing is serif */
+.navbar, .sidebar, #TOC, .quarto-title-meta, .quarto-category,
+.listing-date, .listing-categories, .quarto-listing-category,
+.quarto-listing-filter, .quarto-listing-sort, .nav-footer,
+.figure-caption, figcaption, .column-margin, .margin-aside, aside,
+table, .callout, #quarto-appendix {
+  font-family: var(--nb-sans);
 }
 
-body::before {
-	content: "";
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-image: url("images/noisy.png");
-	background-repeat: repeat;
-	opacity: 0.25;
-	z-index: -1;
-	pointer-events: none;
+/* ---------- Navbar: paper with a hairline, not a dark bar ---------- */
+.navbar {
+  background: var(--nb-paper) !important;
+  border-bottom: 1px solid var(--nb-rule);
+  box-shadow: none;
+}
+.navbar .navbar-brand, .navbar .nav-link,
+.navbar .navbar-title, .navbar .bi::before {
+  color: var(--nb-ink) !important;
+}
+.navbar .navbar-title { font-family: var(--nb-serif); font-weight: 600; }
+.navbar .nav-link { font-size: 0.95rem; letter-spacing: 0.02em; }
+.navbar .nav-link:hover, .navbar .nav-link.active { color: var(--nb-accent-2) !important; }
+.navbar-logo { padding-right: 0; margin-right: 6px; clip-path: circle(50% at center); }
+.quarto-color-scheme-toggle .bi::before { color: var(--nb-ink-2) !important; }
+
+/* ---------- Left TOC rail ---------- */
+#TOC, .sidebar nav[role="doc-toc"] { font-size: 0.85rem; }
+#toc-title { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--nb-ink-2); }
+#TOC a.nav-link { color: var(--nb-ink-2); }
+#TOC a.nav-link.active, .toc-active {
+  color: var(--nb-accent-2) !important;
+  border-left-color: var(--nb-accent-2) !important;
 }
 
+/* ---------- Title block ---------- */
+.quarto-title .title { font-size: 2.4rem; font-weight: 700; line-height: 1.12; }
+.quarto-title .subtitle { font-style: italic; color: var(--nb-ink-2); font-size: 1.25rem; }
+.quarto-title-meta-heading {
+  font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nb-ink-2);
+}
+.quarto-title-meta-contents { font-size: 0.9rem; }
+.quarto-title-meta { border-bottom: 1px solid var(--nb-rule); padding-bottom: 0.9rem; margin-bottom: 0.4rem; }
 
-main, .sidebar {
-  background: var(--content-bg, #fdf6e3);
-  padding: 20px;
-
+.quarto-category {
+  border: none !important;
+  background: none !important;
+  padding: 0 0.6em 0 0 !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nb-ink-2);
+  opacity: 1 !important;
 }
 
-.float-right {
-  float: right;
+/* The standfirst: the post's description, set as a serif dek under the title.
+   On banner posts, standfirst.html moves it out of the image into .nb-dek. */
+.quarto-title .description, .nb-dek {
+  font-family: var(--nb-serif);
+  font-size: 1.12rem;
+  line-height: 1.5;
+  color: var(--nb-ink-2);
+}
+.nb-dek { margin: 1.4rem 0 0.2rem; font-style: italic; }
+
+/* Banner posts: title + subtitle + categories sit at the foot of the image */
+.quarto-title-banner {
+  position: relative;
+  background-size: cover !important;
+  background-position: center 35% !important;
+  padding-top: 10rem !important;
+  padding-bottom: 2.2rem !important;
+  margin-bottom: 0 !important;
+}
+.quarto-title-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(15, 12, 8, 0.05) 0%, rgba(15, 12, 8, 0.35) 45%, rgba(15, 12, 8, 0.82) 100%);
+  pointer-events: none;
+}
+.quarto-title-banner > * { position: relative; z-index: 1; }
+.quarto-title-banner .quarto-title .title,
+.quarto-title-banner .quarto-title .subtitle,
+.quarto-title-banner .quarto-title .description,
+.quarto-title-banner .quarto-categories .quarto-category {
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 0 18px rgba(0, 0, 0, 0.45);
+}
+.quarto-title-banner .quarto-title .subtitle { opacity: 0.92; }
+.quarto-title-banner .quarto-title .description { display: none; }  /* shown below as .nb-dek */
+
+/* ---------- Body furniture ---------- */
+
+/* Epigraphs and quotes: an italic line with a hairline, not a tinted box */
+blockquote, .blockquote {
+  border-left: 2px solid var(--nb-rule) !important;
+  background: none !important;
+  color: var(--nb-ink-2) !important;
+  font-style: italic;
+  font-size: 1.05rem;
+  padding: 0.1rem 0 0.1rem 1.1rem;
+  margin: 1.6rem 0;
+  border-radius: 0;
+}
+blockquote em { font-style: normal; }
+
+/* Sidenotes (right margin): small sans, muted, no box */
+.column-margin, aside, .margin-aside {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--nb-ink-2);
+}
+.column-margin p { margin-bottom: 0.6rem; }
+.column-margin strong { color: var(--nb-ink); font-weight: 600; }
+
+/* Figures */
+.quarto-figure img, main img.img-fluid, main p > img, .column-margin img {
+  border-radius: 10px;
+  box-shadow: var(--nb-img-shadow);
+}
+/* Opt out of rounding: add {.nb-square} to the image (e.g. the home header photo) */
+main img.nb-square { border-radius: 0 !important; }
+figcaption, .figure-caption {
+  font-size: 0.8rem !important;
+  line-height: 1.45;
+  color: var(--nb-ink-2) !important;
+  margin-top: 0.5rem;
 }
 
-.quarto-about-jolla main.content {
-  text-align: left;
+/* Tables: sans with tabular figures, hairlines only */
+main table {
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums lining-nums;
+  border-top: 1.5px solid var(--nb-ink) !important;
+  border-bottom: 1.5px solid var(--nb-ink) !important;
+  margin: 1.6rem 0;
+}
+main table thead th {
+  font-weight: 600;
+  border-bottom: 1px solid var(--nb-ink) !important;
+  color: var(--nb-ink);
+  vertical-align: bottom;
+}
+main table td, main table th {
+  border-top: none !important;
+  border-bottom: 1px solid var(--nb-rule);
+  padding: 0.35rem 0.6rem !important;
+  background: transparent !important;
+}
+main table tbody tr:last-child td { border-bottom: none; }
+main table > :not(caption) > * > * { box-shadow: none !important; }
+
+/* Code */
+code { font-size: 0.86em; }
+div.sourceCode, pre {
+  background: var(--nb-paper-2) !important;
+  border: none !important;
+  border-radius: 3px;
+  font-size: 0.82rem;
 }
 
-.thumbnail-image {
-  object-fit: contain !important;
-  border-radius: 8px;
-}
+/* Callouts: a coloured rule and a label, no filled header */
+.callout { border-radius: 0 !important; border: none !important; border-left: 3px solid !important; background: var(--nb-paper-2) !important; }
+.callout > .callout-header { background: transparent !important; border: none !important; font-weight: 600; }
+.callout-note      { border-left-color: var(--bs-primary) !important; }
+.callout-tip       { border-left-color: #6f9a52 !important; }
+.callout-important { border-left-color: #b8483a !important; }
+.callout-warning   { border-left-color: #c08a1a !important; }
+.callout-caution   { border-left-color: var(--nb-accent-2) !important; }
+.callout-body, .callout-body p { color: var(--nb-ink); }
 
-.quarto-figure img {
-  border-radius: 8px;
-}
-
+/* Tips inside body text float right; tips already in the margin take the margin's width */
 .callout-tip {
   overflow: auto;
   float: right;
   width: 40%;
   margin-left: 1.5em;
   margin-bottom: 0.5em;
-  font-size: 0.9em;
+  font-size: 0.85rem;
 }
-
-.callout-tip img {
+.column-margin .callout-tip { float: none; width: auto; margin-left: 0; }
+main .callout-tip img {   /* `main` outranks the 10px figure rounding above: these stay circles */
   float: left;
   height: 5em;
   margin-right: 0.75em;
@@ -146,55 +222,73 @@ main, .sidebar {
   filter: grayscale(100%);
 }
 
-/* Citation / appendix: comfortable left+right padding (was hugging the panel edge) */
-#quarto-appendix.default {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
+/* Closing ledger sections ("Honest accounting", "Grounding note", "Notes") */
+.nb-ledger {
+  border-top: 1px solid var(--nb-rule);
+  margin-top: 3rem;
+  padding-top: 0.4rem;
+  font-size: 0.95rem;
+}
+.nb-ledger h2 {
+  font-family: var(--nb-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--nb-ink-2);
+  margin-top: 1rem;
 }
 
-/* Listing pages (home): move the category cloud to the LEFT margin, so it no
-   longer collides with right-margin figures and reads as left-rail navigation. */
+#quarto-appendix.default { padding-left: 1.25rem; padding-right: 1.25rem; border-top: 1px solid var(--nb-rule); }
+.float-right { float: right; }
+.quarto-about-jolla main.content { text-align: left; }
+
+/* ---------- Home listing (grid) ---------- */
+.quarto-listing .quarto-grid-item.card {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+.quarto-grid-item .card-img-top { padding: 0; }
+.quarto-grid-item .thumbnail-image {
+  object-fit: cover !important;
+  border-radius: 10px;
+  box-shadow: var(--nb-img-shadow);
+}
+.quarto-grid-item .card-body { padding: 0.8rem 0 0; }
+.quarto-grid-item .card-title { font-family: var(--nb-serif); font-weight: 600; font-size: 1.2rem; line-height: 1.25; margin-bottom: 0.25rem; }
+.quarto-grid-item .card-subtitle { font-style: italic; color: var(--nb-ink-2); font-size: 0.95rem; }
+.quarto-grid-item .card-text { font-size: 0.92rem; line-height: 1.5; color: var(--nb-ink-2); }
+.quarto-grid-item .card-other-values, .quarto-grid-item .listing-date,
+.quarto-grid-item .card-attribution { font-family: var(--nb-sans); font-size: 0.75rem; color: var(--nb-ink-2); letter-spacing: 0.04em; }
+.quarto-grid-item .card-attribution { padding: 0; }
+.quarto-grid-item:hover .card-title { color: var(--nb-accent-2); }
+/* Posts without an image: no empty grey block, the card starts at its title */
+.quarto-grid-item .card-img-top:has(.listing-item-img-placeholder),
+.quarto-grid-item .listing-item-img-placeholder { display: none !important; }
+
+.quarto-listing-filter input, .quarto-listing-sort select, .input-group-text {
+  background: transparent !important;
+  border-color: var(--nb-rule) !important;
+  color: var(--nb-ink) !important;
+  font-size: 0.85rem;
+}
+
+/* Category cloud: left rail on listing pages, small sans list */
 body:has(.quarto-listing) #quarto-margin-sidebar {
   grid-column: screen-start-inset / body-content-start;
-  justify-self: end;          /* single-column rail, hugging the content */
+  justify-self: end;
   text-align: left;
   max-width: 13rem;
   padding-left: 0.5rem;
   padding-right: 1.75rem;
 }
+.quarto-listing-category-title {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--nb-ink-2); font-weight: 600;
+}
+.quarto-listing-category .category { font-size: 0.85rem; color: var(--nb-ink-2); }
+.quarto-listing-category .category.active { color: var(--nb-accent-2); font-weight: 600; }
 
-/* Post title banners: the post's OG image sits behind the title block, with a
-   dark gradient overlay so the white title text stays legible on any photo.
-   Posts opt in via frontmatter: title-block-banner: <image> (+ banner-color white).
-   Image-agnostic — the overlay is a ::before layer, Quarto supplies the image. */
-.quarto-title-banner {
-  position: relative;
-  background-size: cover !important;
-  background-position: center 30% !important;
-  padding-top: 4rem !important;
-  padding-bottom: 4rem !important;
-}
-.quarto-title-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(25, 18, 8, 0.55), rgba(25, 18, 8, 0.72));
-  pointer-events: none;
-}
-.quarto-title-banner > * {
-  position: relative;
-  z-index: 1;
-}
-.quarto-title-banner .quarto-title .title,
-.quarto-title-banner .quarto-title .subtitle,
-.quarto-title-banner .quarto-title .description,
-.quarto-title-banner .quarto-categories .quarto-category {
-  color: #fff !important;
-  /* layered halo: tight pseudo-outline + wide glow, so white text survives
-     bright regions of any banner photo */
-  text-shadow:
-    0 0 2px rgba(0, 0, 0, 0.9),
-    0 1px 3px rgba(0, 0, 0, 0.85),
-    0 0 12px rgba(0, 0, 0, 0.7),
-    0 2px 18px rgba(0, 0, 0, 0.55);
-}
+/* ---------- Footer ---------- */
+.nav-footer { border-top: 1px solid var(--nb-rule); background: var(--nb-paper) !important; font-size: 0.8rem; color: var(--nb-ink-2); }
+.nav-footer i { font-style: normal; }

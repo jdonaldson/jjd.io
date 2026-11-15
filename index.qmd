@@ -7,7 +7,11 @@ listing:
     - "posts/*.qmd"
     - "posts/*.ipynb"
   sort: "date desc"
-  type: default
+  type: grid
+  grid-columns: 2
+  image-height: 220px
+  max-description-length: 170
+  fields: [image, date, title, subtitle, description]
   categories: true
   feed: true
   sort-ui: true
@@ -18,7 +22,7 @@ toc: false
 ---
 
 ::: {.column-margin}
-[![The Three Sisters Mountains in Sisters, Oregon](images/sisters.jpeg)](about.qmd)
+[![The Three Sisters Mountains in Sisters, Oregon](images/sisters.jpeg){.nb-square}](about.qmd)
 :::
 
 > *Ogni parte ad ogni parte splende* — "each part to each part shines."

@@ -7,10 +7,19 @@ This is Justin Donaldson's personal website built with Quarto, showcasing profes
 - **Technology**: Quarto static site generator
 - **Domain**: jjd.io
 - **Hosting**: GitHub Pages (via CNAME file)
-- **Theme**: Solarized — `theme-light.scss` / `theme-dark.scss` layered over cosmo/darkly,
-  with a native light/dark toggle (`theme: {light, dark}` in `_quarto.yml`) plus custom
-  `style.css`. TOC is the left rail; tips & small images go in the right margin
+- **Theme**: "Lab notebook" (2026-11-14, replaced Solarized). `theme-light.scss` /
+  `theme-dark.scss` (over cosmo/darkly) hold only colours, fonts and `--nb-*` CSS variables;
+  all layout lives in `style.css`, which reads those variables, so one rule serves both modes.
+  Source Serif 4 for the writing, Source Sans 3 for UI chrome / sidenotes / tables,
+  JetBrains Mono for code. One flat paper ground (no panels, no noise texture).
+  TOC is the left rail; tips & small images go in the right margin
   (`::: {.column-margin}` / `.callout-tip`), matching the osgood post.
+  - Font names in `--nb-*` vars are **literal quoted strings**: Sass `#{}` interpolation strips
+    quotes, and an unquoted `Source Sans 3` is invalid CSS (silently falls back to Times).
+  - `_includes/notebook.html` (include-after-body): moves a banner post's description off the
+    image into a `.nb-dek` standfirst, and tags closing h2 sections named Honest accounting /
+    Grounding note / Notes / Reference(s) / Sources with `.nb-ledger`.
+  - Home listing is `type: grid`, 2 columns; posts without `image:` show no placeholder.
 
 ## Information Architecture (restructured 2026-06-27)
 - **Home = blog listing** (`index.qmd`): the writing is the front door — short hero + post

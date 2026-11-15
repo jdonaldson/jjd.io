@@ -12,6 +12,7 @@ format:
       light: [cosmo, theme-light.scss]
       dark: [darkly, theme-dark.scss]
     css: style.css
+    include-after-body: _includes/notebook.html
     # page-layout: full
 
 website:
@@ -23,7 +24,7 @@ website:
   image : "images/me.jpeg"
   open-graph: true
   title: "Justin Donaldson, Ph.D."
-  body-footer: "<i>© Copyright 2025 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i>"
+  body-footer: "<i>© Copyright 2026 Justin Donaldson. Except where otherwise noted, all rights reserved. The views and opinions on this website are my own and do not represent my current or former employers.</i>"
   navbar:
     logo : "images/nav-logo.png"
     left:
